@@ -1,0 +1,211 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Migrations\\20260504121429_AddingDummyDataInModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FinTrack\\Migrations\\20260504121429_AddingDummyDataInModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\models\\enums\\transactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\models\\enums\\transactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\models\\entity\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\models\\entity\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Migrations\\20260504120648_AddingInitialModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FinTrack\\Migrations\\20260504120648_AddingInitialModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Migrations\\20260504120437_AddingInitialModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FinTrack\\Migrations\\20260504120437_AddingInitialModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\models\\entity\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\models\\entity\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\fintrack.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\fintrack.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\models\\enums\\paymentmode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92679AB4-D72B-4E6C-9DCF-FDEA07E3C116}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\models\\enums\\paymentmode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20260504121429_AddingDummyDataInModels.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Migrations\\20260504121429_AddingDummyDataInModels.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Migrations\\20260504121429_AddingDummyDataInModels.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Migrations\\20260504121429_AddingDummyDataInModels.cs",
+              "RelativeToolTip": "FinTrack\\Migrations\\20260504121429_AddingDummyDataInModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T12:14:29.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "20260504120648_AddingInitialModels.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Migrations\\20260504120648_AddingInitialModels.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Migrations\\20260504120648_AddingInitialModels.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Migrations\\20260504120648_AddingInitialModels.cs",
+              "RelativeToolTip": "FinTrack\\Migrations\\20260504120648_AddingInitialModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T12:06:48.489Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "20260504120437_AddingInitialModels.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Migrations\\20260504120437_AddingInitialModels.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Migrations\\20260504120437_AddingInitialModels.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Migrations\\20260504120437_AddingInitialModels.cs",
+              "RelativeToolTip": "FinTrack\\Migrations\\20260504120437_AddingInitialModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T12:04:37.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\appsettings.json",
+              "RelativeDocumentMoniker": "FinTrack\\appsettings.json",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\appsettings.json",
+              "RelativeToolTip": "FinTrack\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-04T11:47:35.517Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Program.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Program.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Program.cs",
+              "RelativeToolTip": "FinTrack\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T11:41:18.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "FinTrack\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T11:39:42.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FinTrack",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\FinTrack.csproj",
+              "RelativeDocumentMoniker": "FinTrack\\FinTrack.csproj",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\FinTrack.csproj",
+              "RelativeToolTip": "FinTrack\\FinTrack.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-05-04T11:39:13.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PaymentMode.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\Enums\\PaymentMode.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Models\\Enums\\PaymentMode.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\Enums\\PaymentMode.cs",
+              "RelativeToolTip": "FinTrack\\Models\\Enums\\PaymentMode.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T11:26:27.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TransactionType.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\Enums\\TransactionType.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Models\\Enums\\TransactionType.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\Enums\\TransactionType.cs",
+              "RelativeToolTip": "FinTrack\\Models\\Enums\\TransactionType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T11:25:40.762Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\Entity\\Category.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Models\\Entity\\Category.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\Entity\\Category.cs",
+              "RelativeToolTip": "FinTrack\\Models\\Entity\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T11:24:39.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\Entity\\Transaction.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Models\\Entity\\Transaction.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\Entity\\Transaction.cs",
+              "RelativeToolTip": "FinTrack\\Models\\Entity\\Transaction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T11:22:51.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
