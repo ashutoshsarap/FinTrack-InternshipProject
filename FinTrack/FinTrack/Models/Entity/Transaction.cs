@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+//V1
 namespace FinTrack.Models.Entity
 {
     public class Transaction
@@ -12,12 +13,12 @@ namespace FinTrack.Models.Entity
         public DateTime Date { get; set; }
         public TransactionType Type { get; set; }
         public PaymentMode PaymentMode { get; set; }
-        public string? Description { get; set; }
+        public string Description { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
-        public Category? Category { get; set; }
+        public Category Category { get; set; }
 
     }
 }

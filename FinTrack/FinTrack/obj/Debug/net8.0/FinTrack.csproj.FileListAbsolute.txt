@@ -138,3 +138,4 @@ C:\Users\Coditas-Admin\source\InternshipProject\FinTrack\FinTrack\obj\Debug\net8
 C:\Users\Coditas-Admin\source\InternshipProject\FinTrack\FinTrack\obj\Debug\net8.0\FinTrack.pdb
 C:\Users\Coditas-Admin\source\InternshipProject\FinTrack\FinTrack\obj\Debug\net8.0\FinTrack.genruntimeconfig.cache
 C:\Users\Coditas-Admin\source\InternshipProject\FinTrack\FinTrack\obj\Debug\net8.0\ref\FinTrack.dll
+C:\Users\Coditas-Admin\source\InternshipProject\FinTrack\FinTrack\obj\Debug\net8.0\FinTrack.sourcelink.json

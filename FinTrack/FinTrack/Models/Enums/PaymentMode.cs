@@ -1,4 +1,5 @@
-﻿namespace FinTrack.Models.Enums
+﻿//V1
+namespace FinTrack.Models.Enums
 {
     public enum PaymentMode
     {
