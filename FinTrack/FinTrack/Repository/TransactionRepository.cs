@@ -19,7 +19,7 @@ namespace FinTrack.Repository
             await _dbContext.Transactions.AddAsync(transaction);
         }
 
-        public async void DeleteTransactionAsync(Transaction transaction)
+        public void DeleteTransactionAsync(Transaction transaction)
         {
             _dbContext.Transactions.Remove(transaction);
 
@@ -27,12 +27,12 @@ namespace FinTrack.Repository
 
         public async Task<IEnumerable<Transaction>> GetAllTransactionsAsync()
         {
-            return await _dbContext.Transactions.ToListAsync();
+            return await _dbContext.Transactions.Include(t => t.Category).ToListAsync();
         }
 
         public async Task<Transaction> GetTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter)
         {
-            return await _dbContext.Transactions.FirstOrDefaultAsync(filter);
+            return await _dbContext.Transactions.Include(t => t.Category).FirstOrDefaultAsync(filter);
         }
 
         public async Task<Transaction> GetTransactionByIdAsync(int id)

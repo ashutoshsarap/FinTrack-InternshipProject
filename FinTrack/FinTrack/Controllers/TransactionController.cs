@@ -1,6 +1,8 @@
 ﻿using FinTrack.Data;
 using FinTrack.Models.DTOs;
 using FinTrack.Repository;
+using FinTrack.Service;
+using FinTrack.Service.IService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinTrack.Controllers
@@ -9,32 +11,25 @@ namespace FinTrack.Controllers
     {
 
         private readonly ApplicationDbContext _context;
-
-        public TransactionController(ApplicationDbContext context)
+        private readonly ITransactionService _transactionService;
+        public TransactionController(ApplicationDbContext context, ITransactionService transactionService)
         {
             _context = context;
+            _transactionService = transactionService;   
         }
         public IActionResult Index()
         {
-            return View();
+            var transactions = _transactionService.GetAllTransactionsAsync().Result;
+            return Ok(transactions);
         }
 
-        public IActionResult Get(int id)
-        {
-            var response = _context.Transactions
-                                   .Where(t => t.Id == id)
-                                   .Select(t => new TransactionResponseDto
-                                   {
-                                        Id = t.Id,
-                                        Amount = t.Amount,
-                                        Date = t.Date,
-                                        Type = t.Type,
-                                        PaymentMode = t.PaymentMode,
-                                        Description = t.Description,
-                                        CategoryId = t.CategoryId,
-                                        CategoryName = t.Category.Name
-                                   });
-            return Ok(response);
-        }
+
+
+        
+
+
+        
+
+        
     }
 }
