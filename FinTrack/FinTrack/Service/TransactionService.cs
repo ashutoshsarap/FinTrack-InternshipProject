@@ -41,7 +41,7 @@ namespace FinTrack.Service
                 throw new ArgumentException("Category does not exist.");
             }
 
-            var transaction = new Models.Entity.Transaction
+            var transaction = new Transaction
             {
                 Amount = transactionCreateDto.Amount,
                 Date = transactionCreateDto.Date,
@@ -70,18 +70,7 @@ namespace FinTrack.Service
 
         public async Task<List<TransactionResponseDto>> GetAllTransactionsAsync()
         {
-            //return _transactionRepository.GetAllTransactionsAsync().Result.Select(t => new TransactionResponseDto
-            //{
-            //    Id = t.Id,
-            //    Amount = t.Amount,
-            //    Date = t.Date,
-            //    Type = t.Type.ToString(),
-            //    PaymentMode = t.PaymentMode.ToString(),
-            //    Description = t.Description,
-            //    CategoryId = t.CategoryId,
-            //    CategoryName = t.Category.Name
-            //}).ToList();
-
+            
             var transactions = await _transactionRepository.GetAllTransactionsAsync();
 
             return transactions.Select(t => new TransactionResponseDto()
@@ -89,8 +78,8 @@ namespace FinTrack.Service
                 Id = t.Id,
                 Amount = t.Amount,
                 Date = t.Date,
-                Type = t.Type.ToString(),
-                PaymentMode = t.PaymentMode.ToString(),
+                Type = t.Type,
+                PaymentMode = t.PaymentMode,
                 Description = t.Description,
                 CategoryId = t.CategoryId,
                 CategoryName = t.Category.Name
@@ -119,25 +108,14 @@ namespace FinTrack.Service
                 Id = transaction.Id,
                 Amount = transaction.Amount,
                 Date = transaction.Date,
-                Type = transaction.Type.ToString(),
-                PaymentMode = transaction.PaymentMode.ToString(),
+                Type = transaction.Type,
+                PaymentMode = transaction.PaymentMode,
                 Description = transaction.Description,
                 CategoryId = transaction.CategoryId,
                 CategoryName = transaction.Category.Name
             };
 
             return transactionResponse;
-
-
-
-
-
-
-
-
-
-
-
 
         }
 
@@ -157,8 +135,8 @@ namespace FinTrack.Service
                 Id = transaction.Id,
                 Amount = transaction.Amount,
                 Date = transaction.Date,
-                Type = transaction.Type.ToString(),
-                PaymentMode = transaction.PaymentMode.ToString(),
+                Type = transaction.Type,
+                PaymentMode = transaction.PaymentMode,
                 Description = transaction.Description,
                 CategoryId = transaction.CategoryId,
                 CategoryName = transaction.Category.Name
@@ -174,17 +152,6 @@ namespace FinTrack.Service
                 throw new ArgumentNullException(nameof(filter));
             }
 
-            //var transactions = _transactionRepository.GetTransactionsByFilterAsync(filter).Result.Select(t => new TransactionResponseDto
-            //{
-            //    Id = t.Id,
-            //    Amount = t.Amount,
-            //    Date = t.Date,
-            //    Type = t.Type.ToString(),
-            //    PaymentMode = t.PaymentMode.ToString(),
-            //    Description = t.Description,
-            //    CategoryId = t.CategoryId,
-            //    CategoryName = t.Category.Name
-            //});
 
             var transactions = await _transactionRepository.GetTransactionsByFilterAsync(filter);
 
@@ -195,8 +162,8 @@ namespace FinTrack.Service
                 Id = t.Id,
                 Amount = t.Amount,
                 Date = t.Date,
-                Type = t.Type.ToString(),
-                PaymentMode = t.PaymentMode.ToString(),
+                Type = t.Type,
+                PaymentMode = t.PaymentMode,
                 Description = t.Description,
                 CategoryId = t.CategoryId,
                 CategoryName = t.Category.Name
@@ -219,18 +186,19 @@ namespace FinTrack.Service
                 throw new ArgumentException("Category does not exist.");
             }
 
-            if(Enum.IsDefined(typeof(PaymentMode), transactionUpdateDto.PaymentMode))
+            if(!Enum.IsDefined(typeof(PaymentMode), transactionUpdateDto.PaymentMode))
             {
                 throw new ArgumentException("Given Payment mode does not exist");
             }
 
-            if (Enum.IsDefined(typeof(TransactionType), transactionUpdateDto.Type))
+            if (!Enum.IsDefined(typeof(TransactionType), transactionUpdateDto.Type))
             {
                 throw new ArgumentException("Given Type does not exist");
             }
 
             var transaction = new Transaction()
             {
+                Id = transactionUpdateDto.Id,
                 Amount = transactionUpdateDto.Amount,
                 Description = transactionUpdateDto.Description,
                 Date = transactionUpdateDto.Date,

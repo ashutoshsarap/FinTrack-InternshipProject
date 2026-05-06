@@ -37,7 +37,8 @@ namespace FinTrack.Repository
 
         public async Task<Transaction> GetTransactionByIdAsync(int id)
         {
-            return await _dbContext.Transactions.FindAsync(id);
+            var transaction = await _dbContext.Transactions.Include(t => t.Category).FirstOrDefaultAsync(t => t.Id == id);
+            return transaction;
         }
 
         public async Task<IEnumerable<Transaction>> GetTransactionsByFilterAsync(Expression<Func<Transaction, bool>> filter)

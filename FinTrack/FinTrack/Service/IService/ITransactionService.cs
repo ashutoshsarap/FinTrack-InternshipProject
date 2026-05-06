@@ -9,7 +9,6 @@ namespace FinTrack.Service.IService
         public Task CreateTransactionAsync(TransactionCreateDto transactionCreateDto);
         public Task UpdateTransactionAsync(TransactionUpdateDto transactionUpdateDto);
         public Task DeleteTransactionAsync(int id);
-
         public Task<TransactionResponseDto> GetTransactionByIdAsync(int id);
         public Task<List<TransactionResponseDto>> GetAllTransactionsAsync();
         public Task<List<TransactionResponseDto>> GetTransactionsByFilterAsync(Expression<Func<Transaction, bool>> filter);
