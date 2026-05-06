@@ -1,10 +1,11 @@
 ﻿using FinTrack.Models.Entity;
 using Microsoft.EntityFrameworkCore;
 using FinTrack.Models.Enums;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 //V1
 namespace FinTrack.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -12,7 +13,6 @@ namespace FinTrack.Data
 
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Category> Categories { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

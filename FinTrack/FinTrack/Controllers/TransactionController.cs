@@ -4,12 +4,15 @@ using FinTrack.Models.ViewModels;
 using FinTrack.Repository;
 using FinTrack.Service;
 using FinTrack.Service.IService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
+
 //V1
 namespace FinTrack.Controllers
 {
+    [Authorize]
     public class TransactionController : Controller
     {
 
