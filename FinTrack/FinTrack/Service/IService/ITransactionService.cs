@@ -7,7 +7,7 @@ namespace FinTrack.Service.IService
     public interface ITransactionService
     {
         public Task CreateTransactionAsync(TransactionCreateDto transactionCreateDto);
-        public Task UpdateTransactionAsync(TransactionUpdateDto transactionUpdateDto);
+        public Task UpdateTransactionAsync(int id, TransactionUpdateDto transactionUpdateDto);
         public Task DeleteTransactionAsync(int id);
         public Task<TransactionResponseDto> GetTransactionByIdAsync(int id);
         public Task<List<TransactionResponseDto>> GetAllTransactionsAsync();

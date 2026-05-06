@@ -13,7 +13,7 @@ namespace FinTrack.Repository.IRepository
 
         //Keeping Update and Delete methods as void since the changes are tracked by the DbContext and will be saved when SaveChangesAsync is called 
         //Update and Delete operations dont talk directly with the database, they just modify the state of the entity in the DbContext, and the actual database update happens when SaveChangesAsync is called.
-        public void UpdateTransactionAsync(Transaction transaction);
+        public Task UpdateTransactionAsync(Transaction transaction);
         public void DeleteTransactionAsync(Transaction transaction);
     }
 }

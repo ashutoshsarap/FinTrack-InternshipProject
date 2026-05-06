@@ -122,44 +122,45 @@ namespace FinTrack.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var categories = _context.Categories.ToList();
-                model.Categories = new SelectList(categories, "Id", "Name");
+                //var categories = _context.Categories.ToList();
+                model.Categories = new SelectList(_context.Categories.ToList(), "Id", "Name");
                 return View(model);
             }
 
+
             try
-                {
-                    var transaction = await _transactionService.GetTransactionByIdAsync(model.Id);
-                    if (transaction == null)
-                    {
-                        return NotFound();
-                    }
-                    var transactionUpdateDto = new TransactionUpdateDto
-                    {
-                        Id=transaction.Id,
-                        Amount = transaction.Amount,
-                        Date = transaction.Date,
-                        Type = transaction.Type,
-                        PaymentMode = transaction.PaymentMode,
-                        Description = transaction.Description,
-                        CategoryId = transaction.CategoryId,
-                        UpdatedAt = DateTime.Now
-                    };
-                    await _transactionService.UpdateTransactionAsync(transactionUpdateDto);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError(string.Empty, $"An error occurred while updating the transaction: {ex.Message}");
-                }
-            if (!ModelState.IsValid)
             {
-                var categories = _context.Categories.ToList();
-                model.Categories = new SelectList(categories, "Id", "Name");
-                return View(model);
+                var transaction = await _transactionService.GetTransactionByIdAsync(model.Id);
+
+                if (transaction == null)
+                {
+                    return NotFound();
+                }
+
+                var transactionUpdateDto = new TransactionUpdateDto
+                {
+                    Id = model.Id,
+                    Amount = model.Amount,
+                    Date = model.Date,
+                    Type = model.TransactionType,
+                    PaymentMode = model.PaymentMode,
+                    Description = model.Description,
+                    CategoryId = model.CategoryId,
+                    UpdatedAt = DateTime.Now
+                };
+                await _transactionService.UpdateTransactionAsync(model.Id,transactionUpdateDto);
+                return RedirectToAction(nameof(Index));
+
             }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, $"An error occurred while updating the transaction: {ex.Message}");
+            }
+
+            var categories = _context.Categories.ToList();
+            model.Categories = new SelectList(categories, "Id", "Name");
             return View(model);
+            
         }
     }
 }

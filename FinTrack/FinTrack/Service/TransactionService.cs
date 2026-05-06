@@ -170,8 +170,9 @@ namespace FinTrack.Service
             }).ToList();
         }
 
-        public async Task UpdateTransactionAsync(TransactionUpdateDto transactionUpdateDto)
+        public async Task UpdateTransactionAsync(int id,TransactionUpdateDto transactionUpdateDto)
         {
+
             if (transactionUpdateDto.Amount <= 0)
             {
                 throw new ArgumentException("Amount must be greater than zero.");
@@ -186,30 +187,32 @@ namespace FinTrack.Service
                 throw new ArgumentException("Category does not exist.");
             }
 
-            if(!Enum.IsDefined(typeof(PaymentMode), transactionUpdateDto.PaymentMode))
+            //if(!Enum.IsDefined(typeof(PaymentMode), transactionUpdateDto.PaymentMode))
+            //{
+            //    throw new ArgumentException("Given Payment mode does not exist");
+            //}
+
+            //if (!Enum.IsDefined(typeof(TransactionType), transactionUpdateDto.Type))
+            //{
+            //    throw new ArgumentException("Given Type does not exist");
+            //}
+
+            var transaction = await _transactionRepository.GetTransactionByIdAsync(id);
+            if (transaction == null)
             {
-                throw new ArgumentException("Given Payment mode does not exist");
+                throw new ArgumentException("Transaction not found.");
             }
 
-            if (!Enum.IsDefined(typeof(TransactionType), transactionUpdateDto.Type))
-            {
-                throw new ArgumentException("Given Type does not exist");
-            }
+            transaction.Amount = transactionUpdateDto.Amount;
+            transaction.Date = transactionUpdateDto.Date;
+            transaction.Type = transactionUpdateDto.Type;
+            transaction.PaymentMode = transactionUpdateDto.PaymentMode;
+            transaction.Description = transactionUpdateDto.Description;
+            transaction.CategoryId = transactionUpdateDto.CategoryId;
+            transaction.UpdatedAt = DateTime.Now;
 
-            var transaction = new Transaction()
-            {
-                Id = transactionUpdateDto.Id,
-                Amount = transactionUpdateDto.Amount,
-                Description = transactionUpdateDto.Description,
-                Date = transactionUpdateDto.Date,
-                UpdatedAt = DateTime.Now,
-                CategoryId = transactionUpdateDto.CategoryId,
-                Type = transactionUpdateDto.Type,
-                PaymentMode = transactionUpdateDto.PaymentMode
-            };
 
-            _transactionRepository.UpdateTransactionAsync(transaction);
-            await _dbContext.SaveChangesAsync();
+            await _transactionRepository.UpdateTransactionAsync(transaction);
         }
 
 

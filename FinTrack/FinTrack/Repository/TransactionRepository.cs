@@ -3,6 +3,7 @@ using FinTrack.Models.Entity;
 using FinTrack.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 //V1
 namespace FinTrack.Repository
 {
@@ -46,9 +47,10 @@ namespace FinTrack.Repository
             return await _dbContext.Transactions.Where(filter).ToListAsync();
         }
 
-        public void UpdateTransactionAsync(Transaction transaction)
+        public async Task UpdateTransactionAsync(Transaction transaction)
         {
             _dbContext.Transactions.Update(transaction);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }
