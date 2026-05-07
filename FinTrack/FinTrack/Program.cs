@@ -1,10 +1,12 @@
 using FinTrack.Data;
+using FinTrack.Dummy;
 using FinTrack.Models.Entity;
 using FinTrack.Repository;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service;
 using FinTrack.Service.IService;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,10 +19,16 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 
-
+//Repository registration
+builder.Services.AddScoped<DummyITransactionRepository, DummyTransactionRepository>();
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+
+//Service registration
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 
+builder.Services.AddScoped<IEmailSender, DummyEmailService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

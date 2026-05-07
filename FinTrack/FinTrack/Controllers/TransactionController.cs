@@ -2,6 +2,7 @@
 using FinTrack.Models.DTOs;
 using FinTrack.Models.ViewModels;
 using FinTrack.Repository;
+using FinTrack.Repository.IRepository;
 using FinTrack.Service;
 using FinTrack.Service.IService;
 using Microsoft.AspNetCore.Authorization;
@@ -18,14 +19,16 @@ namespace FinTrack.Controllers
 
         private readonly ApplicationDbContext _context;
         private readonly ITransactionService _transactionService;
-        public TransactionController(ApplicationDbContext context, ITransactionService transactionService)
+        private readonly IUnitOfWork _unitOfWork;
+        public TransactionController(ApplicationDbContext context, ITransactionService transactionService, IUnitOfWork unitOfWork)
         {
             _context = context;
             _transactionService = transactionService;
+            _unitOfWork = unitOfWork;
         }
         public async Task<IActionResult> Index()
         {
-            var transactions = await _transactionService.GetAllTransactionsAsync();
+            var transactions = await _unitOfWork.Transaction.GetAllAsync();
             var transactionViewModels = transactions.Select(t => new TransactionViewModel
             {
                 Id = t.Id,
@@ -34,7 +37,7 @@ namespace FinTrack.Controllers
                 Date = t.Date,
                 PaymentMode = t.PaymentMode,
                 TransactionType = t.Type,
-                CategoryName = t.CategoryName
+                CategoryName = t.Category.Name
             }).ToList();
 
             return View(transactionViewModels);

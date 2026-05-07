@@ -3,24 +3,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace FinTrack.Migrations
 {
     /// <inheritdoc />
-    public partial class AddIdentity : Migration
+    public partial class AddAllModelsIdentity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
-                name: "Description",
-                table: "Transactions",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "",
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
-                oldNullable: true);
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -40,7 +32,6 @@ namespace FinTrack.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(21)", maxLength: 21, nullable: false),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -60,6 +51,19 @@ namespace FinTrack.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -108,8 +112,8 @@ namespace FinTrack.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -153,8 +157,8 @@ namespace FinTrack.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -168,19 +172,49 @@ namespace FinTrack.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.UpdateData(
-                table: "Transactions",
-                keyColumn: "Id",
-                keyValue: 1,
-                columns: new[] { "CreatedAt", "Date", "UpdatedAt" },
-                values: new object[] { new DateTime(2026, 5, 6, 15, 52, 28, 12, DateTimeKind.Local).AddTicks(7568), new DateTime(2026, 5, 6, 15, 52, 28, 12, DateTimeKind.Local).AddTicks(7554), new DateTime(2026, 5, 6, 15, 52, 28, 12, DateTimeKind.Local).AddTicks(7569) });
+            migrationBuilder.CreateTable(
+                name: "Transactions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: false),
+                    PaymentMode = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Transactions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Transactions_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
-            migrationBuilder.UpdateData(
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Salary" },
+                    { 2, "Groceries" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Transactions",
-                keyColumn: "Id",
-                keyValue: 2,
-                columns: new[] { "CreatedAt", "Date", "UpdatedAt" },
-                values: new object[] { new DateTime(2026, 5, 6, 15, 52, 28, 12, DateTimeKind.Local).AddTicks(7574), new DateTime(2026, 5, 6, 15, 52, 28, 12, DateTimeKind.Local).AddTicks(7572), new DateTime(2026, 5, 6, 15, 52, 28, 12, DateTimeKind.Local).AddTicks(7575) });
+                columns: new[] { "Id", "Amount", "CategoryId", "CreatedAt", "Date", "Description", "PaymentMode", "Type", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, 100.00m, 1, new DateTime(2026, 5, 6, 22, 57, 43, 580, DateTimeKind.Local).AddTicks(4180), new DateTime(2026, 5, 6, 22, 57, 43, 580, DateTimeKind.Local).AddTicks(4161), "Salary", 3, 0, new DateTime(2026, 5, 6, 22, 57, 43, 580, DateTimeKind.Local).AddTicks(4181) },
+                    { 2, 50.00m, 2, new DateTime(2026, 5, 6, 22, 57, 43, 580, DateTimeKind.Local).AddTicks(4184), new DateTime(2026, 5, 6, 22, 57, 43, 580, DateTimeKind.Local).AddTicks(4183), "Bought Milk and bread", 3, 1, new DateTime(2026, 5, 6, 22, 57, 43, 580, DateTimeKind.Local).AddTicks(4185) }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -220,6 +254,11 @@ namespace FinTrack.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Transactions_CategoryId",
+                table: "Transactions",
+                column: "CategoryId");
         }
 
         /// <inheritdoc />
@@ -241,32 +280,16 @@ namespace FinTrack.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Transactions");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
-            migrationBuilder.AlterColumn<string>(
-                name: "Description",
-                table: "Transactions",
-                type: "nvarchar(max)",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
-
-            migrationBuilder.UpdateData(
-                table: "Transactions",
-                keyColumn: "Id",
-                keyValue: 1,
-                columns: new[] { "CreatedAt", "Date", "UpdatedAt" },
-                values: new object[] { new DateTime(2026, 5, 4, 17, 44, 28, 930, DateTimeKind.Local).AddTicks(8252), new DateTime(2026, 5, 4, 17, 44, 28, 930, DateTimeKind.Local).AddTicks(8238), new DateTime(2026, 5, 4, 17, 44, 28, 930, DateTimeKind.Local).AddTicks(8254) });
-
-            migrationBuilder.UpdateData(
-                table: "Transactions",
-                keyColumn: "Id",
-                keyValue: 2,
-                columns: new[] { "CreatedAt", "Date", "UpdatedAt" },
-                values: new object[] { new DateTime(2026, 5, 4, 17, 44, 28, 930, DateTimeKind.Local).AddTicks(8259), new DateTime(2026, 5, 4, 17, 44, 28, 930, DateTimeKind.Local).AddTicks(8257), new DateTime(2026, 5, 4, 17, 44, 28, 930, DateTimeKind.Local).AddTicks(8260) });
+            migrationBuilder.DropTable(
+                name: "Categories");
         }
     }
 }

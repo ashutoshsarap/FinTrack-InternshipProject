@@ -12,10 +12,10 @@ namespace FinTrack.Service
     public class TransactionService : ITransactionService
     {
 
-        private readonly ITransactionRepository _transactionRepository;
+        private readonly DummyITransactionRepository _transactionRepository;
         private readonly ApplicationDbContext _dbContext;
 
-        public TransactionService(ITransactionRepository transactionRepository, ApplicationDbContext dbContext)
+        public TransactionService(DummyITransactionRepository transactionRepository, ApplicationDbContext dbContext)
         {
             _transactionRepository = transactionRepository;
             _dbContext = dbContext;

@@ -16,6 +16,10 @@ namespace FinTrack.Models.Entity
         public string Description { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public bool IsDeleted { get; set; }
+
+        //Making deletedAt nullable to indicate that it will only have a value when the transaction is deleted
+        public DateTime? DeletedAt { get; set; }
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }

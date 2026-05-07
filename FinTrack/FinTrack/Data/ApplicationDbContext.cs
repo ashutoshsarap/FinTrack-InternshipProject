@@ -13,6 +13,7 @@ namespace FinTrack.Data
 
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Category> Categories { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -29,7 +30,9 @@ namespace FinTrack.Data
                     Description = "Salary",
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
-                    CategoryId = 1
+                    CategoryId = 1,
+                    IsDeleted = false,
+                    DeletedAt = null
                 },
                 new Transaction
                 {
@@ -41,7 +44,9 @@ namespace FinTrack.Data
                     Description = "Bought Milk and bread",
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
-                    CategoryId = 2
+                    CategoryId = 2,
+                    IsDeleted = false,
+                    DeletedAt = null
                 }
             );
 
