@@ -3,11 +3,9 @@ namespace FinTrack.Repository.IRepository
 {
     public interface IRepository<T> where T : class
     {
-        public Task<T> GetAsync(int id, string? includeProperties);
-        public Task<IEnumerable<T>> GetAllAsync();
+        public Task<T> FindAsync(int id, string? includeProperties);
+        public Task<IEnumerable<T>> FindAllAsync(string includeProperties);
         public Task CreateAsync(T entity);
-
-
 
     }
 }

@@ -6,19 +6,19 @@ using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-
+//V2
 namespace FinTrack.Service
 {
     public class TransactionService : ITransactionService
     {
 
-        private readonly DummyITransactionRepository _transactionRepository;
-        private readonly ApplicationDbContext _dbContext;
+        //private readonly DummyITransactionRepository _transactionRepository;
+        //private readonly ApplicationDbContext _dbContext;
 
-        public TransactionService(DummyITransactionRepository transactionRepository, ApplicationDbContext dbContext)
+        private readonly IUnitOfWork _unitOfWork;
+        public TransactionService(IUnitOfWork unitOfWork)
         {
-            _transactionRepository = transactionRepository;
-            _dbContext = dbContext;
+            _unitOfWork= unitOfWork;
         }
 
         public async Task CreateTransactionAsync(TransactionCreateDto transactionCreateDto)
@@ -36,10 +36,10 @@ namespace FinTrack.Service
                 throw new ArgumentException("Date cannot be in the future.");
             }
             
-            if (!_dbContext.Categories.Any(c => c.Id == transactionCreateDto.CategoryId))
-            {
-                throw new ArgumentException("Category does not exist.");
-            }
+            //if (!_dbContext.Categories.Any(c => c.Id == transactionCreateDto.CategoryId))
+            //{
+            //    throw new ArgumentException("Category does not exist.");
+            //}
 
             var transaction = new Transaction
             {
@@ -53,25 +53,25 @@ namespace FinTrack.Service
                 UpdatedAt = DateTime.Now
             };
 
-            _transactionRepository.AddTransactionAsync(transaction);
-            await _dbContext.SaveChangesAsync();
+            await _unitOfWork.Transaction.CreateAsync(transaction);
+            await _unitOfWork.Save();
         }
 
-        public async Task DeleteTransactionAsync(int id)
+        public async Task DeleteTransaction(int id)
         {
-            var transaction = _transactionRepository.GetTransactionByIdAsync(id);
+            var transaction = await _unitOfWork.Transaction.FindAsync(id, null);
             if (transaction == null)
             {
                 throw new ArgumentException("Transaction not found.");
             }
-            _transactionRepository.DeleteTransactionAsync(transaction.Result);
-            await _dbContext.SaveChangesAsync();
+            _unitOfWork.Transaction.Delete(transaction);
+            await _unitOfWork.Save();
         }
 
         public async Task<List<TransactionResponseDto>> GetAllTransactionsAsync()
         {
             
-            var transactions = await _transactionRepository.GetAllTransactionsAsync();
+            var transactions = await _unitOfWork.Transaction.FindAllAsync(includeProperties: "Category");
 
             return transactions.Select(t => new TransactionResponseDto()
             {
@@ -91,12 +91,9 @@ namespace FinTrack.Service
             if (filter == null)
             {
                 throw new ArgumentException(nameof(filter));
-
-                
-
             }
 
-            var transaction = await _transactionRepository.GetTransactionByFilterAsync(filter);
+            var transaction = await _unitOfWork.Transaction.FindTransactionByFilterAsync(filter, includeProperties: "Category");
 
             if (transaction == null)
             {
@@ -119,13 +116,13 @@ namespace FinTrack.Service
 
         }
 
-        public async Task<TransactionResponseDto> GetTransactionByIdAsync(int id)
+        public async Task<TransactionResponseDto> GetTransactionByIdAsync(int id, string includeProperties)
         {
             if (id <= 0)
             {
                 throw new ArgumentException("Invalid transaction ID.");
             }
-            var transaction = await _transactionRepository.GetTransactionByIdAsync(id);
+            var transaction = await _unitOfWork.Transaction.FindAsync(id, includeProperties: "Category");
             if (transaction == null)
             {
                 throw new ArgumentException("Transaction not found.");
@@ -153,9 +150,7 @@ namespace FinTrack.Service
             }
 
 
-            var transactions = await _transactionRepository.GetTransactionsByFilterAsync(filter);
-
-
+            var transactions = await _unitOfWork.Transaction.FindAllTransactionByFilterAsync(filter, includeProperties: "Category");
 
             return transactions.Select(t => new TransactionResponseDto()
             {
@@ -170,7 +165,7 @@ namespace FinTrack.Service
             }).ToList();
         }
 
-        public async Task UpdateTransactionAsync(int id,TransactionUpdateDto transactionUpdateDto)
+        public async Task UpdateTransaction(int id,TransactionUpdateDto transactionUpdateDto)
         {
 
             if (transactionUpdateDto.Amount <= 0)
@@ -182,10 +177,10 @@ namespace FinTrack.Service
                 throw new ArgumentException("Date cannot be in the future.");
             }
 
-            if (!_dbContext.Categories.Any(c => c.Id == transactionUpdateDto.CategoryId))
-            {
-                throw new ArgumentException("Category does not exist.");
-            }
+            //if (!_dbContext.Categories.Any(c => c.Id == transactionUpdateDto.CategoryId))
+            //{
+            //    throw new ArgumentException("Category does not exist.");
+            //}
 
             //if(!Enum.IsDefined(typeof(PaymentMode), transactionUpdateDto.PaymentMode))
             //{
@@ -197,7 +192,7 @@ namespace FinTrack.Service
             //    throw new ArgumentException("Given Type does not exist");
             //}
 
-            var transaction = await _transactionRepository.GetTransactionByIdAsync(id);
+            var transaction = await _unitOfWork.Transaction.FindAsync(id, includeProperties: null);
             if (transaction == null)
             {
                 throw new ArgumentException("Transaction not found.");
@@ -212,7 +207,8 @@ namespace FinTrack.Service
             transaction.UpdatedAt = DateTime.Now;
 
 
-            await _transactionRepository.UpdateTransactionAsync(transaction);
+            _unitOfWork.Transaction.Update(transaction); 
+            await _unitOfWork.Save();
         }
 
 

@@ -15,19 +15,30 @@ namespace FinTrack.Repository
         {
             _db = db;
             this.dbSet = _db.Set<T>();
+            _db.Transactions.Include(t => t.Category);
         }
+
+        //Add transaction to the database
         public async Task CreateAsync(T entity)
         {
             await dbSet.AddAsync(entity);
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        //Fetch all transactions from the database
+        public async Task<IEnumerable<T>> FindAllAsync(string includeProperties)
         {
-            var entities = await dbSet.ToListAsync();
-            return entities;
+            IQueryable<T> query = dbSet;
+
+            if (includeProperties != null)
+            {
+                query= query.Include(includeProperties);
+            }
+            
+            return query.ToList();
         }
 
-        public async Task<T> GetAsync(int id, string? includeProperties)
+        //Fetch a transaction by id from the database
+        public async Task<T> FindAsync(int id, string? includeProperties)
         {
             var entity = await dbSet.FindAsync(id);
             return entity;

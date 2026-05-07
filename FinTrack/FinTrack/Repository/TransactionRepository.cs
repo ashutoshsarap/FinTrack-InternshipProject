@@ -3,6 +3,7 @@ using FinTrack.Models.Entity;
 using FinTrack.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 //V1
 namespace FinTrack.Repository
 {
@@ -15,9 +16,9 @@ namespace FinTrack.Repository
             _dbContext = dbContext;
         }
 
-        public void DeleteTransaction(Transaction transaction)
+        public async Task Delete(Transaction transaction)
         {
-            var existingTransaction = _dbContext.Transactions.FirstOrDefault(t => t.Id == transaction.Id);
+            var existingTransaction = await _dbContext.Transactions.FindAsync(transaction.Id);
             if (existingTransaction != null)
             {
                 existingTransaction.IsDeleted = true;
@@ -25,23 +26,25 @@ namespace FinTrack.Repository
             }
         }
 
-        public async Task<IEnumerable<Transaction>> GetAllTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter)
+        public async Task<IEnumerable<Transaction>> FindAllTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string? includeProperties)
         {
-            return await _dbContext.Transactions.Where(filter)
+            return await _dbContext.Transactions.Include(includeProperties)
+                                                .Where(filter)
                                                 .Where(t=>!t.IsDeleted)
                                                 .ToListAsync();
         }
 
-        public async Task<Transaction> GetTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter)
+        public async Task<Transaction> FindTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string? includeProperties)
         {
-            return await _dbContext.Transactions.Where(filter)
+            return await _dbContext.Transactions.Include(includeProperties).
+                                                 Where(filter)
                                                 .Where(t => !t.IsDeleted)
                                                 .FirstOrDefaultAsync();
         }
 
-        public void UpdateTransaction(Transaction transaction)
+        public async Task Update(Transaction transaction)
         {
-            var existingTransaction = _dbContext.Transactions.FirstOrDefault(t => t.Id == transaction.Id);
+            var existingTransaction = await _dbContext.Transactions.FindAsync(transaction.Id);
 
             if (existingTransaction != null)
             {

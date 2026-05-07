@@ -1,4 +1,5 @@
-﻿using FinTrack.Models.Enums;
+﻿using FinTrack.Models.Entity;
+using FinTrack.Models.Enums;
 //V1
 namespace FinTrack.Models.DTOs
 {
@@ -12,5 +13,6 @@ namespace FinTrack.Models.DTOs
         public string Description { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
+        public Category Category { get; internal set; }
     }
 }

@@ -22,11 +22,13 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 //Repository registration
 builder.Services.AddScoped<DummyITransactionRepository, DummyTransactionRepository>();
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 //Service registration
 builder.Services.AddScoped<ITransactionService, TransactionService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 builder.Services.AddScoped<IEmailSender, DummyEmailService>();
 var app = builder.Build();

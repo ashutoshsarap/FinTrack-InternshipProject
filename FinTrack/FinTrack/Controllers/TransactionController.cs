@@ -13,22 +13,20 @@ using System.Threading.Tasks;
 //V1
 namespace FinTrack.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class TransactionController : Controller
     {
 
-        private readonly ApplicationDbContext _context;
         private readonly ITransactionService _transactionService;
-        private readonly IUnitOfWork _unitOfWork;
-        public TransactionController(ApplicationDbContext context, ITransactionService transactionService, IUnitOfWork unitOfWork)
+        private readonly ICategoryService _categoryService;
+        public TransactionController(ApplicationDbContext context, ITransactionService transactionService, ICategoryService categoryService)
         {
-            _context = context;
             _transactionService = transactionService;
-            _unitOfWork = unitOfWork;
+            _categoryService = categoryService;
         }
         public async Task<IActionResult> Index()
         {
-            var transactions = await _unitOfWork.Transaction.GetAllAsync();
+            var transactions = await _transactionService.GetTransactionsByFilterAsync(t => !t.IsDeleted);
             var transactionViewModels = transactions.Select(t => new TransactionViewModel
             {
                 Id = t.Id,
@@ -37,15 +35,15 @@ namespace FinTrack.Controllers
                 Date = t.Date,
                 PaymentMode = t.PaymentMode,
                 TransactionType = t.Type,
-                CategoryName = t.Category.Name
+                CategoryName = t.CategoryName
             }).ToList();
 
             return View(transactionViewModels);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            var categories = _context.Categories.ToList();
+            var categories = await _categoryService.GetAllCategoriesAsync();
 
             var transactionCreateViewModel = new TransactionViewModel
             {
@@ -89,7 +87,7 @@ namespace FinTrack.Controllers
         {
             try
             {
-                await _transactionService.DeleteTransactionAsync(id);
+                await _transactionService.DeleteTransaction(id);
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -103,12 +101,12 @@ namespace FinTrack.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            var transaction = await _transactionService.GetTransactionByIdAsync(id);
+            var transaction = await _transactionService.GetTransactionByIdAsync(id, includeProperties : "Category");
             if (transaction == null)
             {
                 return NotFound();
             }
-            var categories = _context.Categories.ToList();
+            var categories = await _categoryService.GetAllCategoriesAsync();
             var transactionEditViewModel = new TransactionViewModel
             {
                 Id = transaction.Id,
@@ -118,7 +116,7 @@ namespace FinTrack.Controllers
                 PaymentMode = transaction.PaymentMode,
                 TransactionType = transaction.Type,
                 CategoryId = transaction.CategoryId,
-                Categories = new SelectList(categories, "Id", "Name")
+                Categories = new SelectList(categories.ToList(), "Id", "Name")
             };
             return View(transactionEditViewModel);
         }
@@ -126,17 +124,19 @@ namespace FinTrack.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(TransactionViewModel model)
         {
+            var categories = await _categoryService.GetAllCategoriesAsync();
+
             if (!ModelState.IsValid)
             {
                 //var categories = _context.Categories.ToList();
-                model.Categories = new SelectList(_context.Categories.ToList(), "Id", "Name");
+                model.Categories = new SelectList(categories.ToList(), "Id", "Name");
                 return View(model);
             }
 
 
             try
             {
-                var transaction = await _transactionService.GetTransactionByIdAsync(model.Id);
+                var transaction = await _transactionService.GetTransactionByIdAsync(model.Id, null);
 
                 if (transaction == null)
                 {
@@ -154,7 +154,8 @@ namespace FinTrack.Controllers
                     CategoryId = model.CategoryId,
                     UpdatedAt = DateTime.Now
                 };
-                await _transactionService.UpdateTransactionAsync(model.Id,transactionUpdateDto);
+                //await _transactionService.UpdateTransactionAsync(model.Id, transactionUpdateDto, null);
+                await _transactionService.UpdateTransaction(model.Id, transactionUpdateDto);
                 return RedirectToAction(nameof(Index));
 
             }
@@ -163,8 +164,7 @@ namespace FinTrack.Controllers
                 ModelState.AddModelError(string.Empty, $"An error occurred while updating the transaction: {ex.Message}");
             }
 
-            var categories = _context.Categories.ToList();
-            model.Categories = new SelectList(categories, "Id", "Name");
+            model.Categories = new SelectList(categories.ToList(), "Id", "Name");
             return View(model);
             
         }

@@ -6,9 +6,9 @@ namespace FinTrack.Repository.IRepository
 {
     public interface ITransactionRepository : IRepository<Transaction>
     {
-        public Task<Transaction> GetTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter);
-        public Task<IEnumerable<Transaction>> GetAllTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter);
-        public void UpdateTransaction(Transaction transaction);
-        public void DeleteTransaction(Transaction transaction);
+        public Task<Transaction> FindTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string? includeProperties);
+        public Task<IEnumerable<Transaction>> FindAllTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string? includeProperties);
+        public Task Update(Transaction transaction);
+        public Task Delete(Transaction transaction);
     }
 }
