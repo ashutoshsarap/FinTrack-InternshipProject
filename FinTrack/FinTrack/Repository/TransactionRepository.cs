@@ -16,28 +16,26 @@ namespace FinTrack.Repository
             _dbContext = dbContext;
         }
 
-        public async Task Delete(Transaction transaction)
+        public void Delete(Transaction transaction)
         {
-            var existingTransaction = await _dbContext.Transactions.FindAsync(transaction.Id);
-            if (existingTransaction != null)
-            {
-                existingTransaction.IsDeleted = true;
-                existingTransaction.DeletedAt = DateTime.Now;
-            }
+            transaction.IsDeleted = true;
+            transaction.DeletedAt = DateTime.Now;
         }
 
-        public async Task<IEnumerable<Transaction>> FindAllTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string? includeProperties)
+        public async Task<IEnumerable<Transaction>> FindAllTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string userId, string? includeProperties)
         {
             return await _dbContext.Transactions.Include(includeProperties)
+                                                .Where(t => t.ApplicationUserId == userId)
                                                 .Where(filter)
                                                 .Where(t=>!t.IsDeleted)
                                                 .ToListAsync();
         }
 
-        public async Task<Transaction> FindTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string? includeProperties)
+        public async Task<Transaction> FindTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string userId, string? includeProperties)
         {
-            return await _dbContext.Transactions.Include(includeProperties).
-                                                 Where(filter)
+            return await _dbContext.Transactions.Include(includeProperties)
+                                                .Where(t => t.ApplicationUserId == userId)
+                                                .Where(filter)
                                                 .Where(t => !t.IsDeleted)
                                                 .FirstOrDefaultAsync();
         }

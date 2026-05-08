@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinTrack.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260507090655_UpdateTransactionModelWithDeletedAt")]
-    partial class UpdateTransactionModelWithDeletedAt
+    [Migration("20260508070657_FreshMigrationWithNewConfig")]
+    partial class FreshMigrationWithNewConfig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,25 +101,19 @@ namespace FinTrack.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.HasIndex("ApplicationUserId");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Salary"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Groceries"
-                        });
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("FinTrack.Models.Entity.Transaction", b =>
@@ -132,6 +126,10 @@ namespace FinTrack.Migrations
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -163,37 +161,11 @@ namespace FinTrack.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ApplicationUserId");
+
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Transactions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Amount = 100.00m,
-                            CategoryId = 1,
-                            CreatedAt = new DateTime(2026, 5, 7, 14, 36, 54, 894, DateTimeKind.Local).AddTicks(397),
-                            Date = new DateTime(2026, 5, 7, 14, 36, 54, 894, DateTimeKind.Local).AddTicks(385),
-                            Description = "Salary",
-                            IsDeleted = false,
-                            PaymentMode = 3,
-                            Type = 0,
-                            UpdatedAt = new DateTime(2026, 5, 7, 14, 36, 54, 894, DateTimeKind.Local).AddTicks(398)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Amount = 50.00m,
-                            CategoryId = 2,
-                            CreatedAt = new DateTime(2026, 5, 7, 14, 36, 54, 894, DateTimeKind.Local).AddTicks(401),
-                            Date = new DateTime(2026, 5, 7, 14, 36, 54, 894, DateTimeKind.Local).AddTicks(400),
-                            Description = "Bought Milk and bread",
-                            IsDeleted = false,
-                            PaymentMode = 3,
-                            Type = 1,
-                            UpdatedAt = new DateTime(2026, 5, 7, 14, 36, 54, 894, DateTimeKind.Local).AddTicks(402)
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -333,13 +305,32 @@ namespace FinTrack.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("FinTrack.Models.Entity.Category", b =>
+                {
+                    b.HasOne("FinTrack.Models.Entity.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+                });
+
             modelBuilder.Entity("FinTrack.Models.Entity.Transaction", b =>
                 {
+                    b.HasOne("FinTrack.Models.Entity.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("FinTrack.Models.Entity.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.Navigation("ApplicationUser");
 
                     b.Navigation("Category");
                 });

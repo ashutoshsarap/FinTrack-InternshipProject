@@ -21,7 +21,7 @@ namespace FinTrack.Service
             _unitOfWork= unitOfWork;
         }
 
-        public async Task CreateTransactionAsync(TransactionCreateDto transactionCreateDto)
+        public async Task CreateTransactionAsync(string userId,TransactionCreateDto transactionCreateDto)
         {
             if (transactionCreateDto == null)
             {
@@ -50,16 +50,17 @@ namespace FinTrack.Service
                 Description = transactionCreateDto.Description,
                 CategoryId = transactionCreateDto.CategoryId,
                 CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+                ApplicationUserId = userId
             };
 
             await _unitOfWork.Transaction.CreateAsync(transaction);
             await _unitOfWork.Save();
         }
 
-        public async Task DeleteTransaction(int id)
+        public async Task DeleteTransaction(int id, string userId)
         {
-            var transaction = await _unitOfWork.Transaction.FindAsync(id, null);
+            var transaction = await _unitOfWork.Transaction.FindAsync(id, userId, null);
             if (transaction == null)
             {
                 throw new ArgumentException("Transaction not found.");
@@ -68,10 +69,10 @@ namespace FinTrack.Service
             await _unitOfWork.Save();
         }
 
-        public async Task<List<TransactionResponseDto>> GetAllTransactionsAsync()
+        public async Task<List<TransactionResponseDto>> GetAllTransactionsAsync(string userId)
         {
             
-            var transactions = await _unitOfWork.Transaction.FindAllAsync(includeProperties: "Category");
+            var transactions = await _unitOfWork.Transaction.FindAllAsync(userId,includeProperties: "Category");
             
             return transactions.Select(t => new TransactionResponseDto()
             {
@@ -86,14 +87,14 @@ namespace FinTrack.Service
             }).ToList();
         }
 
-        public async Task<TransactionResponseDto> GetTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter)
+        public async Task<TransactionResponseDto> GetTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string userId)
         {
             if (filter == null)
             {
                 throw new ArgumentException(nameof(filter));
             }
 
-            var transaction = await _unitOfWork.Transaction.FindTransactionByFilterAsync(filter, includeProperties: "Category");
+            var transaction = await _unitOfWork.Transaction.FindTransactionByFilterAsync(filter,userId, includeProperties: "Category");
 
             if (transaction == null)
             {
@@ -116,13 +117,13 @@ namespace FinTrack.Service
 
         }
 
-        public async Task<TransactionResponseDto> GetTransactionByIdAsync(int id, string includeProperties)
+        public async Task<TransactionResponseDto> GetTransactionByIdAsync(int id, string userId, string includeProperties)
         {
             if (id <= 0)
             {
                 throw new ArgumentException("Invalid transaction ID.");
             }
-            var transaction = await _unitOfWork.Transaction.FindAsync(id, includeProperties: "Category");
+            var transaction = await _unitOfWork.Transaction.FindAsync(id, userId, includeProperties: "Category");
             if (transaction == null)
             {
                 throw new ArgumentException("Transaction not found.");
@@ -142,7 +143,7 @@ namespace FinTrack.Service
             return transactionResponse;
         }
 
-        public async Task<List<TransactionResponseDto>> GetTransactionsByFilterAsync(Expression<Func<Transaction, bool>> filter)
+        public async Task<List<TransactionResponseDto>> GetTransactionsByFilterAsync(Expression<Func<Transaction, bool>> filter, string userId)
         {
             if (filter == null)
             {
@@ -150,7 +151,7 @@ namespace FinTrack.Service
             }
 
 
-            var transactions = await _unitOfWork.Transaction.FindAllTransactionByFilterAsync(filter, includeProperties: "Category");
+            var transactions = await _unitOfWork.Transaction.FindAllTransactionByFilterAsync(filter, userId, includeProperties: "Category");
 
             return transactions.Select(t => new TransactionResponseDto()
             {
@@ -165,7 +166,7 @@ namespace FinTrack.Service
             }).ToList();
         }
 
-        public async Task UpdateTransaction(int id,TransactionUpdateDto transactionUpdateDto)
+        public async Task UpdateTransaction(int id, string userId,TransactionUpdateDto transactionUpdateDto)
         {
 
             if (transactionUpdateDto.Amount <= 0)
@@ -192,7 +193,7 @@ namespace FinTrack.Service
             //    throw new ArgumentException("Given Type does not exist");
             //}
 
-            var transaction = await _unitOfWork.Transaction.FindAsync(id, includeProperties: null);
+            var transaction = await _unitOfWork.Transaction.FindAsync(id,userId, includeProperties: null);
             if (transaction == null)
             {
                 throw new ArgumentException("Transaction not found.");

@@ -1,4 +1,5 @@
 ﻿//V1
+using FinTrack.Models.Entity;
 using FinTrack.Models.Enums;
 
 namespace FinTrack.Models.DTOs
@@ -13,5 +14,6 @@ namespace FinTrack.Models.DTOs
         public string? Description { get; set; }
         public int CategoryId { get; set; }
         public DateTime UpdatedAt { get; set; }
+        
     }
 }

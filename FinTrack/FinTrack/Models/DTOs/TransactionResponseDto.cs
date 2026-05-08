@@ -14,5 +14,6 @@ namespace FinTrack.Models.DTOs
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public Category Category { get; internal set; }
+        
     }
 }

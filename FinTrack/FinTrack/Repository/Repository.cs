@@ -15,7 +15,6 @@ namespace FinTrack.Repository
         {
             _db = db;
             this.dbSet = _db.Set<T>();
-            _db.Transactions.Include(t => t.Category);
         }
 
         //Add transaction to the database
@@ -25,7 +24,7 @@ namespace FinTrack.Repository
         }
 
         //Fetch all transactions from the database
-        public async Task<IEnumerable<T>> FindAllAsync(string includeProperties)
+        public async Task<IEnumerable<T>> FindAllAsync(string userId,string includeProperties)
         {
             IQueryable<T> query = dbSet;
 
@@ -34,11 +33,12 @@ namespace FinTrack.Repository
                 query= query.Include(includeProperties);
             }
             
-            return query.ToList();
+            return query.Where(e => EF.Property<string>(e, "ApplicationUserId") == userId)
+                        .ToList();
         }
 
         //Fetch a transaction by id from the database
-        public async Task<T> FindAsync(int id, string? includeProperties)
+        public async Task<T> FindAsync(int id, string userId, string? includeProperties)
         {
             IQueryable<T> query = dbSet;
 
@@ -54,7 +54,8 @@ namespace FinTrack.Repository
             //EF -> Static class that provides methods for working with Entity Framework Core, including the EF.Property method used here to access properties dynamically.
             //Property<int>(e, "Id") -> Accesses the "Id" property of the entity e and treats it as an integer. This allows the code to work with entities that may not have a strongly-typed Id property or when the property name is determined at runtime.
             //This approach can fail if the entity does not have an "Id" property or if the property is not of type int
-            var entity = await query.FirstOrDefaultAsync(e => EF.Property<int>(e, "Id") == id);
+            var entity = await query
+                .FirstOrDefaultAsync(e => EF.Property<int>(e, "Id") == id && EF.Property<string>(e, "ApplicationUserId") == userId);
             return entity;
         }
 
