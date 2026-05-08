@@ -24,5 +24,9 @@ namespace FinTrack.Models.Entity
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
 
+        public string ApplicationUserId { get; set; }
+        [ForeignKey("ApplicationUserId")]
+        public ApplicationUser ApplicationUser { get; set; }
+
     }
 }

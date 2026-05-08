@@ -72,7 +72,7 @@ namespace FinTrack.Service
         {
             
             var transactions = await _unitOfWork.Transaction.FindAllAsync(includeProperties: "Category");
-
+            
             return transactions.Select(t => new TransactionResponseDto()
             {
                 Id = t.Id,

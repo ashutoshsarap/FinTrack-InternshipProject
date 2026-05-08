@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using FinTrack.Models.Enums;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-//V1
+//V2
 namespace FinTrack.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -17,51 +17,78 @@ namespace FinTrack.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
-            modelBuilder.Entity<Transaction>().HasData(
-                
-                new Transaction
-                {
-                    Id = 1,
-                    Amount = 100.00m,
-                    Date = DateTime.Now,
-                    Type = TransactionType.Income,
-                    PaymentMode = PaymentMode.UPI,
-                    Description = "Salary",
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now,
-                    CategoryId = 1,
-                    IsDeleted = false,
-                    DeletedAt = null
-                },
-                new Transaction
-                {
-                    Id = 2,
-                    Amount = 50.00m,
-                    Date = DateTime.Now,
-                    Type = Models.Enums.TransactionType.Expense,
-                    PaymentMode = PaymentMode.UPI,
-                    Description = "Bought Milk and bread",
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now,
-                    CategoryId = 2,
-                    IsDeleted = false,
-                    DeletedAt = null
-                }
-            );
 
-            modelBuilder.Entity<Category>().HasData(
-                new Category
-                {
-                    Id = 1,
-                    Name = "Salary"
-                },
-                new Category
-                {
-                    Id = 2,
-                    Name = "Groceries"
-                }
-            );
+            //Transaction and ApplicationUser relationship configuration
+            modelBuilder.Entity<Transaction>() // Configure the relationship between Transaction and ApplicationUser
+                        .HasOne(t => t.ApplicationUser) // Each Transaction has one ApplicationUser
+                        .WithMany() // An ApplicationUser can have many Transactions
+                        .HasForeignKey(t => t.ApplicationUserId) // Tells EF Core that the foreign key is ApplicationUserId
+                        .OnDelete(DeleteBehavior.NoAction); // Prevents cascading delete when an ApplicationUser is deleted
+
+            //Category and Transaction relationship configuration
+            modelBuilder.Entity<Transaction>() 
+                        .HasOne(t => t.Category) 
+                        .WithMany()
+                        .HasForeignKey(t => t.CategoryId)
+                        .OnDelete(DeleteBehavior.NoAction);
+
+            //Category and ApplicationUser relationship configuration
+            modelBuilder.Entity<Category>()
+                        .HasOne(c => c.ApplicationUser)
+                        .WithMany()
+                        .HasForeignKey(c => c.ApplicationUserId)
+                        .OnDelete(DeleteBehavior.NoAction);
+
+
+
+            //modelBuilder.Entity<Transaction>().HasData(
+                
+            //    new Transaction
+            //    {
+            //        Id = 1,
+            //        Amount = 100.00m,
+            //        Date = DateTime.Now,
+            //        Type = TransactionType.Income,
+            //        PaymentMode = PaymentMode.UPI,
+            //        Description = "Salary",
+            //        CreatedAt = DateTime.Now,
+            //        UpdatedAt = DateTime.Now,
+            //        CategoryId = 1,
+            //        IsDeleted = false,
+            //        DeletedAt = null,
+            //        ApplicationUserId = "1bb3d59b-3ca2-4cdc-b1b1-0f82b2adc7f5"
+            //    },
+            //    new Transaction
+            //    {
+            //        Id = 2,
+            //        Amount = 50.00m,
+            //        Date = DateTime.Now,
+            //        Type = Models.Enums.TransactionType.Expense,
+            //        PaymentMode = PaymentMode.UPI,
+            //        Description = "Bought Milk and bread",
+            //        CreatedAt = DateTime.Now,
+            //        UpdatedAt = DateTime.Now,
+            //        CategoryId = 2,
+            //        IsDeleted = false,
+            //        DeletedAt = null,
+            //        ApplicationUserId = "1bb3d59b-3ca2-4cdc-b1b1-0f82b2adc7f5"
+            //    }
+            //);
+
+            //modelBuilder.Entity<Category>().HasData(
+            //    new Category
+            //    {
+            //        Id = 1,
+            //        Name = "Salary",
+            //        ApplicationUserId= "1bb3d59b-3ca2-4cdc-b1b1-0f82b2adc7f5"
+            //    },
+            //    new Category
+            //    {
+            //        Id = 2,
+            //        Name = "Groceries",
+            //        ApplicationUserId= "1bb3d59b-3ca2-4cdc-b1b1-0f82b2adc7f5"
+            //    }
+            //);
         }
 
 
