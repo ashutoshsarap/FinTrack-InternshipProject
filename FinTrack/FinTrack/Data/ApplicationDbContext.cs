@@ -18,6 +18,7 @@ namespace FinTrack.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            //All the following were added to prevent cascading delete when an ApplicationUser is deleted, which would otherwise delete all related Transactions and Categories.
             //Transaction and ApplicationUser relationship configuration
             modelBuilder.Entity<Transaction>() // Configure the relationship between Transaction and ApplicationUser
                         .HasOne(t => t.ApplicationUser) // Each Transaction has one ApplicationUser
@@ -75,20 +76,78 @@ namespace FinTrack.Data
             //    }
             //);
 
-            //modelBuilder.Entity<Category>().HasData(
-            //    new Category
-            //    {
-            //        Id = 1,
-            //        Name = "Salary",
-            //        ApplicationUserId= "1bb3d59b-3ca2-4cdc-b1b1-0f82b2adc7f5"
-            //    },
-            //    new Category
-            //    {
-            //        Id = 2,
-            //        Name = "Groceries",
-            //        ApplicationUserId= "1bb3d59b-3ca2-4cdc-b1b1-0f82b2adc7f5"
-            //    }
-            //);
+            modelBuilder.Entity<Category>().HasData(
+                new Category
+                {
+                    Id = 1,
+                    Name = "Salary",
+                    ApplicationUserId = null,
+                    IsSystemDefined = true
+                },
+                new Category
+                {
+                    Id = 2,
+                    Name = "Groceries",
+                    ApplicationUserId = null,
+                    IsSystemDefined = true
+                },
+                new Category
+                {
+                    Id = 3,
+                    Name = "Entertainment",
+                    ApplicationUserId = null,
+                    IsSystemDefined = true
+                },
+                new Category
+                {
+                    Id = 4,
+                    Name = "Food and Dining",
+                    ApplicationUserId = null,
+                    IsSystemDefined = true
+                },
+                new Category
+                {
+                    Id = 5,
+                    Name = "Transaport",
+                    ApplicationUserId = null,
+                    IsSystemDefined = true
+                },
+                new Category
+                {
+                    Id = 6,
+                    Name = "Shopping",
+                    ApplicationUserId = null,
+                    IsSystemDefined = true
+                },
+                new Category
+                {
+                    Id = 7,
+                    Name = "Medical",
+                    ApplicationUserId = null,
+                    IsSystemDefined = true
+                },
+                new Category
+                {
+                    Id = 8,
+                    Name = "Education",
+                    ApplicationUserId = null,
+                    IsSystemDefined = true
+                },
+                new Category
+                {
+                    Id = 9,
+                    Name = "Bills",
+                    ApplicationUserId = null,
+                    IsSystemDefined = true
+                },
+                new Category
+                {
+                    Id = 10,
+                    Name = "Transfer",
+                    ApplicationUserId = null,
+                    IsSystemDefined = true
+                }
+            );
         }
 
 

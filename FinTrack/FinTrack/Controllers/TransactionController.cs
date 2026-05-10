@@ -45,12 +45,12 @@ namespace FinTrack.Controllers
             return View(transactionViewModels);
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            var categories = await _categoryService.GetAllCategoriesAsync(userId);
+            var categories = _categoryService.GetAllCategories(userId);
 
             var transactionCreateViewModel = new TransactionViewModel
             {

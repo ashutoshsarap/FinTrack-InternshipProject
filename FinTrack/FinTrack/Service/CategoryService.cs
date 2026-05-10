@@ -31,7 +31,8 @@ namespace FinTrack.Service
             Category categoryEntity = new Category
             {
                 Name = category.Name,
-                ApplicationUserId = userId
+                ApplicationUserId = userId,
+                IsSystemDefined = false
             };
             _dbContext.Add(categoryEntity);
             _dbContext.SaveChanges();
@@ -39,7 +40,7 @@ namespace FinTrack.Service
 
         public IEnumerable<Category> GetAllCategories(string userId)
         {
-            var categories = _dbContext.Categories.Where(c => c.ApplicationUserId == userId).ToList();
+            var categories = _dbContext.Categories.Where(c => c.ApplicationUserId == userId || c.IsSystemDefined==true).ToList();
             return categories;
         }
 
