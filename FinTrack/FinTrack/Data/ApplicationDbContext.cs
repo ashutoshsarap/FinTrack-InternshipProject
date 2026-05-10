@@ -2,13 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using FinTrack.Models.Enums;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using FinTrack.Service.IService;
 //V2
 namespace FinTrack.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+
+        private readonly ICurrentUserService _currentUserService;
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, ICurrentUserService currentUserService) : base(options)
         {
+            _currentUserService = currentUserService;
         }
 
         public DbSet<Transaction> Transactions { get; set; }
@@ -20,6 +24,7 @@ namespace FinTrack.Data
 
             //All the following were added to prevent cascading delete when an ApplicationUser is deleted, which would otherwise delete all related Transactions and Categories.
             //Transaction and ApplicationUser relationship configuration
+
             modelBuilder.Entity<Transaction>() // Configure the relationship between Transaction and ApplicationUser
                         .HasOne(t => t.ApplicationUser) // Each Transaction has one ApplicationUser
                         .WithMany() // An ApplicationUser can have many Transactions
@@ -40,10 +45,16 @@ namespace FinTrack.Data
                         .HasForeignKey(c => c.ApplicationUserId)
                         .OnDelete(DeleteBehavior.NoAction);
 
+            // Global query filter to exclude soft-deleted transactions
+            //Any query that retrieves transactions will automatically exclude those where IsDeleted is true, ensuring that soft-deleted transactions are not returned in query results.
+            modelBuilder.Entity<Transaction>()
+                        .HasQueryFilter(t => !t.IsDeleted && t.ApplicationUserId==_currentUserService.UserId); 
 
+            modelBuilder.Entity<Category>()
+                        .HasQueryFilter(c => c.ApplicationUserId == _currentUserService.UserId || c.IsSystemDefined); // Include system-defined categories for all users
 
             //modelBuilder.Entity<Transaction>().HasData(
-                
+
             //    new Transaction
             //    {
             //        Id = 1,

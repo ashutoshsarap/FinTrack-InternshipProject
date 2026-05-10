@@ -9,6 +9,7 @@ using FinTrack.Service.IService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Drawing.Printing;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -21,16 +22,19 @@ namespace FinTrack.Controllers
 
         private readonly ITransactionService _transactionService;
         private readonly ICategoryService _categoryService;
-        public TransactionController(ApplicationDbContext context, ITransactionService transactionService, ICategoryService categoryService)
+        private readonly ICurrentUserService _currentUser;
+        public TransactionController(ApplicationDbContext context, ITransactionService transactionService, ICategoryService categoryService, ICurrentUserService curentUser)
         {
             _transactionService = transactionService;
             _categoryService = categoryService;
+            _currentUser = curentUser;
         }
         public async Task<IActionResult> Index()
         {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var transactions = await _transactionService.GetAllTransactionsAsync(userId);
+            //var claimsIdentity = (ClaimsIdentity)User.Identity;
+            //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //var userId = _currentUser.UserId;    
+            var transactions = await _transactionService.GetAllTransactionsAsync();
             var transactionViewModels = transactions.Select(t => new TransactionViewModel
             {
                 Id = t.Id,
@@ -45,12 +49,14 @@ namespace FinTrack.Controllers
             return View(transactionViewModels);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //var claimsIdentity = (ClaimsIdentity)User.Identity;
+            //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            var categories = _categoryService.GetAllCategories(userId);
+            //var userId = _currentUser.UserId;
+
+            var categories =await _categoryService.GetAllCategoriesAsync();
 
             var transactionCreateViewModel = new TransactionViewModel
             {
@@ -64,8 +70,10 @@ namespace FinTrack.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(TransactionViewModel model)
         {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //var claimsIdentity = (ClaimsIdentity)User.Identity;
+            //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            var userId = _currentUser.UserId;
             if (ModelState.IsValid)
             {
                 try
@@ -94,8 +102,9 @@ namespace FinTrack.Controllers
         [ActionName("Delete")]
         public async Task<IActionResult> Delete(int id)
         {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //var claimsIdentity = (ClaimsIdentity)User.Identity;
+            //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = _currentUser.UserId;
             try
             {
                 await _transactionService.DeleteTransaction(id, userId);
@@ -112,14 +121,15 @@ namespace FinTrack.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //var claimsIdentity = (ClaimsIdentity)User.Identity;
+            //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = _currentUser.UserId;
             var transaction = await _transactionService.GetTransactionByIdAsync(id, userId, includeProperties : "Category");
             if (transaction == null)
             {
                 return NotFound();
             }
-            var categories = await _categoryService.GetAllCategoriesAsync(userId);
+            var categories = await _categoryService.GetAllCategoriesAsync();
             var transactionEditViewModel = new TransactionViewModel
             {
                 Id = transaction.Id,
@@ -137,10 +147,10 @@ namespace FinTrack.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(TransactionViewModel model)
         {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-            var categories = await _categoryService.GetAllCategoriesAsync(userId);
+            //var claimsIdentity = (ClaimsIdentity)User.Identity;
+            //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = _currentUser.UserId;
+            var categories = await _categoryService.GetAllCategoriesAsync();
             
             if (!ModelState.IsValid)
             {
@@ -193,8 +203,9 @@ namespace FinTrack.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(CategoryDto category)
         {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //var claimsIdentity = (ClaimsIdentity)User.Identity;
+            //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = _currentUser.UserId;
             if (ModelState.IsValid)
             {
                 try

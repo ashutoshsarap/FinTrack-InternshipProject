@@ -24,7 +24,7 @@ namespace FinTrack.Repository
         }
 
         //Fetch all transactions from the database
-        public async Task<IEnumerable<T>> FindAllAsync(string userId,string includeProperties)
+        public async Task<IEnumerable<T>> FindAllAsync(string includeProperties)
         {
             IQueryable<T> query = dbSet;
 
@@ -33,12 +33,11 @@ namespace FinTrack.Repository
                 query= query.Include(includeProperties);
             }
             
-            return query.Where(e => EF.Property<string>(e, "ApplicationUserId") == userId)
-                        .ToList();
+            return query.ToList();
         }
 
         //Fetch a transaction by id from the database
-        public async Task<T> FindAsync(int id, string userId, string? includeProperties)
+        public async Task<T> FindAsync(int id, string? includeProperties)
         {
             IQueryable<T> query = dbSet;
 
@@ -55,7 +54,7 @@ namespace FinTrack.Repository
             //Property<int>(e, "Id") -> Accesses the "Id" property of the entity e and treats it as an integer. This allows the code to work with entities that may not have a strongly-typed Id property or when the property name is determined at runtime.
             //This approach can fail if the entity does not have an "Id" property or if the property is not of type int
             var entity = await query
-                .FirstOrDefaultAsync(e => EF.Property<int>(e, "Id") == id && EF.Property<string>(e, "ApplicationUserId") == userId);
+                .FirstOrDefaultAsync(e => EF.Property<int>(e, "Id") == id);
             return entity;
         }
 

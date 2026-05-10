@@ -27,7 +27,6 @@ namespace FinTrack.Repository
             return await _dbContext.Transactions.Include(includeProperties)
                                                 .Where(t => t.ApplicationUserId == userId)
                                                 .Where(filter)
-                                                .Where(t=>!t.IsDeleted)
                                                 .ToListAsync();
         }
 
@@ -36,7 +35,6 @@ namespace FinTrack.Repository
             return await _dbContext.Transactions.Include(includeProperties)
                                                 .Where(t => t.ApplicationUserId == userId)
                                                 .Where(filter)
-                                                .Where(t => !t.IsDeleted)
                                                 .FirstOrDefaultAsync();
         }
 

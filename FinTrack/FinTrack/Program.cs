@@ -19,6 +19,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 
+//To access the current HTTP context and retrieve user information, we need to register the IHttpContextAccessor service, which allows us to access the HttpContext in our services.
+builder.Services.AddHttpContextAccessor();
+
 //Repository registration
 builder.Services.AddScoped<DummyITransactionRepository, DummyTransactionRepository>();
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
@@ -29,6 +32,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //Service registration
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
 builder.Services.AddScoped<IEmailSender, DummyEmailService>();
 var app = builder.Build();

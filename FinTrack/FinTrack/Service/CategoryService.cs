@@ -38,11 +38,11 @@ namespace FinTrack.Service
             _dbContext.SaveChanges();
         }
 
-        public IEnumerable<Category> GetAllCategories(string userId)
-        {
-            var categories = _dbContext.Categories.Where(c => c.ApplicationUserId == userId || c.IsSystemDefined==true).ToList();
-            return categories;
-        }
+        //public IEnumerable<Category> GetAllCategories(string userId)
+        //{
+        //    var categories = _dbContext.Categories.Where(c => c.ApplicationUserId == userId | c.IsSystemDefined==true).ToList();
+        //    return categories;
+        //}
 
         //public async Task CreateCategoryAsync(Category category)
         //{
@@ -69,9 +69,9 @@ namespace FinTrack.Service
         //    _unitOfWork.Category.Delete(category);
         //}
 
-        public async Task<IEnumerable<Category>> GetAllCategoriesAsync(string userId)
+        public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
         {
-            var categories = await _unitOfWork.Category.FindAllAsync(userId, null);
+            var categories = await _unitOfWork.Category.FindAllAsync(null);
             return categories;
         }
 

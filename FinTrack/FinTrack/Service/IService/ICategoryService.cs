@@ -11,7 +11,6 @@ namespace FinTrack.Service.IService
         //public Task<Category> GetCategoryByIdAsync(int id);
 
         public void CreateCategory(string userId,CategoryDto category);
-        public IEnumerable<Category> GetAllCategories(string userId);
-        public Task<IEnumerable<Category>> GetAllCategoriesAsync(string userId);
+        public Task<IEnumerable<Category>> GetAllCategoriesAsync();
     }
 }
