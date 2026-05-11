@@ -24,7 +24,7 @@ namespace FinTrack.Repository
         }
 
         //Fetch all transactions from the database
-        public async Task<IEnumerable<T>> FindAllAsync(string includeProperties)
+        public async Task<IEnumerable<T>> FindAllAsync(string? includeProperties)
         {
             IQueryable<T> query = dbSet;
 

@@ -94,7 +94,7 @@ namespace FinTrack.Service
                 throw new ArgumentException(nameof(filter));
             }
 
-            var transaction = await _unitOfWork.Transaction.FindTransactionByFilterAsync(filter,userId, includeProperties: "Category");
+            var transaction = await _unitOfWork.Transaction.FindTransactionByFilterAsync(filter, includeProperties: "Category");
 
             if (transaction == null)
             {
@@ -151,7 +151,7 @@ namespace FinTrack.Service
             }
 
 
-            var transactions = await _unitOfWork.Transaction.FindAllTransactionByFilterAsync(filter, userId, includeProperties: "Category");
+            var transactions = await _unitOfWork.Transaction.FindAllTransactionByFilterAsync(filter, includeProperties: "Category");
 
             return transactions.Select(t => new TransactionResponseDto()
             {
@@ -178,21 +178,6 @@ namespace FinTrack.Service
                 throw new ArgumentException("Date cannot be in the future.");
             }
 
-            //if (!_dbContext.Categories.Any(c => c.Id == transactionUpdateDto.CategoryId))
-            //{
-            //    throw new ArgumentException("Category does not exist.");
-            //}
-
-            //if(!Enum.IsDefined(typeof(PaymentMode), transactionUpdateDto.PaymentMode))
-            //{
-            //    throw new ArgumentException("Given Payment mode does not exist");
-            //}
-
-            //if (!Enum.IsDefined(typeof(TransactionType), transactionUpdateDto.Type))
-            //{
-            //    throw new ArgumentException("Given Type does not exist");
-            //}
-
             var transaction = await _unitOfWork.Transaction.FindAsync(id,includeProperties: null);
             if (transaction == null)
             {
@@ -208,7 +193,6 @@ namespace FinTrack.Service
             transaction.UpdatedAt = DateTime.Now;
 
 
-            _unitOfWork.Transaction.Update(transaction); 
             await _unitOfWork.Save();
         }
 

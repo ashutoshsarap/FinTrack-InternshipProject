@@ -22,36 +22,29 @@ namespace FinTrack.Repository
             transaction.DeletedAt = DateTime.Now;
         }
 
-        public async Task<IEnumerable<Transaction>> FindAllTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string userId, string? includeProperties)
+        public async Task<IEnumerable<Transaction>> FindAllTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string? includeProperties)
         {
-            return await _dbContext.Transactions.Include(includeProperties)
-                                                .Where(t => t.ApplicationUserId == userId)
-                                                .Where(filter)
-                                                .ToListAsync();
-        }
-
-        public async Task<Transaction> FindTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string userId, string? includeProperties)
-        {
-            return await _dbContext.Transactions.Include(includeProperties)
-                                                .Where(t => t.ApplicationUserId == userId)
-                                                .Where(filter)
-                                                .FirstOrDefaultAsync();
-        }
-
-        public async Task Update(Transaction transaction)
-        {
-            var existingTransaction = await _dbContext.Transactions.FindAsync(transaction.Id);
-
-            if (existingTransaction != null)
+            IQueryable<Transaction> query = _dbContext.Transactions;
+            if (!string.IsNullOrEmpty(includeProperties))
             {
-                existingTransaction.Amount = transaction.Amount;
-                existingTransaction.Date = transaction.Date;
-                existingTransaction.Type = transaction.Type;
-                existingTransaction.PaymentMode = transaction.PaymentMode;
-                existingTransaction.Description = transaction.Description;
-                existingTransaction.UpdatedAt = DateTime.Now;
-                existingTransaction.CategoryId = transaction.CategoryId;
+                query = query.Include(includeProperties);
             }
+            return await query.Where(filter).ToListAsync();
+        }
+
+        public async Task<Transaction> FindTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string? includeProperties)
+        {
+            IQueryable<Transaction> query = _dbContext.Transactions;
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                query = query.Include(includeProperties);
+            }
+            return await query.FirstOrDefaultAsync(filter);
+        }
+
+        public void Update(Transaction transaction)
+        {
+            _dbContext.Update(transaction);
 
         }
     }

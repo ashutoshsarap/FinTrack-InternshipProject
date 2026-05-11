@@ -3,6 +3,7 @@ using FinTrack.Models.DTOs;
 using FinTrack.Models.Entity;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
+using System.Threading.Tasks;
 
 namespace FinTrack.Service
 {
@@ -17,8 +18,7 @@ namespace FinTrack.Service
             _dbContext = dbContext;
         }
 
-
-        public void CreateCategory(string userId,CategoryDto category)
+        public async Task CreateCategory(string userId,CategoryDto category)
         {
             if (category == null)
             {
@@ -34,40 +34,9 @@ namespace FinTrack.Service
                 ApplicationUserId = userId,
                 IsSystemDefined = false
             };
-            _dbContext.Add(categoryEntity);
-            _dbContext.SaveChanges();
+            await _unitOfWork.Category.CreateAsync(categoryEntity);
+            await _unitOfWork.Save();
         }
-
-        //public IEnumerable<Category> GetAllCategories(string userId)
-        //{
-        //    var categories = _dbContext.Categories.Where(c => c.ApplicationUserId == userId | c.IsSystemDefined==true).ToList();
-        //    return categories;
-        //}
-
-        //public async Task CreateCategoryAsync(Category category)
-        //{
-        //    if (category == null)
-        //    {
-        //        throw new ArgumentNullException(nameof(category));
-        //    }
-
-        //    if (string.IsNullOrWhiteSpace(category.Name))
-        //    {
-        //        throw new ArgumentException("Category name cannot be empty.", nameof(category));
-        //    }
-
-        //    await _unitOfWork.Category.CreateAsync(category);
-        //}
-
-        //public async Task DeleteCategory(int id)
-        //{
-        //    var category = await _unitOfWork.Category.FindAsync(id, null);
-        //    if (category == null)
-        //    {
-        //        throw new KeyNotFoundException($"Category with id {id} not found.");
-        //    }
-        //    _unitOfWork.Category.Delete(category);
-        //}
 
         public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
         {
@@ -75,36 +44,17 @@ namespace FinTrack.Service
             return categories;
         }
 
-        //public Task<Category> GetCategoryByIdAsync(int id)
-        //{
-        //    var category = _unitOfWork.Category.FindAsync(id, null);
-        //    if (category == null)
-        //    {
-        //        throw new KeyNotFoundException($"Category with id {id} not found.");
-        //    }
-        //    return category;
-        //}
+        public async Task DeleteCategory(int id)
+        {
+            var category = await _unitOfWork.Category.FindAsync(id, null);
+            if (category == null)
+            {
+                throw new ArgumentException($"Category with id {id} not found.", nameof(id));
+            }
+            _unitOfWork.Category.Delete(category);
+            await _unitOfWork.Save();
+        }
 
-        //public async Task UpdateCategory(int id, Category category)
-        //{
-        //    if (category == null)
-        //    {
-        //        throw new ArgumentNullException(nameof(category));
-        //    }
-        //    if (string.IsNullOrWhiteSpace(category.Name))
-        //    {
-        //        throw new ArgumentException("Category name cannot be empty.", nameof(category));
-        //    }
-
-        //    var existingCategory = await _unitOfWork.Category.FindAsync(id, null);
-        //    if (existingCategory == null)
-        //    {
-        //        existingCategory.Name=category.Name;
-        //    }
-
-        //    _unitOfWork.Category.Update(existingCategory);
-
-        //}
     }
 
 }

@@ -10,7 +10,8 @@ namespace FinTrack.Service.IService
         //public Task DeleteCategory(int id);
         //public Task<Category> GetCategoryByIdAsync(int id);
 
-        public void CreateCategory(string userId,CategoryDto category);
+        public Task CreateCategory(string userId,CategoryDto category);
         public Task<IEnumerable<Category>> GetAllCategoriesAsync();
+        public Task DeleteCategory(int id);
     }
 }
