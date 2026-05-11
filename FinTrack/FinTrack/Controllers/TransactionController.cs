@@ -13,7 +13,7 @@ using System.Drawing.Printing;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-//V1
+//V2
 namespace FinTrack.Controllers
 {
     [Authorize]
@@ -29,12 +29,14 @@ namespace FinTrack.Controllers
             _categoryService = categoryService;
             _currentUser = curentUser;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(TransactionFilterDto filter)
         {
             //var claimsIdentity = (ClaimsIdentity)User.Identity;
             //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
             //var userId = _currentUser.UserId;    
-            var transactions = await _transactionService.GetAllTransactionsAsync();
+            var transactions = await _transactionService.GetAllTransactionsByFilterAsync(filter);
+            ViewBag.Filter = filter;
+            ViewBag.Categories = await _categoryService.GetAllCategoriesAsync();
             var transactionViewModels = transactions.Select(t => new TransactionViewModel
             {
                 Id = t.Id,
@@ -53,7 +55,6 @@ namespace FinTrack.Controllers
         {
             //var claimsIdentity = (ClaimsIdentity)User.Identity;
             //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
-
             //var userId = _currentUser.UserId;
 
             var categories =await _categoryService.GetAllCategoriesAsync();
@@ -195,33 +196,6 @@ namespace FinTrack.Controllers
             
         }
 
-        public IActionResult Add()
-        { 
-            return View();
-        }
 
-        [HttpPost]
-        public async Task<IActionResult> Add(CategoryDto category)
-        {
-            //var claimsIdentity = (ClaimsIdentity)User.Identity;
-            //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var userId = _currentUser.UserId;
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    //category.ApplicationUserId = userId;
-                    _categoryService.CreateCategory(userId,category);
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError(string.Empty, $"An error occurred while creating the category: {ex.Message}");
-                }
-            }
-            return View(category);
-        }
-
-
-        }
+    }
 }

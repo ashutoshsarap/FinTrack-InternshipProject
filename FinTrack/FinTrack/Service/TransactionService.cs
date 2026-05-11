@@ -87,7 +87,7 @@ namespace FinTrack.Service
             }).ToList();
         }
 
-        public async Task<TransactionResponseDto> GetTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string userId)
+        public async Task<TransactionResponseDto> GetTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter)
         {
             if (filter == null)
             {
@@ -143,15 +143,15 @@ namespace FinTrack.Service
             return transactionResponse;
         }
 
-        public async Task<List<TransactionResponseDto>> GetTransactionsByFilterAsync(Expression<Func<Transaction, bool>> filter, string userId)
+        public async Task<List<TransactionResponseDto>> GetAllTransactionsByFilterAsync(TransactionFilterDto filterDto)
         {
-            if (filter == null)
+            if (filterDto == null)
             {
-                throw new ArgumentNullException(nameof(filter));
+                throw new ArgumentNullException(nameof(filterDto));
             }
 
 
-            var transactions = await _unitOfWork.Transaction.FindAllTransactionByFilterAsync(filter, includeProperties: "Category");
+            var transactions = await _unitOfWork.Transaction.FindAllTransactionByFilterAsync(filterDto, includeProperties: "Category");
 
             return transactions.Select(t => new TransactionResponseDto()
             {

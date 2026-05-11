@@ -1,4 +1,5 @@
 ﻿using FinTrack.Data;
+using FinTrack.Models.DTOs;
 using FinTrack.Models.Entity;
 using FinTrack.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
@@ -22,14 +23,35 @@ namespace FinTrack.Repository
             transaction.DeletedAt = DateTime.Now;
         }
 
-        public async Task<IEnumerable<Transaction>> FindAllTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string? includeProperties)
+        public async Task<IEnumerable<Transaction>> FindAllTransactionByFilterAsync(TransactionFilterDto filter, string? includeProperties)
         {
             IQueryable<Transaction> query = _dbContext.Transactions;
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 query = query.Include(includeProperties);
             }
-            return await query.Where(filter).ToListAsync();
+            
+            if (filter.StartDate.HasValue)
+            {
+                query = query.Where(t => t.Date >= filter.StartDate.Value);
+            }
+            if (filter.EndDate.HasValue)
+            {
+                query = query.Where(t => t.Date <= filter.EndDate.Value);
+            }
+            if (filter.TransactionType.HasValue)
+            {
+                query = query.Where(t => t.Type == filter.TransactionType.Value);
+            }
+            if (filter.PaymentMode.HasValue)
+            {
+                query = query.Where(t => t.PaymentMode == filter.PaymentMode.Value);
+            }
+            if (filter.CategoryId.HasValue)
+            {
+                query = query.Where(t => t.CategoryId == filter.CategoryId.Value);
+            }
+            return await query.ToListAsync();
         }
 
         public async Task<Transaction> FindTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string? includeProperties)
