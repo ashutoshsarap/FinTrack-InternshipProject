@@ -1,5 +1,6 @@
 ﻿using FinTrack.Models.DTOs;
 using FinTrack.Models.Entity;
+using FinTrack.Models.ViewModels;
 using System.Linq.Expressions;
 //V2
 namespace FinTrack.Service.IService
@@ -13,6 +14,7 @@ namespace FinTrack.Service.IService
         public Task<List<TransactionResponseDto>> GetAllTransactionsAsync();
         public Task<List<TransactionResponseDto>> GetAllTransactionsByFilterAsync(TransactionFilterDto filterDto);
         public Task<TransactionResponseDto> GetTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter);
+        public Task<DashboardViewModel> GetDashboardData();
 
     }
 }

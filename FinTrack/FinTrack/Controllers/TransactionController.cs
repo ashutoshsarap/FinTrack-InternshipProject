@@ -31,9 +31,7 @@ namespace FinTrack.Controllers
         }
         public async Task<IActionResult> Index(TransactionFilterDto filter)
         {
-            //var claimsIdentity = (ClaimsIdentity)User.Identity;
-            //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //var userId = _currentUser.UserId;    
+               
             var transactions = await _transactionService.GetAllTransactionsByFilterAsync(filter);
             ViewBag.Filter = filter;
             ViewBag.Categories = await _categoryService.GetAllCategoriesAsync();
@@ -53,10 +51,7 @@ namespace FinTrack.Controllers
 
         public async Task<IActionResult> Create()
         {
-            //var claimsIdentity = (ClaimsIdentity)User.Identity;
-            //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //var userId = _currentUser.UserId;
-
+            
             var categories =await _categoryService.GetAllCategoriesAsync();
 
             var transactionCreateViewModel = new TransactionViewModel
@@ -71,9 +66,7 @@ namespace FinTrack.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(TransactionViewModel model)
         {
-            //var claimsIdentity = (ClaimsIdentity)User.Identity;
-            //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
-
+            
             var userId = _currentUser.UserId;
             if (ModelState.IsValid)
             {
@@ -89,7 +82,7 @@ namespace FinTrack.Controllers
                         CategoryId = model.CategoryId
                     };
                     await _transactionService.CreateTransactionAsync(userId,transactionCreateDto);
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Index), nameof(DashboardController));
                 }
                 catch (Exception ex)
                 {
@@ -103,8 +96,7 @@ namespace FinTrack.Controllers
         [ActionName("Delete")]
         public async Task<IActionResult> Delete(int id)
         {
-            //var claimsIdentity = (ClaimsIdentity)User.Identity;
-            //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
             var userId = _currentUser.UserId;
             try
             {
@@ -122,8 +114,6 @@ namespace FinTrack.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            //var claimsIdentity = (ClaimsIdentity)User.Identity;
-            //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
             var userId = _currentUser.UserId;
             var transaction = await _transactionService.GetTransactionByIdAsync(id, userId, includeProperties : "Category");
             if (transaction == null)
@@ -148,8 +138,6 @@ namespace FinTrack.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(TransactionViewModel model)
         {
-            //var claimsIdentity = (ClaimsIdentity)User.Identity;
-            //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
             var userId = _currentUser.UserId;
             var categories = await _categoryService.GetAllCategoriesAsync();
             

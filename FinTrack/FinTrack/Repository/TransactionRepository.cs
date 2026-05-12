@@ -1,20 +1,23 @@
 ﻿using FinTrack.Data;
 using FinTrack.Models.DTOs;
 using FinTrack.Models.Entity;
+using FinTrack.Models.Enums;
 using FinTrack.Repository.IRepository;
+using FinTrack.Service.IService;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
-//V1
+
+//V2
 namespace FinTrack.Repository
 {
     public class TransactionRepository : Repository<Transaction>, ITransactionRepository
     {
         private readonly ApplicationDbContext _dbContext;
-
-        public TransactionRepository(ApplicationDbContext dbContext) : base(dbContext)
+        private readonly string _currentUserId;
+        public TransactionRepository(ApplicationDbContext dbContext, ICurrentUserService currentUserService) : base(dbContext, currentUserService)
         {
             _dbContext = dbContext;
+            _currentUserId = currentUserService.UserId;
         }
 
         public void Delete(Transaction transaction)
@@ -51,7 +54,7 @@ namespace FinTrack.Repository
             {
                 query = query.Where(t => t.CategoryId == filter.CategoryId.Value);
             }
-            return await query.ToListAsync();
+            return await query.Where(t => t.ApplicationUserId==_currentUserId && t.IsDeleted==false).ToListAsync();
         }
 
         public async Task<Transaction> FindTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string? includeProperties)
@@ -61,13 +64,62 @@ namespace FinTrack.Repository
             {
                 query = query.Include(includeProperties);
             }
-            return await query.FirstOrDefaultAsync(filter);
+            return await query.Where(t => t.ApplicationUserId == _currentUserId).FirstOrDefaultAsync(filter);
         }
 
         public void Update(Transaction transaction)
         {
             _dbContext.Update(transaction);
 
+        }
+
+        public decimal GetTotalIncome()
+        {
+            var totalIncome = _dbContext.Transactions.Where(
+                                                    t => t.ApplicationUserId==_currentUserId && 
+                                                    t.IsDeleted==false &&
+                                                    t.Type == TransactionType.Income)
+                                                    .Sum(t => t.Amount);
+            return totalIncome;
+        }
+
+        public  decimal GetTotalExpense()
+        {
+            var totalExpense = _dbContext.Transactions.Where(t => t.ApplicationUserId==_currentUserId && 
+                                                             t.IsDeleted==false && 
+                                                             t.Type == TransactionType.Expense)
+                                                      .Sum(t => t.Amount);
+            return totalExpense;
+        }
+
+        public async Task<List<Transaction>> GetRecentTransactions()
+        {
+            var recentTransactions = await _dbContext.Transactions
+                                                     .Include("Category")
+                                                     .Where(t => t.ApplicationUserId==_currentUserId &&
+                                                            t.IsDeleted==false)
+                                                     .OrderByDescending(t => t.Date)
+                                                     .Take(5)
+                                                     .ToListAsync();
+            return recentTransactions;
+        }
+
+        public async Task<List<CategoryExpenseDto>> GetCategoryWiseExpense()
+        {
+            var categoryWiseExpense = await _dbContext.Transactions
+                                                .Include("Category")
+                                                .Where(t => t.ApplicationUserId==_currentUserId && 
+                                                            t.IsDeleted==false &&
+                                                            t.Type == TransactionType.Expense)
+                                                .GroupBy(c => c.Category.Name)
+                                                .Select(c => new CategoryExpenseDto()
+                                                {
+                                                    CategoryName = c.Key,
+                                                    TotalAmount = c.Sum(t => t.Amount)
+                                                })
+                                                .ToListAsync();
+
+            return categoryWiseExpense;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using FinTrack.Data;
 using FinTrack.Models.Entity;
 using FinTrack.Repository.IRepository;
+using FinTrack.Service.IService;
 
 namespace FinTrack.Repository
 {
@@ -8,7 +9,7 @@ namespace FinTrack.Repository
     {
 
         private readonly ApplicationDbContext _db;
-        public ApplicationUserRepository(ApplicationDbContext db) : base(db)
+        public ApplicationUserRepository(ApplicationDbContext db, ICurrentUserService currentUserService) : base(db, currentUserService)
         {
                 _db = db;
         }

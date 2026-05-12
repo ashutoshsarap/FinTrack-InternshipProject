@@ -1,5 +1,6 @@
 ﻿using FinTrack.Data;
 using FinTrack.Repository.IRepository;
+using FinTrack.Service.IService;
 using Microsoft.EntityFrameworkCore;
 //V2
 namespace FinTrack.Repository
@@ -8,13 +9,13 @@ namespace FinTrack.Repository
     {
 
         private readonly ApplicationDbContext _db;
-
         internal DbSet<T> dbSet;
-
-        public Repository(ApplicationDbContext db)
+        private readonly string _currentUserId;
+        public Repository(ApplicationDbContext db, ICurrentUserService currentUserService)
         {
             _db = db;
-            this.dbSet = _db.Set<T>();
+            dbSet = _db.Set<T>();
+            _currentUserId = currentUserService.UserId;
         }
 
         //Add transaction to the database
@@ -32,8 +33,11 @@ namespace FinTrack.Repository
             {
                 query= query.Include(includeProperties);
             }
-            
-            return query.ToList();
+            if (typeof(T).Equals(typeof(FinTrack.Models.Entity.Category)))
+            {
+                return query.Where(e => EF.Property<string>(e, "ApplicationUserId") == _currentUserId || EF.Property<bool>(e, "IsSystemDefined") == true ).ToList();
+            }
+            return query.Where(e => EF.Property<string>(e,"ApplicationUserId")==_currentUserId).ToList();
         }
 
         //Fetch a transaction by id from the database
@@ -54,7 +58,7 @@ namespace FinTrack.Repository
             //Property<int>(e, "Id") -> Accesses the "Id" property of the entity e and treats it as an integer. This allows the code to work with entities that may not have a strongly-typed Id property or when the property name is determined at runtime.
             //This approach can fail if the entity does not have an "Id" property or if the property is not of type int
             var entity = await query
-                .FirstOrDefaultAsync(e => EF.Property<int>(e, "Id") == id);
+                .FirstOrDefaultAsync(e => EF.Property<int>(e, "Id") == id && EF.Property<string>(e, "ApplicationUserId") == _currentUserId);
             return entity;
         }
 

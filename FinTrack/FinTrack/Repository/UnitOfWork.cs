@@ -1,5 +1,6 @@
 ﻿using FinTrack.Data;
 using FinTrack.Repository.IRepository;
+using FinTrack.Service.IService;
 using System.Threading.Tasks;
 //V1
 namespace FinTrack.Repository
@@ -12,12 +13,12 @@ namespace FinTrack.Repository
 
         public ApplicationUserRepository ApplicationUser { get; private set; }
 
-        public UnitOfWork(ApplicationDbContext context)
+        public UnitOfWork(ApplicationDbContext context, ICurrentUserService currentUserService)
         {
             _context = context;
-            Transaction = new TransactionRepository(context);
-            Category = new CategoryRepository(context);
-            ApplicationUser = new ApplicationUserRepository(context);
+            Transaction = new TransactionRepository(context, currentUserService);
+            Category = new CategoryRepository(context, currentUserService);
+            ApplicationUser = new ApplicationUserRepository(context, currentUserService);
         }
         public async Task Save()
         {

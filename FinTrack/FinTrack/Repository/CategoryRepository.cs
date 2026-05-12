@@ -1,6 +1,7 @@
 ﻿using FinTrack.Data;
 using FinTrack.Models.Entity;
 using FinTrack.Repository.IRepository;
+using FinTrack.Service.IService;
 using System.Threading.Tasks;
 
 namespace FinTrack.Repository
@@ -8,10 +9,11 @@ namespace FinTrack.Repository
     public class CategoryRepository : Repository<Category>, ICategoryRepository
     {
         private readonly ApplicationDbContext _dbContext;
-
-        public CategoryRepository(ApplicationDbContext dbContext) : base(dbContext)
+        private readonly string _currentUserId;
+        public CategoryRepository(ApplicationDbContext dbContext, ICurrentUserService currentUserService) : base(dbContext, currentUserService)
         {
             _dbContext = dbContext;
+            _currentUserId = currentUserService.UserId;
         }
 
         public async Task Update(Category category)
@@ -23,9 +25,10 @@ namespace FinTrack.Repository
             }
         }
 
-        public void Delete(Category category)
+        public async Task Delete(Category category)
         {
             _dbContext.Remove(category);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

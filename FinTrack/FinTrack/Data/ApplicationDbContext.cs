@@ -9,10 +9,10 @@ namespace FinTrack.Data
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
 
-        private readonly ICurrentUserService _currentUserService;
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, ICurrentUserService currentUserService) : base(options)
+        //private readonly ICurrentUserService _currentUserService;
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            _currentUserService = currentUserService;
+            //_currentUserService = currentUserService;
         }
 
         public DbSet<Transaction> Transactions { get; set; }
@@ -47,11 +47,11 @@ namespace FinTrack.Data
 
             // Global query filter to exclude soft-deleted transactions
             //Any query that retrieves transactions will automatically exclude those where IsDeleted is true, ensuring that soft-deleted transactions are not returned in query results.
-            modelBuilder.Entity<Transaction>()
-                        .HasQueryFilter(t => !t.IsDeleted && t.ApplicationUserId==_currentUserService.UserId); 
+            //modelBuilder.Entity<Transaction>()
+            //            .HasQueryFilter(t => !t.IsDeleted && t.ApplicationUserId==_currentUserService.UserId); 
 
-            modelBuilder.Entity<Category>()
-                        .HasQueryFilter(c => c.ApplicationUserId == _currentUserService.UserId || c.IsSystemDefined); // Include system-defined categories for all users
+            //modelBuilder.Entity<Category>()
+            //            .HasQueryFilter(c => c.ApplicationUserId == _currentUserService.UserId || c.IsSystemDefined); // Include system-defined categories for all users
 
             //modelBuilder.Entity<Transaction>().HasData(
 

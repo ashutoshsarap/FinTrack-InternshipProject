@@ -6,6 +6,7 @@ using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using FinTrack.Models.ViewModels;
 //V2
 namespace FinTrack.Service
 {
@@ -74,7 +75,7 @@ namespace FinTrack.Service
             
             var transactions = await _unitOfWork.Transaction.FindAllAsync(includeProperties: "Category");
             
-            return transactions.Select(t => new TransactionResponseDto()
+            return transactions.Where(t => t.IsDeleted==false).Select(t => new TransactionResponseDto()
             {
                 Id = t.Id,
                 Amount = t.Amount,
@@ -196,6 +197,36 @@ namespace FinTrack.Service
             await _unitOfWork.Save();
         }
 
+        public async Task<DashboardViewModel> GetDashboardData()
+        {
+            var totalIncome = _unitOfWork.Transaction.GetTotalIncome();
+            var totalExpenses = _unitOfWork.Transaction.GetTotalExpense();
+            var netBalance = totalIncome - totalExpenses;
+            var recentTransactions = await _unitOfWork.Transaction.GetRecentTransactions();
+            var expenseCategorySummaries = await _unitOfWork.Transaction.GetCategoryWiseExpense();
+
+            var dashboardData = new DashboardViewModel
+            {
+                TotalIncome = totalIncome,
+                TotalExpenses = totalExpenses,
+                NetBalance = netBalance,
+                RecentTransactions = recentTransactions.Select(t => new TransactionResponseDto
+                {
+                    Id = t.Id,
+                    Amount = t.Amount,
+                    Date = t.Date,
+                    Type = t.Type,
+                    PaymentMode = t.PaymentMode,
+                    Description = t.Description,
+                    CategoryId = t.CategoryId,
+                    CategoryName = t.Category.Name
+                }).ToList(),
+
+                ExpenseCategorySummaries = expenseCategorySummaries
+            };
+
+            return dashboardData;
+        }
 
     }
 }

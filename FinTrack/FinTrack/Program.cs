@@ -23,7 +23,6 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 builder.Services.AddHttpContextAccessor();
 
 //Repository registration
-builder.Services.AddScoped<DummyITransactionRepository, DummyTransactionRepository>();
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -57,6 +56,6 @@ app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Transaction}/{action=Index}/{id?}");
+    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 
 app.Run();

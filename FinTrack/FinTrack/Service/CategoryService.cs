@@ -51,8 +51,16 @@ namespace FinTrack.Service
             {
                 throw new ArgumentException($"Category with id {id} not found.", nameof(id));
             }
-            _unitOfWork.Category.Delete(category);
-            await _unitOfWork.Save();
+
+            try
+            {
+                await _unitOfWork.Category.Delete(category);
+                //await _unitOfWork.Save();
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Failed to delete category with id {id}.", ex);
+            }
         }
 
     }
