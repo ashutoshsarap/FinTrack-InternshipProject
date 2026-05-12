@@ -37,7 +37,7 @@ namespace FinTrack.Repository
             {
                 return query.Where(e => EF.Property<string>(e, "ApplicationUserId") == _currentUserId || EF.Property<bool>(e, "IsSystemDefined") == true ).ToList();
             }
-            return query.Where(e => EF.Property<string>(e,"ApplicationUserId")==_currentUserId).ToList();
+            return await query.Where(e => EF.Property<string>(e,"ApplicationUserId")==_currentUserId).ToListAsync();
         }
 
         //Fetch a transaction by id from the database

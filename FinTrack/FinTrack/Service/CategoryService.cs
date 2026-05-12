@@ -11,11 +11,9 @@ namespace FinTrack.Service
     {
 
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ApplicationDbContext _dbContext;   
-        public CategoryService(IUnitOfWork unitOfWork, ApplicationDbContext dbContext)
+        public CategoryService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _dbContext = dbContext;
         }
 
         public async Task CreateCategory(string userId,CategoryDto category)
@@ -46,23 +44,17 @@ namespace FinTrack.Service
 
         public async Task DeleteCategory(int id)
         {
+            
             var category = await _unitOfWork.Category.FindAsync(id, null);
+
             if (category == null)
             {
-                throw new ArgumentException($"Category with id {id} not found.", nameof(id));
+                throw new KeyNotFoundException($"Category with id {id} not found.");
             }
 
-            try
-            {
-                await _unitOfWork.Category.Delete(category);
-                //await _unitOfWork.Save();
-            }
-            catch (Exception ex)
-            {
-                throw new InvalidOperationException($"Failed to delete category with id {id}.", ex);
-            }
+            await _unitOfWork.Category.Delete(category);
+            await _unitOfWork.Save();
         }
-
     }
 
 }

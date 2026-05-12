@@ -82,7 +82,7 @@ namespace FinTrack.Controllers
                         CategoryId = model.CategoryId
                     };
                     await _transactionService.CreateTransactionAsync(userId,transactionCreateDto);
-                    return RedirectToAction(nameof(Index), nameof(DashboardController));
+                    return RedirectToAction(nameof(Index), "Dashboard");
                 }
                 catch (Exception ex)
                 {

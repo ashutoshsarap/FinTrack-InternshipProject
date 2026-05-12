@@ -50,9 +50,9 @@ namespace FinTrack.Controllers
         }
 
         [ActionName("Delete")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            _categoryService.DeleteCategory(id);
+            await _categoryService.DeleteCategory(id);
             return RedirectToAction(nameof(Index));
         }
     }

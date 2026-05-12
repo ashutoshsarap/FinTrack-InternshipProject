@@ -3,9 +3,9 @@ namespace FinTrack.Repository.IRepository
 {
     public interface IUnitOfWork
     {
-        public TransactionRepository Transaction { get; }
-        public CategoryRepository Category { get; }
-        public ApplicationUserRepository ApplicationUser { get; }
+        public ITransactionRepository Transaction { get; }
+        public ICategoryRepository Category { get; }
+        public IApplicationUserRepository ApplicationUser { get; }
         public Task Save();
     }
 }

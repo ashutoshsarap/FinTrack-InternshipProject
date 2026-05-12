@@ -25,10 +25,12 @@ namespace FinTrack.Repository
             }
         }
 
-        public async Task Delete(Category category)
+        public Task Delete(Category category)
         {
-            _dbContext.Remove(category);
-            await _dbContext.SaveChangesAsync();
+            _dbContext.Categories.Remove(category);
+            return Task.CompletedTask;
         }
+
+
     }
 }

@@ -11,5 +11,10 @@ namespace FinTrack.Repository.IRepository
         public Task<IEnumerable<Transaction>> FindAllTransactionByFilterAsync(TransactionFilterDto filter, string? includeProperties);
         public void Update(Transaction transaction);
         public void Delete(Transaction transaction);
+
+        public Task<List<CategoryExpenseDto>> GetCategoryWiseExpense();
+        public Task<List<Transaction>> GetRecentTransactions();
+        public decimal GetTotalExpense();
+        public decimal GetTotalIncome();
     }
 }

@@ -5,11 +5,11 @@ using FinTrack.Service.IService;
 
 namespace FinTrack.Repository
 {
-    public class ApplicationUserRepository : Repository<ApplicationUser>, IApplicationUser
+    public class IApplicationUserRepository : Repository<ApplicationUser>, IApplicationUser
     {
 
         private readonly ApplicationDbContext _db;
-        public ApplicationUserRepository(ApplicationDbContext db, ICurrentUserService currentUserService) : base(db, currentUserService)
+        public IApplicationUserRepository(ApplicationDbContext db, ICurrentUserService currentUserService) : base(db, currentUserService)
         {
                 _db = db;
         }
