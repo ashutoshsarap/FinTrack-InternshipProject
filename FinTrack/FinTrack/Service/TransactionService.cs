@@ -199,8 +199,8 @@ namespace FinTrack.Service
 
         public async Task<DashboardViewModel> GetDashboardData()
         {
-            var totalIncome = _unitOfWork.Transaction.GetTotalIncome();
-            var totalExpenses = _unitOfWork.Transaction.GetTotalExpense();
+            var totalIncome = _unitOfWork.Transaction.GetTotalAmountByType(TransactionType.Income);
+            var totalExpenses = _unitOfWork.Transaction.GetTotalAmountByType(TransactionType.Expense);
             var netBalance = totalIncome - totalExpenses;
             var recentTransactions = await _unitOfWork.Transaction.GetRecentTransactions();
             var expenseCategorySummaries = await _unitOfWork.Transaction.GetCategoryWiseExpense();

@@ -1,6 +1,7 @@
 ﻿
 using FinTrack.Models.DTOs;
 using FinTrack.Models.Entity;
+using FinTrack.Models.Enums;
 using System.Linq.Expressions;
 //V1
 namespace FinTrack.Repository.IRepository
@@ -14,7 +15,6 @@ namespace FinTrack.Repository.IRepository
 
         public Task<List<CategoryExpenseDto>> GetCategoryWiseExpense();
         public Task<List<Transaction>> GetRecentTransactions();
-        public decimal GetTotalExpense();
-        public decimal GetTotalIncome();
+        public decimal GetTotalAmountByType(TransactionType type);
     }
 }

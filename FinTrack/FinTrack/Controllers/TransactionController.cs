@@ -32,6 +32,14 @@ namespace FinTrack.Controllers
         public async Task<IActionResult> Index(TransactionFilterDto filter)
         {
                
+            if(!filter.StartDate.HasValue && !filter.EndDate.HasValue)
+            {
+                var today = DateTime.Today;
+
+                filter.StartDate = new DateTime(today.Year, today.Month, 1);
+                filter.EndDate = filter.StartDate.Value.AddMonths(1).AddDays(-1);
+            }
+
             var transactions = await _transactionService.GetAllTransactionsByFilterAsync(filter);
             ViewBag.Filter = filter;
             ViewBag.Categories = await _categoryService.GetAllCategoriesAsync();

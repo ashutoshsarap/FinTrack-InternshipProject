@@ -54,7 +54,9 @@ namespace FinTrack.Repository
             {
                 query = query.Where(t => t.CategoryId == filter.CategoryId.Value);
             }
-            return await query.Where(t => t.ApplicationUserId==_currentUserId && t.IsDeleted==false).ToListAsync();
+            return await query.Where(t => t.ApplicationUserId==_currentUserId && t.IsDeleted==false)
+                              .OrderBy(t => t.Date)
+                              .ToListAsync();
         }
 
         public async Task<Transaction> FindTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string? includeProperties)
@@ -73,31 +75,28 @@ namespace FinTrack.Repository
 
         }
 
-        public decimal GetTotalIncome()
-        {
-            var totalIncome = _dbContext.Transactions.Where(
-                                                    t => t.ApplicationUserId==_currentUserId && 
-                                                    t.IsDeleted==false &&
-                                                    t.Type == TransactionType.Income)
-                                                    .Sum(t => t.Amount);
-            return totalIncome;
-        }
 
-        public  decimal GetTotalExpense()
+        public decimal GetTotalAmountByType(TransactionType type)
         {
-            var totalExpense = _dbContext.Transactions.Where(t => t.ApplicationUserId==_currentUserId && 
+            var (startDate, endDate) = GetCurrentMonthDateRange();
+            var totalAmount = _dbContext.Transactions.Where(t => t.ApplicationUserId==_currentUserId && 
                                                              t.IsDeleted==false && 
-                                                             t.Type == TransactionType.Expense)
+                                                             t.Type == type &&
+                                                             t.Date>=startDate &&
+                                                             t.Date<=endDate)
                                                       .Sum(t => t.Amount);
-            return totalExpense;
+            return totalAmount;
         }
 
         public async Task<List<Transaction>> GetRecentTransactions()
         {
+            var (startDate, endDate) = GetCurrentMonthDateRange();
             var recentTransactions = await _dbContext.Transactions
                                                      .Include("Category")
                                                      .Where(t => t.ApplicationUserId==_currentUserId &&
-                                                            t.IsDeleted==false)
+                                                            t.IsDeleted==false &&
+                                                            t.Date >= startDate &&
+                                                            t.Date <= endDate)
                                                      .OrderByDescending(t => t.Date)
                                                      .Take(5)
                                                      .ToListAsync();
@@ -106,11 +105,14 @@ namespace FinTrack.Repository
 
         public async Task<List<CategoryExpenseDto>> GetCategoryWiseExpense()
         {
+            var (startDate, endDate) = GetCurrentMonthDateRange();
             var categoryWiseExpense = await _dbContext.Transactions
                                                 .Include("Category")
                                                 .Where(t => t.ApplicationUserId==_currentUserId && 
                                                             t.IsDeleted==false &&
-                                                            t.Type == TransactionType.Expense)
+                                                            t.Type == TransactionType.Expense &&
+                                                            t.Date >= startDate &&
+                                                            t.Date <= endDate)
                                                 .GroupBy(c => c.Category.Name)
                                                 .Select(c => new CategoryExpenseDto()
                                                 {
@@ -120,6 +122,15 @@ namespace FinTrack.Repository
                                                 .ToListAsync();
 
             return categoryWiseExpense;
+        }
+
+        //Returns a tuple containing the start and end date of the current month
+        private (DateTime startDate, DateTime endDate) GetCurrentMonthDateRange()
+        {
+            var today = DateTime.Today;
+            var startDate = new DateTime(today.Year, today.Month, 1);
+            var endDate = startDate.AddMonths(1).AddDays(-1);
+            return (startDate, endDate);
         }
     }
 }
