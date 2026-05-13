@@ -26,6 +26,8 @@ namespace FinTrack.Repository
             transaction.DeletedAt = DateTime.Now;
         }
 
+        //Following method retrieves transactions based on the provided filter criteria. It dynamically builds the query based on which filter properties are set, and includes related entities if specified. Finally, it returns a list of transactions that match the criteria, ordered by date.
+        //Used in transaction listing page where user can filter transactions based on date range, type, payment mode and category
         public async Task<IEnumerable<Transaction>> FindAllTransactionByFilterAsync(TransactionFilterDto filter, string? includeProperties)
         {
             IQueryable<Transaction> query = _dbContext.Transactions;
@@ -75,7 +77,7 @@ namespace FinTrack.Repository
 
         }
 
-
+        //Following methods are used in dashboard to get total income, total expense, recent transactions and category wise expense for the current month. It uses a helper method GetCurrentMonthDateRange to get the start and end date of the current month and then filters transactions based on that date range and other criteria like transaction type and category.
         public decimal GetTotalAmountByType(TransactionType type)
         {
             var (startDate, endDate) = GetCurrentMonthDateRange();
@@ -132,5 +134,17 @@ namespace FinTrack.Repository
             var endDate = startDate.AddMonths(1).AddDays(-1);
             return (startDate, endDate);
         }
+
+        public decimal GetTotalExpenseByMonth(int month)
+        {
+            var totalExpenseOfMonth = _dbContext.Transactions.Where(t => t.ApplicationUserId == _currentUserId &&
+                                                             t.IsDeleted == false &&
+                                                             t.Type == TransactionType.Expense &&
+                                                             t.Date.Month == month) 
+                                                      .Sum(t => t.Amount);
+            return totalExpenseOfMonth;
+        }
+
+
     }
 }

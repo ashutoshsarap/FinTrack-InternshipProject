@@ -16,5 +16,7 @@ namespace FinTrack.Repository.IRepository
         public Task<List<CategoryExpenseDto>> GetCategoryWiseExpense();
         public Task<List<Transaction>> GetRecentTransactions();
         public decimal GetTotalAmountByType(TransactionType type);
+        public decimal GetTotalExpenseByMonth(int month);
+
     }
 }
