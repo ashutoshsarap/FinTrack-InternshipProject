@@ -1,5 +1,6 @@
 ﻿using FinTrack.Data;
 using FinTrack.Models.DTOs;
+using FinTrack.Models.DTOs.AnalyticsDtos;
 using FinTrack.Models.Entity;
 using FinTrack.Models.Enums;
 using FinTrack.Repository.IRepository;
@@ -35,7 +36,7 @@ namespace FinTrack.Repository
             {
                 query = query.Include(includeProperties);
             }
-            
+
             if (filter.StartDate.HasValue)
             {
                 query = query.Where(t => t.Date >= filter.StartDate.Value);
@@ -56,7 +57,7 @@ namespace FinTrack.Repository
             {
                 query = query.Where(t => t.CategoryId == filter.CategoryId.Value);
             }
-            return await query.Where(t => t.ApplicationUserId==_currentUserId && t.IsDeleted==false)
+            return await query.Where(t => t.ApplicationUserId == _currentUserId && t.IsDeleted == false)
                               .OrderBy(t => t.Date)
                               .ToListAsync();
         }
@@ -78,25 +79,25 @@ namespace FinTrack.Repository
         }
 
         //Following methods are used in dashboard to get total income, total expense, recent transactions and category wise expense for the current month. It uses a helper method GetCurrentMonthDateRange to get the start and end date of the current month and then filters transactions based on that date range and other criteria like transaction type and category.
-        public decimal GetTotalAmountByType(TransactionType type)
+        public decimal FindTotalAmountByType(TransactionType type)
         {
             var (startDate, endDate) = GetCurrentMonthDateRange();
-            var totalAmount = _dbContext.Transactions.Where(t => t.ApplicationUserId==_currentUserId && 
-                                                             t.IsDeleted==false && 
+            var totalAmount = _dbContext.Transactions.Where(t => t.ApplicationUserId == _currentUserId &&
+                                                             t.IsDeleted == false &&
                                                              t.Type == type &&
-                                                             t.Date>=startDate &&
-                                                             t.Date<=endDate)
+                                                             t.Date >= startDate &&
+                                                             t.Date <= endDate)
                                                       .Sum(t => t.Amount);
             return totalAmount;
         }
 
-        public async Task<List<Transaction>> GetRecentTransactions()
+        public async Task<List<Transaction>> FindRecentTransactions()
         {
             var (startDate, endDate) = GetCurrentMonthDateRange();
             var recentTransactions = await _dbContext.Transactions
                                                      .Include("Category")
-                                                     .Where(t => t.ApplicationUserId==_currentUserId &&
-                                                            t.IsDeleted==false &&
+                                                     .Where(t => t.ApplicationUserId == _currentUserId &&
+                                                            t.IsDeleted == false &&
                                                             t.Date >= startDate &&
                                                             t.Date <= endDate)
                                                      .OrderByDescending(t => t.Date)
@@ -105,13 +106,13 @@ namespace FinTrack.Repository
             return recentTransactions;
         }
 
-        public async Task<List<CategoryExpenseDto>> GetCategoryWiseExpense()
+        public async Task<List<CategoryExpenseDto>> FindCategoryWiseExpense()
         {
             var (startDate, endDate) = GetCurrentMonthDateRange();
             var categoryWiseExpense = await _dbContext.Transactions
                                                 .Include("Category")
-                                                .Where(t => t.ApplicationUserId==_currentUserId && 
-                                                            t.IsDeleted==false &&
+                                                .Where(t => t.ApplicationUserId == _currentUserId &&
+                                                            t.IsDeleted == false &&
                                                             t.Type == TransactionType.Expense &&
                                                             t.Date >= startDate &&
                                                             t.Date <= endDate)
@@ -135,16 +136,100 @@ namespace FinTrack.Repository
             return (startDate, endDate);
         }
 
-        public decimal GetTotalExpenseByMonth(int month)
+        public decimal FindTotalExpenseByMonth(int month)
         {
             var totalExpenseOfMonth = _dbContext.Transactions.Where(t => t.ApplicationUserId == _currentUserId &&
                                                              t.IsDeleted == false &&
                                                              t.Type == TransactionType.Expense &&
-                                                             t.Date.Month == month) 
-                                                      .Sum(t => t.Amount);
+                                                             t.Date.Month == month)
+                                                            .Sum(t => t.Amount);
             return totalExpenseOfMonth;
         }
 
 
+        public async Task<List<CategoryBreakdownDto>> FindCategoryBreakdown(int previousMonth, int currentMonth)
+        {
+
+            //Percentage of total = (Amount spent in category / Total expense for the month) * 100
+
+            //Percentage change from previous month = ((Amount spent in category in current month - Amount spent in category in previous month) / Amount spent in category in previous month) * 100
+
+            var totalExpenseCurrentMonth = FindTotalExpenseByMonth(currentMonth);
+            var totalExpensePreviousMonth = FindTotalExpenseByMonth(previousMonth);
+
+            var categoryBreakdownList = await _dbContext.Transactions
+                .Include("Category")
+                .Where(t => t.ApplicationUserId == _currentUserId &&
+                            t.IsDeleted == false &&
+                            t.Type == TransactionType.Expense)
+                .GroupBy(t => t.Category.Name)
+                .Select(g => new CategoryBreakdownDto
+                {
+                    CategoryName = g.Key,
+
+                    TotalAmountSpentCurrentMonth = g.Where(t => t.Date.Month == currentMonth).Sum(t => t.Amount),
+
+                    TotalAmountSpentPreviousMonth = g.Where(t => t.Date.Month == previousMonth).Sum(t => t.Amount),
+
+                    PercentageOfTotal = (float)
+                    (g.Where(t => t.Date.Month == currentMonth).Sum(t => t.Amount) / totalExpenseCurrentMonth) * 100,
+
+                    PercentageChangeFromPreviousMonth =
+                    g.Where(t => t.Date.Month == previousMonth).Sum(t => t.Amount)==0? 0 :
+                    (float)
+                    ((g.Where(t => t.Date.Month == currentMonth).Sum(t => t.Amount) - g.Where(t => t.Date.Month == previousMonth).Sum(t => t.Amount)) / g.Where(t => t.Date.Month == previousMonth).Sum(t => t.Amount)) * 100
+                })
+                .ToListAsync();
+
+            return categoryBreakdownList;
+        }
+
+        public AnalyticsInsightDto FindAnalyticsInsight()
+        {
+            var currentMonth = DateTime.Today.Month;    
+
+            var topCategory = _dbContext.Transactions
+                                        .Include("Category")
+                                        .Where(t => t.ApplicationUserId == _currentUserId &&
+                                                    t.IsDeleted == false &&
+                                                    t.Type == TransactionType.Expense &&
+                                                    t.Date.Month == currentMonth)
+                                        .GroupBy(t => t.Category.Name)
+                                        .Select(g => new
+                                        {
+                                            CategoryName = g.Key,
+                                            TotalAmount = g.Sum(t => t.Amount)
+                                        })
+                                        .OrderByDescending(g => g.TotalAmount)
+                                        .FirstOrDefault();
+
+            var highestSpent = topCategory.CategoryName;
+            var amountSpentInHighestCategory = topCategory.TotalAmount;
+
+            var dateSpentMostOn = _dbContext.Transactions
+                                            .Where(t => t.ApplicationUserId == _currentUserId &&
+                                                        t.IsDeleted == false &&
+                                                        t.Type == TransactionType.Expense &&
+                                                        t.Date.Month == currentMonth)
+                                            .GroupBy(t => t.Date)
+                                            .Select(g => new
+                                            {
+                                                Date = g.Key,
+                                                TotalAmount = g.Sum(t => t.Amount)
+                                            })
+                                            .OrderByDescending(g => g.TotalAmount)
+                                            .FirstOrDefault();
+
+            var dateSpentMost = dateSpentMostOn?.Date;
+            var amountSpentOnThatDay = dateSpentMostOn?.TotalAmount;
+
+            return new AnalyticsInsightDto
+            {
+                CategoryWithHighestExpense = highestSpent,
+                AmountSpentInHighestCategory = amountSpentInHighestCategory,
+                DateSpentMostOn = dateSpentMost ?? DateTime.MinValue,
+                AmountSpentOnThatDay = amountSpentOnThatDay ?? 0
+            };
+        }
     }
 }

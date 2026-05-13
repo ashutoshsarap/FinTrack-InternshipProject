@@ -1,92 +1,241 @@
-﻿@using FinTrack.Models.DTOs
-@model AnalyticsDto
+﻿@using FinTrack.Models.ViewModels;
+@model AnalyticsViewModel
 
 @{
     ViewData["Title"] = "Analytics";
 }
 
-<h1>Analytics</h1>
+<div class="container mt-4">
 
-<div class="row g-3 mb-4">
-    <div class="col-md-3">
-        <div class="card text-white bg-body mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Previous month expense</h5>
-                <p class="card-text fs-4">
-                    @Model.PreviousMonthExpense.ToString("C")
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card text-white bg-secondary mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Current month Expense</h5>
-                <p class="card-text fs-4">
-                    @Model.CurrentMonthExpense.ToString("C")
-                </p>
-            </div>
-        </div>
-    </div>
-@{
-    var change = Model.ExpensePercentageChange;
+    <h2 class="mb-4">Analytics Dashboard</h2>
 
-    var cardClass = change > 0
-    ? "bg-danger"
-    : change < 0
-    ? "bg-success"
-    : "bg-secondary";
-}
-    <div class="col-md-3">
-        <div class="card text-white @cardClass mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Percentage change</h5>
-                <p class="card-text fs-4">
-                    @Math.Abs(Model.ExpensePercentageChange).%
-                </p>
-                @if (Model.ExpensePercentageChange > 0)
-                {
-                    <p>You spent @Math.Abs(Model.ExpensePercentageChange).% more than previous month  📈</p>
-                }
-                else if (Model.ExpensePercentageChange < 0)
-                {
-                    <p>You spent @Math.Abs(Model.ExpensePercentageChange).% less than previous month 📉</p>
-                }
-                else
-                {
-                    <p>No change in expenses</p>
-                }
+    <!-- Analytics Cards -->
+    <div class="row">
+
+        <div class="col-md-4 mb-3">
+            <div class="card border-primary">
+                <div class="card-body">
+                    <h6 class="text-muted">Current Month Expense</h6>
+                    <h3>₹@Model.Analytics.CurrentMonthExpense.ToString("N2")</h3>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card text-white bg-info mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Average spent daily</h5>
-                <p class="card-text fs-4">
-                    @Model.AverageDailyExpense.ToString("C")
-                </p>
+
+        <div class="col-md-4 mb-3">
+            <div class="card border-secondary">
+                <div class="card-body">
+                    <h6 class="text-muted">Previous Month Expense</h6>
+                    <h3>₹@Model.Analytics.PreviousMonthExpense.ToString("N2")</h3>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card text-white bg-secondary mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Average spent weekly</h5>
-                <p class="card-text fs-4">
-                    @Model.AverageWeeklyExpense.ToString("C")
-                </p>
+
+        <div class="col-md-4 mb-3">
+            <div class="card border-info">
+                <div class="card-body">
+                    <h6 class="text-muted">Expense % Change from previous month</h6>
+
+                    @if (Model.Analytics.ExpensePercentageChange > 0)
+                    {
+                        <h3 class="text-danger">
+                            <p>You spent @Math.Abs(Model.Analytics.ExpensePercentageChange).% more than previous month  📈</p>
+                        </h3>
+                    }
+                    else if (Model.Analytics.ExpensePercentageChange < 0)
+                    {
+                        <h3 class="text-success">
+                            <p>You spent @Math.Abs(Model.Analytics.ExpensePercentageChange).% less than previous month 📉</p>
+                        </h3>
+                    }
+                    else
+                    {
+                        <h3>
+                            No change
+                        </h3>
+                    }
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card text-white bg-secondary mb-3">
-            <div class="card-body">
-                <h5 class="card-title">At this rate you will spend @Model.PredictedMonthlyExpense.ToString("C") this month </h5>
-                <p class="card-text fs-4">
-                    @Model.PredictedMonthlyExpense.ToString("C")
-                </p>
-            </div>
-        </div>
+
     </div>
 
+    <div class="row">
+
+        <div class="col-md-4 mb-3">
+            <div class="card border-success">
+                <div class="card-body">
+                    <h6 class="text-muted">Average Daily Expense</h6>
+                    <h3>₹@Model.Analytics.AverageDailyExpense.ToString("N2")</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card border-warning">
+                <div class="card-body">
+                    <h6 class="text-muted">Average Weekly Expense</h6>
+                    <h3>₹@Model.Analytics.AverageWeeklyExpense.ToString("N2")</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card border-dark">
+                <div class="card-body">
+                    <h6 class="text-muted">Predicted Monthly Expense</h6>
+                    <h3>₹@Model.Analytics.PredictedMonthlyExpense.ToString("N2")</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Insights Section -->
+
+    <div class="card mt-4">
+
+        <div class="card-header">
+            <h4 class="mb-0">Insights</h4>
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <div class="border rounded p-3 h-100">
+
+                        <h6 class="text-muted">
+                            Highest Spending Day
+                        </h6>
+
+                        <h5>
+                            @Model.AnalyticsInsight.DateSpentMostOn.ToString("dd-MMM-yyyy")
+                        </h5>
+
+                        <p class="mb-0">
+                            Amount Spent:
+                            <strong>
+                                ₹@Model.AnalyticsInsight.AmountSpentOnThatDay.ToString("N2")
+                            </strong>
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <div class="border rounded p-3 h-100">
+
+                        <h6 class="text-muted">
+                            Highest Expense Category
+                        </h6>
+
+                        <h5>
+                            @Model.AnalyticsInsight.CategoryWithHighestExpense
+                        </h5>
+
+                        <p class="mb-0">
+                            Amount Spent:
+                            <strong>
+                                ₹@Model.AnalyticsInsight.AmountSpentInHighestCategory.ToString("N2")
+                            </strong>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Category Breakdown -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h4 class="mb-0">Category Breakdown</h4>
+        </div>
+
+        <div class="card-body">
+
+            @if (Model.CategoryBreakdown != null && Model.CategoryBreakdown.Any())
+            {
+                <div class="table-responsive">
+
+                    <table class="table table-bordered table-hover">
+
+                        <thead class="table-light">
+                            <tr>
+                                <th>Category</th>
+                                <th>Current Month</th>
+                                <th>Previous Month</th>
+                                <th>% Of Total</th>
+                                <th>% Change</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var category in Model.CategoryBreakdown)
+                            {
+                                <tr>
+
+                                    <td>@category.CategoryName</td>
+
+                                    <td>
+                                        ₹@category.TotalAmountSpentCurrentMonth.ToString("N2")
+                                    </td>
+
+                                    <td>
+                                        ₹@category.TotalAmountSpentPreviousMonth.ToString("N2")
+                                    </td>
+
+                                    <td>
+                                        @category.PercentageOfTotal.ToString("0.00")%
+                                    </td>
+
+                                    <td>
+
+                                        @if (category.PercentageChangeFromPreviousMonth > 0)
+                                        {
+                                            <span class="text-danger">
+                                                +@category.PercentageChangeFromPreviousMonth.ToString("0.00")%
+                                            </span>
+                                        }
+                                        else if (category.PercentageChangeFromPreviousMonth < 0)
+                                        {
+                                            <span class="text-success">
+                                                @category.PercentageChangeFromPreviousMonth.ToString("0.00")%
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span>0%</span>
+                                        }
+
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            }
+            else
+            {
+                <p>No category data available.</p>
+            }
+
+        </div>
+    </div>
+
+</div>

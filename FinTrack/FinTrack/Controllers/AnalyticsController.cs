@@ -1,5 +1,8 @@
-﻿using FinTrack.Service.IService;
+﻿using FinTrack.Models.DTOs.AnalyticsDtos;
+using FinTrack.Models.ViewModels;
+using FinTrack.Service.IService;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace FinTrack.Controllers
 {
@@ -11,10 +14,19 @@ namespace FinTrack.Controllers
         {
             _analyticsService = analyticsService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var analyticsData = _analyticsService.GetAnalyticsDataAsync();
-            return View(analyticsData);
+            AnalyticsDto analyticsDto = _analyticsService.GetAnalyticsData();
+            List<CategoryBreakdownDto> categoryBreakdown = await _analyticsService.GetCategoryBreakdown();
+            AnalyticsInsightDto analyticsInsight = _analyticsService.GetAnalyticsInsight();
+            AnalyticsViewModel analyticsViewModel = new AnalyticsViewModel
+            {
+                Analytics = analyticsDto,
+                CategoryBreakdown = categoryBreakdown,
+                AnalyticsInsight = analyticsInsight
+            };
+
+            return View(analyticsViewModel);
         }
     }
 }

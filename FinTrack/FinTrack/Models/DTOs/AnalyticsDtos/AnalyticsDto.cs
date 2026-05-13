@@ -1,8 +1,7 @@
-﻿namespace FinTrack.Models.DTOs
+﻿namespace FinTrack.Models.DTOs.AnalyticsDtos
 {
     public class AnalyticsDto
     {
-
         public decimal CurrentMonthExpense { get; set; }
         public decimal PreviousMonthExpense { get; set; }
         public float ExpensePercentageChange { get; set; }
