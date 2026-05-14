@@ -54,7 +54,15 @@ namespace FinTrack.Controllers
         [ActionName("Delete")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _categoryService.DeleteCategory(id);
+            try
+            {
+                await _categoryService.DeleteCategory(id);
+                TempData["Success"] = "Category deleted successfully";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = $"Cannot delete category since there is/are transactions with this category";
+            }
             return RedirectToAction(nameof(Index));
         }
     }

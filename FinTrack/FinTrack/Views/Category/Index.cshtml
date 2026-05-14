@@ -5,6 +5,20 @@
     ViewData["Title"] = "Categories";
 }
 
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
 <div class="col-12 d-flex justify-content-end gap-2">
     <a asp-action="Create" class="btn btn-primary">
         <i class="bi bi-file-plus"></i> Add new category
@@ -32,8 +46,8 @@ else
                     <td>@c.Name</td>
                     <td>
                         <div class="w-75 btn-group" role="group">
-                            <form asp-controller="Category" asp-action="Delete" asp-route-id="@c.Id" class="btn btn-primary mx-2">
-                                <button type="submit" class="btn-danger">Delete</button>
+                            <form asp-controller="Category" asp-action="Delete" asp-route-id="@c.Id" method="post">
+                                <button type="submit" class="btn btn-danger mx-2">Delete</button>
                             </form>
                         </div>
                     </td>
