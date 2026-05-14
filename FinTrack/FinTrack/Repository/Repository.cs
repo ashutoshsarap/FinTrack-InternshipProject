@@ -1,4 +1,5 @@
 ﻿using FinTrack.Data;
+using FinTrack.Models.Entity;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
 using Microsoft.EntityFrameworkCore;
@@ -33,7 +34,7 @@ namespace FinTrack.Repository
             {
                 query= query.Include(includeProperties);
             }
-            if (typeof(T).Equals(typeof(FinTrack.Models.Entity.Category)))
+            if (typeof(T).Equals(typeof(Category)))
             {
                 return query.Where(e => EF.Property<string>(e, "ApplicationUserId") == _currentUserId || EF.Property<bool>(e, "IsSystemDefined") == true ).ToList();
             }
@@ -50,7 +51,6 @@ namespace FinTrack.Repository
             {
                 query = query.Include(includeProperties);
             }
-
 
             // e => EF.Property<int>(e, "Id") == id ->  Dynamically access the "Id" property of the entity using EF.Property
             //Equivalent to e => e.Id == id, but allows for more flexibility when the property name is not known at compile time.

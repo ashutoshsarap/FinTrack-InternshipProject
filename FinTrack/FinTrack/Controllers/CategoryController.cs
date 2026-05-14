@@ -2,7 +2,6 @@
 using FinTrack.Service.IService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace FinTrack.Controllers
 {
