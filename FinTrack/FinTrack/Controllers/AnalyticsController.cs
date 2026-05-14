@@ -1,11 +1,13 @@
 ﻿using FinTrack.Models.DTOs.AnalyticsDtos;
 using FinTrack.Models.ViewModels;
 using FinTrack.Service.IService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace FinTrack.Controllers
 {
+    [Authorize]
     public class AnalyticsController : Controller
     {
         private readonly IAnalyticsService _analyticsService;

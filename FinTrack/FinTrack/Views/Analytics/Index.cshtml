@@ -111,9 +111,19 @@
                             Highest Spending Day
                         </h6>
 
-                        <h5>
-                            @Model.AnalyticsInsight.DateSpentMostOn.ToString("dd-MMM-yyyy")
-                        </h5>
+                        @if(Model.AnalyticsInsight.DateSpentMostOn == DateTime.MinValue)
+                        {
+                            <h5>
+                                N/A
+                            </h5>
+                        }
+                        else
+                        {
+                            <h5>
+                                @Model.AnalyticsInsight.DateSpentMostOn.ToString("dd-MMM-yyyy")
+                            </h5>
+                        }
+
 
                         <p class="mb-0">
                             Amount Spent:

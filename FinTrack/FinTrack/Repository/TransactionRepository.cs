@@ -171,7 +171,9 @@ namespace FinTrack.Repository
 
                     TotalAmountSpentPreviousMonth = g.Where(t => t.Date.Month == previousMonth).Sum(t => t.Amount),
 
-                    PercentageOfTotal = (float)
+                    PercentageOfTotal =
+                    totalExpenseCurrentMonth == 0 ? 0 :
+                    (float)
                     (g.Where(t => t.Date.Month == currentMonth).Sum(t => t.Amount) / totalExpenseCurrentMonth) * 100,
 
                     PercentageChangeFromPreviousMonth =
@@ -203,8 +205,8 @@ namespace FinTrack.Repository
                                         .OrderByDescending(g => g.TotalAmount)
                                         .FirstOrDefault();
 
-            var highestSpent = topCategory.CategoryName;
-            var amountSpentInHighestCategory = topCategory.TotalAmount;
+            var highestSpent = topCategory?.CategoryName;
+            var amountSpentInHighestCategory = topCategory?.TotalAmount;
 
             var dateSpentMostOn = _dbContext.Transactions
                                             .Where(t => t.ApplicationUserId == _currentUserId &&
@@ -223,13 +225,15 @@ namespace FinTrack.Repository
             var dateSpentMost = dateSpentMostOn?.Date;
             var amountSpentOnThatDay = dateSpentMostOn?.TotalAmount;
 
-            return new AnalyticsInsightDto
+            AnalyticsInsightDto analyticsInsight = new AnalyticsInsightDto
             {
-                CategoryWithHighestExpense = highestSpent,
-                AmountSpentInHighestCategory = amountSpentInHighestCategory,
+                CategoryWithHighestExpense = highestSpent?? "Not found",
+                AmountSpentInHighestCategory = amountSpentInHighestCategory??0.00m,
                 DateSpentMostOn = dateSpentMost ?? DateTime.MinValue,
                 AmountSpentOnThatDay = amountSpentOnThatDay ?? 0
             };
+
+            return analyticsInsight;
         }
     }
 }
