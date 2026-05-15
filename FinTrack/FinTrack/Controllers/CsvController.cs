@@ -24,21 +24,20 @@ namespace FinTrack.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadCsv(IFormFile csvFile)
         {
-            if(csvFile == null || csvFile.Length==0)
-            {
-                TempData["Error"] = "No file found, Upload a file";
-                return RedirectToAction(nameof(Index), "Transaction");
-            }
+            var importResult = await _csvImportService.ImportCsv(csvFile);
 
-            try
-            {
-                await _csvImportService.ImportCsv(csvFile);
-            }
-            catch (Exception ex)
-            {
-                TempData["Error"] = $"Error importing CSV: {ex.Message}";
-                return RedirectToAction(nameof(Index), "Transaction");
-            }
+            TempData["ImportResult"] = $@"
+                                        <ul>
+                                            <li><strong>Records Imported:</strong> {importResult.RecordsImported}</li>
+                                            <li><strong>Total Added:</strong> {importResult.TotalRecordsAdded}</li>
+                                            <li><strong>Duplicates Found:</strong> {importResult.DuplicateRecordsFound}</li>
+                                            <li><strong>Invalid Records:</strong> {importResult.InvalidRecordsFound}</li>
+                                        </ul>
+
+                                        <strong>Errors:</strong>
+                                        <ul>
+                                            {string.Join("", importResult.Errors.Select(e => $"<li>{e}</li>"))}
+                                        </ul>";
 
             return RedirectToAction(nameof(Index), "Transaction");
         }

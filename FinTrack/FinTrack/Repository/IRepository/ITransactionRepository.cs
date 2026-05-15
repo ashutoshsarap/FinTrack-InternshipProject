@@ -20,6 +20,6 @@ namespace FinTrack.Repository.IRepository
         public decimal FindTotalExpenseByMonth(int month);
         public Task<List<CategoryBreakdownDto>> FindCategoryBreakdown(int previousMonth, int currentMonth);
         public AnalyticsInsightDto FindAnalyticsInsight();
-
+        public Task<bool> IsDuplicateTransaction(Transaction transaction);
     }
 }

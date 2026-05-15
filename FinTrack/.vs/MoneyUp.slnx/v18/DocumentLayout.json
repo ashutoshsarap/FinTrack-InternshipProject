@@ -7,16 +7,28 @@
       "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\service\\csvimportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\repository\\irepository\\itransactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\repository\\irepository\\itransactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\views\\transaction\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\views\\transaction\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\controllers\\csvcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\controllers\\csvcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\repository\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\repository\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\models\\dtos\\csvdtos\\csvimportresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\models\\dtos\\csvdtos\\csvimportresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\service\\iservice\\icsvimportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\service\\iservice\\icsvimportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\repository\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\repository\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\models\\entity\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -29,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\models\\dtos\\csvdtos\\csvimportdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\models\\dtos\\csvdtos\\csvimportdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\views\\transaction\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\views\\transaction\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,28 +70,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TransactionRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Repository\\TransactionRepository.cs",
-              "RelativeDocumentMoniker": "FinTrack\\Repository\\TransactionRepository.cs",
-              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Repository\\TransactionRepository.cs",
-              "RelativeToolTip": "FinTrack\\Repository\\TransactionRepository.cs",
-              "ViewState": "AgIAAN0AAAAAnJmZmVkrwO8AAAAIAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "ICsvImportService.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\IService\\ICsvImportService.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Service\\IService\\ICsvImportService.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\IService\\ICsvImportService.cs",
+              "RelativeToolTip": "FinTrack\\Service\\IService\\ICsvImportService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T07:21:52.323Z",
+              "WhenOpened": "2026-05-15T09:34:05.436Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Repository.cs",
-              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Repository\\Repository.cs",
-              "RelativeDocumentMoniker": "FinTrack\\Repository\\Repository.cs",
-              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Repository\\Repository.cs",
-              "RelativeToolTip": "FinTrack\\Repository\\Repository.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAIAwwBAAAAAVAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "CsvImportResult.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\DTOs\\CsvDtos\\CsvImportResult.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Models\\DTOs\\CsvDtos\\CsvImportResult.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\DTOs\\CsvDtos\\CsvImportResult.cs",
+              "RelativeToolTip": "FinTrack\\Models\\DTOs\\CsvDtos\\CsvImportResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T07:17:05.667Z",
+              "WhenOpened": "2026-05-15T09:23:37.665Z",
               "EditorCaption": ""
             },
             {
@@ -94,27 +102,66 @@
               "RelativeDocumentMoniker": "FinTrack\\Service\\CsvImportService.cs",
               "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\CsvImportService.cs",
               "RelativeToolTip": "FinTrack\\Service\\CsvImportService.cs",
-              "ViewState": "AgIAABQAAADAubu7u7sXwCEAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-15T05:57:18.826Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "CsvController.cs",
               "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Controllers\\CsvController.cs",
               "RelativeDocumentMoniker": "FinTrack\\Controllers\\CsvController.cs",
               "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Controllers\\CsvController.cs",
               "RelativeToolTip": "FinTrack\\Controllers\\CsvController.cs",
-              "ViewState": "AgIAABAAAAAANDMzM/MhwCQAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAABA/////78kwBQAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-15T05:53:57.204Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Views\\Transaction\\Index.cshtml",
+              "RelativeDocumentMoniker": "FinTrack\\Views\\Transaction\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Views\\Transaction\\Index.cshtml",
+              "RelativeToolTip": "FinTrack\\Views\\Transaction\\Index.cshtml",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAwwBcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-15T06:36:11.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ITransactionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Repository\\IRepository\\ITransactionRepository.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Repository\\IRepository\\ITransactionRepository.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Repository\\IRepository\\ITransactionRepository.cs",
+              "RelativeToolTip": "FinTrack\\Repository\\IRepository\\ITransactionRepository.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAmwBYAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T08:43:05.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TransactionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Repository\\TransactionRepository.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Repository\\TransactionRepository.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Repository\\TransactionRepository.cs",
+              "RelativeToolTip": "FinTrack\\Repository\\TransactionRepository.cs",
+              "ViewState": "AgIAAN8AAAAAAAAAAAAAAO8AAABnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T07:21:52.323Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Category.cs",
               "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\Entity\\Category.cs",
               "RelativeDocumentMoniker": "FinTrack\\Models\\Entity\\Category.cs",
@@ -122,12 +169,11 @@
               "RelativeToolTip": "FinTrack\\Models\\Entity\\Category.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T06:15:58.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-15T06:15:58.863Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "TransactionController.cs",
               "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Controllers\\TransactionController.cs",
               "RelativeDocumentMoniker": "FinTrack\\Controllers\\TransactionController.cs",
@@ -139,7 +185,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "CsvImportDto.cs",
               "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\DTOs\\CsvDtos\\CsvImportDto.cs",
               "RelativeDocumentMoniker": "FinTrack\\Models\\DTOs\\CsvDtos\\CsvImportDto.cs",
@@ -151,7 +197,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Transaction.cs",
               "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\Entity\\Transaction.cs",
               "RelativeDocumentMoniker": "FinTrack\\Models\\Entity\\Transaction.cs",
@@ -163,19 +209,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Views\\Transaction\\Index.cshtml",
-              "RelativeDocumentMoniker": "FinTrack\\Views\\Transaction\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Views\\Transaction\\Index.cshtml",
-              "RelativeToolTip": "FinTrack\\Views\\Transaction\\Index.cshtml",
-              "ViewState": "AgIAAAoAAAAAGjMzMzMrwCgAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-15T06:36:11.864Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Program.cs",
               "RelativeDocumentMoniker": "FinTrack\\Program.cs",
@@ -187,7 +221,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "Add.cshtml",
               "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Views\\Transaction\\Add.cshtml",
               "RelativeDocumentMoniker": "FinTrack\\Views\\Transaction\\Add.cshtml",

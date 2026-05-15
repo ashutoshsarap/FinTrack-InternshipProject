@@ -1,7 +1,9 @@
-﻿namespace FinTrack.Service.IService
+﻿using FinTrack.Models.DTOs.CsvDtos;
+
+namespace FinTrack.Service.IService
 {
     public interface ICsvImportService
     {
-        Task ImportCsv(IFormFile csvFile);
+        Task<CsvImportResult> ImportCsv(IFormFile csvFile);
     }
 }

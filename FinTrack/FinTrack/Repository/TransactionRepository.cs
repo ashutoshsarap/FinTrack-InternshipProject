@@ -237,6 +237,17 @@ namespace FinTrack.Repository
             return analyticsInsight;
         }
 
-        
+        //Adding this method to check if a duplicate transaction exists before adding a new transaction
+        public async Task<bool> IsDuplicateTransaction(Transaction transaction)
+        {
+            var isDuplicate = await _dbContext.Transactions.AnyAsync(t => t.ApplicationUserId == _currentUserId &&
+                                                            t.IsDeleted == false &&
+                                                            t.Amount == transaction.Amount &&
+                                                            t.Date == transaction.Date &&
+                                                            t.Type == transaction.Type &&
+                                                            t.PaymentMode == transaction.PaymentMode &&
+                                                            t.CategoryId == transaction.CategoryId);
+            return isDuplicate;
+        }
     }
 }

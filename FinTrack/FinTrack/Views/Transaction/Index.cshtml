@@ -18,6 +18,12 @@
         @TempData["Error"]
     </div>
 }
+@if (TempData["ImportResult"] != null)
+{
+    <div class="alert alert-info">
+        @Html.Raw(TempData["ImportResult"])
+    </div>
+}
 
 <div class="col-12 d-flex justify-content-end gap-2">
     <a asp-action="Create" class="btn btn-primary">

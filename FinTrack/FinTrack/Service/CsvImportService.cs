@@ -5,6 +5,7 @@ using NuGet.Packaging.Signing;
 using System.Globalization;
 using FinTrack.Models.Entity;
 using FinTrack.Models.Enums;
+using FinTrack.Models.DTOs.CsvDtos;
 
 namespace FinTrack.Service
 {
@@ -18,10 +19,19 @@ namespace FinTrack.Service
             _unitOfWork = unitOfWork;
             _currentUserService = currentUserService;
         }
-        public async Task ImportCsv(IFormFile csvFile)
+        public async Task<CsvImportResult> ImportCsv(IFormFile csvFile)
         {
 
             string currentUserId = _currentUserService.UserId;
+
+            CsvImportResult csvImportResult = new CsvImportResult()
+            {
+                RecordsImported = 0,
+                TotalRecordsAdded = 0,
+                DuplicateRecordsFound = 0,
+                InvalidRecordsFound = 0,
+                Errors = new List<string>()
+            };
 
             var stream = csvFile.OpenReadStream();
 
@@ -29,7 +39,9 @@ namespace FinTrack.Service
 
             var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
-            var records = csv.GetRecords<Models.DTOs.CsvDtos.CsvImportDto>().ToList();
+            var records = csv.GetRecords<CsvImportDto>().ToList();
+
+            csvImportResult.RecordsImported = records.Count;
 
             foreach (var record in records)
             {
@@ -48,9 +60,19 @@ namespace FinTrack.Service
                     await _unitOfWork.Save();
                 }
 
-                //Parse the transaction type and payment mode from the CSV from string to enum and if the parsing fails, throw an exception
-                TransactionType transactionType = Enum.TryParse<TransactionType>(record.Type, ignoreCase: true, out var parsedType) ? parsedType : throw new Exception($"Invalid transaction type: {record.Type}");
-                PaymentMode paymentMode = Enum.TryParse<PaymentMode>(record.PaymentMode, ignoreCase: true, out var parsedPaymentMode) ? parsedPaymentMode : throw new Exception($"Invalid payment mode: {record.PaymentMode}");
+                //Checking if the transaction type and payment mode are valid enums, if not add an error message to the csvImportResult and skip that record
+                if (!Enum.TryParse(record.Type, true, out TransactionType transactionType))
+                {
+                    csvImportResult.InvalidRecordsFound++;
+                    csvImportResult.Errors.Add($"Invalid transaction type {record.Type} for record with description: {record.Description}. Skipping this record.");
+                    continue; // Skip this record and continue with the next one
+                }
+                if (!Enum.TryParse(record.PaymentMode, true, out PaymentMode paymentMode))
+                {
+                    csvImportResult.InvalidRecordsFound++;
+                    csvImportResult.Errors.Add($"Invalid Payment mode {record.PaymentMode} for record with description: {record.Description}. Skipping this record.");
+                    continue; // Skip this record and continue with the next one
+                }
 
                 var transaction = new Transaction()
                 {
@@ -67,25 +89,18 @@ namespace FinTrack.Service
                     DeletedAt = null
                 };
 
-                if (transaction != null)
+                //Check for duplicate transactions based on the description, date and amount. If a duplicate transaction is found, throw an exception with the details of the duplicate transaction
+                if (await _unitOfWork.Transaction.IsDuplicateTransaction(transaction))
                 {
-                    var exist = _unitOfWork.Transaction.FindTransactionByFilterAsync(t => t.Description == transaction.Description &&
-                                                                                     t.Amount == transaction.Amount &&
-                                                                                     t.Date == transaction.Date &&
-                                                                                     t.PaymentMode == transaction.PaymentMode &&
-                                                                                     t.Type == transaction.Type &&
-                                                                                     t.CategoryId == transaction.CategoryId, null);
-
-                    if (exist != null)
-                    {
-                        throw new Exception($"Duplicate transaction found: {transaction.Description} on {transaction.Date}");
-                    }
+                    csvImportResult.DuplicateRecordsFound++;
+                    csvImportResult.Errors.Add($"Duplicate transaction found: Description: {transaction.Description}, Date: {transaction.Date}, Amount: {transaction.Amount}");
+                    continue; // Skip the duplicate transaction and continue with the next record
                 }
-
-                    await _unitOfWork.Transaction.CreateAsync(transaction);
+                csvImportResult.TotalRecordsAdded++;
+                await _unitOfWork.Transaction.CreateAsync(transaction);
             }
             await _unitOfWork.Save();
+            return csvImportResult;
         }
-
     }
 }
