@@ -30,7 +30,15 @@ namespace FinTrack.Controllers
                 return RedirectToAction(nameof(Index), "Transaction");
             }
 
-            await _csvImportService.ImportCsv(csvFile);
+            try
+            {
+                await _csvImportService.ImportCsv(csvFile);
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = $"Error importing CSV: {ex.Message}";
+                return RedirectToAction(nameof(Index), "Transaction");
+            }
 
             return RedirectToAction(nameof(Index), "Transaction");
         }

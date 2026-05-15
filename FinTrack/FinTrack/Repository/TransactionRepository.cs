@@ -7,6 +7,7 @@ using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 //V2
 namespace FinTrack.Repository
@@ -177,7 +178,7 @@ namespace FinTrack.Repository
                     (g.Where(t => t.Date.Month == currentMonth).Sum(t => t.Amount) / totalExpenseCurrentMonth) * 100,
 
                     PercentageChangeFromPreviousMonth =
-                    g.Where(t => t.Date.Month == previousMonth).Sum(t => t.Amount)==0? 0 :
+                    g.Where(t => t.Date.Month == previousMonth).Sum(t => t.Amount) == 0 ? 0 :
                     (float)
                     ((g.Where(t => t.Date.Month == currentMonth).Sum(t => t.Amount) - g.Where(t => t.Date.Month == previousMonth).Sum(t => t.Amount)) / g.Where(t => t.Date.Month == previousMonth).Sum(t => t.Amount)) * 100
                 })
@@ -188,7 +189,7 @@ namespace FinTrack.Repository
 
         public AnalyticsInsightDto FindAnalyticsInsight()
         {
-            var currentMonth = DateTime.Today.Month;    
+            var currentMonth = DateTime.Today.Month;
 
             var topCategory = _dbContext.Transactions
                                         .Include("Category")
@@ -227,13 +228,15 @@ namespace FinTrack.Repository
 
             AnalyticsInsightDto analyticsInsight = new AnalyticsInsightDto
             {
-                CategoryWithHighestExpense = highestSpent?? "Not found",
-                AmountSpentInHighestCategory = amountSpentInHighestCategory??0.00m,
+                CategoryWithHighestExpense = highestSpent ?? "Not found",
+                AmountSpentInHighestCategory = amountSpentInHighestCategory ?? 0.00m,
                 DateSpentMostOn = dateSpentMost ?? DateTime.MinValue,
                 AmountSpentOnThatDay = amountSpentOnThatDay ?? 0
             };
 
             return analyticsInsight;
         }
+
+        
     }
 }
