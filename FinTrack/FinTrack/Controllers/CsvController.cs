@@ -1,8 +1,11 @@
 ﻿using FinTrack.Service.IService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Text;
 
 namespace FinTrack.Controllers
 {
+    [Authorize]
     public class CsvController : Controller
     {
         private readonly ICsvExportService _csvExportService;    
@@ -40,6 +43,28 @@ namespace FinTrack.Controllers
                                         </ul>";
 
             return RedirectToAction(nameof(Index), "Transaction");
+        }
+
+        [HttpGet]
+        public IActionResult DownloadCsvTemplate()
+        {
+            var csvBuilder = new StringBuilder();
+
+            csvBuilder.AppendLine("Amount,Date,Type,PaymentMode,Description,CategoryName");
+
+            csvBuilder.AppendLine(
+                "500,2026-01-15,Expense,Cash,Lunch,Food");
+
+            csvBuilder.AppendLine(
+                "2000,2026-01-16,Income,UPI,Freelance,Salary");
+
+            var bytes = Encoding.UTF8.GetBytes(csvBuilder.ToString());
+
+            return File(
+                bytes,
+                "text/csv",
+                "Import_Template.csv"
+            );
         }
     }
 }
