@@ -1,6 +1,6 @@
 ﻿namespace FinTrack.Service.IService
 {
-    public interface IGenerateCsvService
+    public interface ICsvExportService
     {
         public Task<MemoryStream> GenerateCsv();
     }

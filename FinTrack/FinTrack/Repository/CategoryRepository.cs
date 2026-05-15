@@ -2,6 +2,7 @@
 using FinTrack.Models.Entity;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace FinTrack.Repository
@@ -31,6 +32,12 @@ namespace FinTrack.Repository
             return Task.CompletedTask;
         }
 
-
+        public Category FindCategoryByFilter(Expression<Func<Category, bool>> filter)
+        {
+            var category = _dbContext.Categories
+                                     .Where(c => c.ApplicationUserId == _currentUserId || c.IsSystemDefined)
+                                     .Where(filter);
+            return category.FirstOrDefault();
+        }
     }
 }

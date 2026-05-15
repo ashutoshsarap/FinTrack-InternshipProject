@@ -33,9 +33,11 @@ builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddScoped<IAnalyticsService, AnalyticsService>();
-builder.Services.AddScoped<IGenerateCsvService, GenerateCsvService>();
+builder.Services.AddScoped<ICsvExportService, CsvExportService>();
+builder.Services.AddScoped<ICsvImportService, CsvImportService>();
 
 builder.Services.AddScoped<IEmailSender, DummyEmailService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
