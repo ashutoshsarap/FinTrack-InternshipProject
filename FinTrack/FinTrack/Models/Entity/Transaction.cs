@@ -15,7 +15,7 @@ namespace FinTrack.Models.Entity
         public PaymentMode PaymentMode { get; set; }
         public string Description { get; set; }
         public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
         public bool IsDeleted { get; set; }
 
         //Making deletedAt nullable to indicate that it will only have a value when the transaction is deleted

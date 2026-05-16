@@ -17,8 +17,8 @@ namespace FinTrack.Repository.IRepository
         public Task<List<CategoryExpenseDto>> FindCategoryWiseExpense();
         public Task<List<Transaction>> FindRecentTransactions();
         public decimal FindTotalAmountByType(TransactionType type);
-        public decimal FindTotalExpenseByMonth(int month);
-        public Task<List<CategoryBreakdownDto>> FindCategoryBreakdown(int previousMonth, int currentMonth);
+        public decimal FindTotalExpenseByMonth(DateTime monthStart, DateTime monthEnd);
+        public Task<List<CategoryBreakdownDto>> FindCategoryBreakdown(DateTime currentMonthYearInfo);
         public AnalyticsInsightDto FindAnalyticsInsight();
         public Task<bool> IsDuplicateTransaction(Transaction transaction);
     }

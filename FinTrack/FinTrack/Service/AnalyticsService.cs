@@ -16,15 +16,17 @@ namespace FinTrack.Service
         public AnalyticsDto GetAnalyticsData()
         {
             //Calculating date related values
-            var today = DateTime.Today;
-            var previousMonth = DateTime.Now.AddMonths(-1).Month;
-            var currentMonth = today.Month;
+            DateTime today = DateTime.Today;
+            DateTime currentMonthStart = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            DateTime currentMonthEnd = currentMonthStart.AddMonths(1).AddDays(-1);
+            DateTime previousMonthStart = currentMonthStart.AddMonths(-1);
+            DateTime previousMonthEnd = currentMonthStart.AddDays(-1);
             var daysPassed = today.Day;
             var daysInMonth = DateTime.DaysInMonth(today.Year, today.Month);
 
             //Calculating data for analytics
-            var previousMonthExpense = _unitOfWork.Transaction.FindTotalExpenseByMonth(previousMonth);
-            var currentMonthExpense = _unitOfWork.Transaction.FindTotalExpenseByMonth(currentMonth);
+            var previousMonthExpense = _unitOfWork.Transaction.FindTotalExpenseByMonth(currentMonthStart,currentMonthEnd);
+            var currentMonthExpense = _unitOfWork.Transaction.FindTotalExpenseByMonth(previousMonthStart, previousMonthEnd);
 
             var ExpensePercentageChange = previousMonthExpense == 0 ? 0 : ((currentMonthExpense - previousMonthExpense) / previousMonthExpense) * 100;
 
@@ -52,13 +54,9 @@ namespace FinTrack.Service
         {
 
             //Calculating date related values
-            var today = DateTime.Today;
-            var previousMonth = DateTime.Now.AddMonths(-1).Month;
-            var currentMonth = today.Month;
-            var daysPassed = today.Day;
-            var daysInMonth = DateTime.DaysInMonth(today.Year, today.Month);
+            DateTime currentMonthYearInfo = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);    
 
-            var categoryBreakdown = await _unitOfWork.Transaction.FindCategoryBreakdown(previousMonth, currentMonth);
+            var categoryBreakdown = await _unitOfWork.Transaction.FindCategoryBreakdown(currentMonthYearInfo);
             return categoryBreakdown;
         }
 

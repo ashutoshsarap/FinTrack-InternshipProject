@@ -1,4 +1,5 @@
-﻿using FinTrack.Data;
+﻿using FinTrack.CustomExceptions;
+using FinTrack.Data;
 using FinTrack.Models.DTOs;
 using FinTrack.Models.Entity;
 using FinTrack.Models.ViewModels;
@@ -76,6 +77,9 @@ namespace FinTrack.Controllers
         {
             
             var userId = _currentUser.UserId;
+            var categories = await _categoryService.GetAllCategoriesAsync();
+
+
             if (ModelState.IsValid)
             {
                 try
@@ -90,13 +94,21 @@ namespace FinTrack.Controllers
                         CategoryId = model.CategoryId
                     };
                     await _transactionService.CreateTransactionAsync(userId,transactionCreateDto);
+                    TempData["Success"] = $"Transaction added successfully";
                     return RedirectToAction(nameof(Index), "Dashboard");
+                }
+                catch (DuplicateRecordException ex)
+                {
+                    TempData["Error"] = $"Transaction already exists";
+                    ModelState.AddModelError(string.Empty, $"Transaction already exists");
                 }
                 catch (Exception ex)
                 {
+                    TempData["Error"] = $"An error occurred while creating the transaction: {ex.Message}";
                     ModelState.AddModelError(string.Empty, $"An error occurred while creating the transaction: {ex.Message}");
                 }
             }
+            model.Categories = new SelectList(categories, "Id", "Name");
             return View(model);
 
         }
@@ -181,6 +193,11 @@ namespace FinTrack.Controllers
                 await _transactionService.UpdateTransaction(model.Id, userId, transactionUpdateDto);
                 return RedirectToAction(nameof(Index));
 
+            }
+            catch(DuplicateRecordException ex)
+            {
+                TempData["Error"] = $"A transaction with the same details already exists: {ex.Message}";
+                ModelState.AddModelError(string.Empty, $"A transaction with the same details already exists: {ex.Message}");
             }
             catch (Exception ex)
             {

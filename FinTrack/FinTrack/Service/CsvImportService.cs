@@ -47,6 +47,18 @@ namespace FinTrack.Service
             {
                 var category = _unitOfWork.Category.FindCategoryByFilter(c => c.Name == record.CategoryName);
 
+                if(record.Amount<=0)
+                {
+                    csvImportResult.InvalidRecordsFound++;
+                    csvImportResult.Errors.Add($"Invalid amount {record.Amount} for record with description: {record.Description}. Skipping this record.");
+                    continue; // Skip this record and continue with the next one
+                }
+                if(record.Date > DateTime.Now)
+                {
+                    csvImportResult.InvalidRecordsFound++;
+                    csvImportResult.Errors.Add($"Invalid date {record.Date} for record with description: {record.Description}. Skipping this record.");
+                    continue; // Skip this record and continue with the next one
+                }
                 //Adding a check to see if the category exists in the database, if not create a new category and then associate the transaction with the category
                 if (category == null)
                 {

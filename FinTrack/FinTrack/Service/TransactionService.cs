@@ -7,6 +7,7 @@ using FinTrack.Service.IService;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using FinTrack.Models.ViewModels;
+using FinTrack.CustomExceptions;
 //V2
 namespace FinTrack.Service
 {
@@ -37,11 +38,6 @@ namespace FinTrack.Service
                 throw new ArgumentException("Date cannot be in the future.");
             }
             
-            //if (!_dbContext.Categories.Any(c => c.Id == transactionCreateDto.CategoryId))
-            //{
-            //    throw new ArgumentException("Category does not exist.");
-            //}
-
             var transaction = new Transaction
             {
                 Amount = transactionCreateDto.Amount,
@@ -51,11 +47,19 @@ namespace FinTrack.Service
                 Description = transactionCreateDto.Description,
                 CategoryId = transactionCreateDto.CategoryId,
                 CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now,
+                UpdatedAt = null,
                 ApplicationUserId = userId
             };
 
-            await _unitOfWork.Transaction.CreateAsync(transaction);
+            if (!await _unitOfWork.Transaction.IsDuplicateTransaction(transaction))
+            {
+                await _unitOfWork.Transaction.CreateAsync(transaction);
+            }
+            else
+            {
+                throw new DuplicateRecordException("Duplicate transaction found");
+            }
+            
             await _unitOfWork.Save();
         }
 
@@ -185,13 +189,34 @@ namespace FinTrack.Service
                 throw new ArgumentException("Transaction not found.");
             }
 
-            transaction.Amount = transactionUpdateDto.Amount;
-            transaction.Date = transactionUpdateDto.Date;
-            transaction.Type = transactionUpdateDto.Type;
-            transaction.PaymentMode = transactionUpdateDto.PaymentMode;
-            transaction.Description = transactionUpdateDto.Description;
-            transaction.CategoryId = transactionUpdateDto.CategoryId;
-            transaction.UpdatedAt = DateTime.Now;
+            Transaction checkTransaction = new Transaction
+            {
+                Id = id,
+                Amount = transactionUpdateDto.Amount,
+                Date = transactionUpdateDto.Date,
+                Type = transactionUpdateDto.Type,
+                PaymentMode = transactionUpdateDto.PaymentMode,
+                Description = transactionUpdateDto.Description,
+                CategoryId = transactionUpdateDto.CategoryId,
+                CreatedAt = transaction.CreatedAt,
+                UpdatedAt = DateTime.Now,
+                ApplicationUserId = userId
+            };
+
+            if (!await _unitOfWork.Transaction.IsDuplicateTransaction(checkTransaction))
+            {
+                transaction.Amount = transactionUpdateDto.Amount;
+                transaction.Date = transactionUpdateDto.Date;
+                transaction.Type = transactionUpdateDto.Type;
+                transaction.PaymentMode = transactionUpdateDto.PaymentMode;
+                transaction.Description = transactionUpdateDto.Description;
+                transaction.CategoryId = transactionUpdateDto.CategoryId;
+                transaction.UpdatedAt = DateTime.Now;
+            }
+            else
+            {
+                throw new DuplicateRecordException("Duplicate transaction found");
+            }
 
 
             await _unitOfWork.Save();
