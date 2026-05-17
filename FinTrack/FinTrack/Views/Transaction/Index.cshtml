@@ -117,7 +117,7 @@
 
                 @foreach (var category in ViewBag.Categories)
                 {
-                    <option value="@category.Id">
+                    <option value="@category.Id" selected="@(ViewBag.Filter?.CategoryId == category.Id)">
                         @category.Name
                     </option>
                 }
@@ -136,11 +136,11 @@
                     All Types
                 </option>
 
-                <option value="Income">
+                <option value="Income" selected="@(ViewBag.Filter?.TransactionType?.ToString() == "Income")">
                     Income
                 </option>
 
-                <option value="Expense">
+                <option value="Expense" selected="@(ViewBag.Filter?.TransactionType?.ToString() == "Expense")">
                     Expense
                 </option>
 
@@ -158,15 +158,39 @@
                 <option value="">
                     All Modes
                 </option>
-                <option value="Cash">Cash</option>
-                <option value="UPI">UPI</option>
-                <option value="CreditCard">Credit Card</option>
-                <option value="DebitCard">Debit Card</option>
-                <option value="NetBanking">Net banking</option>
+                <option value="Cash" selected="@(ViewBag.Filter?.PaymentMode?.ToString() == "Cash")">Cash</option>
+                <option value="UPI" selected="@(ViewBag.Filter?.PaymentMode?.ToString() == "UPI")">UPI</option>
+                <option value="CreditCard" selected="@(ViewBag.Filter?.PaymentMode?.ToString() == "CreditCard")">Credit Card</option>
+                <option value="DebitCard" selected="@(ViewBag.Filter?.PaymentMode?.ToString() == "DebitCard")">Debit Card</option>
+                <option value="NetBanking" selected="@(ViewBag.Filter?.PaymentMode?.ToString() == "NetBanking")">Net banking</option>
 
             </select>
         </div>
+
+        <div class="col-md-2">
+            <label class="form-label fw-semibold"">
+                Sort By
+            </label>
+            <select name="SortBy"
+                    class="form-select">
+                <option value="">
+                    Date (Oldest)
+                </option>
+                <option value="date_desc" selected="@(ViewBag.Filter?.SortBy == "date_desc")">
+                    Date (Newest)
+                </option>
+                <option value="amount_desc" selected="@(ViewBag.Filter?.SortBy == "amount_desc")">
+                    Amount (High to Low)
+                </option>
+                <option value="amount_asc" selected="@(ViewBag.Filter?.SortBy == "amount_asc")">
+                    Amount (Low to High)
+                </option>
+            </select>
+        </div>
+
     </div>
+
+    
 
     <div class="mt-3 d-flex gap-2">
         <button type="submit" class="btn btn-primary">

@@ -9,5 +9,6 @@ namespace FinTrack.Models.DTOs
         public TransactionType? TransactionType { get; set; }
         public PaymentMode? PaymentMode { get; set; }
         public int? CategoryId { get; set; }
+        public string? SortBy { get; set; }
     }
 }

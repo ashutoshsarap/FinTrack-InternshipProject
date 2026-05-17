@@ -37,7 +37,15 @@ namespace FinTrack.Repository
             {
                 query = query.Include(includeProperties);
             }
-
+            
+            query = filter.SortBy switch
+            {
+                "date_desc" => query.OrderByDescending(t => t.Date),
+                "amount_asc" => query.OrderBy(t => t.Amount),
+                "amount_desc" => query.OrderByDescending(t => t.Amount),
+                _ => query.OrderBy(t => t.Date)
+            };
+            
             if (filter.StartDate.HasValue)
             {
                 query = query.Where(t => t.Date >= filter.StartDate.Value);
@@ -59,7 +67,6 @@ namespace FinTrack.Repository
                 query = query.Where(t => t.CategoryId == filter.CategoryId.Value);
             }
             return await query.Where(t => t.ApplicationUserId == _currentUserId && t.IsDeleted == false)
-                              .OrderBy(t => t.Date)
                               .ToListAsync();
         }
 

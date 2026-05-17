@@ -32,8 +32,8 @@ namespace FinTrack.Controllers
         }
         public async Task<IActionResult> Index(TransactionFilterDto filter)
         {
-               
-            if(!filter.StartDate.HasValue && !filter.EndDate.HasValue)
+            // If no date range is provided, default to the current month
+            if (!filter.StartDate.HasValue && !filter.EndDate.HasValue)
             {
                 var today = DateTime.Today;
 
