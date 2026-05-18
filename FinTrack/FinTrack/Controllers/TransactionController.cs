@@ -95,7 +95,6 @@ namespace FinTrack.Controllers
                     };
                     await _transactionService.CreateTransactionAsync(userId,transactionCreateDto);
                     TempData["Success"] = $"Transaction added successfully";
-                    ModelState.Clear();
                     return RedirectToAction(nameof(Index), "Dashboard");
                 }
                 catch(InvalidAmountException ex)

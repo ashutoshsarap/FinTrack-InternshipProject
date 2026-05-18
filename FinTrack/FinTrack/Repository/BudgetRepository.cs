@@ -39,7 +39,8 @@ namespace FinTrack.Repository
                                            Id = b.Id,
                                            CategoryId = b.CategoryId,
                                            MonthlyLimitAmount = b.MonthlyLimitAmount,
-                                           CategoryName = b.Category.Name
+                                           CategoryName = b.Category.Name,
+                                           Category = b.Category
                                        })
                                        .ToListAsync();
             return allBudgets;

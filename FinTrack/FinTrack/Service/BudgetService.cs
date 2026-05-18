@@ -11,12 +11,12 @@ namespace FinTrack.Service
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly string _currentUserId;
-        public BudgetService( IUnitOfWork unitOfWork, ICurrentUserService currentUserService)
+        public BudgetService(IUnitOfWork unitOfWork, ICurrentUserService currentUserService)
         {
             _unitOfWork = unitOfWork;
             _currentUserId = currentUserService.UserId;
         }
-        
+
         public async Task CreateBudgetAsync(BudgetCreateDto budgetCreateDto)
         {
 
@@ -30,7 +30,7 @@ namespace FinTrack.Service
                 throw new InvalidAmountException("Monthly limit amount must be greater than zero.");
             }
 
-            if(budgetCreateDto.CategoryId <= 0)
+            if (budgetCreateDto.CategoryId <= 0)
             {
                 throw new ArgumentException("Invalid category ID.", nameof(budgetCreateDto.CategoryId));
             }
@@ -57,7 +57,7 @@ namespace FinTrack.Service
             await _unitOfWork.Save();
         }
 
-        public async Task DeleteBudgetAsync(int budgetId)
+        public async Task DeleteBudget(int budgetId)
         {
             Budget budgetToDelete = await _unitOfWork.Budget.FindBudgetByIdAsync(budgetId);
             if (budgetToDelete != null)
@@ -79,7 +79,7 @@ namespace FinTrack.Service
             return budgets;
         }
 
-        public async Task UpdateBudgetAsync(BudgetUpdateDto budgetUpdateDto)
+        public async Task UpdateBudget(BudgetUpdateDto budgetUpdateDto)
         {
             if (budgetUpdateDto == null)
             {
@@ -111,7 +111,24 @@ namespace FinTrack.Service
             else
             {
                 await _unitOfWork.Save();
-            }            
+            }
+        }
+
+        public async Task<BudgetResponseDto> GetBudgetByIdAsync(int budgetId)
+        {
+            var budget = await _unitOfWork.Budget.FindBudgetByIdAsync(budgetId);
+            if (budget == null)
+            {
+                throw new KeyNotFoundException($"Budget with ID {budgetId} not found.");
+            }
+            return new BudgetResponseDto
+            {
+                Id = budget.Id,
+                CategoryId = budget.CategoryId,
+                MonthlyLimitAmount = budget.MonthlyLimitAmount,
+                CategoryName = budget.Category.Name,
+                Category = budget.Category
+            };
         }
     }
 }

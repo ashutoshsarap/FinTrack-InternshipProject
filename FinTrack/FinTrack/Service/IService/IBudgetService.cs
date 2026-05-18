@@ -8,8 +8,9 @@ namespace FinTrack.Service.IService
 
         Task<IEnumerable<BudgetResponseDto>> GetAllBudgetsByMonthAsync(int month, int year);
         Task CreateBudgetAsync(BudgetCreateDto budget);
-        Task UpdateBudgetAsync(BudgetUpdateDto budget);
-        Task DeleteBudgetAsync(int budgetId);
+        Task UpdateBudget(BudgetUpdateDto budget);
+        Task DeleteBudget(int budgetId);
 
+        Task<BudgetResponseDto> GetBudgetByIdAsync(int budgetId);
     }
 }
