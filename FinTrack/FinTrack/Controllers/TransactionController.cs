@@ -14,7 +14,7 @@ using System.Drawing.Printing;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-//V2
+//V3
 namespace FinTrack.Controllers
 {
     [Authorize]
@@ -31,7 +31,7 @@ namespace FinTrack.Controllers
             _currentUser = curentUser;
         }
         public async Task<IActionResult> Index(TransactionFilterDto filter)
-        {
+         {
             // If no date range is provided, default to the current month
             if (!filter.StartDate.HasValue && !filter.EndDate.HasValue)
             {
@@ -95,7 +95,18 @@ namespace FinTrack.Controllers
                     };
                     await _transactionService.CreateTransactionAsync(userId,transactionCreateDto);
                     TempData["Success"] = $"Transaction added successfully";
+                    ModelState.Clear();
                     return RedirectToAction(nameof(Index), "Dashboard");
+                }
+                catch(InvalidAmountException ex)
+                {
+                    TempData["Error"] = $"Invalid amount: {ex.Message}";
+                    ModelState.AddModelError(string.Empty, $"Invalid amount: {ex.Message}");
+                }
+                catch(InvalidDateException ex)
+                {
+                    TempData["Error"] = $"Invalid date: {ex.Message}";
+                    ModelState.AddModelError(string.Empty, $"Invalid date: {ex.Message}");
                 }
                 catch (DuplicateRecordException ex)
                 {
@@ -121,6 +132,11 @@ namespace FinTrack.Controllers
             try
             {
                 await _transactionService.DeleteTransaction(id, userId);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (RecordNotFoundException ex)
+            {
+                ModelState.AddModelError(string.Empty, $"Transaction not found: {ex.Message}");
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -194,7 +210,22 @@ namespace FinTrack.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
-            catch(DuplicateRecordException ex)
+            catch (RecordNotFoundException ex)
+            {
+                TempData["Error"] = $"Transaction not found: {ex.Message}";
+                ModelState.AddModelError(string.Empty, $"Transaction not found: {ex.Message}");
+            }
+            catch (InvalidAmountException ex)
+            {
+                TempData["Error"] = $"Invalid amount: {ex.Message}";
+                ModelState.AddModelError(string.Empty, $"Invalid amount: {ex.Message}");
+            }
+            catch (InvalidDateException ex)
+            {
+                TempData["Error"] = $"Invalid date: {ex.Message}";
+                ModelState.AddModelError(string.Empty, $"Invalid date: {ex.Message}");
+            }
+            catch (DuplicateRecordException ex)
             {
                 TempData["Error"] = $"A transaction with the same details already exists: {ex.Message}";
                 ModelState.AddModelError(string.Empty, $"A transaction with the same details already exists: {ex.Message}");

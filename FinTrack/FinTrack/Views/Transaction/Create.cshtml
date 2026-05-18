@@ -36,12 +36,12 @@
         <div class="mb-3 row p-1">
             <label asp-for="Amount" class="p-0"></label>
             <input asp-for="Amount" class="form-control" />
-            <span asp-validation-for="Amount" class="texr-danger"></span>
+            <span asp-validation-for="Amount" class="text-danger"></span>
         </div>
         <div class="mb-3 row p-1">
             <label asp-for="Description" class="p-0"></label>
             <input asp-for="Description" class="form-control" />
-            <span asp-validation-for="Description" class="texr-danger"></span>
+            <span asp-validation-for="Description" class="text-danger"></span>
 
         </div>
         <div class="mb-3 row p-1">
@@ -58,21 +58,21 @@
             <select asp-for="TransactionType" class="form-control" asp-items="Html.GetEnumSelectList<TransactionType>()">
                 <option value="">--Select Transaction type--</option>
             </select>
-            <span asp-validation-for="TransactionType" class="texr-danger"></span>
+            <span asp-validation-for="TransactionType" class="text-danger"></span>
         </div>
         <div class="mb-3 row p-1">
             <label asp-for="PaymentMode" class="p-0">Payment Mode</label>
             <select asp-for="PaymentMode" class="form-control" asp-items="Html.GetEnumSelectList<PaymentMode>()">
                 <option value="">--Select Payment Mode--</option>
             </select>
-            <span asp-validation-for="PaymentMode" class="texr-danger"></span>
+            <span asp-validation-for="PaymentMode" class="text-danger"></span>
         </div>
         <div class="mb-3 row p-1">
             <label asp-for="CategoryId" class="p-0">Category</label>
             <select asp-for="CategoryId" class="form-control" asp-items="Model.Categories">
                 <option value="">--Select Category--</option>
             </select>
-            <span asp-validation-for="CategoryId" class="texr-danger"></span>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
         </div>
         <div class="row">
             <div class="col-6 col-md-3">

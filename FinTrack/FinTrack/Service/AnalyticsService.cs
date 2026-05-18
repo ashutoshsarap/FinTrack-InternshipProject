@@ -21,27 +21,27 @@ namespace FinTrack.Service
             DateTime currentMonthEnd = currentMonthStart.AddMonths(1).AddDays(-1);
             DateTime previousMonthStart = currentMonthStart.AddMonths(-1);
             DateTime previousMonthEnd = currentMonthStart.AddDays(-1);
-            var daysPassed = today.Day;
-            var daysInMonth = DateTime.DaysInMonth(today.Year, today.Month);
+            int daysPassed = today.Day;
+            int daysInMonth = DateTime.DaysInMonth(today.Year, today.Month);
 
             //Calculating data for analytics
-            var previousMonthExpense = _unitOfWork.Transaction.FindTotalExpenseByMonth(currentMonthStart,currentMonthEnd);
-            var currentMonthExpense = _unitOfWork.Transaction.FindTotalExpenseByMonth(previousMonthStart, previousMonthEnd);
+            decimal previousMonthExpense = _unitOfWork.Transaction.FindTotalExpenseByMonth(currentMonthStart,currentMonthEnd);
+            decimal currentMonthExpense = _unitOfWork.Transaction.FindTotalExpenseByMonth(previousMonthStart, previousMonthEnd);
 
-            var ExpensePercentageChange = previousMonthExpense == 0 ? 0 : ((currentMonthExpense - previousMonthExpense) / previousMonthExpense) * 100;
+            float expensePercentageChange = (float)((float) previousMonthExpense == 0 ? 0 : ((currentMonthExpense - previousMonthExpense) / previousMonthExpense) * 100);
 
-            var averageDailyExpense = currentMonthExpense / daysInMonth;
-            var averageWeeklyExpense = averageDailyExpense * 7;
+            decimal averageDailyExpense = currentMonthExpense / daysInMonth;
+            decimal averageWeeklyExpense = averageDailyExpense * 7;
 
             //Predicted monthly expense = S + (D * R)
             //S: Amount Spent so far this month. D: Average spent everyday. R: Remaining days in the month
-            var predictedMonthlyExpense = currentMonthExpense + (averageDailyExpense * (daysInMonth - daysPassed));
+            decimal predictedMonthlyExpense = currentMonthExpense + (averageDailyExpense * (daysInMonth - daysPassed));
 
             var analyticsData = new AnalyticsDto
             {
                 CurrentMonthExpense = currentMonthExpense,
                 PreviousMonthExpense = previousMonthExpense,
-                ExpensePercentageChange = (float)Math.Round(ExpensePercentageChange, 2),
+                ExpensePercentageChange = (float)Math.Round(expensePercentageChange, 2),
                 AverageDailyExpense = averageDailyExpense,
                 AverageWeeklyExpense = averageWeeklyExpense,
                 PredictedMonthlyExpense = predictedMonthlyExpense

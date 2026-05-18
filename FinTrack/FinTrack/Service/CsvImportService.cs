@@ -32,14 +32,18 @@ namespace FinTrack.Service
                 InvalidRecordsFound = 0,
                 Errors = new List<string>()
             };
-
+            
+            //Creates stream of byte data from the uploaded file since uploaded files arrive as raw bytes over the HTTP request
             var stream = csvFile.OpenReadStream();
 
-            var reader = new StreamReader(stream);
+            //StreamReader is a tool that helps in converting bytes -> text
+            var streamReader = new StreamReader(stream);
 
-            var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            //CsvReader is a special parser for CSV files, it understands the structure of CSV files and can convert rows of CSV data into C# objects based on the mapping we define in CsvImportDto
+            var csvReader = new CsvReader(streamReader, CultureInfo.InvariantCulture);
 
-            var records = csv.GetRecords<CsvImportDto>().ToList();
+            //Converting CSV rows into C# object
+            var records = csvReader.GetRecords<CsvImportDto>().ToList();
 
             csvImportResult.RecordsImported = records.Count;
 

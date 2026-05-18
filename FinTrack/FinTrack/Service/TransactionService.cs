@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using FinTrack.Models.ViewModels;
 using FinTrack.CustomExceptions;
-//V2
+//V3
 namespace FinTrack.Service
 {
     public class TransactionService : ITransactionService
@@ -68,7 +68,7 @@ namespace FinTrack.Service
             var transaction = await _unitOfWork.Transaction.FindAsync(id, null);
             if (transaction == null)
             {
-                throw new ArgumentException("Transaction not found.");
+                throw new RecordNotFoundException("Transaction not found."); 
             }
             _unitOfWork.Transaction.Delete(transaction);
             await _unitOfWork.Save();
@@ -103,7 +103,7 @@ namespace FinTrack.Service
 
             if (transaction == null)
             {
-                throw new ArgumentException("Transaction not found");
+                throw new RecordNotFoundException("Transaction not found with the specified filter.");
             }
 
             var transactionResponse = new TransactionResponseDto
@@ -131,7 +131,7 @@ namespace FinTrack.Service
             var transaction = await _unitOfWork.Transaction.FindAsync(id, includeProperties: "Category");
             if (transaction == null)
             {
-                throw new ArgumentException("Transaction not found.");
+                throw new RecordNotFoundException("Transaction not found.");
             }
             var transactionResponse = new TransactionResponseDto
             {
@@ -176,17 +176,17 @@ namespace FinTrack.Service
 
             if (transactionUpdateDto.Amount <= 0)
             {
-                throw new ArgumentException("Amount must be greater than zero.");
+                throw new InvalidAmountException("Amount must be greater than zero.");
             }
             if (transactionUpdateDto.Date > DateTime.Now)
             {
-                throw new ArgumentException("Date cannot be in the future.");
+                throw new InvalidDataException("Date cannot be in the future.");
             }
 
             var transaction = await _unitOfWork.Transaction.FindAsync(id,includeProperties: null);
             if (transaction == null)
             {
-                throw new ArgumentException("Transaction not found.");
+                throw new RecordNotFoundException("Transaction not found.");
             }
 
             Transaction checkTransaction = new Transaction
