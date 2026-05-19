@@ -3,8 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\fintrack.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\fintrack.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\repository\\budgetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\repository\\budgetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\controllers\\budgetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\controllers\\budgetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\views\\budget\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\views\\budget\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\models\\dtos\\budgetdtos\\budgetanalyticsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\models\\dtos\\budgetdtos\\budgetanalyticsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\models\\entity\\budget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\models\\entity\\budget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\models\\dtos\\budgetdtos\\budgetcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\models\\dtos\\budgetdtos\\budgetcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\models\\dtos\\recurringtransactiondtos\\recurringtransactioncreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\models\\dtos\\recurringtransactiondtos\\recurringtransactioncreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\service\\budgetservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\service\\budgetservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,15 +50,106 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FinTrack",
-              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\FinTrack.csproj",
-              "RelativeDocumentMoniker": "FinTrack\\FinTrack.csproj",
-              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\FinTrack.csproj",
-              "RelativeToolTip": "FinTrack\\FinTrack.csproj",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Views\\Budget\\Index.cshtml",
+              "RelativeDocumentMoniker": "FinTrack\\Views\\Budget\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Views\\Budget\\Index.cshtml",
+              "RelativeToolTip": "FinTrack\\Views\\Budget\\Index.cshtml",
+              "ViewState": "AgIAAEYAAAAAgKqqqqoGwC0AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-19T11:41:08.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BudgetCreateDto.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\DTOs\\BudgetDtos\\BudgetCreateDto.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Models\\DTOs\\BudgetDtos\\BudgetCreateDto.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\DTOs\\BudgetDtos\\BudgetCreateDto.cs",
+              "RelativeToolTip": "FinTrack\\Models\\DTOs\\BudgetDtos\\BudgetCreateDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-05-19T08:33:04.356Z",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T11:30:49.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RecurringTransactionCreateDto.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\DTOs\\RecurringTransactionDtos\\RecurringTransactionCreateDto.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Models\\DTOs\\RecurringTransactionDtos\\RecurringTransactionCreateDto.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\DTOs\\RecurringTransactionDtos\\RecurringTransactionCreateDto.cs",
+              "RelativeToolTip": "FinTrack\\Models\\DTOs\\RecurringTransactionDtos\\RecurringTransactionCreateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T11:30:42.392Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Budget.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\Entity\\Budget.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Models\\Entity\\Budget.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\Entity\\Budget.cs",
+              "RelativeToolTip": "FinTrack\\Models\\Entity\\Budget.cs",
+              "ViewState": "AgIAAAEAAABsu7u7u7svwBIAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T11:21:36.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BudgetRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Repository\\BudgetRepository.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Repository\\BudgetRepository.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Repository\\BudgetRepository.cs",
+              "RelativeToolTip": "FinTrack\\Repository\\BudgetRepository.cs",
+              "ViewState": "AgIAAFEAAAAAsMzMzMwPwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T11:15:31.587Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BudgetController.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Controllers\\BudgetController.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Controllers\\BudgetController.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Controllers\\BudgetController.cs",
+              "RelativeToolTip": "FinTrack\\Controllers\\BudgetController.cs",
+              "ViewState": "AgIAAAkAAAAAvLu7u7vrvxUAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T11:43:37.753Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BudgetService.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\BudgetService.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Service\\BudgetService.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\BudgetService.cs",
+              "RelativeToolTip": "FinTrack\\Service\\BudgetService.cs",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAQwIcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T11:16:37.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BudgetAnalyticsDto.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\DTOs\\BudgetDtos\\BudgetAnalyticsDto.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Models\\DTOs\\BudgetDtos\\BudgetAnalyticsDto.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\DTOs\\BudgetDtos\\BudgetAnalyticsDto.cs",
+              "RelativeToolTip": "FinTrack\\Models\\DTOs\\BudgetDtos\\BudgetAnalyticsDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T11:15:20.25Z",
               "EditorCaption": ""
             }
           ]

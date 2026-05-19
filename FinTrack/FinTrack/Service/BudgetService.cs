@@ -133,7 +133,6 @@ namespace FinTrack.Service
 
         public async Task<List<BudgetAnalyticsDto>> GetBudgetAnalytics()
         {
-            DateTime currentMonthYearInfo = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             var budgetAnalytics = await _unitOfWork.Budget.FindBudgetAnalytics();
             return budgetAnalytics;
         }
