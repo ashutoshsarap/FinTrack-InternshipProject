@@ -1,6 +1,8 @@
 ﻿using FinTrack.Models.DTOs.AnalyticsDtos;
+using FinTrack.Models.DTOs.BudgetDtos;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
+using System.Threading.Tasks;
 //V1
 namespace FinTrack.Service
 {
@@ -25,10 +27,10 @@ namespace FinTrack.Service
             int daysInMonth = DateTime.DaysInMonth(today.Year, today.Month);
 
             //Calculating data for analytics
-            decimal previousMonthExpense = _unitOfWork.Transaction.FindTotalExpenseByMonth(currentMonthStart,currentMonthEnd);
+            decimal previousMonthExpense = _unitOfWork.Transaction.FindTotalExpenseByMonth(currentMonthStart, currentMonthEnd);
             decimal currentMonthExpense = _unitOfWork.Transaction.FindTotalExpenseByMonth(previousMonthStart, previousMonthEnd);
 
-            float expensePercentageChange = (float)((float) previousMonthExpense == 0 ? 0 : ((currentMonthExpense - previousMonthExpense) / previousMonthExpense) * 100);
+            float expensePercentageChange = (float)((float)previousMonthExpense == 0 ? 0 : ((currentMonthExpense - previousMonthExpense) / previousMonthExpense) * 100);
 
             decimal averageDailyExpense = currentMonthExpense / daysInMonth;
             decimal averageWeeklyExpense = averageDailyExpense * 7;
@@ -54,7 +56,7 @@ namespace FinTrack.Service
         {
 
             //Calculating date related values
-            DateTime currentMonthYearInfo = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);    
+            DateTime currentMonthYearInfo = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
 
             var categoryBreakdown = await _unitOfWork.Transaction.FindCategoryBreakdown(currentMonthYearInfo);
             return categoryBreakdown;
@@ -65,5 +67,8 @@ namespace FinTrack.Service
             var insight = _unitOfWork.Transaction.FindAnalyticsInsight();
             return insight;
         }
+
+        
+
     }
 }

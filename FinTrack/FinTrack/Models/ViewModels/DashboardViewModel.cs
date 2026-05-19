@@ -1,4 +1,5 @@
 ﻿using FinTrack.Models.DTOs;
+using FinTrack.Models.DTOs.BudgetDtos;
 
 namespace FinTrack.Models.ViewModels
 {
@@ -11,6 +12,7 @@ namespace FinTrack.Models.ViewModels
         public List<CategoryExpenseDto> ExpenseCategorySummaries { get; set; }
         //Recent transactions for the dashboard shows last 5 transactions
         public List<TransactionResponseDto> RecentTransactions { get; set; }
+        public List<BudgetAnalyticsDto> BudgetAnalytics { get; set; }
 
     }
 }

@@ -28,21 +28,17 @@ namespace FinTrack.Service
 
             var userTransactions = await _unitOfWork.Transaction.FindAllTransactionByFilterAsync(transactionFilterDto, "Category");
             List<CsvExportDto> csvExportDtosList = new List<CsvExportDto>();
-
-            foreach (var transaction in userTransactions)
+            csvExportDtosList = userTransactions.Select(transaction => new CsvExportDto
             {
-                var csvExportDto = new CsvExportDto
-                {
-                    Amount = transaction.Amount,
-                    Date = transaction.Date,
-                    Type = transaction.Type.ToString(),
-                    PaymentMode = transaction.PaymentMode.ToString(),
-                    Description = transaction.Description,
-                    CategoryName = transaction.Category.Name
-                };
-                
-                csvExportDtosList.Add(csvExportDto);
-            }
+                Amount = transaction.Amount,
+                Date = transaction.Date,
+                Type = transaction.Type.ToString(),
+                PaymentMode = transaction.PaymentMode.ToString(),
+                Description = transaction.Description,
+                CategoryName = transaction.Category.Name
+            }).ToList();
+
+            
 
             //Creates a temporary empty container in server RAM to hold the CSV data, which will be written to and then returned as a stream.
             //Alternative could have been using a FileStream to write to a temporary file on disk, but using MemoryStream is more efficient for this use case as it avoids disk I/O overhead.

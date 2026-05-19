@@ -1,6 +1,7 @@
 ﻿
 using FinTrack.Models.DTOs;
 using FinTrack.Models.DTOs.AnalyticsDtos;
+using FinTrack.Models.DTOs.BudgetDtos;
 using FinTrack.Models.Entity;
 using FinTrack.Models.Enums;
 using System.Linq.Expressions;
@@ -13,7 +14,6 @@ namespace FinTrack.Repository.IRepository
         public Task<IEnumerable<Transaction>> FindAllTransactionByFilterAsync(TransactionFilterDto filter, string? includeProperties);
         public void Update(Transaction transaction);
         public void Delete(Transaction transaction);
-
         public Task<List<CategoryExpenseDto>> FindCategoryWiseExpense();
         public Task<List<Transaction>> FindRecentTransactions();
         public decimal FindTotalAmountByType(TransactionType type);

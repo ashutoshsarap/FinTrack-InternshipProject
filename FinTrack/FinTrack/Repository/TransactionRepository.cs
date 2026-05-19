@@ -1,6 +1,7 @@
 ﻿using FinTrack.Data;
 using FinTrack.Models.DTOs;
 using FinTrack.Models.DTOs.AnalyticsDtos;
+using FinTrack.Models.DTOs.BudgetDtos;
 using FinTrack.Models.Entity;
 using FinTrack.Models.Enums;
 using FinTrack.Repository.IRepository;
@@ -276,5 +277,7 @@ namespace FinTrack.Repository
                                                             t.CategoryId == transaction.CategoryId);
             return isDuplicate;
         }
+
+        
     }
 }

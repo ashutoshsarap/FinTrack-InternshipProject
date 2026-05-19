@@ -1,4 +1,5 @@
 ﻿using FinTrack.Models.DTOs.AnalyticsDtos;
+using FinTrack.Models.DTOs.BudgetDtos;
 
 namespace FinTrack.Service.IService
 {

@@ -1,6 +1,7 @@
 ﻿using FinTrack.Data;
 using FinTrack.Models.DTOs.BudgetDtos;
 using FinTrack.Models.Entity;
+using FinTrack.Models.Enums;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
 using Microsoft.EntityFrameworkCore;
@@ -70,5 +71,43 @@ namespace FinTrack.Repository
             return isDuplicate;
         }
 
+        public async Task<List<BudgetAnalyticsDto>> FindBudgetAnalytics()
+        {
+            var currentMonth = DateTime.Today.Month;
+            var currentYear = DateTime.Today.Year;
+
+            var currentMonthStart = new DateTime(currentYear, currentMonth, 1);
+            var currentMonthEnd = currentMonthStart.AddMonths(1).AddDays(-1);
+
+            var budgetAnalyticsList = await _dbContext.Budgets
+                                                .Include("Category")
+                                                .Where(b => b.ApplicationUserId == _currentUserId &&
+                                                            b.Month == currentMonth &&
+                                                            b.Year == currentYear)
+                                                .Select(b => new BudgetAnalyticsDto
+                                                {
+                                                    BudgetId = b.Id,
+                                                    CategoryName = b.Category.Name,
+                                                    MonthlyLimitAmount = b.MonthlyLimitAmount,
+                                                    TotalAmountSpent = _dbContext.Transactions
+                                                        .Where(t => t.ApplicationUserId == _currentUserId &&
+                                                                    t.IsDeleted == false &&
+                                                                    t.Type == TransactionType.Expense &&
+                                                                    t.CategoryId == b.CategoryId &&
+                                                                    t.Date >= currentMonthStart &&
+                                                                    t.Date <= currentMonthEnd)
+                                                        .Sum(t => t.Amount)
+                                                })
+                                                .ToListAsync();
+
+            foreach (var item in budgetAnalyticsList)
+            {
+                item.RemainingAmount = item.MonthlyLimitAmount - item.TotalAmountSpent;
+                item.PercentageUsed = (float)(item.MonthlyLimitAmount > 0 ? (item.TotalAmountSpent / item.MonthlyLimitAmount) * 100 : 0);
+                item.IsOverBudget = item.TotalAmountSpent > item.MonthlyLimitAmount;
+            }
+
+            return budgetAnalyticsList;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using FinTrack.Models.DTOs.BudgetDtos;
 using FinTrack.Models.Entity;
-//V1
+//V2
 namespace FinTrack.Repository.IRepository
 {
     public interface IBudgetRepository
@@ -11,5 +11,6 @@ namespace FinTrack.Repository.IRepository
             void UpdateBudgetAsync(Budget budget);
             void DeleteBudgetAsync(Budget budget);
             Task<bool> IsDuplicateBudgetAsync(Budget budget);
+            Task<List<BudgetAnalyticsDto>> FindBudgetAnalytics();
     }
 }

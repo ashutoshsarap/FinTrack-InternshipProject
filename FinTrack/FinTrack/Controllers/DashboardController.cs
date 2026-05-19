@@ -10,14 +10,16 @@ namespace FinTrack.Controllers
     public class DashboardController : Controller
     {
         private readonly ITransactionService _transactionService;
-
-        public DashboardController(ITransactionService transactionService)
+        private readonly IBudgetService _budgetService;
+        public DashboardController(ITransactionService transactionService, IBudgetService budgetService)
         {
             _transactionService = transactionService;
+            _budgetService = budgetService;
         }
         public async Task<IActionResult> Index()
         {
             DashboardViewModel dashboardViewModel = await _transactionService.GetDashboardData();
+            dashboardViewModel.BudgetAnalytics = await _budgetService.GetBudgetAnalytics();
             return View(dashboardViewModel);
         }
     }

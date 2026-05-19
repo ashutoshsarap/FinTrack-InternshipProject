@@ -1,0 +1,72 @@
+﻿@using FinTrack.Models.DTOs.BudgetDtos
+@model List<BudgetAnalyticsDto>
+
+@{
+    ViewData["Title"] = "Budget Analytics";
+}
+
+<h2 class="mb-4">Budget Analytics</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Category</th>
+            <th>Monthly Limit</th>
+            <th>Total Spent</th>
+            <th>Remaining</th>
+            <th>Percentage Used</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var budget in Model)
+            {
+                <tr>
+                    <td>@budget.CategoryName</td>
+
+                    <td>
+                        ₹@budget.MonthlyLimitAmount.ToString("N2")
+                    </td>
+
+                    <td>
+                        ₹@budget.TotalAmountSpent.ToString("N2")
+                    </td>
+
+                    <td>
+                        ₹@budget.RemainingAmount.ToString("N2")
+                    </td>
+
+                    <td>
+                        @budget.PercentageUsed.ToString("0.##")%
+                    </td>
+
+                    <td>
+                        @if (budget.IsOverBudget)
+                        {
+                            <span class="badge bg-danger">
+                                Over Budget
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-success">
+                                Within Budget
+                            </span>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">
+                    No budget data available
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

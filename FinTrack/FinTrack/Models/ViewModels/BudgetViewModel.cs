@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+﻿using FinTrack.Models.DTOs.BudgetDtos;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace FinTrack.Models.ViewModels
 {

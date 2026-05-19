@@ -17,15 +17,20 @@ namespace FinTrack.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var budgets = await _budgetService.GetAllBudgetsByMonthAsync(DateTime.Now.Month, DateTime.Now.Year);
-            var budgetViewModels = budgets?.Select(b => new BudgetViewModel
+            var budgetInsights = await _budgetService.GetBudgetAnalytics();
+
+            List<BudgetCardViewModel> budgetCards = budgetInsights.Select(b => new BudgetCardViewModel
             {
-                Id=b.Id,
-                MonthlyLimitAmount = b.MonthlyLimitAmount,
-                CategoryName = b.Category.Name,
-                CategoryId = b.CategoryId
+                Id = b.BudgetId,
+                CategoryName = b.CategoryName,
+                MonthlyLimitBudgetAmount = b.MonthlyLimitAmount,
+                TotalAmountSpent = b.TotalAmountSpent,
+                RemainingAmount = b.RemainingAmount,
+                PercentageUsed = b.PercentageUsed,
+                IsOverBudget = b.IsOverBudget
             }).ToList();
-            return View(budgetViewModels);
+
+            return View(budgetCards);
         }
 
         public async Task<IActionResult> Create()
@@ -129,5 +134,7 @@ namespace FinTrack.Controllers
 
             return View(budgetViewModel);
         }
+
+        
     }
 }

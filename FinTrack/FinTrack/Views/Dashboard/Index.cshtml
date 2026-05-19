@@ -1,4 +1,4 @@
-﻿@using FinTrack.Models.ViewModels
+﻿@using FinTrack.Models.ViewModels;
 @model DashboardViewModel
 
 @{
@@ -9,152 +9,283 @@
 
     <h2 class="mb-4">Financial Dashboard</h2>
 
-    <div class="col-12 d-flex justify-content-end gap-2 mb-4">
-        <a asp-controller="Transaction" asp-action="Create" class="btn btn-primary">
-            <i class="bi bi-file-plus"></i> Add new transaction
-        </a>
+    <!-- SUMMARY CARDS -->
+    <div class="row mb-5">
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+
+                    <h5 class="card-title text-success">
+                        Total Income
+                    </h5>
+
+                    <h3>
+                        ₹@Model.TotalIncome.ToString("N2")
+                    </h3>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+
+                    <h5 class="card-title text-danger">
+                        Total Expenses
+                    </h5>
+
+                    <h3>
+                        ₹@Model.TotalExpenses.ToString("N2")
+                    </h3>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+
+                    <h5 class="card-title text-primary">
+                        Net Balance
+                    </h5>
+
+                    <h3>
+                        ₹@Model.NetBalance.ToString("N2")
+                    </h3>
+
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="row mb-4">
 
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm border-0">
-                <div class="card-body">
-                    <h5 class="card-title text-success">Total Income</h5>
-                    <h3>₹ @Model.TotalIncome</h3>
-                </div>
-            </div>
-        </div>
+    @* BUDGET PROGRESS *@
 
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm border-0">
-                <div class="card-body">
-                    <h5 class="card-title text-danger">Total Expenses</h5>
-                    <h3>₹ @Model.TotalExpenses</h3>
-                </div>
-            </div>
-        </div>
+    <div class="card shadow-sm border-0 mb-4">
 
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm border-0">
-                <div class="card-body">
-                    <h5 class="card-title text-primary">Net Balance</h5>
-                    <h3>₹ @Model.NetBalance</h3>
-                </div>
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <h4 class="mb-0">
+                    Budget Progress
+                </h4>
+
+                <a asp-controller="Budget"
+                   asp-action="Index"
+                   class="text-decoration-none fw-bold">
+                    Edit
+                </a>
+
             </div>
+
+            @if (Model.BudgetAnalytics != null && Model.BudgetAnalytics.Any())
+            {
+                @foreach (var budget in Model.BudgetAnalytics)
+                {
+                    decimal percentage =
+                    budget.MonthlyLimitAmount == 0
+                    ? 0
+                    : (budget.TotalAmountSpent / budget.MonthlyLimitAmount) * 100;
+
+                    string progressColor = percentage switch
+                    {
+                        <= 50 => "bg-success",
+                        <= 80 => "bg-warning",
+                        _ => "bg-danger"
+                    };
+
+                    <div class="mb-4">
+
+                        <div class="d-flex justify-content-between mb-2">
+
+                            <div>
+                                <span class="fw-semibold">
+                                    @budget.CategoryName
+                                </span>
+                            </div>
+
+                            <div class="text-muted">
+
+                                ₹@budget.TotalAmountSpent.ToString("N2")
+
+                                /
+
+                                ₹@budget.MonthlyLimitAmount.ToString("N2")
+
+                            </div>
+
+                        </div>
+
+                        <div class="progress"
+                             style="height:8px; border-radius:10px;">
+
+                            <div class="progress-bar @progressColor"
+                                 role="progressbar"
+                                 style="width:@(percentage > 100 ? 100 : percentage)%">
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-muted mb-0">
+                    No budgets available.
+                </p>
+            }
+
         </div>
 
     </div>
 
-    <div class="row">
 
-        <div class="col-md-5 mb-4">
+    <!-- EXPENSE CATEGORY SUMMARY -->
+    <div class="mb-5">
 
-            <div class="card shadow-sm border-0">
-                <div class="card-header bg-dark text-white">
-                    Expense By Category
-                </div>
+        <h3 class="mb-3">Expense By Category</h3>
 
-                <div class="card-body">
+        <div class="card shadow-sm border-0">
 
-                    @if (Model.ExpenseCategorySummaries.Any())
-                    {
-                        <table class="table table-hover">
+            <div class="card-body">
 
-                            <thead>
+                <table class="table table-striped align-middle">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Category</th>
+                            <th>Total Expense</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @if (Model.ExpenseCategorySummaries != null &&
+                                                Model.ExpenseCategorySummaries.Any())
+                        {
+                            @foreach (var category in Model.ExpenseCategorySummaries)
+                            {
                                 <tr>
-                                    <th>Category</th>
-                                    <th>Amount</th>
+
+                                    <td>
+                                        @category.CategoryName
+                                    </td>
+
+                                    <td>
+                                        ₹@category.TotalAmount.ToString("N2")
+                                    </td>
+
                                 </tr>
-                            </thead>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
 
-                            <tbody>
+                                <td colspan="2" class="text-center">
+                                    No expense data available.
+                                </td>
 
-                                @foreach (var item in Model.ExpenseCategorySummaries)
-                                {
-                                    <tr>
-                                        <td>@item.CategoryName</td>
-                                        <td>₹@item.TotalAmount</td>
-                                    </tr>
-                                }
+                            </tr>
+                        }
 
-                            </tbody>
+                    </tbody>
 
-                        </table>
-                    }
-                    else
-                    {
-                        <p>No expense data found.</p>
-                    }
+                </table>
 
-                </div>
             </div>
 
         </div>
 
-        <div class="col-md-7 mb-4">
+    </div>
 
-            <div class="card shadow-sm border-0">
 
-                <div class="card-header bg-dark text-white">
-                    Recent Transactions
-                </div>
+    <!-- RECENT TRANSACTIONS -->
+    <div>
 
-                <div class="card-body">
+        <h3 class="mb-3">Recent Transactions</h3>
 
-                    @if (Model.RecentTransactions.Any())
-                    {
-                        <table class="table table-striped">
+        <div class="card shadow-sm border-0">
 
-                            <thead>
+            <div class="card-body">
+
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @if (Model.RecentTransactions != null &&
+                                                Model.RecentTransactions.Any())
+                        {
+                            @foreach (var transaction in Model.RecentTransactions)
+                            {
                                 <tr>
-                                    <th>Date</th>
-                                    <th>Category</th>
-                                    <th>Type</th>
-                                    <th>Amount</th>
-                                    <th>Payment Mode</th>
+
+                                    <td>
+                                        @transaction.Description
+                                    </td>
+
+                                    <td>
+                                        @transaction.CategoryName
+                                    </td>
+
+                                    <td>
+
+                                        @if (transaction.Type.ToString() == "Expense")
+                                        {
+                                            <span class="badge bg-danger">
+                                                Expense
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-success">
+                                                Income
+                                            </span>
+                                        }
+
+                                    </td>
+
+                                    <td>
+                                        ₹@transaction.Amount.ToString("N2")
+                                    </td>
+
+                                    <td>
+                                        @transaction.Date.ToString("dd MMM yyyy")
+                                    </td>
+
                                 </tr>
-                            </thead>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
 
-                            <tbody>
+                                <td colspan="5" class="text-center">
+                                    No transactions found.
+                                </td>
 
-                                @foreach (var transaction in Model.RecentTransactions)
-                                {
-                                    <tr>
+                            </tr>
+                        }
 
-                                        <td>
-                                            @transaction.Date.ToString("dd-MMM-yyyy")
-                                        </td>
+                    </tbody>
 
-                                        <td>
-                                            @transaction.CategoryName
-                                        </td>
-
-                                        <td>
-                                            @transaction.Type
-                                        </td>
-
-                                        <td>
-                                            ₹ @transaction.Amount
-                                        </td>
-
-                                        <td>
-                                            @transaction.PaymentMode
-                                        </td>
-
-                                    </tr>
-                                }
-
-                            </tbody>
-
-                        </table>
-                    }
-                    else
-                    {
-                        <p>No recent transactions found.</p>
-                    }
-
-                </div>
+                </table>
 
             </div>
 
