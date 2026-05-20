@@ -18,5 +18,7 @@ namespace FinTrack.Models.Entity
         [ForeignKey("ApplicationUserId")]
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }

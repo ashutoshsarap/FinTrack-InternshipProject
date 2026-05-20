@@ -13,12 +13,15 @@ namespace FinTrack.Repository
         public IApplicationUserRepository ApplicationUser { get; private set; }
         public IBudgetRepository Budget { get; private set; }
 
+        public IRecurringTransactionRepository RecurringTransaction { get; private set; }
+
         public UnitOfWork(ApplicationDbContext context, ICurrentUserService currentUserService)
         {
             _context = context;
             Transaction = new TransactionRepository(context, currentUserService);
             Category = new CategoryRepository(context, currentUserService);
             Budget = new BudgetRepository(context, currentUserService);
+            RecurringTransaction = new RecurringTransactionRepository(context, currentUserService);
             ApplicationUser = new IApplicationUserRepository(context, currentUserService);
         }
         public async Task Save()

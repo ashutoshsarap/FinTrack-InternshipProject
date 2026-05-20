@@ -1,0 +1,139 @@
+﻿using FinTrack.CustomExceptions;
+using FinTrack.Models.DTOs.RecurringTransactionDtos;
+using FinTrack.Models.Entity;
+using FinTrack.Repository.IRepository;
+using FinTrack.Service.IService;
+using System.Threading.Tasks;
+
+namespace FinTrack.Service
+{
+    public class RecurringTransactionService : IRecurringTransactionService
+    {
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly string _currentUserId;
+        public RecurringTransactionService(IUnitOfWork unitOfWork, ICurrentUserService currentUserService)
+        {
+            _unitOfWork = unitOfWork;
+            _currentUserId = currentUserService.UserId;
+        }
+
+        public async Task CreateRecurringTransactionAsync(RecurringTransactionCreateDto recurringTransactionCreateDto)
+        {
+            if (recurringTransactionCreateDto == null)
+            {
+                throw new ArgumentNullException(nameof(recurringTransactionCreateDto));
+            }
+            if (recurringTransactionCreateDto.Amount <= 0)
+            {
+                throw new InvalidAmountException("Amount must be greater than 0");
+            }
+            if(recurringTransactionCreateDto.StartDate < DateTime.Now)
+            {
+                throw new Exception("Starting Date cannot be in the past");
+            }
+
+            RecurringTransaction recurringTransaction = new RecurringTransaction
+            {
+                Amount = recurringTransactionCreateDto.Amount,
+                StartDate = recurringTransactionCreateDto.StartDate,
+                Description = recurringTransactionCreateDto.Description,
+                PaymentMode = recurringTransactionCreateDto.PaymentMode,
+                TransactionType = recurringTransactionCreateDto.TransactionType,
+                TransactionFrequency = recurringTransactionCreateDto.TransactionFrequency,
+                CategoryId = recurringTransactionCreateDto.CategoryId,
+                ApplicationUserId = _currentUserId,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = null
+            };
+
+            await _unitOfWork.RecurringTransaction.AddRecurringTransactionAsync(recurringTransaction);
+            await _unitOfWork.Save();
+
+        }
+
+        public async Task DeleteRecurringTransaction(int id)
+        {
+            RecurringTransaction transactionToBeDeleted = await _unitOfWork.RecurringTransaction.FindRecurringTransactionByIdAsync(id);
+
+            if (transactionToBeDeleted == null)
+            {
+                throw new RecordNotFoundException("Record not found");
+            }
+
+            _unitOfWork.RecurringTransaction.DeleteRecurringTransaction(transactionToBeDeleted);
+            await _unitOfWork.Save();
+        }
+
+        public async Task<IEnumerable<RecurringTransactionResponseDto>> GetAllRecurringTransactionsAsync()
+        {
+            var allRecurringTransactions = await _unitOfWork.RecurringTransaction.FindAllRecurringTransactionsAsync();
+
+            return allRecurringTransactions.Select(rt => new RecurringTransactionResponseDto
+            {
+                Id = rt.Id,
+                Amount = rt.Amount,
+                Description = rt.Description,
+                StartDate = rt.StartDate,
+                TransactionFrequency = rt.TransactionFrequency,
+                TransactionType = rt.TransactionType,
+                PaymentMode = rt.PaymentMode,
+                CategoryId = rt.CategoryId,
+                CategoryName = rt.Category.Name,
+                Category = rt.Category
+            });
+
+        }
+
+        public async Task<RecurringTransactionResponseDto> GetRecurringTransactionByIdAsync(int id)
+        {
+            RecurringTransaction recurringTransaction = await _unitOfWork.RecurringTransaction.FindRecurringTransactionByIdAsync(id);
+
+            return new RecurringTransactionResponseDto
+            {
+                Id = recurringTransaction.Id,
+                Amount = recurringTransaction.Amount,
+                Description = recurringTransaction.Description,
+                TransactionFrequency = recurringTransaction.TransactionFrequency,
+                PaymentMode = recurringTransaction.PaymentMode,
+                TransactionType = recurringTransaction.TransactionType,
+                CategoryId = recurringTransaction.CategoryId,
+                CategoryName = recurringTransaction.Category.Name,
+                Category = recurringTransaction.Category
+            };
+        }
+
+        public async Task UpdateRecurringTransaction(RecurringTransactionUpdateDto recurringTransactionUpdateDto)
+        {
+            if (recurringTransactionUpdateDto == null)
+            {
+                throw new ArgumentNullException(nameof(recurringTransactionUpdateDto));
+            }
+
+            if (recurringTransactionUpdateDto == null)
+            {
+                throw new ArgumentNullException(nameof(recurringTransactionUpdateDto));
+            }
+            if (recurringTransactionUpdateDto.Amount <= 0)
+            {
+                throw new InvalidAmountException("Amount must be greater than 0");
+            }
+            if (recurringTransactionUpdateDto.StartDate < DateTime.Now)
+            {
+                throw new Exception("Starting Date cannot be in the past");
+            }
+
+            var recurringTransactionToUpdate = await _unitOfWork.RecurringTransaction.FindRecurringTransactionByIdAsync(recurringTransactionUpdateDto.Id);
+
+            recurringTransactionToUpdate.Amount = recurringTransactionUpdateDto?.Amount ?? 0;
+            recurringTransactionToUpdate.Description = recurringTransactionUpdateDto.Description;
+            recurringTransactionToUpdate.TransactionFrequency = recurringTransactionUpdateDto.TransactionFrequency;
+            recurringTransactionToUpdate.TransactionType = recurringTransactionUpdateDto.TransactionType;
+            recurringTransactionToUpdate.PaymentMode = recurringTransactionUpdateDto.PaymentMode;
+            recurringTransactionToUpdate.UpdatedAt = DateTime.Now;
+            recurringTransactionToUpdate.CategoryId = recurringTransactionUpdateDto.CategoryId;
+
+            await _unitOfWork.Save();
+
+        }
+    }
+}

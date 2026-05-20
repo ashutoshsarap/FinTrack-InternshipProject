@@ -1,13 +1,14 @@
 ﻿using FinTrack.Models.DTOs.RecurringTransactionDtos;
+using FinTrack.Models.Entity;
 
 namespace FinTrack.Service.IService
 {
     public interface IRecurringTransactionService
     {
-        public Task<IEnumerable<RecurringTransactionResponseDto>> GetAllRecurringTransactionsAsync(string userId);
-        public Task<RecurringTransactionResponseDto> GetRecurringTransactionByIdAsync(int id, string userId);
+        public Task<IEnumerable<RecurringTransactionResponseDto>> GetAllRecurringTransactionsAsync();
+        public Task<RecurringTransactionResponseDto> GetRecurringTransactionByIdAsync(int id);
         public Task CreateRecurringTransactionAsync(RecurringTransactionCreateDto recurringTransactionCreateDto);
-        public void UpdateRecurringTransactionAsync();
-        public void DeleteRecurringTransactionAsync(int id);
+        public Task UpdateRecurringTransaction(RecurringTransactionUpdateDto recurringTransaction);
+        public Task DeleteRecurringTransaction(int id);
     }
 }

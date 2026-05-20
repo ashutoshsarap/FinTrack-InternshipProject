@@ -7,6 +7,7 @@ namespace FinTrack.Repository.IRepository
         public ICategoryRepository Category { get; }
         public IApplicationUserRepository ApplicationUser { get; }
         public IBudgetRepository Budget { get; }
+        public IRecurringTransactionRepository RecurringTransaction { get; }
         public Task Save();
     }
 }

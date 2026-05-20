@@ -25,6 +25,7 @@ builder.Services.AddHttpContextAccessor();
 //Repository registration
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IRecurringTransactionRepository, RecurringTransactionRepository>();  
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
@@ -36,6 +37,7 @@ builder.Services.AddScoped<IAnalyticsService, AnalyticsService>();
 builder.Services.AddScoped<ICsvExportService, CsvExportService>();
 builder.Services.AddScoped<ICsvImportService, CsvImportService>();
 builder.Services.AddScoped<IBudgetService, BudgetService>();
+builder.Services.AddScoped<IRecurringTransactionService, RecurringTransactionService>();
 
 builder.Services.AddScoped<IEmailSender, DummyEmailService>();
 

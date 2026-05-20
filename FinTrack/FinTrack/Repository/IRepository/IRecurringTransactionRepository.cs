@@ -1,13 +1,14 @@
-﻿using FinTrack.Models.Entity;
+﻿using FinTrack.Models.DTOs.RecurringTransactionDtos;
+using FinTrack.Models.Entity;
 
 namespace FinTrack.Repository.IRepository
 {
     public interface IRecurringTransactionRepository
     {
-        public Task<IEnumerable<RecurringTransaction>> GetAllRecurringTransactionsAsync();
-        public Task<RecurringTransaction> GetRecurringTransactionByIdAsync(int id);
+        public Task<IEnumerable<RecurringTransaction>> FindAllRecurringTransactionsAsync();
+        public Task<RecurringTransaction> FindRecurringTransactionByIdAsync(int id);
         public Task AddRecurringTransactionAsync(RecurringTransaction recurringTransaction);
-        public void UpdateRecurringTransactionAsync(RecurringTransaction recurringTransaction);
-        public void DeleteRecurringTransactionAsync(RecurringTransaction recurringTransaction);
+        public void UpdateRecurringTransaction(RecurringTransaction recurringTransaction);
+        public void DeleteRecurringTransaction(RecurringTransaction recurringTransaction);
     }
 }

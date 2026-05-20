@@ -10,6 +10,7 @@ namespace FinTrack.Models.DTOs
         public DateTime Date { get; set; }
         public TransactionType Type { get; set; }
         public PaymentMode PaymentMode { get; set; } 
+        public TransactionFrequency TransactionFrequency { get; set; }
         public string Description { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }

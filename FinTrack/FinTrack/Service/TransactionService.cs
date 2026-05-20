@@ -31,7 +31,7 @@ namespace FinTrack.Service
             }
             if (transactionCreateDto.Amount <= 0)
             {
-                throw new ArgumentException("Amount must be greater than zero.");
+                throw new InvalidAmountException("Amount must be greater than zero.");
             }
             if (transactionCreateDto.Date > DateTime.Now)
             {

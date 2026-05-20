@@ -1,4 +1,5 @@
 ﻿using FinTrack.Data;
+using FinTrack.Models.DTOs.RecurringTransactionDtos;
 using FinTrack.Models.Entity;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
@@ -6,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinTrack.Repository
 {
-    public class RrecurringTransactionRepository : IRecurringTransactionRepository
+    public class RecurringTransactionRepository : IRecurringTransactionRepository
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly string _currentUserId;
-        public RrecurringTransactionRepository(ApplicationDbContext context, ICurrentUserService currentUserService)
+        public RecurringTransactionRepository(ApplicationDbContext context, ICurrentUserService currentUserService)
         {
             _dbContext = context;
             _currentUserId = currentUserService.UserId;
@@ -20,12 +21,12 @@ namespace FinTrack.Repository
             await _dbContext.RecurringTransactions.AddAsync(recurringTransaction);
         }
 
-        public void DeleteRecurringTransactionAsync(RecurringTransaction recurringTransaction)
+        public void DeleteRecurringTransaction(RecurringTransaction recurringTransaction)
         {
             _dbContext.RecurringTransactions.Remove(recurringTransaction);
         }
 
-        public async Task<IEnumerable<RecurringTransaction>> GetAllRecurringTransactionsAsync()
+        public async Task<IEnumerable<RecurringTransaction>> FindAllRecurringTransactionsAsync()
         {
             var allRecurringTransactions = await _dbContext.RecurringTransactions
                                                         .Where(rt => rt.ApplicationUserId == _currentUserId)
@@ -34,7 +35,7 @@ namespace FinTrack.Repository
             return allRecurringTransactions;
         }
 
-        public async Task<RecurringTransaction> GetRecurringTransactionByIdAsync(int id)
+        public async Task<RecurringTransaction> FindRecurringTransactionByIdAsync(int id)
         {
             var recurringTransaction = await _dbContext.RecurringTransactions
                                             .Include(rt => rt.Category)
@@ -43,7 +44,7 @@ namespace FinTrack.Repository
             return recurringTransaction;
         }
 
-        public void UpdateRecurringTransactionAsync(RecurringTransaction recurringTransaction)
+        public void UpdateRecurringTransaction(RecurringTransaction recurringTransaction)
         {
             _dbContext.RecurringTransactions.Update(recurringTransaction);
         }
