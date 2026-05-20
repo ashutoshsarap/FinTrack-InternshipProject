@@ -11,6 +11,7 @@ namespace FinTrack.Models.Entity
         public TransactionType TransactionType { get; set; }
         public PaymentMode PaymentMode { get; set; }
         public DateTime StartDate { get; set; }
+        public DateTime NextExecutionDate { get; set; }
         public TransactionFrequency TransactionFrequency { get; set; }
         [ForeignKey("CategoryId")]       
         public int CategoryId { get; set; }

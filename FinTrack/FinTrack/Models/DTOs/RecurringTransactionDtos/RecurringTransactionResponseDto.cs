@@ -9,6 +9,7 @@ namespace FinTrack.Models.DTOs.RecurringTransactionDtos
         public string Description { get; set; }
         public decimal Amount { get; set; }
         public DateTime StartDate { get; set; }
+        public DateTime NextExecutionDate { get; set; }
         public TransactionFrequency TransactionFrequency { get; set; }
         public TransactionType TransactionType { get; set; }
         public PaymentMode PaymentMode { get; set; }

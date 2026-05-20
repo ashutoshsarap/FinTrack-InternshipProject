@@ -29,7 +29,8 @@ namespace FinTrack.Controllers
                 PaymentMode = rt.PaymentMode,
                 TransactionFrequency = rt.TransactionFrequency,
                 TransactionType = rt.TransactionType,
-                CategoryName = rt.CategoryName
+                CategoryName = rt.CategoryName,
+                NextDueDate = rt.NextExecutionDate
             });
 
             return View(allRecurringTransactionViewModels);

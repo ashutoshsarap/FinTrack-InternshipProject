@@ -1,6 +1,7 @@
 ﻿using FinTrack.CustomExceptions;
 using FinTrack.Models.DTOs.RecurringTransactionDtos;
 using FinTrack.Models.Entity;
+using FinTrack.Models.Enums;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
 using System.Threading.Tasks;
@@ -27,10 +28,10 @@ namespace FinTrack.Service
             {
                 throw new InvalidAmountException("Amount must be greater than 0");
             }
-            if(recurringTransactionCreateDto.StartDate < DateTime.Now)
-            {
-                throw new Exception("Starting Date cannot be in the past");
-            }
+            //if (recurringTransactionCreateDto.StartDate < DateTime.Today)
+            //{
+            //    throw new Exception("Starting Date cannot be in the past");
+            //}
 
             RecurringTransaction recurringTransaction = new RecurringTransaction
             {
@@ -43,7 +44,15 @@ namespace FinTrack.Service
                 CategoryId = recurringTransactionCreateDto.CategoryId,
                 ApplicationUserId = _currentUserId,
                 CreatedAt = DateTime.Now,
-                UpdatedAt = null
+                UpdatedAt = null,
+                NextExecutionDate = recurringTransactionCreateDto.TransactionFrequency switch
+                {
+                    TransactionFrequency.Daily => recurringTransactionCreateDto.StartDate.AddDays(1),
+                    TransactionFrequency.Weekly => recurringTransactionCreateDto.StartDate.AddDays(7),
+                    TransactionFrequency.Monthly => recurringTransactionCreateDto.StartDate.AddMonths(1),
+                    TransactionFrequency.Annually => recurringTransactionCreateDto.StartDate.AddYears(1),
+                }
+
             };
 
             await _unitOfWork.RecurringTransaction.AddRecurringTransactionAsync(recurringTransaction);
@@ -79,7 +88,8 @@ namespace FinTrack.Service
                 PaymentMode = rt.PaymentMode,
                 CategoryId = rt.CategoryId,
                 CategoryName = rt.Category.Name,
-                Category = rt.Category
+                Category = rt.Category,
+                NextExecutionDate = rt.NextExecutionDate
             });
 
         }
@@ -98,7 +108,8 @@ namespace FinTrack.Service
                 TransactionType = recurringTransaction.TransactionType,
                 CategoryId = recurringTransaction.CategoryId,
                 CategoryName = recurringTransaction.Category.Name,
-                Category = recurringTransaction.Category
+                Category = recurringTransaction.Category,
+                NextExecutionDate = recurringTransaction.NextExecutionDate
             };
         }
 
@@ -134,6 +145,27 @@ namespace FinTrack.Service
 
             await _unitOfWork.Save();
 
+        }
+
+        public async Task<IEnumerable<RecurringTransactionResponseDto>> GetAllPendingRecurringTransactionsAsync()
+        {
+            var allRecurringTransactions = await _unitOfWork.RecurringTransaction.FindAllPendingRecurringTransactionsForJobAsync();
+
+
+            
+            return allRecurringTransactions.Select(rt => new RecurringTransactionResponseDto
+            {
+                Id = rt.Id,
+                Amount = rt.Amount,
+                Description = rt.Description,
+                TransactionFrequency = rt.TransactionFrequency,
+                PaymentMode = rt.PaymentMode,
+                TransactionType = rt.TransactionType,
+                CategoryId = rt.CategoryId,
+                CategoryName = rt.Category.Name,
+                Category = rt.Category,
+                NextExecutionDate=rt.NextExecutionDate
+            });
         }
     }
 }

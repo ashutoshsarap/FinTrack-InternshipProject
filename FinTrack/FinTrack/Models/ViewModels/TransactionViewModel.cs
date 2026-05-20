@@ -23,6 +23,7 @@ namespace FinTrack.Models.ViewModels
         [ValidateNever]
         public string CategoryName { get; set; }
         public int CategoryId { get; set; }
+        [Required]
         [ValidateNever]
         public SelectList Categories { get; set; }
     }

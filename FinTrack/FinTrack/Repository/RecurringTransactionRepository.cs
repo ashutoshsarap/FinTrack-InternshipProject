@@ -29,7 +29,7 @@ namespace FinTrack.Repository
         public async Task<IEnumerable<RecurringTransaction>> FindAllRecurringTransactionsAsync()
         {
             var allRecurringTransactions = await _dbContext.RecurringTransactions
-                                                        .Where(rt => rt.ApplicationUserId == _currentUserId)
+                                                        .Where(rt => rt.ApplicationUserId == _currentUserId)    
                                                         .Include(rt => rt.Category)
                                                         .ToListAsync();
             return allRecurringTransactions;
@@ -47,6 +47,15 @@ namespace FinTrack.Repository
         public void UpdateRecurringTransaction(RecurringTransaction recurringTransaction)
         {
             _dbContext.RecurringTransactions.Update(recurringTransaction);
+        }
+
+        public async Task<IEnumerable<RecurringTransaction>> FindAllPendingRecurringTransactionsForJobAsync()
+        {
+            var allRecurringTransactions = await _dbContext.RecurringTransactions
+                                                        .Where(rt => rt.NextExecutionDate <= DateTime.Now)
+                                                        .Include(rt => rt.Category)
+                                                        .ToListAsync();
+            return allRecurringTransactions;
         }
     }
 }

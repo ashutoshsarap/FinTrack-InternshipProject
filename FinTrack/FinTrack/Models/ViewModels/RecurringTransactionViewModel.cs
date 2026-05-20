@@ -19,6 +19,8 @@ namespace FinTrack.Models.ViewModels
         [Required]
         public DateTime StartDate { get; set; }
         [Required]
+        public DateTime NextDueDate { get; set; }
+        [Required]
         public int CategoryId { get; set; }
         [ValidateNever]
         public string CategoryName { get; set; }

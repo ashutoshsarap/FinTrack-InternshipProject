@@ -5,6 +5,7 @@ using FinTrack.Repository;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service;
 using FinTrack.Service.IService;
+using Hangfire;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,12 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//Hangfire configuration for recurring transactions
+builder.Services.AddHangfire(config =>
+    config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));    
+
+builder.Services.AddHangfireServer();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -38,6 +45,7 @@ builder.Services.AddScoped<ICsvExportService, CsvExportService>();
 builder.Services.AddScoped<ICsvImportService, CsvImportService>();
 builder.Services.AddScoped<IBudgetService, BudgetService>();
 builder.Services.AddScoped<IRecurringTransactionService, RecurringTransactionService>();
+builder.Services.AddScoped<IRecurringTransactionJobService, RecurringTransactionJobService>();
 
 builder.Services.AddScoped<IEmailSender, DummyEmailService>();
 
@@ -61,8 +69,14 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+app.UseHangfireDashboard();
+
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 
+RecurringJob.AddOrUpdate<IRecurringTransactionJobService>("ProcessRecurringTransactions", service => service.ProcessTransactions(), Cron.Daily);
+
 app.Run();
+
