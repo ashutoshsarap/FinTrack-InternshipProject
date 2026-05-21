@@ -10,6 +10,6 @@ namespace FinTrack.Repository.IRepository
         public Task AddRecurringTransactionAsync(RecurringTransaction recurringTransaction);
         public void UpdateRecurringTransaction(RecurringTransaction recurringTransaction);
         public void DeleteRecurringTransaction(RecurringTransaction recurringTransaction);
-        Task<IEnumerable<RecurringTransaction>> FindAllPendingRecurringTransactionsForJobAsync();
+        //Task<IEnumerable<RecurringTransaction>> FindAllPendingRecurringTransactionsForJobAsync();
     }
 }

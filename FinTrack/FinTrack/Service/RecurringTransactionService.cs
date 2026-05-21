@@ -4,6 +4,7 @@ using FinTrack.Models.Entity;
 using FinTrack.Models.Enums;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
+using Hangfire;
 using System.Threading.Tasks;
 
 namespace FinTrack.Service
@@ -33,6 +34,8 @@ namespace FinTrack.Service
             //    throw new Exception("Starting Date cannot be in the past");
             //}
 
+            string jobId = Guid.NewGuid().ToString();
+
             RecurringTransaction recurringTransaction = new RecurringTransaction
             {
                 Amount = recurringTransactionCreateDto.Amount,
@@ -51,12 +54,20 @@ namespace FinTrack.Service
                     TransactionFrequency.Weekly => recurringTransactionCreateDto.StartDate.AddDays(7),
                     TransactionFrequency.Monthly => recurringTransactionCreateDto.StartDate.AddMonths(1),
                     TransactionFrequency.Annually => recurringTransactionCreateDto.StartDate.AddYears(1),
-                }
-
+                },
+                HangFireId = jobId
             };
 
             await _unitOfWork.RecurringTransaction.AddRecurringTransactionAsync(recurringTransaction);
             await _unitOfWork.Save();
+
+            string cronExpression = CalculateCronExpression(recurringTransaction);
+
+            RecurringJob.AddOrUpdate<IRecurringTransactionJobService>(
+                jobId,
+                x => x.ProcessTransaction(recurringTransaction.Id),
+                cronExpression
+                );
 
         }
 
@@ -147,25 +158,47 @@ namespace FinTrack.Service
 
         }
 
-        public async Task<IEnumerable<RecurringTransactionResponseDto>> GetAllPendingRecurringTransactionsAsync()
+        //public async Task<IEnumerable<RecurringTransactionResponseDto>> GetAllPendingRecurringTransactionsAsync()
+        //{
+        //    var allRecurringTransactions = await _unitOfWork.RecurringTransaction.FindAllPendingRecurringTransactionsForJobAsync();
+
+
+
+        //    return allRecurringTransactions.Select(rt => new RecurringTransactionResponseDto
+        //    {
+        //        Id = rt.Id,
+        //        Amount = rt.Amount,
+        //        Description = rt.Description,
+        //        TransactionFrequency = rt.TransactionFrequency,
+        //        PaymentMode = rt.PaymentMode,
+        //        TransactionType = rt.TransactionType,
+        //        CategoryId = rt.CategoryId,
+        //        CategoryName = rt.Category.Name,
+        //        Category = rt.Category,
+        //        NextExecutionDate=rt.NextExecutionDate
+        //    });
+        //}
+
+        private string CalculateCronExpression(RecurringTransaction transaction)
         {
-            var allRecurringTransactions = await _unitOfWork.RecurringTransaction.FindAllPendingRecurringTransactionsForJobAsync();
-
-
-            
-            return allRecurringTransactions.Select(rt => new RecurringTransactionResponseDto
+            string cronExpression = string.Empty;
+            switch (transaction.TransactionFrequency)
             {
-                Id = rt.Id,
-                Amount = rt.Amount,
-                Description = rt.Description,
-                TransactionFrequency = rt.TransactionFrequency,
-                PaymentMode = rt.PaymentMode,
-                TransactionType = rt.TransactionType,
-                CategoryId = rt.CategoryId,
-                CategoryName = rt.Category.Name,
-                Category = rt.Category,
-                NextExecutionDate=rt.NextExecutionDate
-            });
+                case TransactionFrequency.Daily:
+                    cronExpression = $"0 0 * * *"; // Every day at midnight
+                    break;
+                case TransactionFrequency.Weekly:
+                    cronExpression = $"0 0 * * {transaction.StartDate.DayOfWeek}"; // Every week on the same day as StartDate
+                    break;
+                case TransactionFrequency.Monthly:
+                    cronExpression = $"0 0 {transaction.StartDate.Day} * *"; // Every month on the same day as StartDate
+                    break;
+                case TransactionFrequency.Annually:
+                    cronExpression = $"0 0 {transaction.StartDate.Day} {transaction.StartDate.Month} *"; // Every year on the same day and month as StartDate
+                    break;
+            }
+            return cronExpression;
         }
+
     }
 }

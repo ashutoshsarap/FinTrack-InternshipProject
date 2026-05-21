@@ -49,13 +49,13 @@ namespace FinTrack.Repository
             _dbContext.RecurringTransactions.Update(recurringTransaction);
         }
 
-        public async Task<IEnumerable<RecurringTransaction>> FindAllPendingRecurringTransactionsForJobAsync()
-        {
-            var allRecurringTransactions = await _dbContext.RecurringTransactions
-                                                        .Where(rt => rt.NextExecutionDate <= DateTime.Now)
-                                                        .Include(rt => rt.Category)
-                                                        .ToListAsync();
-            return allRecurringTransactions;
-        }
+        //public async Task<IEnumerable<RecurringTransaction>> FindAllPendingRecurringTransactionsForJobAsync()
+        //{
+        //    var allRecurringTransactions = await _dbContext.RecurringTransactions
+        //                                                .Where(rt => rt.NextExecutionDate <= DateTime.Now)
+        //                                                .Include(rt => rt.Category)
+        //                                                .ToListAsync();
+        //    return allRecurringTransactions;
+        //}
     }
 }

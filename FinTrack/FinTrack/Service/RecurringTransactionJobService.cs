@@ -1,6 +1,8 @@
 ﻿using FinTrack.Models.Entity;
+using FinTrack.Models.Enums;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
+using System.Drawing.Text;
 
 namespace FinTrack.Service
 {
@@ -13,27 +15,55 @@ namespace FinTrack.Service
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task ProcessTransactions()
+        public async Task ProcessTransaction(int recurringTransactionId)
         {
-            var pendingTransactions = await _unitOfWork.RecurringTransaction.FindAllPendingRecurringTransactionsForJobAsync();
+            var recurringTransaction = await _unitOfWork.RecurringTransaction.FindRecurringTransactionByIdAsync(recurringTransactionId);
 
-            foreach (var recurringTransaction in pendingTransactions)
+            if(recurringTransaction == null)
             {
-                Transaction transactionEntity = new Transaction
-                {
-                    Amount = recurringTransaction.Amount,
-                    CategoryId = recurringTransaction.CategoryId,
-                    Description = recurringTransaction.Description,
-                    PaymentMode = recurringTransaction.PaymentMode,
-                    Type = recurringTransaction.TransactionType,
-                    Date = DateTime.Now,
-                    ApplicationUserId = recurringTransaction.ApplicationUserId,
-                    CreatedAt = DateTime.Now
-                };
-
-                await _unitOfWork.Transaction.CreateAsync(transactionEntity);
+                return;
             }
+
+            Transaction transaction = new Transaction
+            {
+                Amount = recurringTransaction.Amount,
+                Description = recurringTransaction.Description,
+                CategoryId = recurringTransaction.CategoryId,
+                PaymentMode = recurringTransaction.PaymentMode,
+                Type = recurringTransaction.TransactionType,
+                Date = DateTime.Now,
+                ApplicationUserId = recurringTransaction.ApplicationUserId,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = null
+            };
+
+            await _unitOfWork.Transaction.CreateAsync(transaction);
+
+            recurringTransaction.NextExecutionDate = CalculateNextExecutionDate(recurringTransaction);
+
             await _unitOfWork.Save();
         }
+
+        private DateTime CalculateNextExecutionDate(RecurringTransaction recurringTransaction)
+        {
+            DateTime nextExecutionDate = recurringTransaction.NextExecutionDate;
+            switch (recurringTransaction.TransactionFrequency)
+            {
+                case TransactionFrequency.Daily:
+                    nextExecutionDate = nextExecutionDate.AddDays(1);
+                    break;
+                case TransactionFrequency.Weekly:
+                    nextExecutionDate = nextExecutionDate.AddDays(7);
+                    break;
+                case TransactionFrequency.Monthly:
+                    nextExecutionDate = nextExecutionDate.AddMonths(1);
+                    break;
+                case TransactionFrequency.Annually:
+                    nextExecutionDate = nextExecutionDate.AddYears(1);
+                    break;
+            }
+            return nextExecutionDate;
+        }
+
     }
 }

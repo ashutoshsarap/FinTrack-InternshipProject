@@ -76,7 +76,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 
-RecurringJob.AddOrUpdate<IRecurringTransactionJobService>("ProcessRecurringTransactions", service => service.ProcessTransactions(), Cron.Daily);
-
 app.Run();
 

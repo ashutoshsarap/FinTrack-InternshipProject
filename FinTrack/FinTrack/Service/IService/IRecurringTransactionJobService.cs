@@ -2,6 +2,6 @@
 {
     public interface IRecurringTransactionJobService
     {
-        Task ProcessTransactions();
+        Task ProcessTransaction(int recurringTransactionId);
     }
 }

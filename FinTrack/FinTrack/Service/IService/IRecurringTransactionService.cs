@@ -10,6 +10,7 @@ namespace FinTrack.Service.IService
         public Task CreateRecurringTransactionAsync(RecurringTransactionCreateDto recurringTransactionCreateDto);
         public Task UpdateRecurringTransaction(RecurringTransactionUpdateDto recurringTransaction);
         public Task DeleteRecurringTransaction(int id);
-        Task<IEnumerable<RecurringTransactionResponseDto>> GetAllPendingRecurringTransactionsAsync();
+        //Task<IEnumerable<RecurringTransactionResponseDto>> GetAllPendingRecurringTransactionsAsync();
+
     }
 }
