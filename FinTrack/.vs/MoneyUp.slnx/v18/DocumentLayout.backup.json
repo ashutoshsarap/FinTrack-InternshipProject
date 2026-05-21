@@ -18,24 +18,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RecurringTransactionService.cs",
-              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\RecurringTransactionService.cs",
-              "RelativeDocumentMoniker": "FinTrack\\Service\\RecurringTransactionService.cs",
-              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\RecurringTransactionService.cs",
-              "RelativeToolTip": "FinTrack\\Service\\RecurringTransactionService.cs",
-              "ViewState": "AgIAADIAAAAAsqqqqqoDwAsAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-21T06:13:58.989Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -45,9 +32,22 @@
               "RelativeDocumentMoniker": "FinTrack\\Service\\RecurringTransactionJobService.cs",
               "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\RecurringTransactionJobService.cs",
               "RelativeToolTip": "FinTrack\\Service\\RecurringTransactionJobService.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAABkPQgAAABGAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAADANDMzM7MqwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-21T04:54:31.786Z",
+              "WhenOpened": "2026-05-21T11:15:02.853Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RecurringTransactionService.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\RecurringTransactionService.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Service\\RecurringTransactionService.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\RecurringTransactionService.cs",
+              "RelativeToolTip": "FinTrack\\Service\\RecurringTransactionService.cs",
+              "ViewState": "AgIAABgAAACAst3d3d0WwDAAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-21T11:15:01.728Z",
               "EditorCaption": ""
             }
           ]

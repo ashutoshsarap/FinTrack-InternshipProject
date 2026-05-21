@@ -16,5 +16,6 @@ namespace FinTrack.Models.DTOs.RecurringTransactionDtos
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public Category Category { get; set; }
+        public string HangFireId { get; set; }
     }
 }

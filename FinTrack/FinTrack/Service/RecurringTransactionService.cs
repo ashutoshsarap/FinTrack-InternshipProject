@@ -48,13 +48,7 @@ namespace FinTrack.Service
                 ApplicationUserId = _currentUserId,
                 CreatedAt = DateTime.Now,
                 UpdatedAt = null,
-                NextExecutionDate = recurringTransactionCreateDto.TransactionFrequency switch
-                {
-                    TransactionFrequency.Daily => recurringTransactionCreateDto.StartDate.AddDays(1),
-                    TransactionFrequency.Weekly => recurringTransactionCreateDto.StartDate.AddDays(7),
-                    TransactionFrequency.Monthly => recurringTransactionCreateDto.StartDate.AddMonths(1),
-                    TransactionFrequency.Annually => recurringTransactionCreateDto.StartDate.AddYears(1),
-                },
+                NextExecutionDate = recurringTransactionCreateDto.StartDate,
                 HangFireId = jobId
             };
 
@@ -69,11 +63,16 @@ namespace FinTrack.Service
                 cronExpression
                 );
 
+            if(recurringTransactionCreateDto.StartDate == DateTime.Today)
+            {
+                BackgroundJob.Enqueue<IRecurringTransactionJobService>(x => x.ProcessTransaction(recurringTransaction.Id));
+            }
+
         }
 
         public async Task DeleteRecurringTransaction(int id)
         {
-            RecurringTransaction transactionToBeDeleted = await _unitOfWork.RecurringTransaction.FindRecurringTransactionByIdAsync(id);
+            RecurringTransaction transactionToBeDeleted = await _unitOfWork.RecurringTransaction.FindUserSpecificRecurringTransactionByIdAsync(id);
 
             if (transactionToBeDeleted == null)
             {
@@ -81,6 +80,7 @@ namespace FinTrack.Service
             }
 
             _unitOfWork.RecurringTransaction.DeleteRecurringTransaction(transactionToBeDeleted);
+            RecurringJob.RemoveIfExists(transactionToBeDeleted.HangFireId);
             await _unitOfWork.Save();
         }
 
@@ -107,7 +107,7 @@ namespace FinTrack.Service
 
         public async Task<RecurringTransactionResponseDto> GetRecurringTransactionByIdAsync(int id)
         {
-            RecurringTransaction recurringTransaction = await _unitOfWork.RecurringTransaction.FindRecurringTransactionByIdAsync(id);
+            RecurringTransaction recurringTransaction = await _unitOfWork.RecurringTransaction.FindUserSpecificRecurringTransactionByIdAsync(id);
 
             return new RecurringTransactionResponseDto
             {
@@ -120,7 +120,9 @@ namespace FinTrack.Service
                 CategoryId = recurringTransaction.CategoryId,
                 CategoryName = recurringTransaction.Category.Name,
                 Category = recurringTransaction.Category,
-                NextExecutionDate = recurringTransaction.NextExecutionDate
+                NextExecutionDate = recurringTransaction.NextExecutionDate,
+                StartDate=recurringTransaction.StartDate,
+                HangFireId = recurringTransaction.HangFireId
             };
         }
 
@@ -139,12 +141,12 @@ namespace FinTrack.Service
             {
                 throw new InvalidAmountException("Amount must be greater than 0");
             }
-            if (recurringTransactionUpdateDto.StartDate < DateTime.Now)
+            if (recurringTransactionUpdateDto.StartDate < DateTime.Today)
             {
                 throw new Exception("Starting Date cannot be in the past");
             }
 
-            var recurringTransactionToUpdate = await _unitOfWork.RecurringTransaction.FindRecurringTransactionByIdAsync(recurringTransactionUpdateDto.Id);
+            var recurringTransactionToUpdate = await _unitOfWork.RecurringTransaction.FindUserSpecificRecurringTransactionByIdAsync(recurringTransactionUpdateDto.Id);
 
             recurringTransactionToUpdate.Amount = recurringTransactionUpdateDto?.Amount ?? 0;
             recurringTransactionToUpdate.Description = recurringTransactionUpdateDto.Description;
@@ -153,9 +155,27 @@ namespace FinTrack.Service
             recurringTransactionToUpdate.PaymentMode = recurringTransactionUpdateDto.PaymentMode;
             recurringTransactionToUpdate.UpdatedAt = DateTime.Now;
             recurringTransactionToUpdate.CategoryId = recurringTransactionUpdateDto.CategoryId;
+            recurringTransactionToUpdate.StartDate = recurringTransactionUpdateDto.StartDate;
+            recurringTransactionToUpdate.NextExecutionDate = recurringTransactionUpdateDto.TransactionFrequency switch
+            {
+                TransactionFrequency.Daily => DateTime.Today.AddDays(1),
+                TransactionFrequency.Weekly => DateTime.Today.AddDays(7),
+                TransactionFrequency.Monthly => DateTime.Today.AddMonths(1),
+                TransactionFrequency.Annually => DateTime.Today.AddYears(1),
+                _ => recurringTransactionToUpdate.NextExecutionDate
+            };
 
             await _unitOfWork.Save();
+            RecurringJob.AddOrUpdate<IRecurringTransactionJobService>(
+                recurringTransactionToUpdate.HangFireId,
+                x => x.ProcessTransaction(recurringTransactionToUpdate.Id),
+                CalculateCronExpression(recurringTransactionToUpdate)
+                );
 
+            if (recurringTransactionToUpdate.StartDate == DateTime.Today)
+            {
+                BackgroundJob.Enqueue<IRecurringTransactionJobService>(x => x.ProcessTransaction(recurringTransactionToUpdate.Id));
+            }
         }
 
         //public async Task<IEnumerable<RecurringTransactionResponseDto>> GetAllPendingRecurringTransactionsAsync()
@@ -188,7 +208,7 @@ namespace FinTrack.Service
                     cronExpression = $"0 0 * * *"; // Every day at midnight
                     break;
                 case TransactionFrequency.Weekly:
-                    cronExpression = $"0 0 * * {transaction.StartDate.DayOfWeek}"; // Every week on the same day as StartDate
+                    cronExpression = $"0 0 * * {((int)transaction.StartDate.DayOfWeek)}"; // Every week on the same day as StartDate
                     break;
                 case TransactionFrequency.Monthly:
                     cronExpression = $"0 0 {transaction.StartDate.Day} * *"; // Every month on the same day as StartDate

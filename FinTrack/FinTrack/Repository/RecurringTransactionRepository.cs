@@ -35,12 +35,20 @@ namespace FinTrack.Repository
             return allRecurringTransactions;
         }
 
-        public async Task<RecurringTransaction> FindRecurringTransactionByIdAsync(int id)
+        public async Task<RecurringTransaction> FindUserSpecificRecurringTransactionByIdAsync(int id)
         {
             var recurringTransaction = await _dbContext.RecurringTransactions
                                             .Include(rt => rt.Category)
                                             .FirstOrDefaultAsync(rt => rt.Id == id && 
                                                                  rt.ApplicationUserId == _currentUserId);
+            return recurringTransaction;
+        }
+
+        public async Task<RecurringTransaction> FindRecurringTransactionByIdAsync(int id)
+        {
+            var recurringTransaction = await _dbContext.RecurringTransactions
+                                            .Include(rt => rt.Category)
+                                            .FirstOrDefaultAsync(rt => rt.Id == id);
             return recurringTransaction;
         }
 

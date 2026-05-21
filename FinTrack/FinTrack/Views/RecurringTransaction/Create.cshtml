@@ -82,9 +82,9 @@
             <input asp-for="StartDate"
                    type="date"
                    class="form-control"
-                   min="2000-01-01"
-                   max="@DateTime.Now.ToString("yyyy-MMM-dd-HH") />
-            <span asp-validation-for="Date" class="text-danger"></span>
+                   min="@DateTime.Today.ToString("yyyy-MM-dd")"
+                   max="2050-01-01"/>
+            <span asp-validation-for="StartDate" class="text-danger"></span>
         </div>
         <div class="row">
             <div class="col-6 col-md-3">
