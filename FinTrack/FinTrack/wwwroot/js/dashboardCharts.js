@@ -22,4 +22,4 @@ const categoryExpenseChart = new Chart(ctx, {
             }
         }
     }
-);
+)

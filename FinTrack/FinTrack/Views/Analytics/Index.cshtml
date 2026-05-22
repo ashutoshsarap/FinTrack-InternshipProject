@@ -176,69 +176,7 @@
 
             @if (Model.CategoryBreakdown != null && Model.CategoryBreakdown.Any())
             {
-                <div class="table-responsive">
-
-                    <table class="table table-bordered table-hover">
-
-                        <thead class="table-light">
-                            <tr>
-                                <th>Category</th>
-                                <th>Current Month</th>
-                                <th>Previous Month</th>
-                                <th>% Of Total</th>
-                                <th>% Change</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-
-                            @foreach (var category in Model.CategoryBreakdown)
-                            {
-                                <tr>
-
-                                    <td>@category.CategoryName</td>
-
-                                    <td>
-                                        ₹@category.TotalAmountSpentCurrentMonth.ToString("N2")
-                                    </td>
-
-                                    <td>
-                                        ₹@category.TotalAmountSpentPreviousMonth.ToString("N2")
-                                    </td>
-
-                                    <td>
-                                        @category.PercentageOfTotal.ToString("0.00")%
-                                    </td>
-
-                                    <td>
-
-                                        @if (category.PercentageChangeFromPreviousMonth > 0)
-                                        {
-                                            <span class="text-danger">
-                                                +@category.PercentageChangeFromPreviousMonth.ToString("0.00")%
-                                            </span>
-                                        }
-                                        else if (category.PercentageChangeFromPreviousMonth < 0)
-                                        {
-                                            <span class="text-success">
-                                                @category.PercentageChangeFromPreviousMonth.ToString("0.00")%
-                                            </span>
-                                        }
-                                        else
-                                        {
-                                            <span>0%</span>
-                                        }
-
-                                    </td>
-
-                                </tr>
-                            }
-
-                        </tbody>
-
-                    </table>
-
-                </div>
+                <canvas id="categoryAnalytics"></canvas>
             }
             else
             {
@@ -249,3 +187,8 @@
     </div>
 
 </div>
+
+@section Scripts{
+    <script> const categoryAnalysis = @Html.Raw(Json.Serialize(Model.CategoryBreakdown));</script>
+    <script src="~/js/analyticsCategoryBreakdown.js"></script>
+}
