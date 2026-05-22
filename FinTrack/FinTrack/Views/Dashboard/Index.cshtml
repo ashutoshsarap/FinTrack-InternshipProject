@@ -153,51 +153,10 @@
 
         <div class="card shadow-sm border-0">
 
-            <div class="card-body">
+            <div class="card-body" style="height:60vh; width:60vw">
 
-                <table class="table table-striped align-middle">
-
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Category</th>
-                            <th>Total Expense</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                        @if (Model.ExpenseCategorySummaries != null &&
-                                                Model.ExpenseCategorySummaries.Any())
-                        {
-                            @foreach (var category in Model.ExpenseCategorySummaries)
-                            {
-                                <tr>
-
-                                    <td>
-                                        @category.CategoryName
-                                    </td>
-
-                                    <td>
-                                        ₹@category.TotalAmount.ToString("N2")
-                                    </td>
-
-                                </tr>
-                            }
-                        }
-                        else
-                        {
-                            <tr>
-
-                                <td colspan="2" class="text-center">
-                                    No expense data available.
-                                </td>
-
-                            </tr>
-                        }
-
-                    </tbody>
-
-                </table>
+                <canvas id="expenseCategoryChart">
+                </canvas>
 
             </div>
 
@@ -294,3 +253,13 @@
     </div>
 
 </div>
+
+
+@section Scripts {
+
+    <script>
+        const categoryExpenseData = @Html.Raw(Json.Serialize(Model.ExpenseCategorySummaries));
+    </script>
+    <script src="~/js/dashboardCharts.js"></script>
+
+}
