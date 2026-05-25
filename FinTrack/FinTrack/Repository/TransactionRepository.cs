@@ -88,14 +88,15 @@ namespace FinTrack.Repository
         }
 
         //Following methods are used in dashboard to get total income, total expense, recent transactions and category wise expense for the current month. It uses a helper method GetCurrentMonthDateRange to get the start and end date of the current month and then filters transactions based on that date range and other criteria like transaction type and category.
-        public decimal FindTotalAmountByType(TransactionType type)
+        public decimal FindTotalAmountByTypeAndMonth(TransactionType type, int month, int year)
         {
             var (startDate, endDate) = GetCurrentMonthDateRange();
             var totalAmount = _dbContext.Transactions.Where(t => t.ApplicationUserId == _currentUserId &&
                                                              t.IsDeleted == false &&
                                                              t.Type == type &&
-                                                             t.Date >= startDate &&
-                                                             t.Date <= endDate)
+                                                             t.Date.Month == month &&
+                                                             t.Date.Year == year
+                                                             )
                                                       .Sum(t => t.Amount);
             return totalAmount;
         }
@@ -278,6 +279,67 @@ namespace FinTrack.Repository
             return isDuplicate;
         }
 
-        
+        public async Task<List<MonthlyExpenseTrendAnalyticsDto>> FindlyMonthlyExpenseTrend(int year)
+        {
+            var groupedMonthlyData = await _dbContext.Transactions
+                                               .Where(
+                                               t => t.ApplicationUserId == _currentUserId &&
+                                                   t.IsDeleted == false &&
+                                                   t.Type == TransactionType.Expense &&
+                                                   t.Date.Year == year)
+                                               .GroupBy(t => t.Date.Month)
+                                               .Select(s => new MonthlyExpenseTrendAnalyticsDto
+                                               {
+                                                   Month = s.Key,
+                                                   TotalExpense = s.Sum(t => t.Amount)
+                                               })
+                                               .ToDictionaryAsync(d => d.Month, d => d.TotalExpense);
+
+            var monthlyExpenses = new List<MonthlyExpenseTrendAnalyticsDto>();
+
+            for (int month = 1; month <= DateTime.Now.Month; month++)
+            {
+                
+                if(groupedMonthlyData.TryGetValue(month, out decimal totalExpense))
+                {
+                    monthlyExpenses.Add(new MonthlyExpenseTrendAnalyticsDto
+                    {
+                        Month = month,
+                        TotalExpense = totalExpense
+                    });
+                }
+                else
+                {
+                    monthlyExpenses.Add(new MonthlyExpenseTrendAnalyticsDto
+                    {
+                        Month = month,
+                        TotalExpense = 0
+                    });
+                }
+
+            }
+
+            return monthlyExpenses;
+        }
+
+        public HighestExpenseInfo FindLargestExpense(DateTime currentMonthStart, DateTime currentMonthEnd)
+        {
+            var largestExpenseInfo = _dbContext.Transactions
+                                                    .Where(t => t.ApplicationUserId == _currentUserId &&
+                                                             t.IsDeleted == false &&
+                                                             t.Type == TransactionType.Expense &&
+                                                             t.Date >= currentMonthStart &&
+                                                             t.Date <= currentMonthEnd)
+                                                    .OrderByDescending(t => t.Amount)
+                                                    .Select(s => new HighestExpenseInfo
+                                                    {
+                                                        Amount = s.Amount,
+                                                        Date = s.Date,
+                                                        CategoryName = s.Category.Name
+                                                    })
+                                                    .FirstOrDefault();
+
+            return largestExpenseInfo;
+        }
     }
 }

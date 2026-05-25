@@ -45,35 +45,40 @@
     <br />
 </div>
 <div class="col-12 d-flex justify-content-end gap-2">
-    <a asp-action="Create" class="btn btn-primary">
-        <i class="bi bi-file-plus"></i> Add new transaction
+    <a asp-action="Create" class="btn btn-primary rounded-pill">
+        <i class="bi bi-file-plus"></i> + Add Transaction
     </a>
 
-    <a asp-controller="Category" asp-action="Index" class="btn btn-primary">
-        <i class="bi bi-file-plus"></i> My Categories
-    </a>
-
-    <a asp-controller="Csv" asp-action="DownloadCsv" class="btn btn-success">
+    
+    <a asp-controller="Csv" asp-action="DownloadCsv" class="btn btn-success rounded-pill">
         <i class="bi bi-file-plus"></i> Export to CSV
     </a>
 
     <form asp-action="UploadCsv"
           asp-controller="Csv"
           method="post"
-          enctype="multipart/form-data"
-          class="btn btn-success"  >
+          enctype="multipart/form-data">
 
-        <input type="file" name="csvFile" />
+        <!-- Hidden File Input -->
+        <input type="file"
+               id="csvFile"
+               name="csvFile"
+               accept=".csv"
+               hidden
+               onchange="this.form.submit()" />
 
-        <button type="submit">
+        <!-- Custom Button -->
+        <label for="csvFile"
+               class="btn btn-success rounded-pill">
+            <i class="bi bi-upload me-2"></i>
             Import CSV
-        </button>
+        </label>
 
     </form>
 
     <a asp-action="DownloadCsvTemplate"
        asp-controller="Csv"
-       class="btn btn-outline-primary">
+       class="btn btn-outline-primary rounded-pill">
         Download CSV Template
     </a>
 

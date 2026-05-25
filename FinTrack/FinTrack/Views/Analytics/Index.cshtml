@@ -38,7 +38,7 @@
                     @if (Model.Analytics.ExpensePercentageChange > 0)
                     {
                         <h3 class="text-danger">
-                            <p>You spent @Math.Abs(Model.Analytics.ExpensePercentageChange).% more than previous month  📈</p>
+                            <p>You spent @Math.Abs(Model.Analytics.ExpensePercentageChange)% more than previous month  📈</p>
                         </h3>
                     }
                     else if (Model.Analytics.ExpensePercentageChange < 0)
@@ -159,6 +159,24 @@
 
                 </div>
 
+                <div class="col-md-6 mb-3">
+
+                    <div class="border rounded p-3 h-100">
+
+                        <h6 class="text-muted">
+                            Largest Expense Info
+                        </h6>
+
+                        <p class="mb-0">
+                            <strong>
+                                ₹@Model.AnalyticsInsight?.HighestExpenseInfo?.Amount.ToString("N2") on @Model.AnalyticsInsight?.HighestExpenseInfo?.Date.ToString("dd-MMM-yyyy") in @Model.AnalyticsInsight?.HighestExpenseInfo?.CategoryName
+                            </strong>
+                        </p>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
@@ -186,9 +204,31 @@
         </div>
     </div>
 
+
+    <div class="card mt-4">
+        <div class="card-header">
+            <h4 class="mb-0">Monthly Expense trend</h4>
+        </div>
+
+        <div class="card-body">
+
+            @if (Model.MonthlyExpenseTrends != null && Model.MonthlyExpenseTrends.Any())
+            {
+                <canvas id="monthlyExpenseTrend"></canvas>
+            }
+            else
+            {
+                <p>No data available.</p>
+            }
+
+        </div>
+    </div>
+
+
 </div>
 
 @section Scripts{
     <script> const categoryAnalysis = @Html.Raw(Json.Serialize(Model.CategoryBreakdown));</script>
-    <script src="~/js/analyticsCategoryBreakdown.js"></script>
+    <script> const monthlyExpenseTrends = @Html.Raw(Json.Serialize(Model.MonthlyExpenseTrends));</script>
+    <script src="~/js/analyticsCharts.js"></script>
 }

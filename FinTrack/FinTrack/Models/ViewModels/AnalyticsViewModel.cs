@@ -7,5 +7,6 @@ namespace FinTrack.Models.ViewModels
         public AnalyticsDto Analytics { get; set; }
         public List<CategoryBreakdownDto> CategoryBreakdown { get; set; }
         public AnalyticsInsightDto AnalyticsInsight { get; set; }
+        public List<MonthlyExpenseTrendAnalyticsDto> MonthlyExpenseTrends { get; set; }
     }
 }

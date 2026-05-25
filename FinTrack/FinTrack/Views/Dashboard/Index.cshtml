@@ -5,158 +5,319 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<div class="container mt-4">
+<div class="container py-4">
+    <div class="col-12 d-flex justify-content-end gap-2">
+        <a asp-action="Create" class="btn btn-primary rounded-pill">
+            <i class="bi bi-file-plus"></i> + Add Transaction
+        </a>
+    </div>
+    <!-- PAGE HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
 
-    <h2 class="mb-4">Financial Dashboard</h2>
+        <div>
 
-    <!-- SUMMARY CARDS -->
-    <div class="row mb-5">
+            <h2 class="text-success fw-bold mb-1">
+                Summary for @DateTime.Today.ToString("MMMM") @DateTime.Today.Year
+            </h2>
 
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm border-0">
-                <div class="card-body text-center">
+            <p class="text-muted mb-0">
+                Overview of your finances
+            </p>
 
-                    <h5 class="card-title text-success">
-                        Total Income
-                    </h5>
-
-                    <h3>
-                        ₹@Model.TotalIncome.ToString("N2")
-                    </h3>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm border-0">
-                <div class="card-body text-center">
-
-                    <h5 class="card-title text-danger">
-                        Total Expenses
-                    </h5>
-
-                    <h3>
-                        ₹@Model.TotalExpenses.ToString("N2")
-                    </h3>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm border-0">
-                <div class="card-body text-center">
-
-                    <h5 class="card-title text-primary">
-                        Net Balance
-                    </h5>
-
-                    <h3>
-                        ₹@Model.NetBalance.ToString("N2")
-                    </h3>
-
-                </div>
-            </div>
         </div>
 
     </div>
 
 
-    @* BUDGET PROGRESS *@
+    <!-- SUMMARY CARDS -->
+    <div class="row g-4 mb-5">
 
-    <div class="card shadow-sm border-0 mb-4">
+        <!-- INCOME -->
+        <div class="col-md-4">
 
-        <div class="card-body">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
 
-            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="card-body p-4">
 
-                <h4 class="mb-0">
-                    Budget Progress
-                </h4>
+                    <p class="text-success mb-2 fs-5">
+                        Total Income
+                    </p>
 
-                <a asp-controller="Budget"
-                   asp-action="Index"
-                   class="text-decoration-none fw-bold">
-                    Edit
-                </a>
+                    <h3 class="fw-bold text-success mb-0">
+                        ₹@Model.TotalIncome.ToString("N2")
+                    </h3>
 
-            </div>
-
-            @if (Model.BudgetAnalytics != null && Model.BudgetAnalytics.Any())
-            {
-                @foreach (var budget in Model.BudgetAnalytics)
-                {
-                    decimal percentage =
-                    budget.MonthlyLimitAmount == 0
-                    ? 0
-                    : (budget.TotalAmountSpent / budget.MonthlyLimitAmount) * 100;
-
-                    string progressColor = percentage switch
-                    {
-                        <= 50 => "bg-success",
-                        <= 80 => "bg-warning",
-                        _ => "bg-danger"
-                    };
-
-                    <div class="mb-4">
+                    <div class="mt-4">
 
                         <div class="d-flex justify-content-between mb-2">
 
-                            <div>
-                                <span class="fw-semibold">
-                                    @budget.CategoryName
-                                </span>
-                            </div>
+                            @if (Model.IncomePercentageChange > 0)
+                            {
+                                <small class="fw-semibold text-success fs-5">
+                                    @Model.IncomePercentageChange% vs last month
+                                </small>
+                            }
+                            else
+                            {
+                                <small class="fw-semibold text-danger fs-5">
 
-                            <div class="text-muted">
+                                    @Model.IncomePercentageChange% vs last month
+                                </small>
+                            }
 
-                                ₹@budget.TotalAmountSpent.ToString("N2")
+                        </div>
 
-                                /
+                    </div>
 
-                                ₹@budget.MonthlyLimitAmount.ToString("N2")
+                </div>
 
-                            </div>
+            </div>
+
+        </div>
+
+
+        <!-- EXPENSES -->
+        <div class="col-md-4">
+
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+
+                <div class="card-body p-4">
+
+                    <p class="text-danger mb-2 fs-5">
+                        Total Expenses
+                    </p>
+
+                    <h3 class="fw-bold text-danger mb-0">
+                        ₹@Model.TotalExpenses.ToString("N2")
+                    </h3>
+
+                    <div class="mt-4">
+
+                        <div class="d-flex justify-content-between mb-2">
+
+                            @if (Model.ExpensePercentageChange > 0)
+                            {
+                                <small class="fw-semibold text-danger fs-5">
+                                    @Model.ExpensePercentageChange% vs last month
+                                </small>
+                            }
+                            else
+                            {
+                                <small class="fw-semibold text-success fs-5">
+                                    @Model.ExpensePercentageChange% vs last month
+                                </small>
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+            </div>
+
+
+        </div>
+
+
+        <!-- BALANCE -->
+        <div class="col-md-4">
+
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+
+                <div class="card-body p-4">
+
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+
+                        <div>
+
+                            <p class="text-primary mb-2 fs-5">
+                                Net Balance
+                            </p>
+
+                            <h3 class="fw-bold text-primary mb-0">
+                                ₹@Model.NetBalance.ToString("N2")
+                            </h3>
+
+                        </div>
+
+                        <div class="bg-primary bg-opacity-10">
+
+                            <i class="bi bi-wallet2 text-primary"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SAVINGS RATE -->
+
+                    <div class="mt-4">
+
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+
+                            <small class="text-muted">
+                                Savings Rate
+                            </small>
+
+                            <small class="fw-semibold text-success">
+
+                                @Model.SavingsRate%
+
+                            </small>
 
                         </div>
 
                         <div class="progress"
-                             style="height:8px; border-radius:10px;">
+                             style="height:8px; border-radius:20px;">
 
-                            <div class="progress-bar @progressColor"
+                            <div class="progress-bar bg-success"
                                  role="progressbar"
-                                 style="width:@(percentage > 100 ? 100 : percentage)%">
+                                 style="width:@Model.SavingsRate%">
                             </div>
 
                         </div>
 
                     </div>
-                }
-            }
-            else
-            {
-                <p class="text-muted mb-0">
-                    No budgets available.
-                </p>
-            }
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- EXPENSE CATEGORY SUMMARY -->
-    <div class="mb-5">
+    <!-- CHART + BUDGET -->
+    <div class="row g-4 mb-5">
 
-        <h3 class="mb-3">Expense By Category</h3>
+        <!-- DOUGHNUT CHART -->
+        <div class="col-lg-7">
 
-        <div class="card shadow-sm border-0">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
 
-            <div class="card-body" style="height:60vh; width:60vw">
+                <div class="card-body p-4">
 
-                <canvas id="expenseCategoryChart">
-                </canvas>
+                    <div class="mb-4">
+
+                        <h4 class="fw-bold mb-1">
+                            Expense By Category
+                        </h4>
+
+                        <p class="text-muted mb-0">
+                            Spending distribution across categories
+                        </p>
+
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center"
+                         style="height:300px;">
+
+                        <canvas id="expenseCategoryChart">
+                        </canvas>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BUDGET PROGRESS -->
+        <div class="col-lg-5">
+
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+
+                <div class="card-body p-4">
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+
+                        <div>
+
+                            <h4 class="fw-bold mb-1">
+                                Budget Progress
+                            </h4>
+
+                            <p class="text-muted mb-0">
+                                Monthly spending limits
+                            </p>
+
+                        </div>
+
+                        <a asp-controller="Budget"
+                           asp-action="Index"
+                           class="btn btn-light rounded-pill px-3">
+                            Edit
+                        </a>
+
+                    </div>
+
+                    @if (Model.BudgetAnalytics != null && Model.BudgetAnalytics.Any())
+                    {
+                        @foreach (var budget in Model.BudgetAnalytics)
+                        {
+                            decimal percentage =
+                            budget.MonthlyLimitAmount == 0
+                            ? 0
+                            : (budget.TotalAmountSpent / budget.MonthlyLimitAmount) * 100;
+
+                            string progressColor = percentage switch
+                            {
+                                <= 50 => "bg-success",
+                                <= 80 => "bg-warning",
+                                _ => "bg-danger"
+                            };
+
+                            <div class="mb-4">
+
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+
+                                    <span class="fw-semibold">
+                                        @budget.CategoryName
+                                    </span>
+
+                                    <span class="text-muted small">
+
+                                        ₹@budget.TotalAmountSpent.ToString("N0")
+
+                                        /
+
+                                        ₹@budget.MonthlyLimitAmount.ToString("N0")
+
+                                    </span>
+
+                                </div>
+
+                                <div class="progress"
+                                     style="height:10px; border-radius:20px;">
+
+                                    <div class="progress-bar @progressColor"
+                                         role="progressbar"
+                                         style="width:@(percentage > 100 ? 100 : percentage)%">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+
+                            <p class="text-muted mb-0">
+                                No budgets available.
+                            </p>
+
+                        </div>
+                    }
+
+                </div>
 
             </div>
 
@@ -168,83 +329,130 @@
     <!-- RECENT TRANSACTIONS -->
     <div>
 
-        <h3 class="mb-3">Recent Transactions</h3>
+        <div class="d-flex justify-content-between align-items-center mb-3">
 
-        <div class="card shadow-sm border-0">
+            <div>
 
-            <div class="card-body">
+                <h4 class="fw-bold mb-1">
+                    Recent Transactions
+                </h4>
 
-                <table class="table table-hover align-middle">
+                <p class="text-muted mb-0">
+                    Your latest financial activity
+                </p>
 
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Title</th>
-                            <th>Category</th>
-                            <th>Type</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
+            </div>
 
-                    <tbody>
+        </div>
 
-                        @if (Model.RecentTransactions != null &&
-                                                Model.RecentTransactions.Any())
-                        {
-                            @foreach (var transaction in Model.RecentTransactions)
+        <div class="card border-0 shadow-sm rounded-4">
+
+            <div class="card-body p-0">
+
+                <div class="table-responsive">
+
+                    <table class="table align-middle mb-0">
+
+                        <thead style="background-color:#f8fafc;">
+
+                            <tr>
+
+                                <th class="border-0 px-4 py-3 text-muted fw-semibold">
+                                    Title
+                                </th>
+
+                                <th class="border-0 py-3 text-muted fw-semibold">
+                                    Category
+                                </th>
+
+                                <th class="border-0 py-3 text-muted fw-semibold">
+                                    Type
+                                </th>
+
+                                <th class="border-0 py-3 text-muted fw-semibold">
+                                    Amount
+                                </th>
+
+                                <th class="border-0 py-3 text-muted fw-semibold">
+                                    Date
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            @if (Model.RecentTransactions != null &&
+                                                        Model.RecentTransactions.Any())
+                            {
+                                @foreach (var transaction in Model.RecentTransactions)
+                                {
+                                    <tr>
+
+                                        <td class="px-4 py-3 fw-semibold">
+
+                                            @transaction.Description
+
+                                        </td>
+
+                                        <td class="py-3 text-muted">
+
+                                            @transaction.CategoryName
+
+                                        </td>
+
+                                        <td class="py-3">
+
+                                            @if (transaction.Type.ToString() == "Expense")
+                                            {
+                                                <span class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill">
+                                                    Expense
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill">
+                                                    Income
+                                                </span>
+                                            }
+
+                                        </td>
+
+                                        <td class="py-3 fw-semibold">
+
+                                            ₹@transaction.Amount.ToString("N2")
+
+                                        </td>
+
+                                        <td class="py-3 text-muted">
+
+                                            @transaction.Date.ToString("dd MMM yyyy")
+
+                                        </td>
+
+                                    </tr>
+                                }
+                            }
+                            else
                             {
                                 <tr>
 
-                                    <td>
-                                        @transaction.Description
-                                    </td>
+                                    <td colspan="5"
+                                        class="text-center py-5 text-muted">
 
-                                    <td>
-                                        @transaction.CategoryName
-                                    </td>
+                                        No transactions found.
 
-                                    <td>
-
-                                        @if (transaction.Type.ToString() == "Expense")
-                                        {
-                                            <span class="badge bg-danger">
-                                                Expense
-                                            </span>
-                                        }
-                                        else
-                                        {
-                                            <span class="badge bg-success">
-                                                Income
-                                            </span>
-                                        }
-
-                                    </td>
-
-                                    <td>
-                                        ₹@transaction.Amount.ToString("N2")
-                                    </td>
-
-                                    <td>
-                                        @transaction.Date.ToString("dd MMM yyyy")
                                     </td>
 
                                 </tr>
                             }
-                        }
-                        else
-                        {
-                            <tr>
 
-                                <td colspan="5" class="text-center">
-                                    No transactions found.
-                                </td>
+                        </tbody>
 
-                            </tr>
-                        }
+                    </table>
 
-                    </tbody>
-
-                </table>
+                </div>
 
             </div>
 
@@ -258,8 +466,10 @@
 @section Scripts {
 
     <script>
-        const categoryExpenseData = @Html.Raw(Json.Serialize(Model.ExpenseCategorySummaries));
+        const categoryExpenseData =
+        @Html.Raw(Json.Serialize(Model.ExpenseCategorySummaries));
     </script>
+
     <script src="~/js/dashboardCharts.js"></script>
 
 }

@@ -1,25 +1,54 @@
-﻿const categoryLabels = categoryExpenseData.map(item => item.categoryName);
-const categoryValues = categoryExpenseData.map(item => item.totalAmount);
+﻿const categoryLabels =
+    categoryExpenseData.map(item => item.categoryName);
 
-const ctx = document.getElementById('expenseCategoryChart');
+const categoryValues =
+    categoryExpenseData.map(item => item.totalAmount);
 
-const categoryExpenseChart = new Chart(ctx, {
+const ctx =
+    document.getElementById('expenseCategoryChart');
+
+new Chart(ctx, {
+
     type: 'doughnut',
 
     data: {
+
         labels: categoryLabels,
+
         datasets: [{
-            label: 'Amount spent',
-            data: categoryValues
-        }],
-        hoverOffset: 4
+
+            label: 'Amount Spent',
+
+            data: categoryValues,
+
+            borderWidth: 0,
+
+            hoverOffset: 8
+
+        }]
     },
 
     options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+
         plugins: {
-                    legend: {
-                            position: 'right'
+
+            legend: {
+
+                position: 'right',
+
+                labels: {
+
+                    usePointStyle: true,
+                    pointStyle: 'circle',
+                    padding: 20
+
+                }
             }
         }
     }
-)
+});

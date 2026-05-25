@@ -27,8 +27,8 @@ namespace FinTrack.Service
             int daysInMonth = DateTime.DaysInMonth(today.Year, today.Month);
 
             //Calculating data for analytics
-            decimal previousMonthExpense = _unitOfWork.Transaction.FindTotalExpenseByMonth(currentMonthStart, currentMonthEnd);
-            decimal currentMonthExpense = _unitOfWork.Transaction.FindTotalExpenseByMonth(previousMonthStart, previousMonthEnd);
+            decimal previousMonthExpense = _unitOfWork.Transaction.FindTotalExpenseByMonth(previousMonthStart, previousMonthEnd);
+            decimal currentMonthExpense = _unitOfWork.Transaction.FindTotalExpenseByMonth(currentMonthStart, currentMonthEnd);
 
             float expensePercentageChange = (float)((float)previousMonthExpense == 0 ? 0 : ((currentMonthExpense - previousMonthExpense) / previousMonthExpense) * 100);
 
@@ -46,8 +46,7 @@ namespace FinTrack.Service
                 ExpensePercentageChange = (float)Math.Round(expensePercentageChange, 2),
                 AverageDailyExpense = averageDailyExpense,
                 AverageWeeklyExpense = averageWeeklyExpense,
-                PredictedMonthlyExpense = predictedMonthlyExpense
-            };
+                PredictedMonthlyExpense = predictedMonthlyExpense            };
 
             return analyticsData;
         }
@@ -64,11 +63,24 @@ namespace FinTrack.Service
 
         public AnalyticsInsightDto GetAnalyticsInsight()
         {
+            DateTime currentMonthStart = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            DateTime currentMonthEnd = currentMonthStart.AddMonths(1).AddDays(-1);
+
             var insight = _unitOfWork.Transaction.FindAnalyticsInsight();
+
+            var largestExpense = _unitOfWork.Transaction.FindLargestExpense(currentMonthStart, currentMonthEnd);
+
+            insight.HighestExpenseInfo = largestExpense;
             return insight;
         }
 
-        
+        public async Task<List<MonthlyExpenseTrendAnalyticsDto>> GetMonthlyExpenseTrends()
+        {
+            int currentYear = DateTime.Now.Year;
+            int currentMonth = DateTime.Now.Month;
+            var trends = await _unitOfWork.Transaction.FindlyMonthlyExpenseTrend(currentYear);
 
+            return trends;
+        }
     }
 }

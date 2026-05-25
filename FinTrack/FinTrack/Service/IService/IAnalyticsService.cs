@@ -9,6 +9,7 @@ namespace FinTrack.Service.IService
         public AnalyticsDto GetAnalyticsData();
         public Task<List<CategoryBreakdownDto>> GetCategoryBreakdown();
         public AnalyticsInsightDto GetAnalyticsInsight();
+        Task<List<MonthlyExpenseTrendAnalyticsDto>> GetMonthlyExpenseTrends();
 
     }
 }

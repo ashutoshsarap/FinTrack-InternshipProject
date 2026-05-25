@@ -224,17 +224,34 @@ namespace FinTrack.Service
 
         public async Task<DashboardViewModel> GetDashboardData()
         {
-            var totalIncome = _unitOfWork.Transaction.FindTotalAmountByType(TransactionType.Income);
-            var totalExpenses = _unitOfWork.Transaction.FindTotalAmountByType(TransactionType.Expense);
-            var netBalance = totalIncome - totalExpenses;
+
+            int currentYear = DateTime.Now.Year;
+            int currentMonth = DateTime.Now.Month;
+            int previousMonth = currentMonth == 1 ? 12 : currentMonth - 1;
+
+            var totalIncomeCurrentMonth = _unitOfWork.Transaction.FindTotalAmountByTypeAndMonth(TransactionType.Income, currentMonth, currentYear);
+            var totalIncomePreviousMonth = _unitOfWork.Transaction.FindTotalAmountByTypeAndMonth(TransactionType.Income, previousMonth, currentYear);
+
+            var totalExpensesCurrentMonth = _unitOfWork.Transaction.FindTotalAmountByTypeAndMonth(TransactionType.Expense, currentMonth, currentYear);
+            var totalExpensePreviousMonth = _unitOfWork.Transaction.FindTotalAmountByTypeAndMonth(TransactionType.Expense, previousMonth, currentYear);
+
+            var netBalance = totalIncomeCurrentMonth - totalExpensesCurrentMonth;
             var recentTransactions = await _unitOfWork.Transaction.FindRecentTransactions();
             var expenseCategorySummaries = await _unitOfWork.Transaction.FindCategoryWiseExpense();
+            var savingsRate = Math.Round(totalIncomeCurrentMonth > 0 ? (totalIncomeCurrentMonth - totalExpensesCurrentMonth) / totalIncomeCurrentMonth * 100 : 0, 2);
+
+            float expensePercentageChange = (float) Math.Round(totalExpensePreviousMonth > 0 ? ((totalExpensesCurrentMonth - totalExpensePreviousMonth) / totalExpensePreviousMonth) * 100 : 0);
+
+            float incomePercentageChange = (float) Math.Round(totalIncomePreviousMonth > 0 ? ((totalIncomeCurrentMonth - totalIncomePreviousMonth) / totalIncomePreviousMonth) * 100 : 0);
 
             var dashboardData = new DashboardViewModel
             {
-                TotalIncome = totalIncome,
-                TotalExpenses = totalExpenses,
+                TotalIncome = totalIncomeCurrentMonth,
+                TotalExpenses = totalExpensesCurrentMonth,
+                IncomePercentageChange = incomePercentageChange,
+                ExpensePercentageChange = expensePercentageChange,
                 NetBalance = netBalance,
+                SavingsRate = (float)savingsRate,
                 RecentTransactions = recentTransactions.Select(t => new TransactionResponseDto
                 {
                     Id = t.Id,

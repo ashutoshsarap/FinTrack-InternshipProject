@@ -21,11 +21,13 @@ namespace FinTrack.Controllers
             AnalyticsDto analyticsDto = _analyticsService.GetAnalyticsData();
             List<CategoryBreakdownDto> categoryBreakdown = await _analyticsService.GetCategoryBreakdown();
             AnalyticsInsightDto analyticsInsight = _analyticsService.GetAnalyticsInsight();
+            List<MonthlyExpenseTrendAnalyticsDto> monthlyExpenseTrends = await _analyticsService.GetMonthlyExpenseTrends();
             AnalyticsViewModel analyticsViewModel = new AnalyticsViewModel
             {
                 Analytics = analyticsDto,
                 CategoryBreakdown = categoryBreakdown,
-                AnalyticsInsight = analyticsInsight
+                AnalyticsInsight = analyticsInsight,
+                MonthlyExpenseTrends = monthlyExpenseTrends
             };
 
             return View(analyticsViewModel);

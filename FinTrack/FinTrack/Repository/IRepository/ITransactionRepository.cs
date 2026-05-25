@@ -16,10 +16,12 @@ namespace FinTrack.Repository.IRepository
         public void Delete(Transaction transaction);
         public Task<List<CategoryExpenseDto>> FindCategoryWiseExpense();
         public Task<List<Transaction>> FindRecentTransactions();
-        public decimal FindTotalAmountByType(TransactionType type);
+        public decimal FindTotalAmountByTypeAndMonth(TransactionType type, int month, int year);
         public decimal FindTotalExpenseByMonth(DateTime monthStart, DateTime monthEnd);
         public Task<List<CategoryBreakdownDto>> FindCategoryBreakdown(DateTime currentMonthYearInfo);
         public AnalyticsInsightDto FindAnalyticsInsight();
         public Task<bool> IsDuplicateTransaction(Transaction transaction);
+        Task<List<MonthlyExpenseTrendAnalyticsDto>> FindlyMonthlyExpenseTrend(int year);
+        HighestExpenseInfo FindLargestExpense(DateTime currentMonthStart, DateTime currentMonthEnd);
     }
 }
