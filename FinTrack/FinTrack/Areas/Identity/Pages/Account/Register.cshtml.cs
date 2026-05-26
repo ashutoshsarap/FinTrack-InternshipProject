@@ -145,6 +145,9 @@ namespace FinTrack.Areas.Identity.Pages.Account
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
+                    await _emailSender.SendEmailAsync(Input.Email, "Welcome to FinTrack",
+                        $"Hi {Input.FullName}, welcome to FinTrack! We're excited to have you on board. Start tracking your finances today!");
+
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
