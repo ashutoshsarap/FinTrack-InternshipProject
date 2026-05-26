@@ -1,5 +1,6 @@
 using FinTrack.Data;
 using FinTrack.Dummy;
+using FinTrack.Models;
 using FinTrack.Models.Entity;
 using FinTrack.Repository;
 using FinTrack.Repository.IRepository;
@@ -20,7 +21,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 //Hangfire configuration for recurring transactions
 builder.Services.AddHangfire(config =>
-    config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));    
+    config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//Binds the EmailSettings section of the configuration to the EmailSettings class, allowing us to inject IOptions<EmailSettings> into our services to access email configuration values.
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 
 builder.Services.AddHangfireServer();
 
@@ -47,7 +51,7 @@ builder.Services.AddScoped<IBudgetService, BudgetService>();
 builder.Services.AddScoped<IRecurringTransactionService, RecurringTransactionService>();
 builder.Services.AddScoped<IRecurringTransactionJobService, RecurringTransactionJobService>();
 
-builder.Services.AddScoped<IEmailSender, DummyEmailService>();
+builder.Services.AddScoped<IEmailSender, EmailService>();
 
 var app = builder.Build();
 
