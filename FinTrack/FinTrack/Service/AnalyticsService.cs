@@ -1,4 +1,5 @@
-﻿using FinTrack.Models.DTOs.AnalyticsDtos;
+﻿using FinTrack.Models;
+using FinTrack.Models.DTOs.AnalyticsDtos;
 using FinTrack.Models.DTOs.BudgetDtos;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
@@ -81,6 +82,14 @@ namespace FinTrack.Service
             var trends = await _unitOfWork.Transaction.FindlyMonthlyExpenseTrend(currentYear);
 
             return trends;
+        }
+
+        public async Task<MonthlyReport> GetMonthlyReport(string userId)
+        {
+            int currentYear = DateTime.Now.Year;
+            int currentMonth = DateTime.Now.Month;
+
+            return await _unitOfWork.Transaction.FindMonthlyReportDataUserSpecific(userId, currentMonth, currentYear);
         }
     }
 }

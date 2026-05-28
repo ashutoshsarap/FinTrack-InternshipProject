@@ -1,5 +1,4 @@
 using FinTrack.Data;
-using FinTrack.Dummy;
 using FinTrack.Models;
 using FinTrack.Models.Entity;
 using FinTrack.Repository;
@@ -50,8 +49,8 @@ builder.Services.AddScoped<ICsvImportService, CsvImportService>();
 builder.Services.AddScoped<IBudgetService, BudgetService>();
 builder.Services.AddScoped<IRecurringTransactionService, RecurringTransactionService>();
 builder.Services.AddScoped<IRecurringTransactionJobService, RecurringTransactionJobService>();
-
 builder.Services.AddScoped<IEmailSender, EmailService>();
+builder.Services.AddScoped<ISendMonthlyReportService, SendMonthlyReportService>();
 
 var app = builder.Build();
 
@@ -80,5 +79,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 
-app.Run();
+RecurringJob.AddOrUpdate<ISendMonthlyReportService>("monthly-report",s => s.SendMonthlyReportEmailAsync(), "0 8 1 * *");
 
+app.Run();

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using FinTrack.Models.ViewModels;
 using FinTrack.CustomExceptions;
 using FinTrack.Models.DTOs.TransactionDto;
-using FinTrack.Models;
+using FinTrack.Models.Pagination;
 //V3
 namespace FinTrack.Service
 {
@@ -149,7 +149,7 @@ namespace FinTrack.Service
             return transactionResponse;
         }
 
-        public async Task<TransactionPaginationResult> GetAllTransactionsByFilterAsync(TransactionFilterDto filterDto)
+        public async Task<TransactionResponsePage> GetAllTransactionsByFilterAsync(TransactionFilterDto filterDto)
         {
             if (filterDto == null)
             {
@@ -171,7 +171,13 @@ namespace FinTrack.Service
                 CategoryName = t.Category.Name
             }).ToList();
 
-            return paginatedTransactions;
+            return new TransactionResponsePage
+            {
+                Transactions = transactionResponses,
+                TotalCountOfTransactions = paginatedTransactions.TotalCountOfTransactions,
+                PageSize = paginatedTransactions.PageSize,
+                CurrentPageNumber = paginatedTransactions.CurrentPageNumber
+            };
         }
 
         public async Task UpdateTransaction(int id, string userId,TransactionUpdateDto transactionUpdateDto)

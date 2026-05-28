@@ -6,6 +6,7 @@ using FinTrack.Models.DTOs.CategoryDtos;
 using FinTrack.Models.DTOs.TransactionDto;
 using FinTrack.Models.Entity;
 using FinTrack.Models.Enums;
+using FinTrack.Models.Pagination;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
 using Microsoft.EntityFrameworkCore;
@@ -369,6 +370,34 @@ namespace FinTrack.Repository
             return largestExpenseInfo;
         }
 
-        
+        public async Task<MonthlyReport> FindMonthlyReportDataUserSpecific(string userId, int currentMonth, int currentYear)
+        {
+            decimal totalExpenseCurrentMonth = await _dbContext.Transactions
+                                                        .Where(t => t.ApplicationUserId == userId &&
+                                                               t.IsDeleted == false &&
+                                                               t.Type == TransactionType.Expense &&
+                                                               t.Date.Month == currentMonth &&
+                                                               t.Date.Year == currentYear)
+                                                        .SumAsync(t => t.Amount);
+
+            decimal totalIncomeCurrentMonth = await _dbContext.Transactions
+                                                      .Where(t => t.ApplicationUserId == userId &&
+                                                             t.IsDeleted == false &&
+                                                             t.Type == TransactionType.Income &&
+                                                             t.Date.Month == currentMonth &&
+                                                             t.Date.Year == currentYear)
+                                                            .SumAsync(t => t.Amount);
+
+            decimal netSavings = totalIncomeCurrentMonth - totalExpenseCurrentMonth;
+
+            MonthlyReport monthlyReport = new MonthlyReport
+            {
+                TotalExpense = totalExpenseCurrentMonth,
+                TotalIncome = totalIncomeCurrentMonth,
+                NetSavings = netSavings
+            };
+
+            return monthlyReport;
+        }
     }
 }

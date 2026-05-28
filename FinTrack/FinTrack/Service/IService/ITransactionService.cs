@@ -1,6 +1,6 @@
-﻿using FinTrack.Models;
-using FinTrack.Models.DTOs.TransactionDto;
+﻿using FinTrack.Models.DTOs.TransactionDto;
 using FinTrack.Models.Entity;
+using FinTrack.Models.Pagination;
 using FinTrack.Models.ViewModels;
 using System.Linq.Expressions;
 //V2
@@ -13,7 +13,7 @@ namespace FinTrack.Service.IService
         public Task DeleteTransaction(int id, string userId);
         public Task<TransactionResponseDto> GetTransactionByIdAsync(int id, string userId, string includeProperties);
         public Task<List<TransactionResponseDto>> GetAllTransactionsAsync();
-        public Task<TransactionPaginationResult> GetAllTransactionsByFilterAsync(TransactionFilterDto filterDto);
+        public Task<TransactionResponsePage> GetAllTransactionsByFilterAsync(TransactionFilterDto filterDto);
         public Task<TransactionResponseDto> GetTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter);
         public Task<DashboardViewModel> GetDashboardData();
 

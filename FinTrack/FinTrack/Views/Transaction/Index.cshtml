@@ -264,6 +264,12 @@ else
         {
             <a asp-action="Index"
                asp-route-PageNumber="@(ViewBag.CurrentPage - 1)"
+               asp-route-StartDate="@ViewBag.Filter.StartDate.ToString("yyyy-MM-dd")"
+               asp-route-EndDate="@ViewBag.Filter.EndDate.ToString("yyyy-MM-dd")"
+               asp-route-TransactionType="@ViewBag.Filter.TransactionType"
+               asp-route-PaymentMode="@ViewBag.Filter.PaymentMode"
+               asp-route-CategoryId="@ViewBag.Filter.CategoryId"
+               asp-route-SortBy="@ViewBag.Filter.SortBy"
                class="btn btn-outline-primary me-2">
                 Previous
             </a>
@@ -277,6 +283,12 @@ else
         {
             <a asp-action="Index"
                asp-route-PageNumber="@(ViewBag.CurrentPage + 1)"
+               asp-route-StartDate="@ViewBag.Filter.StartDate.ToString("yyyy-MM-dd")"
+               asp-route-EndDate="@ViewBag.Filter.EndDate.ToString("yyyy-MM-dd")"
+               asp-route-TransactionType="@ViewBag.Filter.TransactionType"
+               asp-route-PaymentMode="@ViewBag.Filter.PaymentMode"
+               asp-route-CategoryId="@ViewBag.Filter.CategoryId"
+               asp-route-SortBy="@ViewBag.Filter.SortBy"
                class="btn btn-outline-primary ms-2">
                 Next
             </a>

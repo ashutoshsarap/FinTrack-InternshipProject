@@ -5,6 +5,7 @@ using FinTrack.Models.DTOs.CategoryDtos;
 using FinTrack.Models.DTOs.TransactionDto;
 using FinTrack.Models.Entity;
 using FinTrack.Models.Enums;
+using FinTrack.Models.Pagination;
 using System.Linq.Expressions;
 //V1
 namespace FinTrack.Repository.IRepository
@@ -25,5 +26,6 @@ namespace FinTrack.Repository.IRepository
         public Task<bool> IsDuplicateTransaction(Transaction transaction);
         Task<List<MonthlyExpenseTrendAnalyticsDto>> FindlyMonthlyExpenseTrend(int year);
         HighestExpenseInfo FindLargestExpense(DateTime currentMonthStart, DateTime currentMonthEnd);
+        Task<MonthlyReport> FindMonthlyReportDataUserSpecific(string userId, int currentMonth, int currentYear);
     }
 }

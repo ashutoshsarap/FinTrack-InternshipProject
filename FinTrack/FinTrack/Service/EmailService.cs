@@ -8,7 +8,7 @@ using Microsoft.Extensions.Options;
 using System.Configuration;
 
 
-namespace FinTrack.Dummy
+namespace FinTrack.Service
 {
     public class EmailService : IEmailSender
     {

@@ -1,10 +1,10 @@
-﻿using FinTrack.Models.Entity;
+﻿using FinTrack.Models.DTOs.TransactionDto;
 
-namespace FinTrack.Models
+namespace FinTrack.Models.Pagination
 {
-    public class TransactionPaginationResult
+    public class TransactionResponsePage
     {
-        public IEnumerable<Transaction> AllTransactions { get; set; }
+        public List<TransactionResponseDto> Transactions { get; set; }
         public int TotalCountOfTransactions { get; set; }
         public int PageSize { get; set; }
         public int CurrentPageNumber { get; set; }

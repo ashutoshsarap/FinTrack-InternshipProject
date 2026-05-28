@@ -42,13 +42,13 @@ namespace FinTrack.Controllers
                 filter.EndDate = filter.StartDate.Value.AddMonths(1).AddDays(-1);
             }
 
-            var transactions = await _transactionService.GetAllTransactionsByFilterAsync(filter);
+            var paginatedTransactions = await _transactionService.GetAllTransactionsByFilterAsync(filter);
             ViewBag.Filter = filter;
             ViewBag.Categories = await _categoryService.GetAllCategoriesAsync();
-            ViewBag.TotalPages = transactions.TotalPages;
-            ViewBag.CurrentPage = transactions.CurrentPageNumber;
+            ViewBag.TotalPages = paginatedTransactions.TotalPages;
+            ViewBag.CurrentPage = paginatedTransactions.CurrentPageNumber;
 
-            var transactionViewModels = transactions.AllTransactions.Select(t => new TransactionViewModel
+            var transactionViewModels = paginatedTransactions.Transactions.Select(t => new TransactionViewModel
             {
                 Id = t.Id,
                 Amount = t.Amount,
@@ -56,7 +56,7 @@ namespace FinTrack.Controllers
                 Date = t.Date,
                 PaymentMode = t.PaymentMode,
                 TransactionType = t.Type,
-                CategoryName = t.Category.Name
+                CategoryName = t.CategoryName
             }).ToList();
 
             return View(transactionViewModels);
