@@ -2,7 +2,7 @@
 using FinTrack.Models.Entity;
 using FinTrack.Models.Enums;
 
-namespace FinTrack.Models.DTOs
+namespace FinTrack.Models.DTOs.TransactionDto
 {
     public class TransactionUpdateDto
     {

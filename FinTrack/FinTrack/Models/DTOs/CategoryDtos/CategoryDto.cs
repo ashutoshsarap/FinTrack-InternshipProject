@@ -1,7 +1,7 @@
 ﻿using FinTrack.Models.Entity;
 using System.ComponentModel.DataAnnotations;
 //V1
-namespace FinTrack.Models.DTOs
+namespace FinTrack.Models.DTOs.CategoryDtos
 {
     public class CategoryDto
     {

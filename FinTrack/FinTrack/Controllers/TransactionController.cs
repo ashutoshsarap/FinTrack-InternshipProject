@@ -1,6 +1,7 @@
 ﻿using FinTrack.CustomExceptions;
 using FinTrack.Data;
 using FinTrack.Models.DTOs;
+using FinTrack.Models.DTOs.TransactionDto;
 using FinTrack.Models.Entity;
 using FinTrack.Models.ViewModels;
 using FinTrack.Repository;
@@ -44,7 +45,10 @@ namespace FinTrack.Controllers
             var transactions = await _transactionService.GetAllTransactionsByFilterAsync(filter);
             ViewBag.Filter = filter;
             ViewBag.Categories = await _categoryService.GetAllCategoriesAsync();
-            var transactionViewModels = transactions.Select(t => new TransactionViewModel
+            ViewBag.TotalPages = transactions.TotalPages;
+            ViewBag.CurrentPage = transactions.CurrentPageNumber;
+
+            var transactionViewModels = transactions.AllTransactions.Select(t => new TransactionViewModel
             {
                 Id = t.Id,
                 Amount = t.Amount,
@@ -52,7 +56,7 @@ namespace FinTrack.Controllers
                 Date = t.Date,
                 PaymentMode = t.PaymentMode,
                 TransactionType = t.Type,
-                CategoryName = t.CategoryName
+                CategoryName = t.Category.Name
             }).ToList();
 
             return View(transactionViewModels);

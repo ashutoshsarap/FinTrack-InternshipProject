@@ -1,6 +1,6 @@
 ﻿using CsvHelper;
-using FinTrack.Models.DTOs;
 using FinTrack.Models.DTOs.CsvDtos;
+using FinTrack.Models.DTOs.TransactionDto;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
 using System.Globalization;
@@ -26,7 +26,7 @@ namespace FinTrack.Service
                 EndDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month))
             };
 
-            var userTransactions = await _unitOfWork.Transaction.FindAllTransactionByFilterAsync(transactionFilterDto, "Category");
+            var userTransactions = await _unitOfWork.Transaction.FindAllTransactionForAUser();
             List<CsvExportDto> csvExportDtosList = new List<CsvExportDto>();
             csvExportDtosList = userTransactions.Select(transaction => new CsvExportDto
             {

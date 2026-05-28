@@ -1,4 +1,4 @@
-﻿using FinTrack.Models.DTOs;
+﻿using FinTrack.Models.DTOs.CategoryDtos;
 using FinTrack.Service.IService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

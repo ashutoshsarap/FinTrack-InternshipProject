@@ -1,6 +1,6 @@
 ﻿using FinTrack.Models.Enums;
 
-namespace FinTrack.Models.DTOs
+namespace FinTrack.Models.DTOs.TransactionDto
 {
     public class TransactionFilterDto
     {
@@ -13,6 +13,6 @@ namespace FinTrack.Models.DTOs
 
         //Pagination properties
         public int PageNumber { get; set; } = 1;
-        public int PageSize { get; set; } =10; // Default page size
+        public int PageSize { get; set; } = 10; // Default page size
     }
 }

@@ -1,5 +1,5 @@
 ﻿using FinTrack.Data;
-using FinTrack.Models.DTOs;
+using FinTrack.Models.DTOs.CategoryDtos;
 using FinTrack.Models.Entity;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;

@@ -257,4 +257,30 @@ else
             }
         </tbody>
     </table>
+
+    <div class="d-flex justify-content-center mt-4">
+
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <a asp-action="Index"
+               asp-route-PageNumber="@(ViewBag.CurrentPage - 1)"
+               class="btn btn-outline-primary me-2">
+                Previous
+            </a>
+        }
+
+        <span class="align-self-center">
+            Page @ViewBag.CurrentPage of @ViewBag.TotalPages
+        </span>
+
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+        {
+            <a asp-action="Index"
+               asp-route-PageNumber="@(ViewBag.CurrentPage + 1)"
+               class="btn btn-outline-primary ms-2">
+                Next
+            </a>
+        }
+
+    </div>
 }

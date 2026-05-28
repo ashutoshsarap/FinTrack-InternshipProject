@@ -1,7 +1,7 @@
 ﻿using FinTrack.Models.Entity;
 using FinTrack.Models.Enums;
 //V1
-namespace FinTrack.Models.DTOs
+namespace FinTrack.Models.DTOs.TransactionDto
 {
     public class TransactionResponseDto
     {

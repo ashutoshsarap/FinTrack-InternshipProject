@@ -1,5 +1,4 @@
 ﻿using FinTrack.Data;
-using FinTrack.Models.DTOs;
 using FinTrack.Models.Enums;
 using FinTrack.Models.Entity;
 using FinTrack.Repository.IRepository;
@@ -8,6 +7,8 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using FinTrack.Models.ViewModels;
 using FinTrack.CustomExceptions;
+using FinTrack.Models.DTOs.TransactionDto;
+using FinTrack.Models;
 //V3
 namespace FinTrack.Service
 {
@@ -148,7 +149,7 @@ namespace FinTrack.Service
             return transactionResponse;
         }
 
-        public async Task<List<TransactionResponseDto>> GetAllTransactionsByFilterAsync(TransactionFilterDto filterDto)
+        public async Task<TransactionPaginationResult> GetAllTransactionsByFilterAsync(TransactionFilterDto filterDto)
         {
             if (filterDto == null)
             {
@@ -156,9 +157,9 @@ namespace FinTrack.Service
             }
 
 
-            var transactions = await _unitOfWork.Transaction.FindAllTransactionByFilterAsync(filterDto, includeProperties: "Category");
+            var paginatedTransactions = await _unitOfWork.Transaction.FindAllTransactionByFilterAsync(filterDto, includeProperties: "Category");
 
-            return transactions.Select(t => new TransactionResponseDto()
+            var transactionResponses = paginatedTransactions.AllTransactions.Select(t => new TransactionResponseDto
             {
                 Id = t.Id,
                 Amount = t.Amount,
@@ -169,6 +170,8 @@ namespace FinTrack.Service
                 CategoryId = t.CategoryId,
                 CategoryName = t.Category.Name
             }).ToList();
+
+            return paginatedTransactions;
         }
 
         public async Task UpdateTransaction(int id, string userId,TransactionUpdateDto transactionUpdateDto)

@@ -1,4 +1,4 @@
-﻿using FinTrack.Models.DTOs;
+﻿using FinTrack.Models.DTOs.CategoryDtos;
 using FinTrack.Models.Entity;
 
 namespace FinTrack.Service.IService

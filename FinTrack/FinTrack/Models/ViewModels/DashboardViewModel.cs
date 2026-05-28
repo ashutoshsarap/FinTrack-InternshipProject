@@ -1,5 +1,6 @@
-﻿using FinTrack.Models.DTOs;
-using FinTrack.Models.DTOs.BudgetDtos;
+﻿using FinTrack.Models.DTOs.BudgetDtos;
+using FinTrack.Models.DTOs.CategoryDtos;
+using FinTrack.Models.DTOs.TransactionDto;
 
 namespace FinTrack.Models.ViewModels
 {

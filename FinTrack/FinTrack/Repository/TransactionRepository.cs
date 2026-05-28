@@ -1,7 +1,9 @@
 ﻿using FinTrack.Data;
-using FinTrack.Models.DTOs;
+using FinTrack.Models;
 using FinTrack.Models.DTOs.AnalyticsDtos;
 using FinTrack.Models.DTOs.BudgetDtos;
+using FinTrack.Models.DTOs.CategoryDtos;
+using FinTrack.Models.DTOs.TransactionDto;
 using FinTrack.Models.Entity;
 using FinTrack.Models.Enums;
 using FinTrack.Repository.IRepository;
@@ -23,6 +25,14 @@ namespace FinTrack.Repository
             _currentUserId = currentUserService.UserId;
         }
 
+        public async Task<IEnumerable<Transaction>> FindAllTransactionForAUser()
+        {
+            return await _dbContext.Transactions
+                .Where(t => t.ApplicationUserId == _currentUserId && 
+                       t.IsDeleted == false)
+                .Include("Category") //Eager loading of Category data along with transactions to avoid multiple database calls when accessing category information for each transaction.
+                .ToListAsync();
+        }
         public void Delete(Transaction transaction)
         {
             transaction.IsDeleted = true;
@@ -31,7 +41,7 @@ namespace FinTrack.Repository
 
         //Following method retrieves transactions based on the provided filter criteria. It dynamically builds the query based on which filter properties are set, and includes related entities if specified. Finally, it returns a list of transactions that match the criteria, ordered by date.
         //Used in transaction listing page where user can filter transactions based on date range, type, payment mode and category
-        public async Task<IEnumerable<Transaction>> FindAllTransactionByFilterAsync(TransactionFilterDto filter, string? includeProperties)
+        public async Task<TransactionPaginationResult> FindAllTransactionByFilterAsync(TransactionFilterDto filter, string? includeProperties)
         {
             IQueryable<Transaction> query = _dbContext.Transactions;
             if (!string.IsNullOrEmpty(includeProperties))
@@ -71,11 +81,21 @@ namespace FinTrack.Repository
             query = query.Where(t => t.ApplicationUserId == _currentUserId && t.IsDeleted == false);
             
             //Pagination
+            var totalCount = await query.CountAsync();
+
             int skipPages = (filter.PageNumber - 1) * filter.PageSize;
 
-            query = query.Skip(skipPages).Take(filter.PageSize);
+            var allRecords = await query.Skip(skipPages)
+                                        .Take(filter.PageSize)
+                                        .ToListAsync();
 
-            return await query.ToListAsync();
+            return new TransactionPaginationResult
+            {
+                AllTransactions = allRecords,
+                TotalCountOfTransactions = totalCount,
+                PageSize = filter.PageSize,
+                CurrentPageNumber = filter.PageNumber
+            };
         }
 
         public async Task<Transaction> FindTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string? includeProperties)
@@ -348,5 +368,7 @@ namespace FinTrack.Repository
 
             return largestExpenseInfo;
         }
+
+        
     }
 }

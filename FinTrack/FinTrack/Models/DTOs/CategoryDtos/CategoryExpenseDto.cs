@@ -1,4 +1,4 @@
-﻿namespace FinTrack.Models.DTOs
+﻿namespace FinTrack.Models.DTOs.CategoryDtos
 {
     public class CategoryExpenseDto
     {

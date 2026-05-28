@@ -1,7 +1,8 @@
-﻿
-using FinTrack.Models.DTOs;
+﻿using FinTrack.Models;
 using FinTrack.Models.DTOs.AnalyticsDtos;
 using FinTrack.Models.DTOs.BudgetDtos;
+using FinTrack.Models.DTOs.CategoryDtos;
+using FinTrack.Models.DTOs.TransactionDto;
 using FinTrack.Models.Entity;
 using FinTrack.Models.Enums;
 using System.Linq.Expressions;
@@ -11,7 +12,8 @@ namespace FinTrack.Repository.IRepository
     public interface ITransactionRepository : IRepository<Transaction>
     {
         public Task<Transaction> FindTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string? includeProperties);
-        public Task<IEnumerable<Transaction>> FindAllTransactionByFilterAsync(TransactionFilterDto filter, string? includeProperties);
+        public Task<TransactionPaginationResult> FindAllTransactionByFilterAsync(TransactionFilterDto filter, string? includeProperties);
+        public Task<IEnumerable<Transaction>> FindAllTransactionForAUser();
         public void Update(Transaction transaction);
         public void Delete(Transaction transaction);
         public Task<List<CategoryExpenseDto>> FindCategoryWiseExpense();
