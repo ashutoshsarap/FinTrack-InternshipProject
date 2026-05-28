@@ -102,6 +102,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2026.5.0, )"
             }
           },
           "imports": [

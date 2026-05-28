@@ -11,6 +11,22 @@
       "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\service\\sendmonthlyreportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\service\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\service\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\service\\generatepdfservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\service\\generatepdfservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\service\\iservice\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\service\\iservice\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\service\\iservice\\igeneratepdfservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\service\\iservice\\igeneratepdfservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -46,11 +62,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\IService\\IEmailService.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Service\\IService\\IEmailService.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\IService\\IEmailService.cs",
+              "RelativeToolTip": "FinTrack\\Service\\IService\\IEmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T12:00:45.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\EmailService.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Service\\EmailService.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\EmailService.cs",
+              "RelativeToolTip": "FinTrack\\Service\\EmailService.cs",
+              "ViewState": "AgIAACEAAACA3d3d3d0rwEIAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T11:53:36.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GeneratePdfService.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\GeneratePdfService.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Service\\GeneratePdfService.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\GeneratePdfService.cs",
+              "RelativeToolTip": "FinTrack\\Service\\GeneratePdfService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T11:45:31.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IGeneratePdfService.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\IService\\IGeneratePdfService.cs",
+              "RelativeDocumentMoniker": "FinTrack\\Service\\IService\\IGeneratePdfService.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\IService\\IGeneratePdfService.cs",
+              "RelativeToolTip": "FinTrack\\Service\\IService\\IGeneratePdfService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T11:44:54.845Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -60,14 +128,14 @@
               "RelativeDocumentMoniker": "FinTrack\\Program.cs",
               "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Program.cs",
               "RelativeToolTip": "FinTrack\\Program.cs",
-              "ViewState": "AgIAAEcAAAAAYGZmZmb0v1EAAABsAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAIwDMAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-28T11:00:53.069Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Views\\Dashboard\\Index.cshtml",
               "RelativeDocumentMoniker": "FinTrack\\Views\\Dashboard\\Index.cshtml",
@@ -80,7 +148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "IAnalyticsService.cs",
               "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\IService\\IAnalyticsService.cs",
               "RelativeDocumentMoniker": "FinTrack\\Service\\IService\\IAnalyticsService.cs",
@@ -93,13 +161,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "ITransactionRepository.cs",
               "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Repository\\IRepository\\ITransactionRepository.cs",
               "RelativeDocumentMoniker": "FinTrack\\Repository\\IRepository\\ITransactionRepository.cs",
               "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Repository\\IRepository\\ITransactionRepository.cs",
               "RelativeToolTip": "FinTrack\\Repository\\IRepository\\ITransactionRepository.cs",
-              "ViewState": "AgIAABAAAAAAd3d3d3f3vxwAAABwAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAABwd3d3d3cwwBwAAABwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-28T10:22:12.786Z",
               "EditorCaption": ""
@@ -112,14 +180,14 @@
               "RelativeDocumentMoniker": "FinTrack\\Service\\SendMonthlyReportService.cs",
               "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\SendMonthlyReportService.cs",
               "RelativeToolTip": "FinTrack\\Service\\SendMonthlyReportService.cs",
-              "ViewState": "AgIAABQAAACAl5mZmZkdwC8AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAChAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-28T10:17:57.74Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "TransactionRepository.cs",
               "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Repository\\TransactionRepository.cs",
               "RelativeDocumentMoniker": "FinTrack\\Repository\\TransactionRepository.cs",
@@ -132,7 +200,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "MonthlyReport.cs",
               "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\MonthlyReport.cs",
               "RelativeDocumentMoniker": "FinTrack\\Models\\MonthlyReport.cs",
@@ -145,7 +213,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "AnalyticsInsightDto.cs",
               "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Models\\DTOs\\AnalyticsDtos\\AnalyticsInsightDto.cs",
               "RelativeDocumentMoniker": "FinTrack\\Models\\DTOs\\AnalyticsDtos\\AnalyticsInsightDto.cs",
@@ -158,7 +226,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "AnalyticsService.cs",
               "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Service\\AnalyticsService.cs",
               "RelativeDocumentMoniker": "FinTrack\\Service\\AnalyticsService.cs",

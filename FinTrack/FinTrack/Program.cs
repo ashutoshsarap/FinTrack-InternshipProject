@@ -49,8 +49,9 @@ builder.Services.AddScoped<ICsvImportService, CsvImportService>();
 builder.Services.AddScoped<IBudgetService, BudgetService>();
 builder.Services.AddScoped<IRecurringTransactionService, RecurringTransactionService>();
 builder.Services.AddScoped<IRecurringTransactionJobService, RecurringTransactionJobService>();
-builder.Services.AddScoped<IEmailSender, EmailService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<ISendMonthlyReportService, SendMonthlyReportService>();
+builder.Services.AddScoped<IGeneratePdfService, GeneratePdfService>();
 
 var app = builder.Build();
 
@@ -79,6 +80,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 
-RecurringJob.AddOrUpdate<ISendMonthlyReportService>("monthly-report",s => s.SendMonthlyReportEmailAsync(), "0 8 1 * *");
+// Schedule the recurring job to send monthly report emails on the 1st of every month at 8 AM using Hangfire's Cron expression.
+RecurringJob.AddOrUpdate<ISendMonthlyReportService>("monthly-report",s => s.SendMonthlyReportEmailAsync(), Cron.Minutely);
 
 app.Run();
