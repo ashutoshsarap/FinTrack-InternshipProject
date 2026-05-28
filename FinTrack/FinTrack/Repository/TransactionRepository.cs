@@ -67,8 +67,15 @@ namespace FinTrack.Repository
             {
                 query = query.Where(t => t.CategoryId == filter.CategoryId.Value);
             }
-            return await query.Where(t => t.ApplicationUserId == _currentUserId && t.IsDeleted == false)
-                              .ToListAsync();
+            
+            query = query.Where(t => t.ApplicationUserId == _currentUserId && t.IsDeleted == false);
+            
+            //Pagination
+            int skipPages = (filter.PageNumber - 1) * filter.PageSize;
+
+            query = query.Skip(skipPages).Take(filter.PageSize);
+
+            return await query.ToListAsync();
         }
 
         public async Task<Transaction> FindTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter, string? includeProperties)
