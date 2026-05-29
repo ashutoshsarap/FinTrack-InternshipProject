@@ -1,11 +1,14 @@
 ﻿using FinTrack.Models.DTOs.BudgetDtos;
 using FinTrack.Models.ViewModels;
 using FinTrack.Service.IService;
+using FinTrack.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace FinTrack.Controllers
 {
+    [Authorize(Roles = Roles.User)]
     public class BudgetController : Controller
     {
         private readonly IBudgetService _budgetService;

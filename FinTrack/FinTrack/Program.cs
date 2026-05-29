@@ -133,7 +133,7 @@ app.UseHangfireDashboard(
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=RedirectUser}/{id?}");
 
 // Schedule the recurring job to send monthly report emails on the 1st of every month at 8 AM using Hangfire's Cron expression.
 RecurringJob.AddOrUpdate<ISendMonthlyReportService>("monthly-report", s => s.SendMonthlyReportEmailAsync(), "0 8 1 * *");

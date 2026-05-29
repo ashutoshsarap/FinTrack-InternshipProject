@@ -4,7 +4,7 @@ using FinTrack.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FinTrack.Controllers.AdminController
+namespace FinTrack.Controllers
 {
     [Authorize(Roles = Roles.Admin)]
     public class AdminController : Controller

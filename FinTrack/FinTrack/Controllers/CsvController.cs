@@ -1,11 +1,12 @@
 ﻿using FinTrack.Service.IService;
+using FinTrack.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 
 namespace FinTrack.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = Roles.User)]
     public class CsvController : Controller
     {
         private readonly ICsvExportService _csvExportService;    

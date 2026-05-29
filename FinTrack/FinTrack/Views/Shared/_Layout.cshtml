@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using FinTrack.Utilities
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -39,66 +40,89 @@
             <div class="bg-dark text-white p-3" style="width:250px; min-height:100vh;">
 
                 <h4 class="mb-4">Menu</h4>
+                @if (User.IsInRole(Roles.User))
+                {
+                    <ul class="nav flex-column">
 
-                <ul class="nav flex-column">
+                        <li class="nav-item mb-2">
+                            <a asp-controller="Dashboard"
+                            asp-action="Index"
+                            class="nav-link text-white">
+                                Dashboard
+                            </a>
+                        </li>
 
-                    <li class="nav-item mb-2">
-                        <a asp-controller="Dashboard"
-                           asp-action="Index"
-                           class="nav-link text-white">
-                            Dashboard
-                        </a>
-                    </li>
+                        <li class="nav-item mb-2">
+                            <a asp-controller="Analytics"
+                            asp-action="Index"
+                            class="nav-link text-white">
+                                Analytics
+                            </a>
+                        </li>
 
-                    <li class="nav-item mb-2">
-                        <a asp-controller="Analytics"
-                           asp-action="Index"
-                           class="nav-link text-white">
-                            Analytics
-                        </a>
-                    </li>
+                        <li class="nav-item mb-2">
+                            <a asp-controller="Transaction"
+                            asp-action="Index"
+                            class="nav-link text-white">
+                                Transactions
+                            </a>
+                        </li>
 
-                    <li class="nav-item mb-2">
-                        <a asp-controller="Transaction"
-                           asp-action="Index"
-                           class="nav-link text-white">
-                            Transactions
-                        </a>
-                    </li>
+                        <li class="nav-item mb-2">
+                            <a asp-controller="Transaction"
+                            asp-action="Create"
+                            class="nav-link text-white">
+                                Add Transaction
+                            </a>
+                        </li>
 
-                    <li class="nav-item mb-2">
-                        <a asp-controller="Transaction"
-                           asp-action="Create"
-                           class="nav-link text-white">
-                            Add Transaction
-                        </a>
-                    </li>
+                        <li class="nav-item mb-2">
+                            <a asp-controller="Category"
+                            asp-action="Index"
+                            class="nav-link text-white">
+                                My Categories
+                            </a>
+                        </li>
 
-                    <li class="nav-item mb-2">
-                        <a asp-controller="Category"
-                           asp-action="Index"
-                           class="nav-link text-white">
-                           My Categories
-                        </a>
-                    </li>
+                        <li class="nav-item mb-2">
+                            <a asp-controller="Budget"
+                            asp-action="Index"
+                            class="nav-link text-white">
+                                Budgets
+                            </a>
+                        </li>
 
-                    <li class="nav-item mb-2">
-                        <a asp-controller="Budget"
-                           asp-action="Index"
-                           class="nav-link text-white">
-                            Budgets
-                        </a>
-                    </li>
+                        <li class="nav-item mb-2">
+                            <a asp-controller="RecurringTransaction"
+                            asp-action="Index"
+                            class="nav-link text-white">
+                                Recurring Transactions
+                            </a>
+                        </li>
 
-                    <li class="nav-item mb-2">
-                        <a asp-controller="RecurringTransaction"
-                           asp-action="Index"
-                           class="nav-link text-white">
-                            Recurring Transactions
-                        </a>
-                    </li>
+                    </ul>                
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <ul class="nav flex-column">
 
-                </ul>
+                        <li class="nav-item mb-2">
+                            <a asp-controller="Admin"
+                               asp-action="Index"
+                               class="nav-link text-white">
+                                Admin Dashboard
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <a href="/hangfire"
+                               class="nav-link text-white">
+                                Hangfire Dashboard
+                            </a>
+                        </li>
+
+                    </ul>
+                }
             </div>
 
             <!-- Main Content -->

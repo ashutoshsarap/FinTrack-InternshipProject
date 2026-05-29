@@ -1,5 +1,6 @@
 ﻿using FinTrack.Models.ViewModels;
 using FinTrack.Service.IService;
+using FinTrack.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FinTrack.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = Roles.User)]
     public class DashboardController : Controller
     {
         private readonly ITransactionService _transactionService;

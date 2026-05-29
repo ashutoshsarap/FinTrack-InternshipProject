@@ -8,6 +8,7 @@ using FinTrack.Repository;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service;
 using FinTrack.Service.IService;
+using FinTrack.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -18,7 +19,7 @@ using System.Threading.Tasks;
 //V3
 namespace FinTrack.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = Roles.User)]
     public class TransactionController : Controller
     {
 

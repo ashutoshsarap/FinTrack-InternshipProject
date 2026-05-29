@@ -1,11 +1,12 @@
 ﻿using FinTrack.Models.DTOs.CategoryDtos;
 using FinTrack.Service.IService;
+using FinTrack.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinTrack.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = Roles.User)]
     public class CategoryController : Controller
     {
 
