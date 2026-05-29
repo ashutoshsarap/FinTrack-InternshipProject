@@ -11,6 +11,7 @@ using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
 using FinTrack.Models.Entity;
+using FinTrack.Service.IService;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -36,7 +37,7 @@ namespace FinTrack.Areas.Identity.Pages.Account
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailService emailSender)
         {
             _userManager = userManager;
             _userStore = userStore;

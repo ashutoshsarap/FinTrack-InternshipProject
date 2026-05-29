@@ -1,0 +1,42 @@
+﻿@using FinTrack.Models.AdminModelAndDtos.AdminViewModels
+@model AdminDashboardViewModel
+
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Admin Dashboard</h2>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Total Users</h6>
+                    <h2 class="fw-bold">@Model.TotalUsers</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Total Transactions</h6>
+                    <h2 class="fw-bold">@Model.TotalTransactions</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Transactions This Month</h6>
+                    <h2 class="fw-bold">@Model.TotalTransactionsThisMonth</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

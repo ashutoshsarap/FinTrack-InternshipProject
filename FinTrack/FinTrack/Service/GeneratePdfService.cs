@@ -20,6 +20,9 @@ namespace FinTrack.Service
             {
                 container.Page(page =>
                 {
+                    //Configure page settings
+
+                    //Configures the page size, margins, background color, and default text style
                     page.Size(PageSizes.A4);
                     page.Margin(2, Unit.Centimetre);
                     page.PageColor(Colors.White);
@@ -27,6 +30,8 @@ namespace FinTrack.Service
                     page.Header()
                         .Text($"Monthly Financial Report - {monthName} {year}")
                         .SemiBold().FontSize(24).FontColor(Colors.Blue.Medium);
+
+                    //Represents the main content of the page, which is organized in a column layout, located below the header and above the footer. It contains the financial data for the month, such as total income, total expenses, and net savings.
                     page.Content()
                         .PaddingVertical(1, Unit.Centimetre)
                         .Column(column =>
@@ -36,6 +41,7 @@ namespace FinTrack.Service
                             column.Item().Text($"Total Expense: {monthlyReport.TotalExpense:C}");
                             column.Item().Text($"Net Savings: {monthlyReport.NetSavings:C}");
                         });
+
                     page.Footer()
                         .AlignCenter()
                         .Text(x =>
@@ -46,6 +52,7 @@ namespace FinTrack.Service
                 });
             });
 
+            //Generates the PDF document and returns it as a byte array, which can be used for downloading or further processing.
             return document.GeneratePdf();
         }
     }

@@ -2,8 +2,12 @@ using FinTrack.Data;
 using FinTrack.Models;
 using FinTrack.Models.Entity;
 using FinTrack.Repository;
+using FinTrack.Repository.AdminRepository;
+using FinTrack.Repository.AdminRepository.Interfaces;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service;
+using FinTrack.Service.AdminServices;
+using FinTrack.Service.AdminServices.Interfaces;
 using FinTrack.Service.IService;
 using Hangfire;
 using Microsoft.AspNetCore.Identity;
@@ -27,7 +31,9 @@ builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Emai
 
 builder.Services.AddHangfireServer();
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
 //To access the current HTTP context and retrieve user information, we need to register the IHttpContextAccessor service, which allows us to access the HttpContext in our services.
 builder.Services.AddHttpContextAccessor();
@@ -37,6 +43,7 @@ builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IRecurringTransactionRepository, RecurringTransactionRepository>();  
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 
 
 //Service registration
@@ -52,8 +59,29 @@ builder.Services.AddScoped<IRecurringTransactionJobService, RecurringTransaction
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<ISendMonthlyReportService, SendMonthlyReportService>();
 builder.Services.AddScoped<IGeneratePdfService, GeneratePdfService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+    foreach(var role in new[] { "Admin", "User" })
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
+    }
+
+    var adminUser = await userManager.FindByEmailAsync("ashutoshsarapgdsc@gmail.com");
+    if (adminUser != null && !await userManager.IsInRoleAsync(adminUser, "Admin"))
+    {
+        await userManager.AddToRoleAsync(adminUser, "Admin");
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -81,6 +109,7 @@ app.MapControllerRoute(
     pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 
 // Schedule the recurring job to send monthly report emails on the 1st of every month at 8 AM using Hangfire's Cron expression.
-RecurringJob.AddOrUpdate<ISendMonthlyReportService>("monthly-report",s => s.SendMonthlyReportEmailAsync(), Cron.Minutely);
+RecurringJob.AddOrUpdate<ISendMonthlyReportService>("monthly-report", s => s.SendMonthlyReportEmailAsync(), "0 8 1 * *");
+//RecurringJob.AddOrUpdate<ISendMonthlyReportService>("monthly-report",s => s.SendMonthlyReportEmailAsync(), Cron.Minutely);
 
 app.Run();
