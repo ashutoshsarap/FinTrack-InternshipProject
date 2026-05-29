@@ -1,4 +1,5 @@
 using FinTrack.Data;
+using FinTrack.HangFireAuth;
 using FinTrack.Models;
 using FinTrack.Models.Entity;
 using FinTrack.Repository;
@@ -9,10 +10,12 @@ using FinTrack.Service;
 using FinTrack.Service.AdminServices;
 using FinTrack.Service.AdminServices.Interfaces;
 using FinTrack.Service.IService;
+using FinTrack.Utilities;
 using Hangfire;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Bcpg;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -63,25 +66,42 @@ builder.Services.AddScoped<IAdminService, AdminService>();
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+//One time seeding script to assign existing users a role of user
+//using (var scope = app.Services.CreateScope())
+//{
+//    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-    foreach(var role in new[] { "Admin", "User" })
-    {
-        if (!await roleManager.RoleExistsAsync(role))
-        {
-            await roleManager.CreateAsync(new IdentityRole(role));
-        }
-    }
+//    var users = await userManager.Users.ToListAsync();
 
-    var adminUser = await userManager.FindByEmailAsync("ashutoshsarapgdsc@gmail.com");
-    if (adminUser != null && !await userManager.IsInRoleAsync(adminUser, "Admin"))
-    {
-        await userManager.AddToRoleAsync(adminUser, "Admin");
-    }
-}
+//    foreach(var user in users)
+//    {
+//        if (!await userManager.IsInRoleAsync(user, Roles.User) &&
+//            !await userManager.IsInRoleAsync(user, Roles.Admin))
+//        {
+//            await userManager.AddToRoleAsync(user, "User");
+//        }
+//    }
+//}
+
+//using (var scope = app.Services.CreateScope())
+//{
+//    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+//    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+//    foreach(var role in new[] { "Admin", "User" })
+//    {
+//        if (!await roleManager.RoleExistsAsync(role))
+//        {
+//            await roleManager.CreateAsync(new IdentityRole(role));
+//        }
+//    }
+
+//    var adminUser = await userManager.FindByEmailAsync("ashutoshsarapgdsc@gmail.com");
+//    if (adminUser != null && !await userManager.IsInRoleAsync(adminUser, "Admin"))
+//    {
+//        await userManager.AddToRoleAsync(adminUser, "Admin");
+//    }
+//}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -101,7 +121,14 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.UseHangfireDashboard();
+//Adding authorization filter to the Hangfire dashboard to restrict access to users with the "Admin" role. This ensures that only authorized users can view and manage the background jobs in the Hangfire dashboard.
+app.UseHangfireDashboard(
+    "/hangfire",
+    new DashboardOptions
+    {
+        Authorization = new[] { new HangFireAuthorizationByRole() } // Restrict access to the dashboard to users with the "Admin" role
+    });
+    
 
 
 app.MapControllerRoute(

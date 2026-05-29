@@ -1,9 +1,12 @@
 ﻿using FinTrack.Models.AdminModelAndDtos.AdminViewModels;
 using FinTrack.Service.AdminServices.Interfaces;
+using FinTrack.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinTrack.Controllers.AdminController
 {
+    [Authorize(Roles = Roles.Admin)]
     public class AdminController : Controller
     {
 

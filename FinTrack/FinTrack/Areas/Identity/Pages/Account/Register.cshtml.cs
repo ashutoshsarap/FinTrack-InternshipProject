@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using FinTrack.Models.Entity;
 using FinTrack.Service.IService;
+using FinTrack.Utilities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -129,6 +130,7 @@ namespace FinTrack.Areas.Identity.Pages.Account
                 user.FullName = Input.FullName;
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                await _userManager.AddToRoleAsync(user, Roles.User); // Assign the "User" role to the newly registered user
 
                 if (result.Succeeded)
                 {
