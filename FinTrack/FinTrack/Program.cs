@@ -52,6 +52,7 @@ builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
+
 //Service registration
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
@@ -109,6 +110,9 @@ var app = builder.Build();
 
 //app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseExceptionHandler();
+
+app.UseMiddleware<CustomLoggingMiddleware>();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
