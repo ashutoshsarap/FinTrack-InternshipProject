@@ -112,7 +112,7 @@ var app = builder.Build();
 app.UseExceptionHandler();
 
 app.UseMiddleware<CustomLoggingMiddleware>();
-
+app.UseMiddleware<AuditMiddleware>();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

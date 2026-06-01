@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
-
+//V1
 namespace FinTrack.Middlewares
 {
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
@@ -9,15 +9,23 @@ namespace FinTrack.Middlewares
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<AuditMiddleware> _logger;
-        public AuditMiddleware(RequestDelegate next)
+        public AuditMiddleware(RequestDelegate next, ILogger<AuditMiddleware> logger)
         {
             _next = next;
+            _logger = logger;
         }
 
-        public Task Invoke(HttpContext httpContext)
+        public async Task Invoke(HttpContext httpContext)
         {
 
-            return _next(httpContext);
+            await _next(httpContext);
+
+            _logger.LogInformation("Audit Log - Request Path: {Path}, Method: {Method}, Response Status Code: {StatusCode}, Date and Time: {DateTime}",
+                httpContext.Request.Path,
+                httpContext.Request.Method,
+                httpContext.Response.StatusCode,
+                DateTime.UtcNow);
+
         }
     }
 
