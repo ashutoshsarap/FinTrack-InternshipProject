@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
 using System.Threading.Tasks;
-//V1
+//V2
 namespace FinTrack.Middlewares
 {
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
@@ -18,11 +18,49 @@ namespace FinTrack.Middlewares
 
         public async Task Invoke(HttpContext httpContext)
         {
-            _logger.LogInformation("Request hitted \nRequest Path: {Path} \nMethod: {Method}", httpContext.Request.Path, httpContext.Request.Method);
+            _logger.LogInformation("Request started " +
+                                    "Request Id : {TraceIdentifier} " +
+                                   "\nRequest Path: {Path} " +
+                                   "\nMethod: {Method}" +
+                                   "\nHost : {Host}" +
+                                   "\nUser-Agent : {UserAgent}", 
+                                    httpContext.TraceIdentifier, //Gets or sets a unique identifier to represent this request in trace logs.
+                                    httpContext.Request.Path, 
+                                    httpContext.Request.Method,
+                                    httpContext.Request.Host,
+                                    httpContext.Request.Headers.UserAgent); //a software program (like a web browser, email client, or web crawler) that acts as a user's representative in a network
             Stopwatch stopwatch = Stopwatch.StartNew();
             await _next(httpContext);
             stopwatch.Stop();
-            _logger.LogInformation("Response Status Code: {StatusCode} \nTime taken to complete request : {TimeEllapsed}ms", httpContext.Response.StatusCode, stopwatch.ElapsedMilliseconds);
+            if(stopwatch.ElapsedMilliseconds > 1000)
+            {
+                _logger.LogWarning("Request took more than expecteds" +
+                                    "\nRequest Path: {Path}" +
+                                    "\nMethod: {Method}" +
+                                    "\nResponse Status Code : {StatusCode}" +
+                                    "\nContent type : {ContentType}" +
+                                    "\nDate and Time : {DateTime}" +
+                                    "\nTime taken to complete request : {TimeEllapsed}ms",
+                                    httpContext.Request.Path,
+                                    httpContext.Request.Method,
+                                    httpContext.Response.StatusCode,
+                                    httpContext.Response.ContentType,
+                                    DateTime.UtcNow,
+                                    stopwatch.ElapsedMilliseconds);
+            }
+            _logger.LogInformation("Request completed" +
+                                    "\nRequest Path: {Path}" +
+                                    "\nMethod: {Method}" +
+                                    "\nResponse Status Code : {StatusCode}" +
+                                    "\nContent type : {ContentType}" +
+                                    "\nDate and Time : {DateTime}" +
+                                    "\nTime taken to complete request : {TimeEllapsed}ms",
+                                    httpContext.Request.Path,
+                                    httpContext.Request.Method,
+                                    httpContext.Response.StatusCode,
+                                    httpContext.Response.ContentType,
+                                    DateTime.UtcNow,
+                                    stopwatch.ElapsedMilliseconds);
         }
     }
 
