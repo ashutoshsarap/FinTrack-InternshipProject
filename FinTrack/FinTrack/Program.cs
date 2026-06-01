@@ -1,5 +1,6 @@
 using FinTrack.Data;
 using FinTrack.HangFireAuth;
+using FinTrack.Middlewares;
 using FinTrack.Models;
 using FinTrack.Models.Entity;
 using FinTrack.Repository;
@@ -66,6 +67,7 @@ builder.Services.AddScoped<IAdminService, AdminService>();
 
 var app = builder.Build();
 
+
 //One time seeding script to assign existing users a role of user
 //using (var scope = app.Services.CreateScope())
 //{
@@ -103,6 +105,8 @@ var app = builder.Build();
 //    }
 //}
 
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -119,8 +123,6 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapRazorPages();
-
 //Adding authorization filter to the Hangfire dashboard to restrict access to users with the "Admin" role. This ensures that only authorized users can view and manage the background jobs in the Hangfire dashboard.
 app.UseHangfireDashboard(
     "/hangfire",
@@ -128,8 +130,8 @@ app.UseHangfireDashboard(
     {
         Authorization = new[] { new HangFireAuthorizationByRole() } // Restrict access to the dashboard to users with the "Admin" role
     });
-    
 
+app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",
