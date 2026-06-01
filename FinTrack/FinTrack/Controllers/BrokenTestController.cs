@@ -7,7 +7,7 @@ namespace FinTrack.Controllers
     {
         public IActionResult Index()
         {
-            throw new DuplicateRecordException("This is a test exception from BrokenTestController.");
+            throw new KeyNotFoundException("An error occurred");
         }
     }
 }

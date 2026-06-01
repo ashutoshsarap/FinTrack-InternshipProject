@@ -1,4 +1,5 @@
 using FinTrack.Data;
+using FinTrack.Handler;
 using FinTrack.HangFireAuth;
 using FinTrack.Middlewares;
 using FinTrack.Models;
@@ -49,7 +50,8 @@ builder.Services.AddScoped<IRecurringTransactionRepository, RecurringTransaction
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 
-
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 //Service registration
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
@@ -105,8 +107,8 @@ var app = builder.Build();
 //    }
 //}
 
-app.UseMiddleware<ExceptionHandlingMiddleware>();
-
+//app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseExceptionHandler();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
