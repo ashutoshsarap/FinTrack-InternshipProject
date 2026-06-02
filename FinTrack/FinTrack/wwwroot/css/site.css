@@ -10,6 +10,10 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+/*body {
+    font-family: 'Inter', sans-serif;
+}*/
+
 :root, [data-bs-theme=light] {
     --bs-blue: #4582ec;
     --bs-indigo: #6610f2;
@@ -198,7 +202,7 @@
 
 body {
     margin: 0;
-    font-family: var(--bs-body-font-family);
+    font-family: 'Inter', sans-serif;
     font-size: var(--bs-body-font-size);
     font-weight: var(--bs-body-font-weight);
     line-height: var(--bs-body-line-height);
@@ -13627,6 +13631,7 @@ footer {
     font-size: .9625rem
 }
 
+
 /* ===== SIDEBAR ===== */
 
 .navbar-vertical {
@@ -13639,9 +13644,7 @@ footer {
     transition: all .25s ease;
     z-index: 1030;
 }
-.sidebar-section{
-    position : fixed
-}
+
 .sidebar-logo {
     font-size: 2rem;
     font-weight: 700;
@@ -13661,7 +13664,7 @@ footer {
 }
 
     .nav-link-icon i {
-        font-size: 1.2rem;
+        font-size: 1.60rem !important;
     }
 
 .nav-link-title {
@@ -13669,8 +13672,24 @@ footer {
     font-weight: 400;
 }
 
+.page {
+    display: flex;
+}
+
+.page-wrapper {
+    margin-left: 280px;
+    height: 100vh;
+    overflow-y: auto;
+    flex: 1;
+    transition: margin-left .25s ease;
+}
+
 body.sidebar-collapsed .navbar-vertical {
     width: 72px;
+}
+
+body.sidebar-collapsed .page-wrapper {
+    margin-left: 72px;
 }
 
 .sidebar-collapsed .nav-link-title {
@@ -13678,43 +13697,62 @@ body.sidebar-collapsed .navbar-vertical {
 }
 
 .sidebar-collapsed .sidebar-logo-text {
-    display: none;
+    display: none !important;
 }
+
+.sidebar-collapsed .sidebar-logo {
+    display: none !important;
+}
+
 .sidebar-collapsed .nav-link {
     justify-content: center;
 }
+
 .sidebar-collapsed .sidebar-section {
     display: none;
 }
-.page-wrapper {
-    margin-left: 280px;
-    height: 100vh;
-    overflow-y: auto;
-    transition: margin-left .25s ease;
-}
-body.sidebar-collapsed .page-wrapper {
-    margin-left: 72px;
-}
-.sidebar-collapsed .page-wrapper {
-    margin-left: 72px;
-}
+
 .sidebar-collapsed .sidebar-header {
     justify-content: center !important;
+    padding: 1rem 0 !important;
 }
 
 .sidebar-collapsed #sidebar-toggle {
     margin: 0;
 }
 
-body.sidebar-collapsed .sidebar-logo-text {
-    display: none !important;
+/* Bigger font */
+.nav-link-title {
+    font-size: 1.35rem !important;
+    font-weight: 400;
 }
-body.sidebar-collapsed .sidebar-logo {
-    display: none !important;
+
+/* Push footer to bottom of sidebar */
+.navbar-vertical .container-fluid {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
-.sidebar-collapsed .sidebar-header {
-    justify-content: center !important;
-    padding: 1rem 0 !important;
+
+.navbar-vertical .collapse {
+    display: flex !important;
+    flex-direction: column;
+    height: 100%;
 }
+
+.sidebar-footer {
+    margin-top: auto;
+}
+
+.sidebar-user-name {
+    font-size: 0.9rem;
+    color: white;
+}
+/*.sidebar-logo{
+    font-size : 2.8rem;
+    font-weight : 700;
+    color : inherit;
+}*/
+
 
 /*# sourceMappingURL=bootstrap.min.css.map */
