@@ -100,6 +100,7 @@ namespace FinTrack.Controllers
                     };
                     await _transactionService.CreateTransactionAsync(userId,transactionCreateDto);
                     TempData["Success"] = $"Transaction added successfully";
+                    HttpContext.Items[AuditMessages.AuditMessage] = AuditMessages.CreateTransaction; //a key/value collection that can be used to share data within the scope of this request.
                     return RedirectToAction(nameof(Index), "Dashboard");
                 }
                 catch(InvalidAmountException ex)
@@ -136,6 +137,7 @@ namespace FinTrack.Controllers
             try
             {
                 await _transactionService.DeleteTransaction(id, userId);
+                HttpContext.Items[AuditMessages.AuditMessage] = AuditMessages.DeletedTransaction; //a key/value collection that can be used to share data within the scope of this request.
                 return RedirectToAction(nameof(Index));
             }
             catch (RecordNotFoundException ex)
@@ -172,6 +174,7 @@ namespace FinTrack.Controllers
                 CategoryId = transaction.CategoryId,
                 Categories = new SelectList(categories.ToList(), "Id", "Name")
             };
+
             return View(transactionEditViewModel);
         }
 
@@ -211,6 +214,7 @@ namespace FinTrack.Controllers
                 };
                 //await _transactionService.UpdateTransactionAsync(model.Id, transactionUpdateDto, null);
                 await _transactionService.UpdateTransaction(model.Id, userId, transactionUpdateDto);
+                HttpContext.Items[AuditMessages.AuditMessage] = AuditMessages.UpdateTransaction; //a key/value collection that can be used to share data within the scope of this request.
                 return RedirectToAction(nameof(Index));
 
             }

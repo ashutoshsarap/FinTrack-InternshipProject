@@ -65,6 +65,7 @@ namespace FinTrack.Controllers
                         StartDate = model.StartDate
                     };
                     await _recurringTransactionService.CreateRecurringTransactionAsync(recurringTransactionCreateDto);
+                    HttpContext.Items[AuditMessages.AuditMessage]=AuditMessages.CreatedRecurringTransaction;
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)
@@ -85,6 +86,7 @@ namespace FinTrack.Controllers
             try
             {
                 await _recurringTransactionService.DeleteRecurringTransaction(id);
+                HttpContext.Items[AuditMessages.AuditMessage] = AuditMessages.DeletedRecurringTransaction;
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -137,6 +139,7 @@ namespace FinTrack.Controllers
                         StartDate = model.StartDate
                     };
                     await _recurringTransactionService.UpdateRecurringTransaction(recurringTransactionUpdateDto);
+                    HttpContext.Items[AuditMessages.AuditMessage] = AuditMessages.UpdatedRecurringTransaction;
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)

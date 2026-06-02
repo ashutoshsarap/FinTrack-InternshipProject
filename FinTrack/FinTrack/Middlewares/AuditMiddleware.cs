@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
-//V1
+//V2
 namespace FinTrack.Middlewares
 {
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
@@ -20,12 +20,38 @@ namespace FinTrack.Middlewares
 
             await _next(httpContext);
 
-            _logger.LogInformation("Audit Log - Request Path: {Path}, Method: {Method}, Response Status Code: {StatusCode}, Date and Time: {DateTime}",
-                httpContext.Request.Path,
-                httpContext.Request.Method,
-                httpContext.Response.StatusCode,
-                DateTime.UtcNow);
 
+            if(httpContext.Request.Method == HttpMethods.Post ||
+               httpContext.Request.Method.Equals(HttpMethod.Put) ||
+               httpContext.Request.Method.Equals(HttpMethod.Delete))
+            {
+                var user = httpContext.User?.Identity?.Name;
+                var action = httpContext.Items["AuditMessage"]?.ToString();
+
+                _logger.LogInformation("Audit Log - User : {User}, Action : {action}, Request Path: {Path}, Method: {Method}, Response Status Code: {StatusCode}, Date and Time: {DateTime}",
+                    user,
+                    action,
+                    httpContext.Request.Path,
+                    httpContext.Request.Method,
+                    httpContext.Response.StatusCode,
+                    DateTime.UtcNow);
+            }
+
+            
+
+        }
+
+        private static string GetAction(string method)
+        {
+            var action = method switch
+            {
+                "POST" => "Created",
+                "PUT" => "Updated",
+                "DELETE" => "Deleted",
+                _ => "Unknown"
+            };
+
+            return action;
         }
     }
 

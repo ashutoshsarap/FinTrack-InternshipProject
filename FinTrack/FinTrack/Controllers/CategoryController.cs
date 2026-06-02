@@ -41,6 +41,7 @@ namespace FinTrack.Controllers
                 try
                 {
                     await _categoryService.CreateCategory(_currentUserService.UserId, category);
+                    HttpContext.Items[AuditMessages.AuditMessage] = AuditMessages.CreatedCategory;
                     return RedirectToAction(nameof(Index));
                 }
                 catch (Exception ex)
@@ -57,6 +58,7 @@ namespace FinTrack.Controllers
             try
             {
                 await _categoryService.DeleteCategory(id);
+                HttpContext.Items[AuditMessages.AuditMessage] = AuditMessages.DelteCategory;
                 TempData["Success"] = "Category deleted successfully";
             }
             catch (Exception ex)
