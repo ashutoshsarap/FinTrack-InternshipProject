@@ -1,50 +1,68 @@
-﻿<div class="bg-dark text-white p-3 vh-100" style="width:250px;">
-
-    <h4 class="mb-4">FinTrack</h4>
-
-    <ul class="nav flex-column">
-
-        <li class="nav-item mb-2">
-            <a asp-controller="Dashboard"
-               asp-action="Index"
-               class="nav-link text-white">
-                Dashboard
-            </a>
-        </li>
-
-        <li class="nav-item mb-2">
-            <a asp-controller="Analytics"
-               asp-action="Index"
-               class="nav-link text-white">
-                Analytics
-            </a>
-        </li>
-
-        <li class="nav-item mb-2">
-            <a asp-controller="Transaction"
-               asp-action="Index"
-               class="nav-link text-white">
-                Transactions
-            </a>
-        </li>
-
-        <li class="nav-item mb-2">
-            <a asp-controller="Transaction"
-               asp-action="Create"
-               class="nav-link text-white">
-                Add Transaction
-            </a>
-        </li>
-
-        <li class="nav-item mb-2">
-            <a asp-controller="Category"
-               asp-action="Index"
-               class="nav-link text-white">
-                Categories
-            </a>
-        </li>
-
-    </ul>
-</div>
-
-
+﻿<div class="page">
+    <!-- Sidebar -->
+    <aside class="navbar navbar-vertical navbar-expand-sm position-absolute" data-bs-theme="dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <h1 class="navbar-brand navbar-brand-autodark">
+                @* <a href="#">
+                    <img src="/static/logo-white.svg"
+                         width="110"
+                         height="32"
+                         alt="Tabler"
+                         class="navbar-brand-image" />
+                </a> *@
+            </h1>
+            <div class="collapse navbar-collapse" id="sidebar-menu">
+                <ul class="navbar-nav pt-lg-3">
+                    <li class="nav-item">
+                        <a asp-controller="Dashboard" asp-action="Index" class="nav-link">
+                            <h2> FinTrack </h2>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link disabled text-uppercase">
+                            Overview
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Dashboard" asp-action="Index" class="nav-link">
+                            <h6>Dashboard</h6>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Transaction" asp-action="Index" class="nav-link">
+                            <h6>Transactions</h6>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a asp-controller="Analytics" asp-action="Index" class="nav-link">
+                            <h6>Analytics</h6>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link disabled text-uppercase">
+                            Planning
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Budget" asp-action="Index" class="nav-link">
+                            <h6>Transactions</h6>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="RecurringTransation" asp-action="Index" class="nav-link">
+                            <h6>Recurring Transactions</h6>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Category" asp-action="Index" class="nav-link">
+                            <h6>My Categories</h6>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>

@@ -109,7 +109,7 @@ var app = builder.Build();
 //}
 
 //app.UseMiddleware<ExceptionHandlingMiddleware>();
-app.UseExceptionHandler();
+app.UseExceptionHandler("/Home/Error");
 
 app.UseMiddleware<CustomLoggingMiddleware>();
 app.UseMiddleware<AuditMiddleware>();
