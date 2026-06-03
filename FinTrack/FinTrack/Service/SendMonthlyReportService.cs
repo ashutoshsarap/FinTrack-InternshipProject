@@ -14,12 +14,14 @@ namespace FinTrack.Service
         private readonly IAnalyticsService _analyticsService;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IGeneratePdfService _generatePdfService;
-        public SendMonthlyReportService(IEmailService emailService, UserManager<ApplicationUser> userManager, IAnalyticsService analyticsService, IGeneratePdfService generatePdfService)
+        private readonly ILogger<SendMonthlyReportService> _logger;
+        public SendMonthlyReportService(IEmailService emailService, UserManager<ApplicationUser> userManager, IAnalyticsService analyticsService, IGeneratePdfService generatePdfService, ILogger<SendMonthlyReportService> logger)
         {
             _emailService = emailService;
             _userManager = userManager;
             _analyticsService = analyticsService;
             _generatePdfService = generatePdfService;
+            _logger = logger;
         }
         public async Task SendMonthlyReportEmailAsync()
         {
@@ -36,6 +38,7 @@ namespace FinTrack.Service
                 message += GenerateMonthlyReportContent(report);
                 message += "\n\nBest regards,\nFinTrack Team";
                 await _emailService.SendEmailWithAttachmentAsync(email, subject, message, pdfReport, $"Monthly_Report_{DateTime.Now.ToString("MMMM_yyyy")}.pdf");
+                _logger.LogInformation("Monthly report email sent successfully to user {UserId} with email {Email}.", user.Id, email);
             }
 
         }

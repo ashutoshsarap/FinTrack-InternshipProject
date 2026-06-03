@@ -122,7 +122,7 @@ var app = builder.Build();
 //}
 
 //app.UseMiddleware<ExceptionHandlingMiddleware>();
-//app.UseExceptionHandler("/Home/Error");
+app.UseExceptionHandler("/Home/Error");
 
 //app.UseMiddleware<CustomLoggingMiddleware>();
 //app.UseMiddleware<AuditMiddleware>();
@@ -138,6 +138,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseSerilogRequestLogging(); // Enable Serilog request logging to log details about incoming HTTP requests and their processing in the application.
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -161,4 +163,3 @@ RecurringJob.AddOrUpdate<ISendMonthlyReportService>("monthly-report", s => s.Sen
 //RecurringJob.AddOrUpdate<ISendMonthlyReportService>("monthly-report",s => s.SendMonthlyReportEmailAsync(), Cron.Minutely);
 
 app.Run();
-Log.Information("Application started successfully."); //for testing

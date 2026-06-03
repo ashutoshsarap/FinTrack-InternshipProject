@@ -13,10 +13,12 @@ namespace FinTrack.Service
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly string _currentUserId;
-        public RecurringTransactionService(IUnitOfWork unitOfWork, ICurrentUserService currentUserService)
+        private readonly ILogger<RecurringTransactionService> _logger;
+        public RecurringTransactionService(IUnitOfWork unitOfWork, ICurrentUserService currentUserService, ILogger<RecurringTransactionService> logger)
         {
             _unitOfWork = unitOfWork;
             _currentUserId = currentUserService.UserId;
+            _logger = logger;
         }
 
         public async Task CreateRecurringTransactionAsync(RecurringTransactionCreateDto recurringTransactionCreateDto)
@@ -54,6 +56,7 @@ namespace FinTrack.Service
 
             await _unitOfWork.RecurringTransaction.AddRecurringTransactionAsync(recurringTransaction);
             await _unitOfWork.Save();
+            _logger.LogInformation("Recurring transaction with ID : {Id} created successfully for user {UserId}.", recurringTransaction.Id, _currentUserId);
 
             string cronExpression = CalculateCronExpression(recurringTransaction);
 
@@ -82,6 +85,7 @@ namespace FinTrack.Service
             _unitOfWork.RecurringTransaction.DeleteRecurringTransaction(transactionToBeDeleted);
             RecurringJob.RemoveIfExists(transactionToBeDeleted.HangFireId);
             await _unitOfWork.Save();
+            _logger.LogInformation("Recurring transaction with ID : {Id} deleted successfully for user {UserId}.", id, _currentUserId);
         }
 
         public async Task<IEnumerable<RecurringTransactionResponseDto>> GetAllRecurringTransactionsAsync()
@@ -166,6 +170,7 @@ namespace FinTrack.Service
             };
 
             await _unitOfWork.Save();
+            _logger.LogInformation("Recurring transaction with ID : {Id} updated successfully for user {UserId}.", recurringTransactionToUpdate.Id, _currentUserId);
             RecurringJob.AddOrUpdate<IRecurringTransactionJobService>(
                 recurringTransactionToUpdate.HangFireId,
                 x => x.ProcessTransaction(recurringTransactionToUpdate.Id),

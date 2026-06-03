@@ -12,10 +12,12 @@ namespace FinTrack.Service
     {
 
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ILogger<CsvExportService> _logger;
 
-        public CsvExportService(IUnitOfWork unitOfWork)
+        public CsvExportService(IUnitOfWork unitOfWork, ILogger<CsvExportService> logger)
         {
             _unitOfWork = unitOfWork;
+            _logger = logger;
         }
         public async Task<MemoryStream> GenerateCsv()
         {
@@ -61,6 +63,7 @@ namespace FinTrack.Service
             //Resets the position of the MemoryStream back to the beginning (position 0) so that when we return it, the caller can read from the start of the stream. If we didn't reset the position, it would be at the end of the stream after writing, and any attempt to read from it would return no data.
             memoryStream.Position = 0;
             
+            _logger.LogInformation("CSV generated successfully with {RecordCount} records.", csvExportDtosList.Count);
             return memoryStream;
         }
     }

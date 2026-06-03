@@ -11,9 +11,11 @@ namespace FinTrack.Service
     {
 
         private readonly IUnitOfWork _unitOfWork;
-        public CategoryService(IUnitOfWork unitOfWork)
+        private readonly ILogger<CategoryService> _logger;
+        public CategoryService(IUnitOfWork unitOfWork, ILogger<CategoryService> logger)
         {
             _unitOfWork = unitOfWork;
+            _logger = logger;
         }
 
         public async Task CreateCategory(string userId,CategoryDto category)
@@ -34,6 +36,7 @@ namespace FinTrack.Service
             };
             await _unitOfWork.Category.CreateAsync(categoryEntity);
             await _unitOfWork.Save();
+            _logger.LogInformation("Category with cateogry ID : {Id} created successfully for user {UserId}.", categoryEntity.Id, userId);
         }
 
         public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
@@ -54,6 +57,7 @@ namespace FinTrack.Service
 
             await _unitOfWork.Category.Delete(category);
             await _unitOfWork.Save();
+            _logger.LogInformation("Category with cateogry ID : {Id} deleted successfully.", id);
         }
     }
 

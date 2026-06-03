@@ -11,10 +11,12 @@ namespace FinTrack.Service
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly string _currentUserId;
-        public BudgetService(IUnitOfWork unitOfWork, ICurrentUserService currentUserService)
+        private readonly ILogger<BudgetService> _logger;
+        public BudgetService(IUnitOfWork unitOfWork, ICurrentUserService currentUserService, ILogger<BudgetService> logger)
         {
             _unitOfWork = unitOfWork;
             _currentUserId = currentUserService.UserId;
+            _logger = logger;
         }
 
         public async Task CreateBudgetAsync(BudgetCreateDto budgetCreateDto)
@@ -55,6 +57,7 @@ namespace FinTrack.Service
                 await _unitOfWork.Budget.CreateBudgetAsync(budget);
             }
             await _unitOfWork.Save();
+            _logger.LogInformation("Budget with budget id : {Id} created successfully for user {UserId} with category {CategoryId} and amount {Amount}.", budget.Id,_currentUserId, budget.CategoryId, budget.MonthlyLimitAmount);
         }
 
         public async Task DeleteBudget(int budgetId)
@@ -64,6 +67,7 @@ namespace FinTrack.Service
             {
                 _unitOfWork.Budget.DeleteBudgetAsync(budgetToDelete);
                 await _unitOfWork.Save();
+                _logger.LogInformation("Budget with budget id : {Id} deleted successfully for user {UserId}.", budgetId, _currentUserId);
             }
             else
             {
@@ -111,6 +115,7 @@ namespace FinTrack.Service
             else
             {
                 await _unitOfWork.Save();
+                _logger.LogInformation("Budget with budget id : {Id} updated successfully for user {UserId} with category {CategoryId} and amount {Amount}.", budgetToUpdate.Id, _currentUserId, budgetToUpdate.CategoryId, budgetToUpdate.MonthlyLimitAmount);
             }
         }
 

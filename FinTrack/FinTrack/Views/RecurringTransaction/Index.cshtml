@@ -38,56 +38,145 @@
     </div>
 }
 
-<div class="col-12 d-flex justify-content-end gap-2">
-    <a asp-action="Create" class="btn btn-primary">
-        <i class="bi bi-file-plus"></i>+ Add Recurring Transaction
-    </a>
-</div>
 
-<h1>Recurring Transactions</h1>
+<div class="page-header d-print-none mb-4">
+    <div class="row align-items-center">
+        <div class="col">
+            <h2 class="page-title">Recurring Transactions</h2>
+            <div class="text-secondary">
+                Manage subscriptions, bills and scheduled payments
+            </div>
+        </div>
+
+        <div class="col-auto ms-auto">
+            <a asp-action="Create" class="btn btn-primary">
+                <i class="ti ti-plus"></i>
+                Add Recurring Transaction
+            </a>
+        </div>
+    </div>
+</div>
 
 @if (Model == null || !Model.Any())
 {
-    <p>No Recurring Transactions available</p>
+    <h6>No Recurring Transactions available</h6>
 }
 else
 {
     <table class="table">
-        <thead>
-            <tr>
-                <th>Description</th>
-                <th>Category</th>
-                <th>Amount</th>
-                <th>Transaction Frequency</th>
-                <th>Transaction type</th>
-                <th>Payment mode</th>
-                <th>Next due date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+        <div class="row row-cards">
             @foreach (var t in Model)
             {
-                <tr>
-                    <td>@t.Description</td>
-                    <td>@t.CategoryName</td>
-                    <td>@t.Amount</td>
-                    <td>@t.TransactionFrequency</td>
-                    <td>@t.TransactionType</td>
-                    <td>@t.PaymentMode</td>
-                    <td>@t.NextDueDate.ToString("dd-MMM-yyyy")</td>
-                    <td>
-                        <div class="w-75 btn-group" role="group">
-                            <a asp-controller="RecurringTransaction" asp-action="Edit" asp-route-id="@t.Id" class="btn btn-primary mx-2">
-                                <i class="bi bi-pencil-square"></i>Edit
-                            </a>
-                            <form asp-controller="RecurringTransaction" asp-action="Delete" asp-route-id="@t.Id">
-                                <button type="submit" class="btn btn-danger mx-2">Delete</button>
-                            </form>
+                <div class="col-md-6 col-xl-4">
+                    <div class="card">
+
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+
+                                <div>
+                                    <div class="fw-bold fs-5">
+                                        @t.Description
+                                    </div>
+
+                                    <div class="text-secondary small">
+                                        @t.CategoryName
+                                    </div>
+                                </div>
+
+                                <div class="d-flex gap-2">
+
+                                    <a asp-action="Edit"
+                                       asp-route-id="@t.Id"
+                                       class="btn btn-icon bg-blue-lt text-blue">
+
+                                        <i class="ti ti-edit fs-6"></i>
+
+                                    </a>
+
+                                    <form asp-action="Delete"
+                                          asp-route-id="@t.Id">
+
+                                        <button type="submit"
+                                                class="btn btn-icon bg-red-lt text-red">
+
+                                            <i class="ti ti-trash fs-6"></i>
+
+                                        </button>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+                            <div class="mt-3">
+
+                                <div class="display-6 fw-bold">
+
+                                    ₹@t.Amount.ToString("N0")
+
+                                </div>
+
+                            </div>
+                            
+                            <div class="mt-2">
+
+                                @if (t.TransactionType.ToString() == "Expense")
+                                {
+                                    <span class="badge bg-red-lt">
+                                        Expense
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-green-lt">
+                                        Income
+                                    </span>
+                                }
+
+                                <span class="badge bg-purple-lt ms-1">
+                                    @t.TransactionFrequency
+                                </span>
+
+                            </div>
+                            <hr />
+
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <div>
+
+                                    <div class="text-secondary small">
+                                        Next Due
+                                    </div>
+
+                                    <div class="fw-bold">
+                                        @t.NextDueDate.ToString("dd MMM yyyy")
+                                    </div>
+
+                                </div>
+
+                                <span class="badge bg-yellow-lt">
+
+                                    @((t.NextDueDate - DateTime.Today).Days)
+
+                                    days left
+
+                                </span>
+
+                            </div>
+                            <div class="mt-3 text-secondary">
+
+                                <i class="ti ti-credit-card"></i>
+
+                                @t.PaymentMode
+
+                            </div>  
+                            
                         </div>
-                    </td>
-                </tr>
+
+
+                    </div>
+                </div>
             }
-        </tbody>
+        </div>
     </table>
 }

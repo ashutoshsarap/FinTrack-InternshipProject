@@ -3,12 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Coditas-Admin\\AppData\\Local\\Temp\\.vsdbgsrc\\b8c9f8632b8d9ce19b1147aadbe83a3adc3d3db2\\Areas_Identity_Pages_Account_Manage_PersonalData_cshtml.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\middlewares\\customloggingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\middlewares\\customloggingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Coditas-Admin\\AppData\\Local\\Temp\\.vsdbgsrc\\46d89f11107f428fd1d39570c9acdc24bbf5cb34\\Areas_Identity_Pages_Account_Manage_Index_cshtml.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\views\\shared\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\views\\shared\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|c:\\users\\coditas-admin\\source\\internshipproject\\fintrack\\fintrack\\views\\analytics\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{75073BBA-B160-D559-40F5-F4DB9B66BB3E}|FinTrack\\FinTrack.csproj|solutionrelative:fintrack\\views\\analytics\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,27 +37,66 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Program.cs",
-              "RelativeDocumentMoniker": "FinTrack\\Program.cs",
-              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Program.cs",
-              "RelativeToolTip": "FinTrack\\Program.cs",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAgvaMAAABDAAAAAAAAAA==",
+              "Title": "Areas_Identity_Pages_Account_Manage_PersonalData_cshtml.g.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\AppData\\Local\\Temp\\.vsdbgsrc\\b8c9f8632b8d9ce19b1147aadbe83a3adc3d3db2\\Areas_Identity_Pages_Account_Manage_PersonalData_cshtml.g.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\b8c9f8632b8d9ce19b1147aadbe83a3adc3d3db2\\Areas_Identity_Pages_Account_Manage_PersonalData_cshtml.g.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\AppData\\Local\\Temp\\.vsdbgsrc\\b8c9f8632b8d9ce19b1147aadbe83a3adc3d3db2\\Areas_Identity_Pages_Account_Manage_PersonalData_cshtml.g.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\b8c9f8632b8d9ce19b1147aadbe83a3adc3d3db2\\Areas_Identity_Pages_Account_Manage_PersonalData_cshtml.g.cs [Read Only]",
+              "ViewState": "AgIAADAAAAAAMTMzM5MwwJgAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-03T07:10:47.854Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-03T14:16:04.582Z",
+              "EditorCaption": " [Read Only]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CustomLoggingMiddleware.cs",
-              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Middlewares\\CustomLoggingMiddleware.cs",
-              "RelativeDocumentMoniker": "FinTrack\\Middlewares\\CustomLoggingMiddleware.cs",
-              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Middlewares\\CustomLoggingMiddleware.cs",
-              "RelativeToolTip": "FinTrack\\Middlewares\\CustomLoggingMiddleware.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAMBovQsAAAAdAAAAAAAAAA==",
+              "Title": "Areas_Identity_Pages_Account_Manage_Index_cshtml.g.cs",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\AppData\\Local\\Temp\\.vsdbgsrc\\46d89f11107f428fd1d39570c9acdc24bbf5cb34\\Areas_Identity_Pages_Account_Manage_Index_cshtml.g.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\46d89f11107f428fd1d39570c9acdc24bbf5cb34\\Areas_Identity_Pages_Account_Manage_Index_cshtml.g.cs",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\AppData\\Local\\Temp\\.vsdbgsrc\\46d89f11107f428fd1d39570c9acdc24bbf5cb34\\Areas_Identity_Pages_Account_Manage_Index_cshtml.g.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\46d89f11107f428fd1d39570c9acdc24bbf5cb34\\Areas_Identity_Pages_Account_Manage_Index_cshtml.g.cs [Read Only]",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-03T06:24:44.169Z",
+              "WhenOpened": "2026-06-03T14:15:35.657Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Sidebar.cshtml",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Views\\Shared\\_Sidebar.cshtml",
+              "RelativeDocumentMoniker": "FinTrack\\Views\\Shared\\_Sidebar.cshtml",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Views\\Shared\\_Sidebar.cshtml",
+              "RelativeToolTip": "FinTrack\\Views\\Shared\\_Sidebar.cshtml",
+              "ViewState": "AgIAAGUAAACAw8zMzIwjwHQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-03T14:06:39.403Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Views\\Analytics\\Index.cshtml",
+              "RelativeDocumentMoniker": "FinTrack\\Views\\Analytics\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Views\\Analytics\\Index.cshtml",
+              "RelativeToolTip": "FinTrack\\Views\\Analytics\\Index.cshtml",
+              "ViewState": "AgIAAFkAAAAAkLu7u7vvv3MAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-03T14:00:34.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Views\\Dashboard\\Index.cshtml",
+              "RelativeDocumentMoniker": "FinTrack\\Views\\Dashboard\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Coditas-Admin\\source\\InternshipProject\\FinTrack\\FinTrack\\Views\\Dashboard\\Index.cshtml",
+              "RelativeToolTip": "FinTrack\\Views\\Dashboard\\Index.cshtml",
+              "ViewState": "AgIAABgAAADAyzIzM3MvwEkAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-03T13:47:40.406Z",
               "EditorCaption": ""
             }
           ]

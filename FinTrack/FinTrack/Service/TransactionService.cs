@@ -9,7 +9,7 @@ using FinTrack.Models.ViewModels;
 using FinTrack.CustomExceptions;
 using FinTrack.Models.DTOs.TransactionDto;
 using FinTrack.Models.Pagination;
-//V3
+//V4
 namespace FinTrack.Service
 {
     public class TransactionService : ITransactionService
@@ -19,9 +19,11 @@ namespace FinTrack.Service
         //private readonly ApplicationDbContext _dbContext;
 
         private readonly IUnitOfWork _unitOfWork;
-        public TransactionService(IUnitOfWork unitOfWork)
+        private readonly ILogger<TransactionService> _logger;
+        public TransactionService(IUnitOfWork unitOfWork, ILogger<TransactionService> logger)
         {
-            _unitOfWork= unitOfWork;
+            _unitOfWork = unitOfWork;
+            _logger = logger;
         }
 
         public async Task CreateTransactionAsync(string userId,TransactionCreateDto transactionCreateDto)
@@ -55,6 +57,7 @@ namespace FinTrack.Service
             if (!await _unitOfWork.Transaction.IsDuplicateTransaction(transaction))
             {
                 await _unitOfWork.Transaction.CreateAsync(transaction);
+                _logger.LogInformation("Transaction created successfully for user {UserId} with transaction ID {Id}", userId, transaction.Id);
             }
             else
             {
@@ -73,6 +76,7 @@ namespace FinTrack.Service
             }
             _unitOfWork.Transaction.Delete(transaction);
             await _unitOfWork.Save();
+            _logger.LogInformation("Transaction with ID {Id} deleted successfully for user {UserId}", id, userId);
         }
 
         public async Task<List<TransactionResponseDto>> GetAllTransactionsAsync()
@@ -229,6 +233,7 @@ namespace FinTrack.Service
 
 
             await _unitOfWork.Save();
+            _logger.LogInformation("Transaction with ID {Id} updated successfully for user {UserId}", id, userId);
         }
 
         public async Task<DashboardViewModel> GetDashboardData()

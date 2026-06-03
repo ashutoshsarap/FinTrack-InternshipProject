@@ -63,7 +63,7 @@
                             {
                                 <div class="text-success mt-2">
 
-                                    +@Model.IncomePercentageChange% vs last month
+                                    ↑@Model.IncomePercentageChange% vs last month
 
                                 </div>
                             }
@@ -71,7 +71,7 @@
                             {
                                 <div class="text-danger mt-2">
 
-                                    @Model.IncomePercentageChange% vs last month
+                                    ↓@Math.Abs(Model.IncomePercentageChange)% vs last month
 
                                 </div>
                             }
@@ -118,7 +118,7 @@
                             {
                                 <div class="text-danger mt-2">
 
-                                    +@Math.Abs(Model.ExpensePercentageChange) vs last month
+                                    ↑@Math.Abs(Model.ExpensePercentageChange)% vs last month
 
                                 </div>
                             }
@@ -126,7 +126,7 @@
                             {
                                 <div class="text-success mt-2">
 
-                                    @Model.ExpensePercentageChange% vs last month
+                                    ↓@Math.Abs(Model.ExpensePercentageChange)% vs last month
 
                                 </div>
                             }

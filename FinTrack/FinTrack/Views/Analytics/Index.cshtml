@@ -7,89 +7,291 @@
 
 <div class="container mt-4">
 
-    <h2 class="mb-4">Analytics Dashboard</h2>
+    <div class="page-header mb-4">
+
+        <div class="row align-items-center">
+
+            <div class="col">
+
+                <div class="page-pretitle">
+                    FinTrack
+                </div>
+
+                <h2 class="page-title">
+                    Analytics Dashboard
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <!-- Analytics Cards -->
-    <div class="row">
+    <div class="row row-deck row-cards mb-4">
 
-        <div class="col-md-4 mb-3">
-            <div class="card border-primary">
+        <!-- Current Month -->
+
+        <div class="col-sm-6 col-lg-4">
+
+            <div class="card bg-blue-lt">
+
                 <div class="card-body">
-                    <h6 class="text-muted">Current Month Expense</h6>
-                    <h3>₹@Model.Analytics.CurrentMonthExpense.ToString("N2")</h3>
+
+                    <div class="d-flex align-items-center">
+
+                        <div class="subheader">
+                            Current Month
+                        </div>
+
+                    </div>
+
+                    <div class="h1 mb-3">
+                        ₹@Model.Analytics.CurrentMonthExpense.ToString("N2")
+                    </div>
+
+                    <div class="text-secondary">
+                        Total expenses this month
+                    </div>
+
                 </div>
+
             </div>
+
         </div>
 
-        <div class="col-md-4 mb-3">
-            <div class="card border-secondary">
+
+        <!-- Previous Month -->
+
+        <div class="col-sm-6 col-lg-4">
+
+            <div class="card bg-indigo-lt">
+
                 <div class="card-body">
-                    <h6 class="text-muted">Previous Month Expense</h6>
-                    <h3>₹@Model.Analytics.PreviousMonthExpense.ToString("N2")</h3>
+
+                    <div class="subheader">
+                        Previous Month
+                    </div>
+
+                    <div class="h1 mb-3">
+                        ₹@Model.Analytics.PreviousMonthExpense.ToString("N2")
+                    </div>
+
+                    <div class="text-secondary">
+                        Total expenses last month
+                    </div>
+
                 </div>
+
             </div>
+
         </div>
 
-        <div class="col-md-4 mb-3">
-            <div class="card border-info">
+
+        <!-- Expense Change -->
+
+        <div class="col-sm-6 col-lg-4">
+
+            <div class="card bg-green-lt">
+
                 <div class="card-body">
-                    <h6 class="text-muted">Expense % Change from previous month</h6>
+
+                    <div class="subheader">
+                        Monthly Change
+                    </div>
 
                     @if (Model.Analytics.ExpensePercentageChange > 0)
                     {
-                        <h3 class="text-danger">
-                            <p>You spent @Math.Abs(Model.Analytics.ExpensePercentageChange)% more than previous month  📈</p>
-                        </h3>
+                        <div class="h1 text-danger mb-3">
+                            ↑@Math.Abs(Model.Analytics.ExpensePercentageChange)%
+                        </div>
+
+                        <div class="text-secondary">
+                            Spending increased
+                        </div>
                     }
                     else if (Model.Analytics.ExpensePercentageChange < 0)
                     {
-                        <h3 class="text-success">
-                            <p>You spent @Math.Abs(Model.Analytics.ExpensePercentageChange).% less than previous month 📉</p>
-                        </h3>
+                        <div class="h1 text-success mb-3">
+                            ↓@Math.Abs(Model.Analytics.ExpensePercentageChange)%
+                        </div>
+
+                        <div class="text-secondary">
+                            Spending decreased
+                        </div>
                     }
                     else
                     {
-                        <h3>
+                        <div class="h1 mb-3">
+                            0%
+                        </div>
+
+                        <div class="text-secondary">
                             No change
-                        </h3>
+                        </div>
                     }
+
                 </div>
+
             </div>
+
         </div>
 
     </div>
+    <div class="row row-cards mb-4">
 
-    <div class="row">
+        <div class="col-sm-6 col-lg-4">
 
-        <div class="col-md-4 mb-3">
-            <div class="card border-success">
+            <div class="card">
+
                 <div class="card-body">
-                    <h6 class="text-muted">Average Daily Expense</h6>
-                    <h3>₹@Model.Analytics.AverageDailyExpense.ToString("N2")</h3>
+
+                    <div class="d-flex align-items-center">
+
+                        <span class="avatar avatar-md bg-blue-lt me-3">
+                            <i class="ti ti-calendar text-blue"></i>
+                        </span>
+
+                        <div>
+
+                            <div class="subheader">
+                                Daily Average
+                            </div>
+
+                            <div class="h2 mb-0">
+                                ₹@Model.Analytics.AverageDailyExpense.ToString("N2")
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
+
             </div>
+
         </div>
 
-        <div class="col-md-4 mb-3">
-            <div class="card border-warning">
+
+        <div class="col-sm-6 col-lg-4">
+
+            <div class="card">
+
                 <div class="card-body">
-                    <h6 class="text-muted">Average Weekly Expense</h6>
-                    <h3>₹@Model.Analytics.AverageWeeklyExpense.ToString("N2")</h3>
+
+                    <div class="d-flex align-items-center">
+
+                        <span class="avatar avatar-md bg-indigo-lt me-3">
+                            <i class="ti ti-calendar-week text-indigo"></i>
+                        </span>
+
+                        <div>
+
+                            <div class="subheader">
+                                Weekly Average
+                            </div>
+
+                            <div class="h2 mb-0">
+                                ₹@Model.Analytics.AverageWeeklyExpense.ToString("N2")
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
+
             </div>
+
         </div>
 
-        <div class="col-md-4 mb-3">
-            <div class="card border-dark">
+
+        <div class="col-sm-6 col-lg-4">
+
+            <div class="card">
+
                 <div class="card-body">
-                    <h6 class="text-muted">Predicted Monthly Expense</h6>
-                    <h3>₹@Model.Analytics.PredictedMonthlyExpense.ToString("N2")</h3>
+
+                    <div class="d-flex align-items-center">
+
+                        <span class="avatar avatar-md bg-green-lt me-3">
+                            <i class="ti ti-crystal-ball text-green"></i>
+                        </span>
+
+                        <div>
+
+                            <div class="subheader">
+                                Predicted Expense This Month
+                            </div>
+
+                            <div class="h2 mb-0">
+                                ₹@Model.Analytics.PredictedMonthlyExpense.ToString("N2")
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
+
             </div>
+
         </div>
 
     </div>
+   
 
+
+    <!-- Category Breakdown -->
+    <div class="card mt-4">
+
+        <div class="card-header">
+
+            <div>
+
+                <h3 class="card-title">
+                    Spending Analysis
+                </h3>
+
+                <div class="text-secondary">
+                    Expense distribution and monthly trend
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+                
+                <div class="col-lg-6">
+                    <div class="text-dark">
+                        Category-wise Expense Current vs Previous Month
+                    </div>
+                    @if (Model.CategoryBreakdown != null && Model.CategoryBreakdown.Any())
+                    {
+                        <canvas id="categoryAnalytics"></canvas>
+                    }
+
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="text-dark">
+                        Monthly Expense Trend
+                    </div>
+                    @if (Model.MonthlyExpenseTrends != null && Model.MonthlyExpenseTrends.Any())
+                    {
+                        <canvas id="monthlyExpenseTrend"></canvas>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <!-- Insights Section -->
 
@@ -103,75 +305,110 @@
 
             <div class="row">
 
-                <div class="col-md-6 mb-3">
+                <div class="col-lg-4 mb-3">
 
-                    <div class="border rounded p-3 h-100">
+                    <div class="card h-100">
 
-                        <h6 class="text-muted">
-                            Highest Spending Day
-                        </h6>
+                        <div class="card-body">
 
-                        @if(Model.AnalyticsInsight.DateSpentMostOn == DateTime.MinValue)
-                        {
-                            <h5>
-                                N/A
-                            </h5>
-                        }
-                        else
-                        {
-                            <h5>
-                                @Model.AnalyticsInsight.DateSpentMostOn.ToString("dd-MMM-yyyy")
-                            </h5>
-                        }
+                            <div class="d-flex align-items-center mb-2">
 
+                                <i class="ti ti-calendar text-blue me-2"></i>
 
-                        <p class="mb-0">
-                            Amount Spent:
-                            <strong>
+                                <span class="fw-semibold">
+                                    Highest Spending Day
+                                </span>
+
+                            </div>
+
+                            @if (Model.AnalyticsInsight.DateSpentMostOn == DateTime.MinValue)
+                            {
+                                <div class="h3 mb-1">
+                                    N/A
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="h3 mb-1">
+                                    @Model.AnalyticsInsight.DateSpentMostOn.ToString("dd MMM yyyy")
+                                </div>
+                            }
+
+                            <div class="text-blue fw-bold">
                                 ₹@Model.AnalyticsInsight.AmountSpentOnThatDay.ToString("N2")
-                            </strong>
-                        </p>
+                            </div>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-                <div class="col-md-6 mb-3">
+                <div class="col-lg-4 mb-3">
 
-                    <div class="border rounded p-3 h-100">
+                    <div class="card h-100">
 
-                        <h6 class="text-muted">
-                            Highest Expense Category
-                        </h6>
+                        <div class="card-body">
 
-                        <h5>
-                            @Model.AnalyticsInsight.CategoryWithHighestExpense
-                        </h5>
+                            <div class="d-flex align-items-center mb-2">
 
-                        <p class="mb-0">
-                            Amount Spent:
-                            <strong>
+                                <i class="ti ti-chart-pie text-green me-2"></i>
+
+                                <span class="fw-semibold">
+                                    Highest Expense Category
+                                </span>
+
+                            </div>
+
+                            <div class="h3 mb-1 text-dark">
+                                @Model.AnalyticsInsight.CategoryWithHighestExpense
+                            </div>
+
+                            <div class="text-green fw-bold">
                                 ₹@Model.AnalyticsInsight.AmountSpentInHighestCategory.ToString("N2")
-                            </strong>
-                        </p>
+                            </div>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-                <div class="col-md-6 mb-3">
+                <div class="col-lg-4 mb-3">
 
-                    <div class="border rounded p-3 h-100">
+                    <div class="card h-100">
 
-                        <h6 class="text-muted">
-                            Largest Expense Info
-                        </h6>
+                        <div class="card-body">
 
-                        <p class="mb-0">
-                            <strong>
-                                ₹@Model.AnalyticsInsight?.HighestExpenseInfo?.Amount.ToString("N2") on @Model.AnalyticsInsight?.HighestExpenseInfo?.Date.ToString("dd-MMM-yyyy") in @Model.AnalyticsInsight?.HighestExpenseInfo?.CategoryName
-                            </strong>
-                        </p>
+                            <div class="d-flex align-items-center mb-2">
+
+                                <i class="ti ti-receipt text-orange me-2"></i>
+
+                                <span class="fw-semibold">
+                                    Highest Expense
+                                </span>
+
+                            </div>
+
+                            <div class="h2 text-orange mb-2">
+
+                                ₹@Model.AnalyticsInsight?.HighestExpenseInfo?.Amount.ToString("N2")
+
+                            </div>
+
+                            <div class="text-secondary">
+
+                                @Model.AnalyticsInsight?.HighestExpenseInfo?.Date.ToString("dd MMM yyyy")
+
+                            </div>
+
+                            <div class="mt-1 fw-medium">
+
+                                @Model.AnalyticsInsight?.HighestExpenseInfo?.CategoryName
+
+                            </div>
+
+                        </div>
 
                     </div>
 
@@ -182,48 +419,6 @@
         </div>
 
     </div>
-
-
-    <!-- Category Breakdown -->
-    <div class="card mt-4">
-        <div class="card-header">
-            <h4 class="mb-0">Category Breakdown</h4>
-        </div>
-
-        <div class="card-body">
-
-            @if (Model.CategoryBreakdown != null && Model.CategoryBreakdown.Any())
-            {
-                <canvas id="categoryAnalytics"></canvas>
-            }
-            else
-            {
-                <p>No category data available.</p>
-            }
-
-        </div>
-    </div>
-
-
-    <div class="card mt-4">
-        <div class="card-header">
-            <h4 class="mb-0">Monthly Expense trend</h4>
-        </div>
-
-        <div class="card-body">
-
-            @if (Model.MonthlyExpenseTrends != null && Model.MonthlyExpenseTrends.Any())
-            {
-                <canvas id="monthlyExpenseTrend"></canvas>
-            }
-            else
-            {
-                <p>No data available.</p>
-            }
-
-        </div>
-    </div>
-
 
 </div>
 

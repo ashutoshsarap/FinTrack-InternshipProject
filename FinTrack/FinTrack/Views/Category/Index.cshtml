@@ -20,40 +20,99 @@
     </div>
 }
 
-<div class="col-12 d-flex justify-content-end gap-2">
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+        <h2 class="page-title mb-1">Categories</h2>
+        <div class="text-secondary">
+            Manage your custom transaction categories
+        </div>
+    </div>
+
     <a asp-action="Create" class="btn btn-primary">
-        <i class="bi bi-file-plus"></i> Add new category
+        <i class="ti ti-plus"></i>
+        Add Category
     </a>
+
 </div>
 
-<h1>My Categories</h1>
 
 @if (Model == null || !Model.Any())
 {
-    <p>No Categories available</p>
+    <div class="empty">
+
+        <div class="empty-header">0</div>
+
+        <p class="empty-title">
+            No categories found
+        </p>
+
+        <p class="empty-subtitle text-secondary">
+            Create your first category to start organizing transactions.
+        </p>
+
+        <div class="empty-action">
+            <a asp-action="Create" class="btn btn-primary">
+                Add Category
+            </a>
+        </div>
+
+    </div>
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var c in Model)
-            {
-                <tr>
-                    <td>@c.Name</td>
-                    <td>
-                        <div class="w-75 btn-group" role="group">
-                            <form asp-controller="Category" asp-action="Delete" asp-route-id="@c.Id" method="post">
-                                <button type="submit" class="btn btn-danger mx-2">Delete</button>
+    <div class="row">
+
+        @foreach (var c in Model)
+        {
+            <div class="col-md-6 col-lg-4 mb-3">
+
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between align-items-start">
+
+                            <div class="d-flex align-items-center">
+
+                                <span class="avatar avatar-md me-3">
+                                    @c.Name.Substring(0, 1).ToUpper()
+                                </span>
+
+                                <div>
+
+                                    <div class="fw-bold">
+                                        @c.Name
+                                    </div>
+
+                                    <div class="text-secondary small">
+                                        Custom Category
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <form asp-controller="Category"
+                                  asp-action="Delete"
+                                  asp-route-id="@c.Id"
+                                  method="post">
+
+                                <button type="submit"
+                                        class="btn btn-icon bg-red-lt text-red">
+                                    <i class="ti ti-trash"></i>
+                                </button>
+
                             </form>
+
                         </div>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
 }

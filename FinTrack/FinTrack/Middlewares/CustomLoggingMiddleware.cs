@@ -34,7 +34,7 @@ namespace FinTrack.Middlewares
             stopwatch.Stop();
             if(stopwatch.ElapsedMilliseconds > 1000)
             {
-                _logger.LogWarning("Request took more than expecteds" +
+                _logger.LogWarning("Request took more than expected" +
                                     "\nRequest Path: {Path}" +
                                     "\nMethod: {Method}" +
                                     "\nResponse Status Code : {StatusCode}" +

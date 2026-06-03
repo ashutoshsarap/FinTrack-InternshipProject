@@ -10,10 +10,12 @@ namespace FinTrack.Service
     {
 
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ILogger<RecurringTransactionJobService> _logger;
 
-        public RecurringTransactionJobService(IUnitOfWork unitOfWork)
+        public RecurringTransactionJobService(IUnitOfWork unitOfWork, ILogger<RecurringTransactionJobService> logger)
         {
             _unitOfWork = unitOfWork;
+            _logger = logger;
         }
         public async Task ProcessTransaction(int recurringTransactionId)
         {
@@ -42,6 +44,7 @@ namespace FinTrack.Service
             recurringTransaction.NextExecutionDate = CalculateNextExecutionDate(recurringTransaction);
 
             await _unitOfWork.Save();
+            _logger.LogInformation($"Processed recurring transaction with ID: {recurringTransactionId} and created transaction with ID: {transaction.Id}");
         }
 
         private DateTime CalculateNextExecutionDate(RecurringTransaction recurringTransaction)
