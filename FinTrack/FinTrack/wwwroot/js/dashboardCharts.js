@@ -23,7 +23,9 @@ new Chart(ctx, {
 
             borderWidth: 0,
 
-            hoverOffset: 8
+            hoverOffset: 8,
+
+            radius: '100%'
 
         }]
     },
@@ -34,6 +36,7 @@ new Chart(ctx, {
 
         maintainAspectRatio: false,
 
+        cutout : '50%',
 
         plugins: {
 

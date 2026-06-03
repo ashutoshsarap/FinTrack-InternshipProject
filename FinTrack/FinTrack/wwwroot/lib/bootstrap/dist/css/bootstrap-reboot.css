@@ -286,7 +286,19 @@ input,
 button,
 select,
 optgroup,
-textarea {
+
+
+
+
+
+
+
+
+
+
+
+
+{
   margin: 0;
   font-family: inherit;
   font-size: inherit;

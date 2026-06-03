@@ -37,62 +37,111 @@
 
     </div>
 }
-<div class="alert alert-info mt-2">
-    <strong>Allowed transaction type : </strong>
-    Income,Expense
-    <strong>Allowed Payment mode : </strong>
-    Cash, UPI, Credit Card, Debit Card, NetBanking
-    <br />
+
+<div class="card mb-4">
+
+    <div class="card-body">
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+            <div>
+
+                <h3 class="card-title mb-0">
+                    Transaction Tools
+                </h3>
+
+            </div>
+
+            <div class="d-flex gap-2 flex-wrap">
+
+                <a asp-action="Create" class="btn btn-primary">
+                    <i class="bi bi-file-plus"></i> + Add Transaction
+                </a>
+
+
+                <a asp-controller="Csv" asp-action="DownloadCsv" class="btn btn-outline-success">
+                    <i class="bi bi-file-plus"></i> Export to CSV
+                </a>
+
+                <form asp-action="UploadCsv"
+                      asp-controller="Csv"
+                      method="post"
+                      enctype="multipart/form-data">
+
+                    <!-- Hidden File Input -->
+                    <input type="file"
+                           id="csvFile"
+                           name="csvFile"
+                           accept=".csv"
+                           hidden
+                           onchange="this.form.submit()" />
+
+                    <!-- Custom Button -->
+                    <label for="csvFile"
+                           class="btn btn-outline-success">
+                        <i class="bi bi-upload me-2"></i>
+                        Import CSV
+                    </label>
+
+                </form>
+
+                <a asp-action="DownloadCsvTemplate"
+                   asp-controller="Csv"
+                   class="btn btn-outline-primary">
+                    Download CSV Template
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
-<div class="col-12 d-flex justify-content-end gap-2">
-    <a asp-action="Create" class="btn btn-primary rounded-pill">
-        <i class="bi bi-file-plus"></i> + Add Transaction
-    </a>
 
-    
-    <a asp-controller="Csv" asp-action="DownloadCsv" class="btn btn-success rounded-pill">
-        <i class="bi bi-file-plus"></i> Export to CSV
-    </a>
+<div class="page-header mb-4">
 
-    <form asp-action="UploadCsv"
-          asp-controller="Csv"
-          method="post"
-          enctype="multipart/form-data">
+    <div class="row align-items-center">
 
-        <!-- Hidden File Input -->
-        <input type="file"
-               id="csvFile"
-               name="csvFile"
-               accept=".csv"
-               hidden
-               onchange="this.form.submit()" />
+        <div class="col">
 
-        <!-- Custom Button -->
-        <label for="csvFile"
-               class="btn btn-success rounded-pill">
-            <i class="bi bi-upload me-2"></i>
-            Import CSV
-        </label>
+            <h2 class="page-title">
 
-    </form>
+                Transactions
 
-    <a asp-action="DownloadCsvTemplate"
-       asp-controller="Csv"
-       class="btn btn-outline-primary rounded-pill">
-        Download CSV Template
-    </a>
+            </h2>
+
+            <div class="text-secondary">
+
+                Manage and track your financial activity
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
-
-<h1>Transactions</h1>
 
 @* Filters *@
+
+<div class="card mb-4">
+
+    <div class="card-header">
+
+        <h3 class="card-title">
+            Filters
+        </h3>
+
+    </div>
+
+    <div class="card-body">
 
 <form method="get">
 
     <div class="row g-3 mb-4">
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <label class="form-label fw-semibold">
                 Start Date
             </label>
@@ -103,7 +152,7 @@
                    class="form-control" />
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <label class="form-label fw-semibold">
                 End Date
             </label>
@@ -179,7 +228,7 @@
         </div>
 
         <div class="col-md-2">
-            <label class="form-label fw-semibold"">
+            <label class="form-label fw-semibold">
                 Sort By
             </label>
             <select name="SortBy"
@@ -212,7 +261,9 @@
         </a>
     </div>
 
-</form>
+    </form>
+    </div>
+</div>
 
 
 @if (Model == null || !Model.Any())
@@ -221,15 +272,26 @@
 }
 else
 {
-    <table class="table">
+    <div class="card">
+
+    <div class="card-header">
+
+        <h3 class="card-title">
+            Transaction History
+        </h3>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-vcenter card-table">
         <thead>
             <tr>
                 <th>Date</th>
                 <th>Description</th>
                 <th>Category</th>
-                <th>Amount</th>
-                <th>Transaction type</th>
                 <th>Payment mode</th>
+                <th>Amount</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -239,26 +301,84 @@ else
                 <tr>
                     <td>@t.Date.Date.ToString("dd-MMM-yyyy")</td>
                     <td>@t.Description</td>
-                    <td>@t.CategoryName</td>
-                    <td>@t.Amount</td>
-                    <td>@t.TransactionType</td>
-                    <td>@t.PaymentMode</td>
+                            <td>
+
+                                <span class="badge bg-azure-lt">
+
+                                    @t.CategoryName
+
+                                </span>
+
+                            </td>
+                            <td>
+
+                                <span class="badge bg-secondary-lt">
+
+                                    @t.PaymentMode
+
+                                </span>
+                            <td>
+
+                                @if (t.TransactionType.ToString() == "Income")
+                                {
+                                    <span class="text-success fw-bold">
+                                        +₹@t.Amount
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="text-danger fw-bold">
+                                        -₹@t.Amount
+                                    </span>
+                                }
+
+                            </td>
+                            
+
+                            </td>
                     <td>
-                        <div class="w-75 btn-group" role="group">
-                            <a asp-controller="Transaction" asp-action="Edit" asp-route-id="@t.Id" class="btn btn-primary mx-2">
-                                <i class="bi bi-pencil-square"></i>Edit
-                            </a>
-                            <form asp-controller="Transaction" asp-action="Delete" asp-route-id="@t.Id">
-                                <button type="submit" class="btn btn-danger mx-2">Delete</button>
-                            </form>
-                        </div>
+                                <div class="btn-list flex-nowrap">
+
+                                    <a asp-action="Edit"
+                                       asp-route-id="@t.Id"
+                                       class="btn btn-outline-primary btn-sm">
+
+                                        <i class="ti ti-pencil"></i>
+
+                                    </a>
+
+                                    <form asp-action="Delete"
+                                          asp-route-id="@t.Id">
+
+                                        <button type="submit"
+                                                class="btn btn-outline-danger btn-sm">
+
+                                            <i class="ti ti-trash"></i>
+
+                                        </button>
+
+                                    </form>
+
+                                </div>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+        </div>
 
-    <div class="d-flex justify-content-center mt-4">
+    </div>
+
+            <div class="card-footer d-flex align-items-center">
+
+                <h6 class="m-0 text-secondary">
+
+                    Page @ViewBag.CurrentPage of @ViewBag.TotalPages
+
+                </h6>
+
+                <ul class="pagination m-0 ms-auto">
+
 
         @if (ViewBag.CurrentPage > 1)
         {
@@ -270,14 +390,14 @@ else
                asp-route-PaymentMode="@ViewBag.Filter.PaymentMode"
                asp-route-CategoryId="@ViewBag.Filter.CategoryId"
                asp-route-SortBy="@ViewBag.Filter.SortBy"
-               class="btn btn-outline-primary me-2">
-                Previous
+                   class="btn btn-outline-primary ms-2">
+                    <i class="ti ti-arrow-narrow-left"></i>
             </a>
         }
 
-        <span class="align-self-center">
+        @* <span class="align-self-center">
             Page @ViewBag.CurrentPage of @ViewBag.TotalPages
-        </span>
+        </span> *@
 
         @if (ViewBag.CurrentPage < ViewBag.TotalPages)
         {
@@ -289,10 +409,12 @@ else
                asp-route-PaymentMode="@ViewBag.Filter.PaymentMode"
                asp-route-CategoryId="@ViewBag.Filter.CategoryId"
                asp-route-SortBy="@ViewBag.Filter.SortBy"
-               class="btn btn-outline-primary ms-2">
-                Next
+               class="btn btn-outline-primary ms-1">
+                    <i class="ti ti-arrow-narrow-right"></i>
             </a>
         }
+                </ul>
 
-    </div>
+            </div>
+
 }
