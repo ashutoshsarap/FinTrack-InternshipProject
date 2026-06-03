@@ -18,11 +18,21 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Org.BouncyCastle.Bcpg;
+using Serilog;
+
+
+Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Integrate Serilog as the logging provider for the application, allowing us to log structured and detailed information about the application's behavior and performance to both the console and rolling log files.
+builder.Host.UseSerilog();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -68,6 +78,9 @@ builder.Services.AddScoped<ISendMonthlyReportService, SendMonthlyReportService>(
 builder.Services.AddScoped<IGeneratePdfService, GeneratePdfService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 
+
+
+
 var app = builder.Build();
 
 
@@ -109,10 +122,10 @@ var app = builder.Build();
 //}
 
 //app.UseMiddleware<ExceptionHandlingMiddleware>();
-app.UseExceptionHandler("/Home/Error");
+//app.UseExceptionHandler("/Home/Error");
 
-app.UseMiddleware<CustomLoggingMiddleware>();
-app.UseMiddleware<AuditMiddleware>();
+//app.UseMiddleware<CustomLoggingMiddleware>();
+//app.UseMiddleware<AuditMiddleware>();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -148,3 +161,4 @@ RecurringJob.AddOrUpdate<ISendMonthlyReportService>("monthly-report", s => s.Sen
 //RecurringJob.AddOrUpdate<ISendMonthlyReportService>("monthly-report",s => s.SendMonthlyReportEmailAsync(), Cron.Minutely);
 
 app.Run();
+Log.Information("Application started successfully."); //for testing
