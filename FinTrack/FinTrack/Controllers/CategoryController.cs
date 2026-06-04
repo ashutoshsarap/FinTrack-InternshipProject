@@ -60,12 +60,14 @@ namespace FinTrack.Controllers
                 await _categoryService.DeleteCategory(id);
                 HttpContext.Items[AuditMessages.AuditMessage] = AuditMessages.DelteCategory;
                 TempData["Success"] = "Category deleted successfully";
+                return Json(new { success = true, message = "Category deleted successfuly" });
             }
             catch (Exception ex)
             {
                 TempData["Error"] = $"Cannot delete category since there is/are transactions with this category";
+                return Json(new { success = false, message = "Category not deleted, something went wrong"});
+
             }
-            return RedirectToAction(nameof(Index));
         }
     }
 }

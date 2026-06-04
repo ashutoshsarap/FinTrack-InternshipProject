@@ -87,12 +87,12 @@ namespace FinTrack.Controllers
             {
                 await _recurringTransactionService.DeleteRecurringTransaction(id);
                 HttpContext.Items[AuditMessages.AuditMessage] = AuditMessages.DeletedRecurringTransaction;
-                return RedirectToAction("Index");
+                return Json(new {success=true, message="Recurring transaction deleted successfully."});
             }
             catch (Exception ex)
             {
                 TempData["Error"] = "An error occurred while deleting the Recurring transaction. Please try again.";
-                return RedirectToAction("Index");
+                return Json(new { success = true, message = "An error occured." });
             }
         }
 

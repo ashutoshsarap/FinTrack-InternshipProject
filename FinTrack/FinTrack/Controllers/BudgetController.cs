@@ -78,12 +78,12 @@ namespace FinTrack.Controllers
             try
             {
                 await _budgetService.DeleteBudget(id);
-                return RedirectToAction("Index");
+                return Json(new { success = true, message = "Budget deleted successfully." });
             }
             catch(Exception ex)
             {
                 ModelState.AddModelError(string.Empty, $"An error occurred while deleting the transaction: {ex.Message}");
-                return RedirectToAction("Index");
+                return Json(new { success = false, message = "An error occurred while deleting the budget. Please try again." });
             }
         }
 

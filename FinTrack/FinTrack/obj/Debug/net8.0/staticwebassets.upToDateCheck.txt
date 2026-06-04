@@ -1,8 +1,12 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\analyticsCharts.js
+wwwroot\js\budget.js
+wwwroot\js\category.js
 wwwroot\js\dashboardCharts.js
+wwwroot\js\recurringtransaction.js
 wwwroot\js\site.js
+wwwroot\js\transactions.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css

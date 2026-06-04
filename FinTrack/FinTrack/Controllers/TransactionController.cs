@@ -138,18 +138,18 @@ namespace FinTrack.Controllers
             {
                 await _transactionService.DeleteTransaction(id, userId);
                 HttpContext.Items[AuditMessages.AuditMessage] = AuditMessages.DeletedTransaction; //a key/value collection that can be used to share data within the scope of this request.
-                return RedirectToAction(nameof(Index));
+                return Json(new { success = true, message = "Delete successful" });
             }
             catch (RecordNotFoundException ex)
             {
                 ModelState.AddModelError(string.Empty, $"Transaction not found: {ex.Message}");
-                return RedirectToAction(nameof(Index));
+                return Json(new { success = false, message = "Error while deleting" });
             }
             catch (Exception ex)
             {
                 // Handle the error, e.g., log it and show an error message
                 ModelState.AddModelError(string.Empty, $"An error occurred while deleting the transaction: {ex.Message}");
-                return RedirectToAction(nameof(Index));
+                return Json(new { success = false, message = "Error while deleting" });
             }
 
         }

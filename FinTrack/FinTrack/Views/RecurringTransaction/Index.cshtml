@@ -67,7 +67,7 @@ else
         <div class="row row-cards">
             @foreach (var t in Model)
             {
-                <div class="col-md-6 col-xl-4">
+                <div class="col-md-6 col-xl-4" id="recurringtransaction-@t.Id">
                     <div class="card">
 
                         <div class="card-body">
@@ -94,7 +94,9 @@ else
                                     </a>
 
                                     <form asp-action="Delete"
-                                          asp-route-id="@t.Id">
+                                          asp-route-id="@t.Id"
+                                          class="delete-recurringtransaction-form"
+                                          data-id="@t.Id">
 
                                         <button type="submit"
                                                 class="btn btn-icon bg-red-lt text-red">
@@ -179,4 +181,8 @@ else
             }
         </div>
     </table>
+}
+
+@section Scripts {
+    <script src="~/js/recurringtransaction.js"></script>
 }
