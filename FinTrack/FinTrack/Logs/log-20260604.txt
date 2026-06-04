@@ -13214,3 +13214,1455 @@ WHERE [b].[ApplicationUserId] = @___currentUserId_0 AND [b].[Month] = @__current
 2026-06-04 18:37:43.793 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 347.3903ms
 2026-06-04 18:37:43.818 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Dashboard/Index - 200 null text/html; charset=utf-8 928.7569ms
 2026-06-04 18:37:43.901 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 415.7719ms
+2026-06-04 18:42:00.622 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-06-04 18:42:01.793 +05:30 [INF] Hangfire SQL objects installed.
+2026-06-04 18:42:01.940 +05:30 [INF] User profile is available. Using 'C:\Users\Coditas-Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-04 18:42:03.141 +05:30 [INF] Now listening on: https://localhost:7028
+2026-06-04 18:42:03.144 +05:30 [INF] Now listening on: http://localhost:5175
+2026-06-04 18:42:03.347 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-PG81ABB\SQLEXPRESS@MoneyUpDB'
+2026-06-04 18:42:03.459 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-04 18:42:03.463 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-04 18:42:03.513 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-04 18:42:03.518 +05:30 [INF] Hosting environment: Development
+2026-06-04 18:42:03.530 +05:30 [INF] Content root path: C:\Users\Coditas-Admin\source\InternshipProject\FinTrack\FinTrack
+2026-06-04 18:42:03.570 +05:30 [INF] Server desktop-pg81abb:15276:adcc66cf successfully announced in 59.5493 ms
+2026-06-04 18:42:03.582 +05:30 [INF] Server desktop-pg81abb:15276:adcc66cf is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-04 18:42:03.658 +05:30 [INF] 1 servers were removed due to timeout
+2026-06-04 18:42:03.886 +05:30 [INF] Server desktop-pg81abb:15276:adcc66cf all the dispatchers started
+2026-06-04 18:42:08.060 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/ - null null
+2026-06-04 18:42:08.060 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/hangfire/recurring - null null
+2026-06-04 18:42:08.872 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-04 18:42:08.905 +05:30 [INF] HTTP GET /hangfire/recurring responded 403 in 410.0225 ms
+2026-06-04 18:42:08.927 +05:30 [INF] Route matched with {action = "RedirectUser", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RedirectUser() on controller FinTrack.Controllers.HomeController (FinTrack).
+2026-06-04 18:42:08.928 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/hangfire/recurring - 403 null null 894.1008ms
+2026-06-04 18:42:08.994 +05:30 [INF] Executing RedirectResult, redirecting to /Dashboard/Index.
+2026-06-04 18:42:09.014 +05:30 [INF] Executed action FinTrack.Controllers.HomeController.RedirectUser (FinTrack) in 73.7363ms
+2026-06-04 18:42:09.017 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-04 18:42:09.021 +05:30 [INF] HTTP GET / responded 302 in 532.3623 ms
+2026-06-04 18:42:09.029 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/ - 302 null null 995.3647ms
+2026-06-04 18:42:09.042 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Dashboard/Index - null null
+2026-06-04 18:42:09.117 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-04 18:42:09.140 +05:30 [INF] Route matched with {action = "Index", controller = "Dashboard", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller FinTrack.Controllers.DashboardController (FinTrack).
+2026-06-04 18:42:10.560 +05:30 [WRN] No store type was specified for the decimal property 'MonthlyLimitAmount' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-04 18:42:10.565 +05:30 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'RecurringTransaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-04 18:42:10.567 +05:30 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Transaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-04 18:42:11.442 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 18:42:11.478 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 18:42:11.488 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 18:42:11.494 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 18:42:11.743 +05:30 [INF] Executed DbCommand (36ms) [Parameters=[@__p_3='?' (DbType = Int32), @___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[ApplicationUserId], [t0].[CategoryId], [t0].[CreatedAt], [t0].[Date], [t0].[DeletedAt], [t0].[Description], [t0].[IsDeleted], [t0].[PaymentMode], [t0].[Type], [t0].[UpdatedAt], [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM (
+    SELECT TOP(@__p_3) [t].[Id], [t].[Amount], [t].[ApplicationUserId], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[DeletedAt], [t].[Description], [t].[IsDeleted], [t].[PaymentMode], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+    ORDER BY [t].[Date] DESC
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC
+2026-06-04 18:42:11.856 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Name] AS [CategoryName], COALESCE(SUM([t].[Amount]), 0.0) AS [TotalAmount]
+FROM [Transactions] AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+GROUP BY [c].[Name]
+2026-06-04 18:42:11.910 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__currentMonthStart_3='?' (DbType = DateTime2), @__currentMonthEnd_4='?' (DbType = DateTime2), @__currentMonth_1='?' (DbType = Int32), @__currentYear_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id] AS [BudgetId], [c].[Name] AS [CategoryName], [b].[MonthlyLimitAmount], (
+    SELECT COALESCE(SUM([t].[Amount]), 0.0)
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[CategoryId] = [b].[CategoryId] AND [t].[Date] >= @__currentMonthStart_3 AND [t].[Date] <= @__currentMonthEnd_4) AS [TotalAmountSpent]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[ApplicationUserId] = @___currentUserId_0 AND [b].[Month] = @__currentMonth_1 AND [b].[Year] = @__currentYear_2
+2026-06-04 18:42:11.933 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-04 18:42:12.172 +05:30 [INF] Executed ViewResult - view Index executed in 246.8768ms.
+2026-06-04 18:42:12.214 +05:30 [INF] Executed action FinTrack.Controllers.DashboardController.Index (FinTrack) in 3065.156ms
+2026-06-04 18:42:12.228 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-04 18:42:12.234 +05:30 [INF] HTTP GET /Dashboard/Index responded 200 in 3175.3225 ms
+2026-06-04 18:42:12.280 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Dashboard/Index - 200 null text/html; charset=utf-8 3236.4291ms
+2026-06-04 18:42:12.628 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:42:12.628 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:42:12.690 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 62.6267ms
+2026-06-04 18:42:12.796 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7028/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2026-06-04 18:42:12.849 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 221.1937ms
+2026-06-04 18:42:12.899 +05:30 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\Coditas-Admin\source\InternshipProject\FinTrack\FinTrack\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2026-06-04 18:42:12.907 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7028/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 110.3902ms
+2026-06-04 18:42:21.269 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Budget/Index - null null
+2026-06-04 18:42:21.290 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.BudgetController.Index (FinTrack)'
+2026-06-04 18:42:21.299 +05:30 [INF] Route matched with {action = "Index", controller = "Budget", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller FinTrack.Controllers.BudgetController (FinTrack).
+2026-06-04 18:42:21.456 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__currentMonthStart_3='?' (DbType = DateTime2), @__currentMonthEnd_4='?' (DbType = DateTime2), @__currentMonth_1='?' (DbType = Int32), @__currentYear_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id] AS [BudgetId], [c].[Name] AS [CategoryName], [b].[MonthlyLimitAmount], (
+    SELECT COALESCE(SUM([t].[Amount]), 0.0)
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[CategoryId] = [b].[CategoryId] AND [t].[Date] >= @__currentMonthStart_3 AND [t].[Date] <= @__currentMonthEnd_4) AS [TotalAmountSpent]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[ApplicationUserId] = @___currentUserId_0 AND [b].[Month] = @__currentMonth_1 AND [b].[Year] = @__currentYear_2
+2026-06-04 18:42:21.471 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-04 18:42:21.503 +05:30 [INF] Executed ViewResult - view Index executed in 33.2837ms.
+2026-06-04 18:42:21.507 +05:30 [INF] Executed action FinTrack.Controllers.BudgetController.Index (FinTrack) in 202.1812ms
+2026-06-04 18:42:21.796 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:42:21.698 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/js/budget.js - null null
+2026-06-04 18:42:21.882 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.BudgetController.Index (FinTrack)'
+2026-06-04 18:42:21.695 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:42:21.904 +05:30 [INF] The file /js/budget.js was not modified
+2026-06-04 18:42:21.905 +05:30 [INF] HTTP GET /Budget/Index responded 200 in 620.1498 ms
+2026-06-04 18:42:21.913 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 217.2676ms
+2026-06-04 18:42:21.919 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/js/budget.js - 304 null text/javascript 220.7937ms
+2026-06-04 18:42:21.923 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Budget/Index - 200 null text/html; charset=utf-8 657.3827ms
+2026-06-04 18:42:22.091 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 295.7991ms
+2026-06-04 18:42:23.844 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Budget/Create - null null
+2026-06-04 18:42:23.863 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:42:23.876 +05:30 [INF] Route matched with {action = "Create", controller = "Budget", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller FinTrack.Controllers.BudgetController (FinTrack).
+2026-06-04 18:42:23.982 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@___currentUserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[ApplicationUserId] = @___currentUserId_0 OR [c].[IsSystemDefined] = CAST(1 AS bit)
+2026-06-04 18:42:24.092 +05:30 [INF] Executing ViewResult, running view Create.
+2026-06-04 18:42:24.224 +05:30 [INF] Executed ViewResult - view Create executed in 132.1374ms.
+2026-06-04 18:42:24.229 +05:30 [INF] Executed action FinTrack.Controllers.BudgetController.Create (FinTrack) in 345.1959ms
+2026-06-04 18:42:24.235 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:42:24.364 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:42:24.365 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:42:24.497 +05:30 [INF] HTTP GET /Budget/Create responded 200 in 634.9966 ms
+2026-06-04 18:42:24.505 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 140.5238ms
+2026-06-04 18:42:24.530 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Budget/Create - 200 null text/html; charset=utf-8 687.1445ms
+2026-06-04 18:42:24.597 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 232.5739ms
+2026-06-04 18:43:46.355 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Budget/Create - null null
+2026-06-04 18:43:46.391 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:43:46.404 +05:30 [INF] Route matched with {action = "Create", controller = "Budget", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller FinTrack.Controllers.BudgetController (FinTrack).
+2026-06-04 18:43:46.420 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@___currentUserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[ApplicationUserId] = @___currentUserId_0 OR [c].[IsSystemDefined] = CAST(1 AS bit)
+2026-06-04 18:43:46.428 +05:30 [INF] Executing ViewResult, running view Create.
+2026-06-04 18:43:46.443 +05:30 [INF] Executed ViewResult - view Create executed in 14.4617ms.
+2026-06-04 18:43:46.713 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:43:46.705 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:43:46.785 +05:30 [INF] Executed action FinTrack.Controllers.BudgetController.Create (FinTrack) in 375.8452ms
+2026-06-04 18:43:46.872 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 167.729ms
+2026-06-04 18:43:46.874 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:43:46.918 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 204.4524ms
+2026-06-04 18:43:46.920 +05:30 [INF] HTTP GET /Budget/Create responded 200 in 531.8649 ms
+2026-06-04 18:43:46.932 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Budget/Create - 200 null text/html; charset=utf-8 578.0642ms
+2026-06-04 18:43:58.348 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Budget/Create - null null
+2026-06-04 18:43:58.369 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:43:58.371 +05:30 [INF] Route matched with {action = "Create", controller = "Budget", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller FinTrack.Controllers.BudgetController (FinTrack).
+2026-06-04 18:43:58.378 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[ApplicationUserId] = @___currentUserId_0 OR [c].[IsSystemDefined] = CAST(1 AS bit)
+2026-06-04 18:43:58.385 +05:30 [INF] Executing ViewResult, running view Create.
+2026-06-04 18:43:58.393 +05:30 [INF] Executed ViewResult - view Create executed in 8.2694ms.
+2026-06-04 18:43:58.397 +05:30 [INF] Executed action FinTrack.Controllers.BudgetController.Create (FinTrack) in 21.0344ms
+2026-06-04 18:43:58.475 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:43:58.481 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:43:58.534 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:43:58.584 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 108.2515ms
+2026-06-04 18:43:58.603 +05:30 [INF] HTTP GET /Budget/Create responded 200 in 235.7446 ms
+2026-06-04 18:43:58.617 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Budget/Create - 200 null text/html; charset=utf-8 267.6771ms
+2026-06-04 18:43:58.707 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 226.1431ms
+2026-06-04 18:45:19.368 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Budget/Create - null null
+2026-06-04 18:45:19.388 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:45:19.392 +05:30 [INF] Route matched with {action = "Create", controller = "Budget", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller FinTrack.Controllers.BudgetController (FinTrack).
+2026-06-04 18:45:19.406 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@___currentUserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[ApplicationUserId] = @___currentUserId_0 OR [c].[IsSystemDefined] = CAST(1 AS bit)
+2026-06-04 18:45:19.414 +05:30 [INF] Executing ViewResult, running view Create.
+2026-06-04 18:45:19.522 +05:30 [INF] Executed ViewResult - view Create executed in 108.3971ms.
+2026-06-04 18:45:19.661 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:45:19.660 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:45:19.745 +05:30 [INF] Executed action FinTrack.Controllers.BudgetController.Create (FinTrack) in 347.3612ms
+2026-06-04 18:45:19.762 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 115.6753ms
+2026-06-04 18:45:19.765 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:45:19.778 +05:30 [INF] HTTP GET /Budget/Create responded 200 in 390.8235 ms
+2026-06-04 18:45:19.801 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Budget/Create - 200 null text/html; charset=utf-8 432.4688ms
+2026-06-04 18:45:19.878 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 217.4575ms
+2026-06-04 18:45:23.776 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Budget/Index - null null
+2026-06-04 18:45:23.799 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.BudgetController.Index (FinTrack)'
+2026-06-04 18:45:23.802 +05:30 [INF] Route matched with {action = "Index", controller = "Budget", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller FinTrack.Controllers.BudgetController (FinTrack).
+2026-06-04 18:45:23.835 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__currentMonthStart_3='?' (DbType = DateTime2), @__currentMonthEnd_4='?' (DbType = DateTime2), @__currentMonth_1='?' (DbType = Int32), @__currentYear_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id] AS [BudgetId], [c].[Name] AS [CategoryName], [b].[MonthlyLimitAmount], (
+    SELECT COALESCE(SUM([t].[Amount]), 0.0)
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[CategoryId] = [b].[CategoryId] AND [t].[Date] >= @__currentMonthStart_3 AND [t].[Date] <= @__currentMonthEnd_4) AS [TotalAmountSpent]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[ApplicationUserId] = @___currentUserId_0 AND [b].[Month] = @__currentMonth_1 AND [b].[Year] = @__currentYear_2
+2026-06-04 18:45:23.843 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-04 18:45:23.849 +05:30 [INF] Executed ViewResult - view Index executed in 5.9785ms.
+2026-06-04 18:45:23.852 +05:30 [INF] Executed action FinTrack.Controllers.BudgetController.Index (FinTrack) in 44.0311ms
+2026-06-04 18:45:23.857 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.BudgetController.Index (FinTrack)'
+2026-06-04 18:45:24.020 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:45:24.025 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:45:24.195 +05:30 [INF] HTTP GET /Budget/Index responded 200 in 396.7043 ms
+2026-06-04 18:45:24.238 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 217.8307ms
+2026-06-04 18:45:24.256 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Budget/Index - 200 null text/html; charset=utf-8 479.5215ms
+2026-06-04 18:45:24.307 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 286.2579ms
+2026-06-04 18:47:18.486 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-06-04 18:47:20.083 +05:30 [INF] Hangfire SQL objects installed.
+2026-06-04 18:47:20.338 +05:30 [INF] User profile is available. Using 'C:\Users\Coditas-Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-04 18:47:21.551 +05:30 [INF] Now listening on: https://localhost:7028
+2026-06-04 18:47:21.557 +05:30 [INF] Now listening on: http://localhost:5175
+2026-06-04 18:47:21.743 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-PG81ABB\SQLEXPRESS@MoneyUpDB'
+2026-06-04 18:47:21.745 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-04 18:47:21.747 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-04 18:47:21.809 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-04 18:47:21.811 +05:30 [INF] Hosting environment: Development
+2026-06-04 18:47:21.813 +05:30 [INF] Content root path: C:\Users\Coditas-Admin\source\InternshipProject\FinTrack\FinTrack
+2026-06-04 18:47:21.834 +05:30 [INF] Server desktop-pg81abb:18956:7e0035ac successfully announced in 34.9936 ms
+2026-06-04 18:47:21.845 +05:30 [INF] Server desktop-pg81abb:18956:7e0035ac is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-04 18:47:21.879 +05:30 [INF] 1 servers were removed due to timeout
+2026-06-04 18:47:22.100 +05:30 [INF] Server desktop-pg81abb:18956:7e0035ac all the dispatchers started
+2026-06-04 18:47:24.887 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/hangfire/recurring - null null
+2026-06-04 18:47:24.887 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/ - null null
+2026-06-04 18:47:25.828 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-04 18:47:25.829 +05:30 [INF] HTTP GET /hangfire/recurring responded 403 in 571.9745 ms
+2026-06-04 18:47:26.060 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/hangfire/recurring - 403 null null 1198.0997ms
+2026-06-04 18:47:26.078 +05:30 [INF] Route matched with {action = "RedirectUser", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RedirectUser() on controller FinTrack.Controllers.HomeController (FinTrack).
+2026-06-04 18:47:26.171 +05:30 [INF] Executing RedirectResult, redirecting to /Dashboard/Index.
+2026-06-04 18:47:26.187 +05:30 [INF] Executed action FinTrack.Controllers.HomeController.RedirectUser (FinTrack) in 63.3764ms
+2026-06-04 18:47:26.190 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-04 18:47:26.193 +05:30 [INF] HTTP GET / responded 302 in 950.1363 ms
+2026-06-04 18:47:26.201 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/ - 302 null null 1341.2322ms
+2026-06-04 18:47:26.216 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Dashboard/Index - null null
+2026-06-04 18:47:26.274 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-04 18:47:26.289 +05:30 [INF] Route matched with {action = "Index", controller = "Dashboard", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller FinTrack.Controllers.DashboardController (FinTrack).
+2026-06-04 18:47:27.763 +05:30 [WRN] No store type was specified for the decimal property 'MonthlyLimitAmount' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-04 18:47:27.809 +05:30 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'RecurringTransaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-04 18:47:27.822 +05:30 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Transaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-04 18:47:28.791 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 18:47:28.822 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 18:47:28.833 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 18:47:28.840 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 18:47:29.109 +05:30 [INF] Executed DbCommand (39ms) [Parameters=[@__p_3='?' (DbType = Int32), @___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[ApplicationUserId], [t0].[CategoryId], [t0].[CreatedAt], [t0].[Date], [t0].[DeletedAt], [t0].[Description], [t0].[IsDeleted], [t0].[PaymentMode], [t0].[Type], [t0].[UpdatedAt], [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM (
+    SELECT TOP(@__p_3) [t].[Id], [t].[Amount], [t].[ApplicationUserId], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[DeletedAt], [t].[Description], [t].[IsDeleted], [t].[PaymentMode], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+    ORDER BY [t].[Date] DESC
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC
+2026-06-04 18:47:29.254 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Name] AS [CategoryName], COALESCE(SUM([t].[Amount]), 0.0) AS [TotalAmount]
+FROM [Transactions] AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+GROUP BY [c].[Name]
+2026-06-04 18:47:29.303 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__currentMonthStart_3='?' (DbType = DateTime2), @__currentMonthEnd_4='?' (DbType = DateTime2), @__currentMonth_1='?' (DbType = Int32), @__currentYear_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id] AS [BudgetId], [c].[Name] AS [CategoryName], [b].[MonthlyLimitAmount], (
+    SELECT COALESCE(SUM([t].[Amount]), 0.0)
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[CategoryId] = [b].[CategoryId] AND [t].[Date] >= @__currentMonthStart_3 AND [t].[Date] <= @__currentMonthEnd_4) AS [TotalAmountSpent]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[ApplicationUserId] = @___currentUserId_0 AND [b].[Month] = @__currentMonth_1 AND [b].[Year] = @__currentYear_2
+2026-06-04 18:47:29.329 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-04 18:47:29.674 +05:30 [INF] Executed ViewResult - view Index executed in 355.3357ms.
+2026-06-04 18:47:29.685 +05:30 [INF] Executed action FinTrack.Controllers.DashboardController.Index (FinTrack) in 3390.0527ms
+2026-06-04 18:47:29.690 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-04 18:47:29.696 +05:30 [INF] HTTP GET /Dashboard/Index responded 200 in 3461.5435 ms
+2026-06-04 18:47:29.741 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Dashboard/Index - 200 null text/html; charset=utf-8 3525.777ms
+2026-06-04 18:47:30.320 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:47:30.322 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:47:30.373 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 52.9797ms
+2026-06-04 18:47:30.501 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7028/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2026-06-04 18:47:30.575 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 253.2465ms
+2026-06-04 18:47:30.620 +05:30 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\Coditas-Admin\source\InternshipProject\FinTrack\FinTrack\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2026-06-04 18:47:30.625 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7028/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 124.0675ms
+2026-06-04 18:47:58.556 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Budget/Index - null null
+2026-06-04 18:47:58.595 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.BudgetController.Index (FinTrack)'
+2026-06-04 18:47:58.610 +05:30 [INF] Route matched with {action = "Index", controller = "Budget", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller FinTrack.Controllers.BudgetController (FinTrack).
+2026-06-04 18:47:58.764 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__currentMonthStart_3='?' (DbType = DateTime2), @__currentMonthEnd_4='?' (DbType = DateTime2), @__currentMonth_1='?' (DbType = Int32), @__currentYear_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id] AS [BudgetId], [c].[Name] AS [CategoryName], [b].[MonthlyLimitAmount], (
+    SELECT COALESCE(SUM([t].[Amount]), 0.0)
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[CategoryId] = [b].[CategoryId] AND [t].[Date] >= @__currentMonthStart_3 AND [t].[Date] <= @__currentMonthEnd_4) AS [TotalAmountSpent]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[ApplicationUserId] = @___currentUserId_0 AND [b].[Month] = @__currentMonth_1 AND [b].[Year] = @__currentYear_2
+2026-06-04 18:47:58.785 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-04 18:47:58.829 +05:30 [INF] Executed ViewResult - view Index executed in 45.7879ms.
+2026-06-04 18:47:58.833 +05:30 [INF] Executed action FinTrack.Controllers.BudgetController.Index (FinTrack) in 217.1945ms
+2026-06-04 18:47:58.988 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:47:58.993 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:47:59.065 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.BudgetController.Index (FinTrack)'
+2026-06-04 18:47:59.496 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 508.9011ms
+2026-06-04 18:47:59.516 +05:30 [INF] HTTP GET /Budget/Index responded 200 in 930.2263 ms
+2026-06-04 18:47:59.532 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Budget/Index - 200 null text/html; charset=utf-8 976.4563ms
+2026-06-04 18:47:59.609 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 615.6865ms
+2026-06-04 18:48:01.270 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Budget/Create - null null
+2026-06-04 18:48:01.293 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:48:01.304 +05:30 [INF] Route matched with {action = "Create", controller = "Budget", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller FinTrack.Controllers.BudgetController (FinTrack).
+2026-06-04 18:48:01.410 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@___currentUserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[ApplicationUserId] = @___currentUserId_0 OR [c].[IsSystemDefined] = CAST(1 AS bit)
+2026-06-04 18:48:01.548 +05:30 [INF] Executing ViewResult, running view Create.
+2026-06-04 18:48:01.703 +05:30 [INF] Executed ViewResult - view Create executed in 155.8783ms.
+2026-06-04 18:48:01.707 +05:30 [INF] Executed action FinTrack.Controllers.BudgetController.Create (FinTrack) in 397.8018ms
+2026-06-04 18:48:01.711 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:48:01.805 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:48:01.805 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:48:01.815 +05:30 [INF] HTTP GET /Budget/Create responded 200 in 523.9140 ms
+2026-06-04 18:48:01.858 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 53.631ms
+2026-06-04 18:48:02.060 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Budget/Create - 200 null text/html; charset=utf-8 790.1504ms
+2026-06-04 18:48:02.133 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 328.1075ms
+2026-06-04 18:48:22.541 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Budget/Create - null null
+2026-06-04 18:48:22.551 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:48:22.560 +05:30 [INF] Route matched with {action = "Create", controller = "Budget", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller FinTrack.Controllers.BudgetController (FinTrack).
+2026-06-04 18:48:22.574 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@___currentUserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[ApplicationUserId] = @___currentUserId_0 OR [c].[IsSystemDefined] = CAST(1 AS bit)
+2026-06-04 18:48:22.585 +05:30 [INF] Executing ViewResult, running view Create.
+2026-06-04 18:48:22.696 +05:30 [INF] Executed ViewResult - view Create executed in 115.5502ms.
+2026-06-04 18:48:22.699 +05:30 [INF] Executed action FinTrack.Controllers.BudgetController.Create (FinTrack) in 133.5358ms
+2026-06-04 18:48:22.704 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:48:22.777 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:48:22.777 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:48:22.842 +05:30 [INF] HTTP GET /Budget/Create responded 200 in 291.9788 ms
+2026-06-04 18:48:22.864 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 87.3076ms
+2026-06-04 18:48:22.934 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Budget/Create - 200 null text/html; charset=utf-8 392.9125ms
+2026-06-04 18:48:23.049 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 271.7259ms
+2026-06-04 18:49:22.655 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Budget/Create - null null
+2026-06-04 18:49:22.698 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:49:22.716 +05:30 [INF] Route matched with {action = "Create", controller = "Budget", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller FinTrack.Controllers.BudgetController (FinTrack).
+2026-06-04 18:49:22.731 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@___currentUserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[ApplicationUserId] = @___currentUserId_0 OR [c].[IsSystemDefined] = CAST(1 AS bit)
+2026-06-04 18:49:22.743 +05:30 [INF] Executing ViewResult, running view Create.
+2026-06-04 18:49:22.865 +05:30 [INF] Executed ViewResult - view Create executed in 127.8113ms.
+2026-06-04 18:49:22.952 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:49:22.953 +05:30 [INF] Executed action FinTrack.Controllers.BudgetController.Create (FinTrack) in 231.5949ms
+2026-06-04 18:49:22.954 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:49:23.403 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:49:23.494 +05:30 [INF] HTTP GET /Budget/Create responded 200 in 798.3594 ms
+2026-06-04 18:49:23.497 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 543.0566ms
+2026-06-04 18:49:23.497 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 545.632ms
+2026-06-04 18:49:23.520 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Budget/Create - 200 null text/html; charset=utf-8 864.3756ms
+2026-06-04 18:49:49.409 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Budget/Create - null null
+2026-06-04 18:49:49.459 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:49:49.467 +05:30 [INF] Route matched with {action = "Create", controller = "Budget", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller FinTrack.Controllers.BudgetController (FinTrack).
+2026-06-04 18:49:49.480 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@___currentUserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[ApplicationUserId] = @___currentUserId_0 OR [c].[IsSystemDefined] = CAST(1 AS bit)
+2026-06-04 18:49:49.491 +05:30 [INF] Executing ViewResult, running view Create.
+2026-06-04 18:49:49.578 +05:30 [INF] Executed ViewResult - view Create executed in 92.1675ms.
+2026-06-04 18:49:49.582 +05:30 [INF] Executed action FinTrack.Controllers.BudgetController.Create (FinTrack) in 109.4265ms
+2026-06-04 18:49:49.585 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:49:49.633 +05:30 [INF] HTTP GET /Budget/Create responded 200 in 174.7518 ms
+2026-06-04 18:49:49.637 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Budget/Create - 200 null text/html; charset=utf-8 228.1873ms
+2026-06-04 18:49:49.654 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:49:49.673 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 19.119ms
+2026-06-04 18:49:49.682 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:49:49.849 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 188.972ms
+2026-06-04 18:50:05.809 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Budget/Create - null null
+2026-06-04 18:50:05.824 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:50:05.834 +05:30 [INF] Route matched with {action = "Create", controller = "Budget", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create() on controller FinTrack.Controllers.BudgetController (FinTrack).
+2026-06-04 18:50:05.842 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@___currentUserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[ApplicationUserId] = @___currentUserId_0 OR [c].[IsSystemDefined] = CAST(1 AS bit)
+2026-06-04 18:50:05.856 +05:30 [INF] Executing ViewResult, running view Create.
+2026-06-04 18:50:05.975 +05:30 [INF] Executed ViewResult - view Create executed in 126.1199ms.
+2026-06-04 18:50:05.979 +05:30 [INF] Executed action FinTrack.Controllers.BudgetController.Create (FinTrack) in 138.6434ms
+2026-06-04 18:50:06.010 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:50:06.056 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:50:06.057 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:50:06.335 +05:30 [INF] HTTP GET /Budget/Create responded 200 in 511.7678 ms
+2026-06-04 18:50:06.367 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 311.5244ms
+2026-06-04 18:50:06.428 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Budget/Create - 200 null text/html; charset=utf-8 617.2695ms
+2026-06-04 18:50:06.446 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 389.09ms
+2026-06-04 18:50:12.877 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7028/Budget/Create - application/x-www-form-urlencoded 263
+2026-06-04 18:50:12.911 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:50:12.934 +05:30 [INF] Route matched with {action = "Create", controller = "Budget", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(FinTrack.Models.ViewModels.BudgetViewModel) on controller FinTrack.Controllers.BudgetController (FinTrack).
+2026-06-04 18:50:13.019 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@___currentUserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[ApplicationUserId] = @___currentUserId_0 OR [c].[IsSystemDefined] = CAST(1 AS bit)
+2026-06-04 18:50:13.133 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__budget_CategoryId_1='?' (DbType = Int32), @__budget_Month_2='?' (DbType = Int32), @__budget_Year_3='?' (DbType = Int32), @__budget_Id_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Budgets] AS [b]
+        WHERE [b].[ApplicationUserId] = @___currentUserId_0 AND [b].[CategoryId] = @__budget_CategoryId_1 AND [b].[Month] = @__budget_Month_2 AND [b].[Year] = @__budget_Year_3 AND [b].[Id] <> @__budget_Id_4) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-06-04 18:50:13.498 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Budgets] ([ApplicationUserId], [CategoryId], [CreatedAt], [Month], [MonthlyLimitAmount], [UpdatedAt], [Year])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2026-06-04 18:50:13.553 +05:30 [INF] Budget with budget id : 20 created successfully for user 4d4effdf-e686-4991-ba76-2eb875d3965b with category 9 and amount 10000.
+2026-06-04 18:50:13.561 +05:30 [INF] Executing RedirectResult, redirecting to /Budget/Index.
+2026-06-04 18:50:13.562 +05:30 [INF] Executed action FinTrack.Controllers.BudgetController.Create (FinTrack) in 621.9583ms
+2026-06-04 18:50:13.565 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.BudgetController.Create (FinTrack)'
+2026-06-04 18:50:13.567 +05:30 [INF] HTTP POST /Budget/Create responded 302 in 656.3831 ms
+2026-06-04 18:50:13.572 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7028/Budget/Create - 302 null null 694.7472ms
+2026-06-04 18:50:13.580 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Budget/Index - null null
+2026-06-04 18:50:13.589 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.BudgetController.Index (FinTrack)'
+2026-06-04 18:50:13.595 +05:30 [INF] Route matched with {action = "Index", controller = "Budget", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller FinTrack.Controllers.BudgetController (FinTrack).
+2026-06-04 18:50:13.624 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__currentMonthStart_3='?' (DbType = DateTime2), @__currentMonthEnd_4='?' (DbType = DateTime2), @__currentMonth_1='?' (DbType = Int32), @__currentYear_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id] AS [BudgetId], [c].[Name] AS [CategoryName], [b].[MonthlyLimitAmount], (
+    SELECT COALESCE(SUM([t].[Amount]), 0.0)
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[CategoryId] = [b].[CategoryId] AND [t].[Date] >= @__currentMonthStart_3 AND [t].[Date] <= @__currentMonthEnd_4) AS [TotalAmountSpent]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[ApplicationUserId] = @___currentUserId_0 AND [b].[Month] = @__currentMonth_1 AND [b].[Year] = @__currentYear_2
+2026-06-04 18:50:13.670 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-04 18:50:13.699 +05:30 [INF] Executed ViewResult - view Index executed in 29.1261ms.
+2026-06-04 18:50:13.703 +05:30 [INF] Executed action FinTrack.Controllers.BudgetController.Index (FinTrack) in 97.6632ms
+2026-06-04 18:50:13.867 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:50:13.874 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:50:13.912 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.BudgetController.Index (FinTrack)'
+2026-06-04 18:50:13.947 +05:30 [INF] HTTP GET /Budget/Index responded 200 in 358.8215 ms
+2026-06-04 18:50:13.924 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 56.7183ms
+2026-06-04 18:50:13.951 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Budget/Index - 200 null text/html; charset=utf-8 371.7ms
+2026-06-04 18:50:13.996 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 123.4369ms
+2026-06-04 18:50:23.096 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/RecurringTransaction/Index - null null
+2026-06-04 18:50:23.110 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.RecurringTransactionController.Index (FinTrack)'
+2026-06-04 18:50:23.121 +05:30 [INF] Route matched with {action = "Index", controller = "RecurringTransaction", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller FinTrack.Controllers.RecurringTransactionController (FinTrack).
+2026-06-04 18:50:23.181 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@___currentUserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[Amount], [r].[ApplicationUserId], [r].[CategoryId], [r].[CreatedAt], [r].[Description], [r].[HangFireId], [r].[NextExecutionDate], [r].[PaymentMode], [r].[StartDate], [r].[TransactionFrequency], [r].[TransactionType], [r].[UpdatedAt], [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM [RecurringTransactions] AS [r]
+INNER JOIN [Categories] AS [c] ON [r].[CategoryId] = [c].[Id]
+WHERE [r].[ApplicationUserId] = @___currentUserId_0
+2026-06-04 18:50:23.199 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-04 18:50:23.248 +05:30 [INF] Executed ViewResult - view Index executed in 50.9191ms.
+2026-06-04 18:50:23.250 +05:30 [INF] Executed action FinTrack.Controllers.RecurringTransactionController.Index (FinTrack) in 124.0794ms
+2026-06-04 18:50:23.258 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.RecurringTransactionController.Index (FinTrack)'
+2026-06-04 18:50:23.326 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:50:23.327 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/js/recurringtransaction.js - null null
+2026-06-04 18:50:23.465 +05:30 [INF] HTTP GET /RecurringTransaction/Index responded 200 in 356.6231 ms
+2026-06-04 18:50:23.327 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:50:23.521 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 195.0215ms
+2026-06-04 18:50:23.549 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/RecurringTransaction/Index - 200 null text/html; charset=utf-8 453.6351ms
+2026-06-04 18:50:23.548 +05:30 [INF] The file /js/recurringtransaction.js was not modified
+2026-06-04 18:50:23.585 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/js/recurringtransaction.js - 304 null text/javascript 258.5461ms
+2026-06-04 18:50:23.642 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 315.6273ms
+2026-06-04 18:50:27.474 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7028/Identity/Account/Logout - application/x-www-form-urlencoded 225
+2026-06-04 18:50:27.490 +05:30 [INF] Executing endpoint '/Account/Logout'
+2026-06-04 18:50:27.515 +05:30 [INF] Route matched with {page = "/Account/Logout", area = "Identity", action = "", controller = ""}. Executing page /Account/Logout
+2026-06-04 18:50:27.543 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LogoutModel.OnPost - ModelState is "Valid"
+2026-06-04 18:50:27.558 +05:30 [INF] AuthenticationScheme: Identity.Application signed out.
+2026-06-04 18:50:27.562 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 18:50:27.564 +05:30 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2026-06-04 18:50:27.567 +05:30 [INF] User logged out.
+2026-06-04 18:50:27.572 +05:30 [INF] Executed handler method OnPost, returned result Microsoft.AspNetCore.Mvc.RedirectToPageResult.
+2026-06-04 18:50:27.576 +05:30 [INF] Executing RedirectToPageResult, redirecting to null.
+2026-06-04 18:50:27.578 +05:30 [INF] Executed page /Account/Logout in 58.6004ms
+2026-06-04 18:50:27.580 +05:30 [INF] Executed endpoint '/Account/Logout'
+2026-06-04 18:50:27.582 +05:30 [INF] HTTP POST /Identity/Account/Logout responded 302 in 93.5098 ms
+2026-06-04 18:50:27.588 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7028/Identity/Account/Logout - 302 null null 114.4252ms
+2026-06-04 18:50:27.597 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Logout - null null
+2026-06-04 18:50:27.617 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-06-04 18:50:27.626 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2026-06-04 18:50:27.628 +05:30 [INF] HTTP GET /Identity/Account/Logout responded 302 in 13.5137 ms
+2026-06-04 18:50:27.632 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Logout - 302 null null 35.4378ms
+2026-06-04 18:50:27.641 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 18:50:27.651 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 18:50:27.663 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 18:50:27.683 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 18:50:27.698 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 18:50:27.707 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 18:50:27.716 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 18:50:27.722 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 18:50:27.942 +05:30 [INF] Executed page /Account/Login in 275.7398ms
+2026-06-04 18:50:28.015 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:50:28.015 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:50:28.016 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 18:50:28.132 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 481.1175 ms
+2026-06-04 18:50:28.049 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 34.8729ms
+2026-06-04 18:50:28.283 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 641.6472ms
+2026-06-04 18:50:28.357 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 342.2138ms
+2026-06-04 18:50:35.832 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - application/x-www-form-urlencoded 295
+2026-06-04 18:50:35.845 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 18:50:35.856 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 18:50:35.887 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnPostAsync - ModelState is "Valid"
+2026-06-04 18:50:35.925 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2026-06-04 18:50:36.225 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2026-06-04 18:50:36.263 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-06-04 18:50:36.285 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-06-04 18:50:36.338 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2026-06-04 18:50:36.353 +05:30 [INF] AuthenticationScheme: Identity.Application signed in.
+2026-06-04 18:50:36.357 +05:30 [INF] User logged in.
+2026-06-04 18:50:36.361 +05:30 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult.
+2026-06-04 18:50:36.367 +05:30 [INF] Executing RedirectResult, redirecting to /.
+2026-06-04 18:50:36.370 +05:30 [INF] Executed page /Account/Login in 510.0869ms
+2026-06-04 18:50:36.373 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 18:50:36.375 +05:30 [INF] HTTP POST /Identity/Account/Login responded 302 in 530.3889 ms
+2026-06-04 18:50:36.378 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 302 null null 546.7323ms
+2026-06-04 18:50:36.389 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/ - null null
+2026-06-04 18:50:36.398 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-04 18:50:36.401 +05:30 [INF] Route matched with {action = "RedirectUser", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RedirectUser() on controller FinTrack.Controllers.HomeController (FinTrack).
+2026-06-04 18:50:36.405 +05:30 [INF] Executing RedirectResult, redirecting to /Admin/Index.
+2026-06-04 18:50:36.408 +05:30 [INF] Executed action FinTrack.Controllers.HomeController.RedirectUser (FinTrack) in 2.7251ms
+2026-06-04 18:50:36.411 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-04 18:50:36.412 +05:30 [INF] HTTP GET / responded 302 in 14.9602 ms
+2026-06-04 18:50:36.415 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/ - 302 null null 26.8153ms
+2026-06-04 18:50:36.424 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Admin/Index - null null
+2026-06-04 18:50:36.431 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.AdminController.Index (FinTrack)'
+2026-06-04 18:50:36.435 +05:30 [INF] Route matched with {action = "Index", controller = "Admin", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller FinTrack.Controllers.AdminController (FinTrack).
+2026-06-04 18:50:36.481 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+2026-06-04 18:50:36.492 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+2026-06-04 18:50:36.508 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__currentMonth_0='?' (DbType = Int32), @__currentYear_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE DATEPART(month, [t].[Date]) = @__currentMonth_0 AND DATEPART(year, [t].[Date]) = @__currentYear_1
+2026-06-04 18:50:36.535 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-04 18:50:36.579 +05:30 [INF] Executed ViewResult - view Index executed in 47.6474ms.
+2026-06-04 18:50:36.582 +05:30 [INF] Executed action FinTrack.Controllers.AdminController.Index (FinTrack) in 142.6388ms
+2026-06-04 18:50:36.655 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:50:36.824 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 169.0895ms
+2026-06-04 18:50:36.779 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.AdminController.Index (FinTrack)'
+2026-06-04 18:50:36.657 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:50:36.858 +05:30 [INF] HTTP GET /Admin/Index responded 200 in 427.2228 ms
+2026-06-04 18:50:36.869 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Admin/Index - 200 null text/html; charset=utf-8 445.4258ms
+2026-06-04 18:50:36.919 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 262.4314ms
+2026-06-04 18:50:41.054 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Admin/Create - null null
+2026-06-04 18:50:41.072 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.AdminController.Create (FinTrack)'
+2026-06-04 18:50:41.076 +05:30 [INF] Route matched with {action = "Create", controller = "Admin", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller FinTrack.Controllers.AdminController (FinTrack).
+2026-06-04 18:50:41.090 +05:30 [INF] Executing ViewResult, running view Create.
+2026-06-04 18:50:41.197 +05:30 [INF] Executed ViewResult - view Create executed in 111.5741ms.
+2026-06-04 18:50:41.202 +05:30 [INF] Executed action FinTrack.Controllers.AdminController.Create (FinTrack) in 121.2363ms
+2026-06-04 18:50:41.208 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.AdminController.Create (FinTrack)'
+2026-06-04 18:50:41.272 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:50:41.272 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:50:41.278 +05:30 [INF] HTTP GET /Admin/Create responded 200 in 211.9512 ms
+2026-06-04 18:50:41.288 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 16.0821ms
+2026-06-04 18:50:41.354 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Admin/Create - 200 null text/html; charset=utf-8 299.7611ms
+2026-06-04 18:50:41.478 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 206.2006ms
+2026-06-04 18:50:44.889 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Admin/Index - null null
+2026-06-04 18:50:44.904 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.AdminController.Index (FinTrack)'
+2026-06-04 18:50:44.907 +05:30 [INF] Route matched with {action = "Index", controller = "Admin", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller FinTrack.Controllers.AdminController (FinTrack).
+2026-06-04 18:50:44.920 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+2026-06-04 18:50:44.927 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+2026-06-04 18:50:44.940 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__currentMonth_0='?' (DbType = Int32), @__currentYear_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE DATEPART(month, [t].[Date]) = @__currentMonth_0 AND DATEPART(year, [t].[Date]) = @__currentYear_1
+2026-06-04 18:50:44.945 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-04 18:50:44.954 +05:30 [INF] Executed ViewResult - view Index executed in 8.9746ms.
+2026-06-04 18:50:44.957 +05:30 [INF] Executed action FinTrack.Controllers.AdminController.Index (FinTrack) in 45.4807ms
+2026-06-04 18:50:44.964 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.AdminController.Index (FinTrack)'
+2026-06-04 18:50:45.105 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:50:45.227 +05:30 [INF] HTTP GET /Admin/Index responded 200 in 323.3864 ms
+2026-06-04 18:50:45.243 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 137.7414ms
+2026-06-04 18:50:45.254 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Admin/Index - 200 null text/html; charset=utf-8 364.8425ms
+2026-06-04 18:52:08.484 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Admin/Index - null null
+2026-06-04 18:52:08.504 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.AdminController.Index (FinTrack)'
+2026-06-04 18:52:08.509 +05:30 [INF] Route matched with {action = "Index", controller = "Admin", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller FinTrack.Controllers.AdminController (FinTrack).
+2026-06-04 18:52:08.524 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+2026-06-04 18:52:08.534 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+2026-06-04 18:52:08.551 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__currentMonth_0='?' (DbType = Int32), @__currentYear_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE DATEPART(month, [t].[Date]) = @__currentMonth_0 AND DATEPART(year, [t].[Date]) = @__currentYear_1
+2026-06-04 18:52:08.562 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-04 18:52:08.572 +05:30 [INF] Executed ViewResult - view Index executed in 15.1761ms.
+2026-06-04 18:52:08.641 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:52:08.650 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:52:08.972 +05:30 [INF] Executed action FinTrack.Controllers.AdminController.Index (FinTrack) in 451.7177ms
+2026-06-04 18:52:08.988 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 346.7511ms
+2026-06-04 18:52:09.001 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.AdminController.Index (FinTrack)'
+2026-06-04 18:52:09.014 +05:30 [INF] HTTP GET /Admin/Index responded 200 in 511.2111 ms
+2026-06-04 18:52:09.021 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Admin/Index - 200 null text/html; charset=utf-8 536.4443ms
+2026-06-04 18:52:09.087 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 437.4138ms
+2026-06-04 18:52:10.683 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Admin/Create - null null
+2026-06-04 18:52:10.700 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.AdminController.Create (FinTrack)'
+2026-06-04 18:52:10.707 +05:30 [INF] Route matched with {action = "Create", controller = "Admin", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller FinTrack.Controllers.AdminController (FinTrack).
+2026-06-04 18:52:10.715 +05:30 [INF] Executing ViewResult, running view Create.
+2026-06-04 18:52:10.812 +05:30 [INF] Executed ViewResult - view Create executed in 98.4943ms.
+2026-06-04 18:52:10.816 +05:30 [INF] Executed action FinTrack.Controllers.AdminController.Create (FinTrack) in 102.0804ms
+2026-06-04 18:52:10.878 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:52:10.885 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:52:10.892 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.AdminController.Create (FinTrack)'
+2026-06-04 18:52:11.108 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 229.8552ms
+2026-06-04 18:52:11.146 +05:30 [INF] HTTP GET /Admin/Create responded 200 in 446.5700 ms
+2026-06-04 18:52:11.191 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Admin/Create - 200 null text/html; charset=utf-8 508.6582ms
+2026-06-04 18:52:11.267 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 382.4785ms
+2026-06-04 18:52:21.945 +05:30 [INF] 1 servers were removed due to timeout
+2026-06-04 18:52:35.805 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Admin/Create - null null
+2026-06-04 18:52:35.815 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.AdminController.Create (FinTrack)'
+2026-06-04 18:52:35.819 +05:30 [INF] Route matched with {action = "Create", controller = "Admin", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller FinTrack.Controllers.AdminController (FinTrack).
+2026-06-04 18:52:35.833 +05:30 [INF] Executing ViewResult, running view Create.
+2026-06-04 18:52:35.954 +05:30 [INF] Executed ViewResult - view Create executed in 129.5174ms.
+2026-06-04 18:52:36.035 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:52:36.039 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:52:36.169 +05:30 [INF] Executed action FinTrack.Controllers.AdminController.Create (FinTrack) in 345.5554ms
+2026-06-04 18:52:36.209 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 173.9774ms
+2026-06-04 18:52:36.224 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.AdminController.Create (FinTrack)'
+2026-06-04 18:52:36.241 +05:30 [INF] HTTP GET /Admin/Create responded 200 in 427.0467 ms
+2026-06-04 18:52:36.254 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Admin/Create - 200 null text/html; charset=utf-8 449.7993ms
+2026-06-04 18:52:36.285 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 246.0369ms
+2026-06-04 18:56:19.471 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Admin/Create - null null
+2026-06-04 18:56:19.523 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.AdminController.Create (FinTrack)'
+2026-06-04 18:56:19.526 +05:30 [INF] Route matched with {action = "Create", controller = "Admin", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller FinTrack.Controllers.AdminController (FinTrack).
+2026-06-04 18:56:19.538 +05:30 [INF] Executing ViewResult, running view Create.
+2026-06-04 18:56:19.705 +05:30 [INF] Executed ViewResult - view Create executed in 172.3041ms.
+2026-06-04 18:56:19.905 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:56:19.984 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:56:20.068 +05:30 [INF] Executed action FinTrack.Controllers.AdminController.Create (FinTrack) in 535.1288ms
+2026-06-04 18:56:20.091 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.AdminController.Create (FinTrack)'
+2026-06-04 18:56:20.095 +05:30 [INF] HTTP GET /Admin/Create responded 200 in 571.9641 ms
+2026-06-04 18:56:20.074 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 168.3064ms
+2026-06-04 18:56:20.100 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Admin/Create - 200 null text/html; charset=utf-8 629.2642ms
+2026-06-04 18:56:20.188 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 203.8931ms
+2026-06-04 18:56:23.892 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Admin/Create - null null
+2026-06-04 18:56:23.937 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.AdminController.Create (FinTrack)'
+2026-06-04 18:56:23.941 +05:30 [INF] Route matched with {action = "Create", controller = "Admin", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Create() on controller FinTrack.Controllers.AdminController (FinTrack).
+2026-06-04 18:56:23.947 +05:30 [INF] Executing ViewResult, running view Create.
+2026-06-04 18:56:23.957 +05:30 [INF] Executed ViewResult - view Create executed in 9.5131ms.
+2026-06-04 18:56:23.959 +05:30 [INF] Executed action FinTrack.Controllers.AdminController.Create (FinTrack) in 12.2382ms
+2026-06-04 18:56:23.963 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.AdminController.Create (FinTrack)'
+2026-06-04 18:56:23.966 +05:30 [INF] HTTP GET /Admin/Create responded 200 in 29.6774 ms
+2026-06-04 18:56:23.995 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Admin/Create - 200 null text/html; charset=utf-8 102.9738ms
+2026-06-04 18:56:24.104 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:56:24.196 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:56:24.285 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 181.1257ms
+2026-06-04 18:56:24.397 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 200.9763ms
+2026-06-04 18:56:25.797 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Admin/Index - null null
+2026-06-04 18:56:25.816 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.AdminController.Index (FinTrack)'
+2026-06-04 18:56:25.820 +05:30 [INF] Route matched with {action = "Index", controller = "Admin", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller FinTrack.Controllers.AdminController (FinTrack).
+2026-06-04 18:56:25.831 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+2026-06-04 18:56:25.840 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+2026-06-04 18:56:25.852 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__currentMonth_0='?' (DbType = Int32), @__currentYear_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE DATEPART(month, [t].[Date]) = @__currentMonth_0 AND DATEPART(year, [t].[Date]) = @__currentYear_1
+2026-06-04 18:56:25.858 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-04 18:56:25.868 +05:30 [INF] Executed ViewResult - view Index executed in 10.2823ms.
+2026-06-04 18:56:25.871 +05:30 [INF] Executed action FinTrack.Controllers.AdminController.Index (FinTrack) in 46.3457ms
+2026-06-04 18:56:25.874 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.AdminController.Index (FinTrack)'
+2026-06-04 18:56:25.881 +05:30 [INF] HTTP GET /Admin/Index responded 200 in 65.2589 ms
+2026-06-04 18:56:25.902 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Admin/Index - 200 null text/html; charset=utf-8 104.9352ms
+2026-06-04 18:56:25.935 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:56:25.937 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:56:26.133 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 197.8738ms
+2026-06-04 18:56:26.173 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 238.4981ms
+2026-06-04 18:56:36.460 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7028/Identity/Account/Logout - application/x-www-form-urlencoded 225
+2026-06-04 18:56:36.474 +05:30 [INF] Executing endpoint '/Account/Logout'
+2026-06-04 18:56:36.485 +05:30 [INF] Route matched with {page = "/Account/Logout", area = "Identity", action = "", controller = ""}. Executing page /Account/Logout
+2026-06-04 18:56:36.490 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LogoutModel.OnPost - ModelState is "Valid"
+2026-06-04 18:56:36.492 +05:30 [INF] AuthenticationScheme: Identity.Application signed out.
+2026-06-04 18:56:36.495 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 18:56:36.498 +05:30 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2026-06-04 18:56:36.501 +05:30 [INF] User logged out.
+2026-06-04 18:56:36.503 +05:30 [INF] Executed handler method OnPost, returned result Microsoft.AspNetCore.Mvc.RedirectToPageResult.
+2026-06-04 18:56:36.506 +05:30 [INF] Executing RedirectToPageResult, redirecting to null.
+2026-06-04 18:56:36.508 +05:30 [INF] Executed page /Account/Logout in 18.9881ms
+2026-06-04 18:56:36.511 +05:30 [INF] Executed endpoint '/Account/Logout'
+2026-06-04 18:56:36.514 +05:30 [INF] HTTP POST /Identity/Account/Logout responded 302 in 41.3848 ms
+2026-06-04 18:56:36.518 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7028/Identity/Account/Logout - 302 null null 57.5643ms
+2026-06-04 18:56:36.526 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Logout - null null
+2026-06-04 18:56:36.544 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-06-04 18:56:36.547 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2026-06-04 18:56:36.549 +05:30 [INF] HTTP GET /Identity/Account/Logout responded 302 in 5.2535 ms
+2026-06-04 18:56:36.552 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Logout - 302 null null 27.0442ms
+2026-06-04 18:56:36.563 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 18:56:36.573 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 18:56:36.586 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 18:56:36.590 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 18:56:36.593 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 18:56:36.595 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 18:56:36.598 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 18:56:36.599 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 18:56:36.613 +05:30 [INF] Executed page /Account/Login in 24.0146ms
+2026-06-04 18:56:36.615 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 18:56:36.618 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 44.8633 ms
+2026-06-04 18:56:36.624 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 60.6925ms
+2026-06-04 18:56:36.679 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:56:36.688 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:56:36.740 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 61.847ms
+2026-06-04 18:56:36.894 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 206.3636ms
+2026-06-04 18:56:46.367 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - application/x-www-form-urlencoded 293
+2026-06-04 18:56:46.402 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 18:56:46.405 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 18:56:46.417 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnPostAsync - ModelState is "Valid"
+2026-06-04 18:56:46.434 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2026-06-04 18:56:46.445 +05:30 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 18:56:46.456 +05:30 [INF] Executed page /Account/Login in 42.0372ms
+2026-06-04 18:56:46.468 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 18:56:46.619 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:56:46.630 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:56:46.715 +05:30 [INF] HTTP POST /Identity/Account/Login responded 200 in 312.6482 ms
+2026-06-04 18:56:46.722 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 102.4967ms
+2026-06-04 18:56:46.736 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 369.5235ms
+2026-06-04 18:56:46.797 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 166.7483ms
+2026-06-04 18:56:53.957 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - application/x-www-form-urlencoded 293
+2026-06-04 18:56:53.989 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 18:56:53.999 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 18:56:54.005 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnPostAsync - ModelState is "Valid"
+2026-06-04 18:56:54.021 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2026-06-04 18:56:54.204 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2026-06-04 18:56:54.217 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-06-04 18:56:54.228 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-06-04 18:56:54.239 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2026-06-04 18:56:54.246 +05:30 [INF] AuthenticationScheme: Identity.Application signed in.
+2026-06-04 18:56:54.248 +05:30 [INF] User logged in.
+2026-06-04 18:56:54.251 +05:30 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult.
+2026-06-04 18:56:54.254 +05:30 [INF] Executing RedirectResult, redirecting to /.
+2026-06-04 18:56:54.257 +05:30 [INF] Executed page /Account/Login in 253.1378ms
+2026-06-04 18:56:54.262 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 18:56:54.267 +05:30 [INF] HTTP POST /Identity/Account/Login responded 302 in 278.0431 ms
+2026-06-04 18:56:54.271 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 302 null null 313.3276ms
+2026-06-04 18:56:54.279 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/ - null null
+2026-06-04 18:56:54.289 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-04 18:56:54.292 +05:30 [INF] Route matched with {action = "RedirectUser", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RedirectUser() on controller FinTrack.Controllers.HomeController (FinTrack).
+2026-06-04 18:56:54.297 +05:30 [INF] Executing RedirectResult, redirecting to /Dashboard/Index.
+2026-06-04 18:56:54.299 +05:30 [INF] Executed action FinTrack.Controllers.HomeController.RedirectUser (FinTrack) in 1.8612ms
+2026-06-04 18:56:54.301 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-04 18:56:54.303 +05:30 [INF] HTTP GET / responded 302 in 14.5610 ms
+2026-06-04 18:56:54.306 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/ - 302 null null 27.0103ms
+2026-06-04 18:56:54.313 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Dashboard/Index - null null
+2026-06-04 18:56:54.320 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-04 18:56:54.327 +05:30 [INF] Route matched with {action = "Index", controller = "Dashboard", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller FinTrack.Controllers.DashboardController (FinTrack).
+2026-06-04 18:56:54.339 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 18:56:54.346 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 18:56:54.351 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 18:56:54.357 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 18:56:54.371 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__p_3='?' (DbType = Int32), @___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[ApplicationUserId], [t0].[CategoryId], [t0].[CreatedAt], [t0].[Date], [t0].[DeletedAt], [t0].[Description], [t0].[IsDeleted], [t0].[PaymentMode], [t0].[Type], [t0].[UpdatedAt], [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM (
+    SELECT TOP(@__p_3) [t].[Id], [t].[Amount], [t].[ApplicationUserId], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[DeletedAt], [t].[Description], [t].[IsDeleted], [t].[PaymentMode], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+    ORDER BY [t].[Date] DESC
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC
+2026-06-04 18:56:54.431 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Name] AS [CategoryName], COALESCE(SUM([t].[Amount]), 0.0) AS [TotalAmount]
+FROM [Transactions] AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+GROUP BY [c].[Name]
+2026-06-04 18:56:54.480 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__currentMonthStart_3='?' (DbType = DateTime2), @__currentMonthEnd_4='?' (DbType = DateTime2), @__currentMonth_1='?' (DbType = Int32), @__currentYear_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id] AS [BudgetId], [c].[Name] AS [CategoryName], [b].[MonthlyLimitAmount], (
+    SELECT COALESCE(SUM([t].[Amount]), 0.0)
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[CategoryId] = [b].[CategoryId] AND [t].[Date] >= @__currentMonthStart_3 AND [t].[Date] <= @__currentMonthEnd_4) AS [TotalAmountSpent]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[ApplicationUserId] = @___currentUserId_0 AND [b].[Month] = @__currentMonth_1 AND [b].[Year] = @__currentYear_2
+2026-06-04 18:56:54.490 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-04 18:56:54.587 +05:30 [INF] Executed ViewResult - view Index executed in 97.59ms.
+2026-06-04 18:56:54.602 +05:30 [INF] Executed action FinTrack.Controllers.DashboardController.Index (FinTrack) in 271.0597ms
+2026-06-04 18:56:54.612 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-04 18:56:54.616 +05:30 [INF] HTTP GET /Dashboard/Index responded 200 in 296.0281 ms
+2026-06-04 18:56:54.633 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Dashboard/Index - 200 null text/html; charset=utf-8 320.0661ms
+2026-06-04 18:56:54.880 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:56:54.881 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:56:54.914 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 34.336ms
+2026-06-04 18:56:54.957 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 76.8028ms
+2026-06-04 18:57:08.458 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7028/Identity/Account/Logout - application/x-www-form-urlencoded 225
+2026-06-04 18:57:08.471 +05:30 [INF] Executing endpoint '/Account/Logout'
+2026-06-04 18:57:08.476 +05:30 [INF] Route matched with {page = "/Account/Logout", area = "Identity", action = "", controller = ""}. Executing page /Account/Logout
+2026-06-04 18:57:08.482 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LogoutModel.OnPost - ModelState is "Valid"
+2026-06-04 18:57:08.488 +05:30 [INF] AuthenticationScheme: Identity.Application signed out.
+2026-06-04 18:57:08.495 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 18:57:08.501 +05:30 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2026-06-04 18:57:08.504 +05:30 [INF] User logged out.
+2026-06-04 18:57:08.506 +05:30 [INF] Executed handler method OnPost, returned result Microsoft.AspNetCore.Mvc.RedirectToPageResult.
+2026-06-04 18:57:08.509 +05:30 [INF] Executing RedirectToPageResult, redirecting to null.
+2026-06-04 18:57:08.512 +05:30 [INF] Executed page /Account/Logout in 30.9768ms
+2026-06-04 18:57:08.514 +05:30 [INF] Executed endpoint '/Account/Logout'
+2026-06-04 18:57:08.517 +05:30 [INF] HTTP POST /Identity/Account/Logout responded 302 in 46.1626 ms
+2026-06-04 18:57:08.520 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7028/Identity/Account/Logout - 302 null null 62.1313ms
+2026-06-04 18:57:08.528 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Logout - null null
+2026-06-04 18:57:08.538 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-06-04 18:57:08.540 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2026-06-04 18:57:08.542 +05:30 [INF] HTTP GET /Identity/Account/Logout responded 302 in 4.3840 ms
+2026-06-04 18:57:08.546 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Logout - 302 null null 18.4006ms
+2026-06-04 18:57:08.553 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 18:57:08.563 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 18:57:08.564 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 18:57:08.567 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 18:57:08.570 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 18:57:08.571 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 18:57:08.574 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 18:57:08.577 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 18:57:08.582 +05:30 [INF] Executed page /Account/Login in 15.1166ms
+2026-06-04 18:57:08.585 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 18:57:08.587 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 24.4118 ms
+2026-06-04 18:57:08.658 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 18:57:08.658 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 18:57:08.678 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 19.4346ms
+2026-06-04 18:57:08.713 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 159.7074ms
+2026-06-04 18:57:08.848 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 189.9099ms
+2026-06-04 19:00:43.099 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:00:43.131 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:00:43.158 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:00:43.167 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:00:43.170 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:00:43.173 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:00:43.176 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:00:43.191 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:00:43.416 +05:30 [INF] Executed page /Account/Login in 250.7819ms
+2026-06-04 19:00:43.423 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:00:43.585 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:00:43.604 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:00:43.728 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 596.5426 ms
+2026-06-04 19:00:43.763 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 177.6162ms
+2026-06-04 19:00:43.817 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 739.6616ms
+2026-06-04 19:00:43.950 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 346.6417ms
+2026-06-04 19:07:19.024 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-06-04 19:07:20.082 +05:30 [INF] Hangfire SQL objects installed.
+2026-06-04 19:07:20.236 +05:30 [INF] User profile is available. Using 'C:\Users\Coditas-Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-04 19:07:21.230 +05:30 [INF] Now listening on: https://localhost:7028
+2026-06-04 19:07:21.235 +05:30 [INF] Now listening on: http://localhost:5175
+2026-06-04 19:07:21.410 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-PG81ABB\SQLEXPRESS@MoneyUpDB'
+2026-06-04 19:07:21.412 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-04 19:07:21.414 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-04 19:07:21.453 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-04 19:07:21.455 +05:30 [INF] Hosting environment: Development
+2026-06-04 19:07:21.458 +05:30 [INF] Content root path: C:\Users\Coditas-Admin\source\InternshipProject\FinTrack\FinTrack
+2026-06-04 19:07:21.499 +05:30 [INF] Server desktop-pg81abb:26144:c85ab3a8 successfully announced in 46.1642 ms
+2026-06-04 19:07:21.523 +05:30 [INF] Server desktop-pg81abb:26144:c85ab3a8 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-04 19:07:21.781 +05:30 [INF] Server desktop-pg81abb:26144:c85ab3a8 all the dispatchers started
+2026-06-04 19:07:24.892 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/hangfire/recurring - null null
+2026-06-04 19:07:24.892 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/ - null null
+2026-06-04 19:07:25.286 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-06-04 19:07:25.314 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2026-06-04 19:07:25.318 +05:30 [INF] HTTP GET / responded 302 in 97.5170 ms
+2026-06-04 19:07:25.318 +05:30 [INF] HTTP GET /hangfire/recurring responded 401 in 94.0816 ms
+2026-06-04 19:07:25.339 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/ - 302 null null 472.3079ms
+2026-06-04 19:07:25.339 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/hangfire/recurring - 401 null null 472.2921ms
+2026-06-04 19:07:25.389 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2F - null null
+2026-06-04 19:07:25.436 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:07:25.535 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:07:25.934 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:07:25.945 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:07:25.948 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:07:25.955 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:07:25.957 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:07:26.310 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:07:26.335 +05:30 [INF] Executed page /Account/Login in 784.5944ms
+2026-06-04 19:07:26.341 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 30.6586ms
+2026-06-04 19:07:26.351 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:07:26.354 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:07:26.366 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 940.9274 ms
+2026-06-04 19:07:26.385 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2F - 200 null text/html; charset=utf-8 996.7705ms
+2026-06-04 19:07:26.831 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 479.5256ms
+2026-06-04 19:07:26.869 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7028/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2026-06-04 19:07:26.972 +05:30 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\Coditas-Admin\source\InternshipProject\FinTrack\FinTrack\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2026-06-04 19:07:26.983 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7028/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 113.0888ms
+2026-06-04 19:07:36.307 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7028/Identity/Account/Login?ReturnUrl=%2F - application/x-www-form-urlencoded 278
+2026-06-04 19:07:36.337 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:07:36.339 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:07:36.401 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnPostAsync - ModelState is "Valid"
+2026-06-04 19:07:37.701 +05:30 [WRN] No store type was specified for the decimal property 'MonthlyLimitAmount' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-04 19:07:37.706 +05:30 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'RecurringTransaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-04 19:07:37.710 +05:30 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Transaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-04 19:07:38.735 +05:30 [INF] Executed DbCommand (33ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2026-06-04 19:07:39.153 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2026-06-04 19:07:39.206 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-06-04 19:07:39.235 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-06-04 19:07:39.276 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2026-06-04 19:07:39.295 +05:30 [INF] AuthenticationScheme: Identity.Application signed in.
+2026-06-04 19:07:39.303 +05:30 [INF] User logged in.
+2026-06-04 19:07:39.308 +05:30 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult.
+2026-06-04 19:07:39.321 +05:30 [INF] Executing RedirectResult, redirecting to /.
+2026-06-04 19:07:39.326 +05:30 [INF] Executed page /Account/Login in 2984.3306ms
+2026-06-04 19:07:39.335 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:07:39.339 +05:30 [INF] HTTP POST /Identity/Account/Login responded 302 in 3002.5449 ms
+2026-06-04 19:07:39.356 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/ - null null
+2026-06-04 19:07:39.359 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7028/Identity/Account/Login?ReturnUrl=%2F - 302 null null 3051.3289ms
+2026-06-04 19:07:39.379 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-04 19:07:39.394 +05:30 [INF] Route matched with {action = "RedirectUser", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RedirectUser() on controller FinTrack.Controllers.HomeController (FinTrack).
+2026-06-04 19:07:39.404 +05:30 [INF] Executing RedirectResult, redirecting to /Dashboard/Index.
+2026-06-04 19:07:39.407 +05:30 [INF] Executed action FinTrack.Controllers.HomeController.RedirectUser (FinTrack) in 7.4251ms
+2026-06-04 19:07:39.410 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-04 19:07:39.411 +05:30 [INF] HTTP GET / responded 302 in 43.7288 ms
+2026-06-04 19:07:39.415 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/ - 302 null null 58.6248ms
+2026-06-04 19:07:39.423 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Dashboard/Index - null null
+2026-06-04 19:07:39.438 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-04 19:07:39.449 +05:30 [INF] Route matched with {action = "Index", controller = "Dashboard", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller FinTrack.Controllers.DashboardController (FinTrack).
+2026-06-04 19:07:39.655 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 19:07:39.671 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 19:07:39.677 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 19:07:39.685 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 19:07:39.809 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@__p_3='?' (DbType = Int32), @___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[ApplicationUserId], [t0].[CategoryId], [t0].[CreatedAt], [t0].[Date], [t0].[DeletedAt], [t0].[Description], [t0].[IsDeleted], [t0].[PaymentMode], [t0].[Type], [t0].[UpdatedAt], [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM (
+    SELECT TOP(@__p_3) [t].[Id], [t].[Amount], [t].[ApplicationUserId], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[DeletedAt], [t].[Description], [t].[IsDeleted], [t].[PaymentMode], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+    ORDER BY [t].[Date] DESC
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC
+2026-06-04 19:07:39.924 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Name] AS [CategoryName], COALESCE(SUM([t].[Amount]), 0.0) AS [TotalAmount]
+FROM [Transactions] AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+GROUP BY [c].[Name]
+2026-06-04 19:07:39.973 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__currentMonthStart_3='?' (DbType = DateTime2), @__currentMonthEnd_4='?' (DbType = DateTime2), @__currentMonth_1='?' (DbType = Int32), @__currentYear_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id] AS [BudgetId], [c].[Name] AS [CategoryName], [b].[MonthlyLimitAmount], (
+    SELECT COALESCE(SUM([t].[Amount]), 0.0)
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[CategoryId] = [b].[CategoryId] AND [t].[Date] >= @__currentMonthStart_3 AND [t].[Date] <= @__currentMonthEnd_4) AS [TotalAmountSpent]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[ApplicationUserId] = @___currentUserId_0 AND [b].[Month] = @__currentMonth_1 AND [b].[Year] = @__currentYear_2
+2026-06-04 19:07:40.003 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-04 19:07:40.109 +05:30 [INF] Executed ViewResult - view Index executed in 109.8303ms.
+2026-06-04 19:07:40.120 +05:30 [INF] Executed action FinTrack.Controllers.DashboardController.Index (FinTrack) in 666.0134ms
+2026-06-04 19:07:40.302 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:07:40.316 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:07:40.898 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-04 19:07:40.919 +05:30 [INF] HTTP GET /Dashboard/Index responded 200 in 1487.4632 ms
+2026-06-04 19:07:40.904 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 602.8377ms
+2026-06-04 19:07:40.924 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Dashboard/Index - 200 null text/html; charset=utf-8 1501.0106ms
+2026-06-04 19:07:41.192 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 875.8609ms
+2026-06-04 19:07:42.473 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7028/Identity/Account/Logout - application/x-www-form-urlencoded 225
+2026-06-04 19:07:42.528 +05:30 [INF] Executing endpoint '/Account/Logout'
+2026-06-04 19:07:42.541 +05:30 [INF] Route matched with {page = "/Account/Logout", area = "Identity", action = "", controller = ""}. Executing page /Account/Logout
+2026-06-04 19:07:42.547 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LogoutModel.OnPost - ModelState is "Valid"
+2026-06-04 19:07:42.555 +05:30 [INF] AuthenticationScheme: Identity.Application signed out.
+2026-06-04 19:07:42.558 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:07:42.561 +05:30 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2026-06-04 19:07:42.565 +05:30 [INF] User logged out.
+2026-06-04 19:07:42.570 +05:30 [INF] Executed handler method OnPost, returned result Microsoft.AspNetCore.Mvc.RedirectToPageResult.
+2026-06-04 19:07:42.574 +05:30 [INF] Executing RedirectToPageResult, redirecting to null.
+2026-06-04 19:07:42.577 +05:30 [INF] Executed page /Account/Logout in 32.3167ms
+2026-06-04 19:07:42.582 +05:30 [INF] Executed endpoint '/Account/Logout'
+2026-06-04 19:07:42.584 +05:30 [INF] HTTP POST /Identity/Account/Logout responded 302 in 99.9755 ms
+2026-06-04 19:07:42.588 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7028/Identity/Account/Logout - 302 null null 115.8705ms
+2026-06-04 19:07:42.597 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Logout - null null
+2026-06-04 19:07:42.608 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-06-04 19:07:42.611 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2026-06-04 19:07:42.612 +05:30 [INF] HTTP GET /Identity/Account/Logout responded 302 in 4.9529 ms
+2026-06-04 19:07:42.618 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Logout - 302 null null 20.6434ms
+2026-06-04 19:07:42.626 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:07:42.639 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:07:42.642 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:07:42.645 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:07:42.648 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:07:42.651 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:07:42.653 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:07:42.655 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:07:42.668 +05:30 [INF] Executed page /Account/Login in 23.2403ms
+2026-06-04 19:07:42.670 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:07:42.675 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 35.8905 ms
+2026-06-04 19:07:42.800 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:07:42.810 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:07:42.960 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 334.0821ms
+2026-06-04 19:07:42.968 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 168.7477ms
+2026-06-04 19:07:43.097 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 286.5698ms
+2026-06-04 19:09:02.253 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:09:02.286 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:09:02.302 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:09:02.305 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:09:02.309 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:09:02.311 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:09:02.314 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:09:02.316 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:09:02.461 +05:30 [INF] Executed page /Account/Login in 157.165ms
+2026-06-04 19:09:02.465 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:09:02.515 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 229.0472 ms
+2026-06-04 19:09:02.524 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:09:02.528 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:09:02.654 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 401.1768ms
+2026-06-04 19:09:02.875 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 350.358ms
+2026-06-04 19:09:02.980 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 452.9062ms
+2026-06-04 19:10:52.656 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:10:52.687 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:10:52.701 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:10:52.705 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:10:52.709 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:10:52.710 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:10:52.714 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:10:52.716 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:10:52.908 +05:30 [INF] Executed page /Account/Login in 203.7895ms
+2026-06-04 19:10:52.975 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:10:52.970 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:10:53.327 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:10:53.347 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 377.3807ms
+2026-06-04 19:10:53.348 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 661.0333 ms
+2026-06-04 19:10:53.374 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 717.4209ms
+2026-06-04 19:10:53.498 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 523.1624ms
+2026-06-04 19:11:11.917 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:11:11.936 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:11:11.954 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:11:11.957 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:11:11.960 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:11:11.961 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:11:11.964 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:11:11.965 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:11:12.108 +05:30 [INF] Executed page /Account/Login in 151.3139ms
+2026-06-04 19:11:12.410 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:11:12.427 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:11:12.473 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:11:12.482 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 72.6948ms
+2026-06-04 19:11:12.503 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 567.4381 ms
+2026-06-04 19:11:12.527 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 610.1634ms
+2026-06-04 19:11:12.578 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 151.2291ms
+2026-06-04 19:11:56.229 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:11:56.249 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:11:56.267 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:11:56.272 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:11:56.275 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:11:56.278 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:11:56.283 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:11:56.288 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:11:56.453 +05:30 [INF] Executed page /Account/Login in 181.6652ms
+2026-06-04 19:11:56.742 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:11:56.752 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:11:57.088 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:11:57.105 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 856.0801 ms
+2026-06-04 19:11:57.110 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 880.8988ms
+2026-06-04 19:11:57.093 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 351.2558ms
+2026-06-04 19:11:57.178 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 426.7507ms
+2026-06-04 19:12:04.394 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:12:04.436 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:12:04.451 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:12:04.455 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:12:04.459 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:12:04.461 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:12:04.466 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:12:04.469 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:12:04.558 +05:30 [INF] Executed page /Account/Login in 104.0026ms
+2026-06-04 19:12:04.830 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:12:04.841 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:12:05.062 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:12:05.286 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 456.1981ms
+2026-06-04 19:12:05.437 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 1000.4221 ms
+2026-06-04 19:12:05.447 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 1053.332ms
+2026-06-04 19:12:05.502 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 661.4953ms
+2026-06-04 19:12:14.161 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:12:14.194 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:12:14.211 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:12:14.215 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:12:14.218 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:12:14.221 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:12:14.224 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:12:14.226 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:12:14.414 +05:30 [INF] Executed page /Account/Login in 199.9831ms
+2026-06-04 19:12:14.417 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:12:14.427 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 232.9920 ms
+2026-06-04 19:12:14.473 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:12:14.535 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 61.3875ms
+2026-06-04 19:12:14.474 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:12:14.540 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 378.7545ms
+2026-06-04 19:12:14.836 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 362.8918ms
+2026-06-04 19:12:21.610 +05:30 [INF] 1 servers were removed due to timeout
+2026-06-04 19:13:55.281 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:13:55.305 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:13:55.325 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:13:55.334 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:13:55.337 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:13:55.340 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:13:55.343 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:13:55.351 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:13:55.561 +05:30 [INF] Executed page /Account/Login in 227.2891ms
+2026-06-04 19:13:55.568 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:13:55.876 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:13:55.731 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/img/logo.png - null null
+2026-06-04 19:13:55.813 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:13:56.034 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 729.5722 ms
+2026-06-04 19:13:56.051 +05:30 [INF] HTTP GET /img/logo.png responded 404 in 0.2825 ms
+2026-06-04 19:13:56.072 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/img/logo.png - 404 0 null 340.9996ms
+2026-06-04 19:13:56.069 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 788.6511ms
+2026-06-04 19:13:56.080 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7028/img/logo.png, Response status code: 404
+2026-06-04 19:13:56.065 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 251.2675ms
+2026-06-04 19:13:56.566 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 690.5224ms
+2026-06-04 19:15:49.442 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:15:49.480 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:15:49.496 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:15:49.505 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:15:49.512 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:15:49.514 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:15:49.519 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:15:49.522 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:15:49.704 +05:30 [INF] Executed page /Account/Login in 199.5069ms
+2026-06-04 19:15:49.709 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:15:49.712 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 232.5690 ms
+2026-06-04 19:15:49.762 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 320.3702ms
+2026-06-04 19:15:49.876 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:15:49.878 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:15:50.307 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 430.5796ms
+2026-06-04 19:15:50.376 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 498.4953ms
+2026-06-04 19:16:14.618 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:16:14.638 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:16:14.652 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:16:14.656 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:16:14.658 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:16:14.660 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:16:14.665 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:16:14.667 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:16:14.820 +05:30 [INF] Executed page /Account/Login in 164.7413ms
+2026-06-04 19:16:14.993 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:16:15.043 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:16:15.147 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:16:15.166 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 528.4090 ms
+2026-06-04 19:16:15.169 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 550.798ms
+2026-06-04 19:16:15.153 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 160.2031ms
+2026-06-04 19:16:15.248 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 205.687ms
+2026-06-04 19:17:28.434 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:17:28.462 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:17:28.477 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:17:28.484 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:17:28.487 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:17:28.490 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:17:28.495 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:17:28.498 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:17:28.676 +05:30 [INF] Executed page /Account/Login in 193.4273ms
+2026-06-04 19:17:28.678 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:17:28.737 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:17:28.738 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:17:29.014 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 551.5170 ms
+2026-06-04 19:17:29.307 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 569.6673ms
+2026-06-04 19:17:29.328 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 894.1786ms
+2026-06-04 19:17:29.390 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 652.9263ms
+2026-06-04 19:19:18.119 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:19:18.138 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:19:18.158 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:19:18.161 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:19:18.164 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:19:18.168 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:19:18.171 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:19:18.173 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:19:18.359 +05:30 [INF] Executed page /Account/Login in 198.8596ms
+2026-06-04 19:19:18.514 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:19:18.520 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:19:18.844 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:19:18.874 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 359.5763ms
+2026-06-04 19:19:18.897 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 758.5699 ms
+2026-06-04 19:19:18.909 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 790.0652ms
+2026-06-04 19:19:19.031 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 510.5623ms
+2026-06-04 19:22:46.555 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:22:46.601 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:22:46.649 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:22:46.657 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:22:46.660 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:22:46.662 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:22:46.666 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:22:46.668 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:22:46.886 +05:30 [INF] Executed page /Account/Login in 231.8801ms
+2026-06-04 19:22:46.893 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:22:47.073 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:22:47.126 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 524.8678 ms
+2026-06-04 19:22:47.196 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:22:47.223 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 150.4333ms
+2026-06-04 19:22:47.281 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 725.5928ms
+2026-06-04 19:22:47.365 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 169.3114ms
+2026-06-04 19:23:00.984 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:23:01.041 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:23:01.080 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:23:01.094 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:23:01.097 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:23:01.100 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:23:01.107 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:23:01.110 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:23:01.264 +05:30 [INF] Executed page /Account/Login in 171.1032ms
+2026-06-04 19:23:02.082 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:23:02.083 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:23:02.088 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:23:02.101 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 1060.9841 ms
+2026-06-04 19:23:02.106 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 1121.3162ms
+2026-06-04 19:23:02.224 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 141.8347ms
+2026-06-04 19:23:02.333 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 249.8389ms
+2026-06-04 19:23:26.926 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:23:26.941 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:23:26.956 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:23:26.959 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:23:26.962 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:23:26.965 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:23:26.969 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:23:26.972 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:23:27.132 +05:30 [INF] Executed page /Account/Login in 173.6413ms
+2026-06-04 19:23:27.294 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:23:27.295 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:23:27.339 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:23:27.348 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 54.5299ms
+2026-06-04 19:23:27.382 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 441.2256 ms
+2026-06-04 19:23:27.401 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 475.1231ms
+2026-06-04 19:23:27.440 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 145.5429ms
+2026-06-04 19:23:56.041 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - application/x-www-form-urlencoded 293
+2026-06-04 19:23:56.098 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:23:56.110 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:23:56.121 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnPostAsync - ModelState is "Valid"
+2026-06-04 19:23:56.173 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2026-06-04 19:23:56.456 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2026-06-04 19:23:56.483 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-06-04 19:23:56.494 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-06-04 19:23:56.506 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2026-06-04 19:23:56.513 +05:30 [INF] AuthenticationScheme: Identity.Application signed in.
+2026-06-04 19:23:56.516 +05:30 [INF] User logged in.
+2026-06-04 19:23:56.518 +05:30 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult.
+2026-06-04 19:23:56.521 +05:30 [INF] Executing RedirectResult, redirecting to /.
+2026-06-04 19:23:56.523 +05:30 [INF] Executed page /Account/Login in 405.9141ms
+2026-06-04 19:23:56.525 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:23:56.528 +05:30 [INF] HTTP POST /Identity/Account/Login responded 302 in 429.4223 ms
+2026-06-04 19:23:56.531 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 302 null null 489.3844ms
+2026-06-04 19:23:56.553 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/ - null null
+2026-06-04 19:23:56.567 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-04 19:23:56.570 +05:30 [INF] Route matched with {action = "RedirectUser", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RedirectUser() on controller FinTrack.Controllers.HomeController (FinTrack).
+2026-06-04 19:23:56.577 +05:30 [INF] Executing RedirectResult, redirecting to /Dashboard/Index.
+2026-06-04 19:23:56.579 +05:30 [INF] Executed action FinTrack.Controllers.HomeController.RedirectUser (FinTrack) in 2.546ms
+2026-06-04 19:23:56.581 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-04 19:23:56.583 +05:30 [INF] HTTP GET / responded 302 in 16.8698 ms
+2026-06-04 19:23:56.586 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/ - 302 null null 33.745ms
+2026-06-04 19:23:56.611 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Dashboard/Index - null null
+2026-06-04 19:23:56.624 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-04 19:23:56.632 +05:30 [INF] Route matched with {action = "Index", controller = "Dashboard", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller FinTrack.Controllers.DashboardController (FinTrack).
+2026-06-04 19:23:56.655 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 19:23:56.670 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 19:23:56.679 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 19:23:56.702 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-04 19:23:56.725 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__p_3='?' (DbType = Int32), @___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[ApplicationUserId], [t0].[CategoryId], [t0].[CreatedAt], [t0].[Date], [t0].[DeletedAt], [t0].[Description], [t0].[IsDeleted], [t0].[PaymentMode], [t0].[Type], [t0].[UpdatedAt], [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM (
+    SELECT TOP(@__p_3) [t].[Id], [t].[Amount], [t].[ApplicationUserId], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[DeletedAt], [t].[Description], [t].[IsDeleted], [t].[PaymentMode], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+    ORDER BY [t].[Date] DESC
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC
+2026-06-04 19:23:56.859 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Name] AS [CategoryName], COALESCE(SUM([t].[Amount]), 0.0) AS [TotalAmount]
+FROM [Transactions] AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+GROUP BY [c].[Name]
+2026-06-04 19:23:56.939 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__currentMonthStart_3='?' (DbType = DateTime2), @__currentMonthEnd_4='?' (DbType = DateTime2), @__currentMonth_1='?' (DbType = Int32), @__currentYear_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id] AS [BudgetId], [c].[Name] AS [CategoryName], [b].[MonthlyLimitAmount], (
+    SELECT COALESCE(SUM([t].[Amount]), 0.0)
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[CategoryId] = [b].[CategoryId] AND [t].[Date] >= @__currentMonthStart_3 AND [t].[Date] <= @__currentMonthEnd_4) AS [TotalAmountSpent]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[ApplicationUserId] = @___currentUserId_0 AND [b].[Month] = @__currentMonth_1 AND [b].[Year] = @__currentYear_2
+2026-06-04 19:23:56.955 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-04 19:23:57.027 +05:30 [INF] Executed ViewResult - view Index executed in 72.5556ms.
+2026-06-04 19:23:57.075 +05:30 [INF] Executed action FinTrack.Controllers.DashboardController.Index (FinTrack) in 431.8694ms
+2026-06-04 19:23:57.085 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-04 19:23:57.092 +05:30 [INF] HTTP GET /Dashboard/Index responded 200 in 469.1951 ms
+2026-06-04 19:23:57.103 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Dashboard/Index - 200 null text/html; charset=utf-8 492.4197ms
+2026-06-04 19:23:57.369 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:23:57.372 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:23:57.421 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 48.4176ms
+2026-06-04 19:23:57.522 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 153.3652ms
+2026-06-04 19:23:58.862 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7028/Identity/Account/Logout - application/x-www-form-urlencoded 225
+2026-06-04 19:23:58.875 +05:30 [INF] Executing endpoint '/Account/Logout'
+2026-06-04 19:23:58.888 +05:30 [INF] Route matched with {page = "/Account/Logout", area = "Identity", action = "", controller = ""}. Executing page /Account/Logout
+2026-06-04 19:23:58.894 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LogoutModel.OnPost - ModelState is "Valid"
+2026-06-04 19:23:58.898 +05:30 [INF] AuthenticationScheme: Identity.Application signed out.
+2026-06-04 19:23:58.906 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:23:58.911 +05:30 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2026-06-04 19:23:58.913 +05:30 [INF] User logged out.
+2026-06-04 19:23:58.917 +05:30 [INF] Executed handler method OnPost, returned result Microsoft.AspNetCore.Mvc.RedirectToPageResult.
+2026-06-04 19:23:58.922 +05:30 [INF] Executing RedirectToPageResult, redirecting to null.
+2026-06-04 19:23:58.924 +05:30 [INF] Executed page /Account/Logout in 31.3538ms
+2026-06-04 19:23:58.927 +05:30 [INF] Executed endpoint '/Account/Logout'
+2026-06-04 19:23:58.929 +05:30 [INF] HTTP POST /Identity/Account/Logout responded 302 in 56.6160 ms
+2026-06-04 19:23:58.937 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7028/Identity/Account/Logout - 302 null null 74.6798ms
+2026-06-04 19:23:58.950 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Logout - null null
+2026-06-04 19:23:58.965 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-06-04 19:23:58.970 +05:30 [INF] AuthenticationScheme: Identity.Application was challenged.
+2026-06-04 19:23:58.972 +05:30 [INF] HTTP GET /Identity/Account/Logout responded 302 in 6.8568 ms
+2026-06-04 19:23:58.976 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Logout - 302 null null 25.669ms
+2026-06-04 19:23:58.985 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:23:58.996 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:23:59.001 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:23:59.005 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:23:59.008 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:23:59.010 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:23:59.018 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:23:59.019 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:23:59.030 +05:30 [INF] Executed page /Account/Login in 25.9842ms
+2026-06-04 19:23:59.197 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:23:59.197 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:23:59.362 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:23:59.377 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 179.7364ms
+2026-06-04 19:23:59.397 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 401.0156 ms
+2026-06-04 19:23:59.466 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 268.3269ms
+2026-06-04 19:23:59.506 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 521.2923ms
+2026-06-04 19:24:11.305 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - null null
+2026-06-04 19:24:11.332 +05:30 [INF] Executing endpoint '/Account/Login'
+2026-06-04 19:24:11.345 +05:30 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2026-06-04 19:24:11.351 +05:30 [INF] Executing handler method FinTrack.Areas.Identity.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2026-06-04 19:24:11.353 +05:30 [INF] AuthenticationScheme: Identity.External signed out.
+2026-06-04 19:24:11.355 +05:30 [INF] Executed handler method OnGetAsync, returned result .
+2026-06-04 19:24:11.358 +05:30 [INF] Executing an implicit handler method - ModelState is "Valid"
+2026-06-04 19:24:11.360 +05:30 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2026-06-04 19:24:11.560 +05:30 [INF] Executed page /Account/Login in 209.7007ms
+2026-06-04 19:24:11.563 +05:30 [INF] Executed endpoint '/Account/Login'
+2026-06-04 19:24:11.801 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 19:24:11.818 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-04 19:24:11.881 +05:30 [INF] HTTP GET /Identity/Account/Login responded 200 in 549.8742 ms
+2026-06-04 19:24:11.892 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 91.3564ms
+2026-06-04 19:24:11.959 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 141.5008ms
+2026-06-04 19:24:11.966 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Identity/Account/Login?ReturnUrl=%2FIdentity%2FAccount%2FLogout - 200 null text/html; charset=utf-8 661.0607ms

@@ -25,34 +25,57 @@
 
 }
 
-<h2>Create Budget</h2>
+<div class="row justify-content-center">
+    <div class="col-md-6">
 
-<form asp-action="Create" method="post">
+        <form asp-action="Create" method="post">
+            <div class="card">
 
-    <div class="mb-3">
-        <label asp-for="MonthlyLimitAmount" class="form-label">Budget</label>
-        <input asp-for="MonthlyLimitAmount" class="form-control" />
-        <span asp-validation-for="MonthlyLimitAmount" class="text-danger"></span>
+                <div class="card-header">
+                    <h3 class="card-title">Create Budget</h3>
+                </div>
+
+                <div class="card-body">
+
+                    <div asp-validation-summary="ModelOnly"
+                         class="text-danger mb-3">
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="MonthlyLimitAmount" class="form-label"> Monthly Limit Amount</label>
+                        <input asp-for="MonthlyLimitAmount" class="form-control" />
+                        <span asp-validation-for="MonthlyLimitAmount" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="CategoryId" class="form-label">Category</label>
+
+                        <select asp-for="CategoryId"
+                                class="form-select"
+                                asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))">
+                            <option value="">Select Category</option>
+                        </select>
+
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="card-footer d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        Back
+                    </a>
+
+                    <button type="submit" class="btn btn-primary">
+                        Create Budget
+                    </button>
+                </div>
+
+            </div>
+        </form>
+
     </div>
-
-    <div class="mb-3">
-        <label asp-for="CategoryId" class="form-label">Category</label>
-
-        <select asp-for="CategoryId"
-                class="form-select"
-                asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))">
-            <option value="">-- Select Category --</option>
-
-        </select>
-
-        <span asp-validation-for="CategoryId" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">
-        Create Budget
-    </button>
-
-</form>
+</div>
 
 @section Scripts {
     @{
