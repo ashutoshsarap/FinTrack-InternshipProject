@@ -25,7 +25,8 @@
                     </button>
                 </div>
                 <ul class="navbar-nav pt-3">
-
+                @if (User.IsInRole("User"))
+                {
                     <li class="nav-item">
                         <span class="nav-link disabled text-uppercase sidebar-section">
                             Overview
@@ -85,7 +86,7 @@
                     <li class="nav-item @(currentController == "RecurringTransaction" ? "active" : "")">
                         <a asp-controller="RecurringTransaction" asp-action="Index" class="nav-link">
                             <span class="nav-link-icon">
-                            <i class="ti ti-reload"></i>
+                                <i class="ti ti-reload"></i>
                             </span>
                             <span class="nav-link-title">
                                 Recurring 
@@ -103,19 +104,61 @@
                             </span>
                         </a>
                     </li>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item @(currentController == "Admin" ? "active" : "")">
+                        <a asp-controller="Admin" asp-action="Index" class="nav-link">
+                            <span class="nav-link-icon">
+                                <i class="ti ti-category-2"></i>
+                            </span>
+                            <span class="nav-link-title">
+                                Admin Dashboard
+                            </span>
+                        </a>
+                    </li>
 
-                </ul>
+                    <li class="nav-item">
+                        <a href="/hangfire" class="nav-link">
+                            <span class="nav-link-icon">
+                                <i class="ti ti-reload"></i>
+                            </span>
+                            <span class="nav-link-title">
+                                Hangfire Dashboard
+                            </span>
+                        </a>
+                    </li>
+                }
+            </ul>
 
             </div>
         <div class="sidebar-footer mt-auto px-3 py-3 border-top">
-            <div class="d-flex align-items-center gap-3 mb-3">
-                <div class="sidebar-user-avatar">
-                    <i class="ti ti-user-circle" style="font-size: 2rem;"></i>
+            <a asp-area="Identity" asp-page="/Account/Manage/Index"
+               class="text-decoration-none text-reset">
+
+                <div class="d-flex align-items-center gap-3 mb-3 p-2 rounded sidebar-account-card">
+
+                    <div class="sidebar-user-avatar">
+                        <i class="ti ti-user-circle" style="font-size: 2rem;"></i>
+                    </div>
+
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name fw-semibold">
+                            My Account
+                        </div>
+
+                        <small class="text-secondary">
+                            View Profile
+                        </small>
+                    </div>
+
+                    <div class="ms-auto">
+                        <i class="ti ti-chevron-right"></i>
+                    </div>
+
                 </div>
-                <div class="sidebar-user-info">
-                    <div class="sidebar-user-name fw-semibold">My Account</div>
-                </div>
-            </div>
+
+            </a>
             <form asp-area="Identity" asp-page="/Account/Logout" method="post">
                 <button type="submit" class="nav-link w-100 text-danger">
                     <span class="nav-link-icon"><i class="ti ti-logout"></i></span>
