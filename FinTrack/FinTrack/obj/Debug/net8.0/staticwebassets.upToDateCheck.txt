@@ -1,12 +1,6 @@
-wwwroot\css\site.css
-wwwroot\favicon.ico
-wwwroot\js\analyticsCharts.js
-wwwroot\js\budget.js
-wwwroot\js\category.js
-wwwroot\js\dashboardCharts.js
-wwwroot\js\recurringtransaction.js
 wwwroot\js\site.js
-wwwroot\js\transactions.js
+wwwroot\favicon.ico
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
@@ -15,7 +9,7 @@ wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
-wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+wwwroot\css\site.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
@@ -64,3 +58,9 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\js\analyticsCharts.js
+wwwroot\js\dashboardCharts.js
+wwwroot\js\transactions.js
+wwwroot\js\budget.js
+wwwroot\js\recurringtransaction.js
+wwwroot\js\category.js

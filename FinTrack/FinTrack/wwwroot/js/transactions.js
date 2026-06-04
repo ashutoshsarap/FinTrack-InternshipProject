@@ -19,13 +19,12 @@
                         document
                             .getElementById(`transaction-${transactionId}`)
                             .remove();
-
+                        alert("Deleted")
                     } else {
 
                         alert(data.message);
 
                     }
-
                 })
                 .catch(error => {
 

@@ -27,79 +27,173 @@
 
 }
 
-<form method="post">
-    <div class="border p-3 mt-4">
-        <div class="row pb-2">
-            <h2 class="text-primary">Add New Recurring Transaction</h2>
-            </hr>
-        </div>
-        <div class="mb-3 row p-1">
-            <label asp-for="Amount" class="p-0"></label>
-            <input asp-for="Amount" class="form-control" />
-            <span asp-validation-for="Amount" class="text-danger"></span>
-        </div>
-        <div class="mb-3 row p-1">
-            <label asp-for="Description" class="p-0"></label>
-            <input asp-for="Description" class="form-control" />
-            <span asp-validation-for="Description" class="text-danger"></span>
+<div class="row justify-content-center">
+    <div class="col-lg-8">
 
-        </div>
-        <div class="mb-3 row p-1">
-            <label asp-for="TransactionFrequency" class="p-0">Transaction Frequency</label>
-            <select asp-for="TransactionFrequency" class="form-control" asp-items="Html.GetEnumSelectList<TransactionFrequency>()">
-                <option value="">--Select Transaction Frequency--</option>
-            </select>
-            <span asp-validation-for="TransactionFrequency" class="text-danger"></span>
-        </div>
-        <div class="mb-3 row p-1">
-            <label asp-for="TransactionType" class="p-0">Transaction type</label>
-            <select asp-for="TransactionType" class="form-control" asp-items="Html.GetEnumSelectList<TransactionType>()">
-                <option value="">--Select Transaction type--</option>
-            </select>
-            <span asp-validation-for="TransactionType" class="text-danger"></span>
-        </div>
-        <div class="mb-3 row p-1">
-            <label asp-for="PaymentMode" class="p-0">Payment Mode</label>
-            <select asp-for="PaymentMode" class="form-control" asp-items="Html.GetEnumSelectList<PaymentMode>()">
-                <option value="">--Select Payment Mode--</option>
-            </select>
-            <span asp-validation-for="PaymentMode" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="CategoryId" class="form-label">Category</label>
+        <form method="post">
 
-            <select asp-for="CategoryId"
-                    class="form-select"
-                    asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))">
-                <option value="">-- Select Category --</option>
+            <div class="card">
 
-            </select>
+                <div class="card-body">
 
-            <span asp-validation-for="CategoryId" class="text-danger"></span>
-        </div>
-        <div class="mb-3 row p-1">
-            <label asp-for="StartDate" class="p-0">Start date</label>
-            <input asp-for="StartDate"
-                   type="date"
-                   class="form-control"
-                   min="@DateTime.Today.ToString("yyyy-MM-dd")"
-                   max="2050-01-01"/>
-            <span asp-validation-for="StartDate" class="text-danger"></span>
-        </div>
-        <div class="row">
-            <div class="col-6 col-md-3">
-                <button type="submit" class="btn btn-primary form-control">Add</button>
+                    <div class="d-flex align-items-center mb-4">
+                        <span class="avatar avatar-md bg-primary-lt me-3">
+                            <i class="ti ti-receipt"></i>
+                        </span>
+
+                        <div>
+                            <h3 class="card-title mb-1">
+                                Add a Recurring Transaction
+                            </h3>
+
+                        </div>
+                    </div>
+
+                    <!-- Amount + Date -->
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Amount" class="form-label"></label>
+
+                            <div class="input-icon">
+                                <span class="input-icon-addon">
+                                    ₹
+                                </span>
+
+                                <input asp-for="Amount" class="form-control" />
+                            </div>
+
+                            <span asp-validation-for="Amount" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="StartDate" class="form-label"></label>
+
+                            <input asp-for="StartDate"
+                                   type="date"
+                                   class="form-control"
+                                   min="@DateTime.Today.ToString("yyyy-MM-dd")"
+                                   max="2050-01-01" />
+
+                            <span asp-validation-for="StartDate" class="text-danger"></span>
+                        </div>
+
+                    </div>
+
+                    <!-- Description -->
+
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label"></label>
+
+                        <textarea asp-for="Description"
+                                  class="form-control"
+                                  rows="2"
+                                  placeholder="Enter a note for this transaction">
+                        </textarea>
+
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <!-- Type + Payment -->
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="TransactionType" class="form-label">
+                                Transaction Type
+                            </label>
+
+                            <select asp-for="TransactionType"
+                                    class="form-select"
+                                    asp-items="Html.GetEnumSelectList<TransactionType>()">
+                                <option value="">
+                                    Select Transaction Type
+                                </option>
+                            </select>
+
+                            <span asp-validation-for="TransactionType" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="PaymentMode" class="form-label">
+                                Payment Mode
+                            </label>
+
+                            <select asp-for="PaymentMode"
+                                    class="form-select"
+                                    asp-items="Html.GetEnumSelectList<PaymentMode>()">
+                                <option value="">
+                                    Select Payment Mode
+                                </option>
+                            </select>
+
+                            <span asp-validation-for="PaymentMode" class="text-danger"></span>
+                        </div>
+
+                    </div>
+
+                    <!-- Category -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                        <label asp-for="CategoryId" class="form-label">
+                            Category
+                        </label>
+
+                        <select asp-for="CategoryId"
+                                class="form-select"
+                                asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))">
+                            <option value="">
+                                Select Category
+                            </option>
+                        </select>
+
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="TransactionFrequency" class="form-label">
+                                Transaction Frequency
+                            </label>
+
+                            <select asp-for="TransactionFrequency"
+                                    class="form-select"
+                                    asp-items="Html.GetEnumSelectList<TransactionFrequency>()">
+                                <option value="">
+                                    Select Frequency
+                                </option>
+                            </select>
+
+                            <span asp-validation-for="TransactionFrequency" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card-footer bg-transparent">
+
+                    <div class="d-flex justify-content-end gap-2">
+
+                        <a asp-controller="Transaction"
+                           asp-action="Index"
+                           class="btn btn-outline-secondary">
+                            Cancel
+                        </a>
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="ti ti-device-floppy me-1"></i>
+                            Save Transaction
+                        </button>
+
+                    </div>
+
+                </div>
+
             </div>
-            <div class="col-6 col-md-3">
-                <a asp-controller="RecurringTransaction" asp-action="Index" class="btn btn-outline-secondary form-control">
-                    Show all Recurring transactions
-                </a>
-            </div>
-        </div>
 
+        </form>
 
     </div>
-</form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
