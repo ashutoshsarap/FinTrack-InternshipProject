@@ -84,7 +84,7 @@ namespace FinTrack.Areas.Identity.Pages.Account
                 throw new InvalidOperationException($"Unable to load two-factor authentication user.");
             }
 
-            ReturnUrl = returnUrl;
+            ReturnUrl = "/Dashboard/Index";
             RememberMe = rememberMe;
 
             return Page();
