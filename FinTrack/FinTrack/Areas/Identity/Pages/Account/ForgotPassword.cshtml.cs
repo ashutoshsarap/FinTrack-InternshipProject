@@ -64,7 +64,7 @@ namespace FinTrack.Areas.Identity.Pages.Account
                 // For more information on how to enable account confirmation and password reset please
                 // visit https://go.microsoft.com/fwlink/?LinkID=532713
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code)); //URL sage encoding, so it can travel safely in a URL.
                 var callbackUrl = Url.Page(
                     "/Account/ResetPassword",
                     pageHandler: null,

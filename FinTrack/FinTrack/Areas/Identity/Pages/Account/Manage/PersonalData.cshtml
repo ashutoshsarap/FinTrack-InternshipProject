@@ -1,25 +1,136 @@
 ﻿@page
 @model PersonalDataModel
+
 @{
     ViewData["Title"] = "Personal Data";
     ViewData["ActivePage"] = ManageNavPages.PersonalData;
 }
 
-<h3>@ViewData["Title"]</h3>
-
-<div class="row">
-    <div class="col-md-6">
-        <p>Your account contains personal data that you have given us. This page allows you to download or delete that data.</p>
-        <p>
-            <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
-        </p>
-        <form id="download-data" asp-page="DownloadPersonalData" method="post">
-            <button class="btn btn-primary" type="submit">Download</button>
-        </form>
-        <p>
-            <a id="delete" asp-page="DeletePersonalData" class="btn btn-danger">Delete</a>
-        </p>
+<div class="mb-4">
+    <h2 class="page-title mb-1">
+        <i class="ti ti-user-shield me-2"></i>
+        Personal Data
+    </h2>
+    <div class="text-secondary">
+        Manage your personal information, export your data, or permanently delete your account.
     </div>
+</div>
+
+<div class="row row-cards">
+
+    <div class="col-lg-8">
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="ti ti-database-export me-2"></i>
+                    Export Your Data
+                </h3>
+            </div>
+
+            <div class="card-body">
+
+                <h6 class="text-secondary mb-4">
+                    Download a copy of the personal information associated with your account.
+                    The exported file may contain profile details, account settings, and other
+                    data stored by the application.
+                </h6>
+
+                <form id="download-data"
+                      asp-page="DownloadPersonalData"
+                      method="post">
+
+                    <button class="btn btn-primary" type="submit">
+                        <i class="ti ti-download me-1"></i>
+                        Download Personal Data
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+
+        <div class="card border-danger mt-4">
+
+            <div class="card-header">
+                <h3 class="card-title text-danger">
+                    <i class="ti ti-alert-triangle me-2"></i>
+                    Danger Zone
+                </h3>
+            </div>
+
+            <div class="card-body">
+
+                <div class="alert alert-danger mb-4">
+                    <div class="d-flex">
+                        <div>
+                            <i class="ti ti-alert-circle fs-2 me-3"></i>
+                        </div>
+                        <div>
+                            <h4 class="alert-title">
+                                Permanent Account Deletion
+                            </h4>
+                            <div>
+                                Deleting your account will permanently remove all associated data.
+                                This action cannot be undone.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a id="delete"
+                   asp-page="DeletePersonalData"
+                   class="btn btn-danger">
+                    <i class="ti ti-trash me-1"></i>
+                    Delete Account
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+        <div class="card">
+
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="ti ti-info-circle me-2"></i>
+                    Privacy Information
+                </h3>
+            </div>
+
+            <div class="card-body">
+
+                <div class="mb-3">
+                    <strong>Data Ownership</strong>
+                    <div class="text-secondary small">
+                        You can request a copy of the personal data associated with your account at any time.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <strong>Data Export</strong>
+                    <div class="text-secondary small">
+                        Exported data is provided in a machine-readable format for your records.
+                    </div>
+                </div>
+
+                <div>
+                    <strong>Account Deletion</strong>
+                    <div class="text-secondary small">
+                        Once deleted, your account and related information cannot be restored.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
 @section Scripts {

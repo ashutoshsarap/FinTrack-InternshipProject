@@ -146,17 +146,17 @@ namespace FinTrack.Areas.Identity.Pages.Account.Manage
         private async Task LoadSharedKeyAndQrCodeUriAsync(ApplicationUser user)
         {
             // Load the authenticator key & QR code URI to display on the form
-            var unformattedKey = await _userManager.GetAuthenticatorKeyAsync(user);
+            var unformattedKey = await _userManager.GetAuthenticatorKeyAsync(user); //Generates a seceret key eg, JBSWY3DPEHPK3PXP
             if (string.IsNullOrEmpty(unformattedKey))
             {
-                await _userManager.ResetAuthenticatorKeyAsync(user);
+                await _userManager.ResetAuthenticatorKeyAsync(user); //If the user doesnt have a secret key then .NET creates a new one and stores in DB in AspNetUserTokens table
                 unformattedKey = await _userManager.GetAuthenticatorKeyAsync(user);
             }
 
             SharedKey = FormatKey(unformattedKey);
 
             var email = await _userManager.GetEmailAsync(user);
-            AuthenticatorUri = GenerateQrCodeUri(email, unformattedKey);
+            AuthenticatorUri = GenerateQrCodeUri(email, unformattedKey); //Generate OTP auth uri for QR code
         }
 
         private string FormatKey(string unformattedKey)

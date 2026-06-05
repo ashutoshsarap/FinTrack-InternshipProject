@@ -1,5 +1,5 @@
 ﻿@{
-    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout != null)
     {
         Layout = parentLayout.ToString();
     }
@@ -9,17 +9,38 @@
     }
 }
 
-<h1>Manage your account</h1>
-
-<div>
-    <h2>Change your account settings</h2>
-    <hr />
-    <div class="row">
-        <div class="col-md-3">
-            <partial name="_ManageNav" />
+<div class="page-header d-print-none mb-4">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <h2 class="page-title">Account Settings</h2>
+                <div class="text-secondary">
+                    Manage your profile, security, and account preferences.
+                </div>
+            </div>
         </div>
-        <div class="col-md-9">
-            @RenderBody()
+    </div>
+</div>
+
+<div class="container-xl">
+    <div class="card">
+        <div class="row g-0">
+
+            <!-- Sidebar -->
+            <div class="col-md-3 border-end bg-azure-lt">
+                <div class="card-body">
+                    <h4 class="subheader mb-3">Settings</h4>
+                    <partial name="_ManageNav" />
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="col-md-9">
+                <div class="card-body">
+                    @RenderBody()
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
