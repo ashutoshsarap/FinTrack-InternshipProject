@@ -1,4 +1,4 @@
-﻿@using FinTrack.Models.ViewModels
+﻿﻿@using FinTrack.Models.ViewModels
 @model IEnumerable<TransactionViewModel>
 
 @{
@@ -137,131 +137,131 @@
 
     <div class="card-body">
 
-<form method="get">
+        <form method="get">
 
-    <div class="row g-3 mb-4">
+            <div class="row g-3 mb-4">
 
-        <div class="col-md-2">
-            <label class="form-label fw-semibold">
-                Start Date
-            </label>
+                <div class="col-md-2">
+                    <label class="form-label fw-semibold">
+                        Start Date
+                    </label>
 
-            <input type="date"
-                   name="StartDate"
-                   value="@ViewBag.Filter?.StartDate?.ToString("yyyy-MM-dd")"
-                   class="form-control" />
-        </div>
+                    <input type="date"
+                           name="StartDate"
+                           value="@ViewBag.Filter?.StartDate?.ToString("yyyy-MM-dd")"
+                           class="form-control" />
+                </div>
 
-        <div class="col-md-2">
-            <label class="form-label fw-semibold">
-                End Date
-            </label>
+                <div class="col-md-2">
+                    <label class="form-label fw-semibold">
+                        End Date
+                    </label>
 
-            <input type="date"
-                   name="EndDate"
-                   value="@ViewBag.Filter?.EndDate?.ToString("yyyy-MM-dd")"
-                   class="form-control" />
-        </div>
+                    <input type="date"
+                           name="EndDate"
+                           value="@ViewBag.Filter?.EndDate?.ToString("yyyy-MM-dd")"
+                           class="form-control" />
+                </div>
 
-        <div class="col-md-2">
-            <label class="form-label fw-semibold">
-                Category
-            </label>
+                <div class="col-md-2">
+                    <label class="form-label fw-semibold">
+                        Category
+                    </label>
 
-            <select name="CategoryId"
-                    class="form-select">
+                    <select name="CategoryId"
+                            class="form-select">
 
-                <option value="">
-                    All Categories
-                </option>
+                        <option value="">
+                            All Categories
+                        </option>
 
-                @foreach (var category in ViewBag.Categories)
-                {
-                    <option value="@category.Id" selected="@(ViewBag.Filter?.CategoryId == category.Id)">
-                        @category.Name
-                    </option>
-                }
-            </select>
-        </div>
+                        @foreach (var category in ViewBag.Categories)
+                        {
+                            <option value="@category.Id" selected="@(ViewBag.Filter?.CategoryId == category.Id)">
+                                @category.Name
+                            </option>
+                        }
+                    </select>
+                </div>
 
-        <div class="col-md-2">
-            <label class="form-label fw-semibold">
-                Type
-            </label>
+                <div class="col-md-2">
+                    <label class="form-label fw-semibold">
+                        Type
+                    </label>
 
-            <select name="TransactionType"
-                    class="form-select">
+                    <select name="TransactionType"
+                            class="form-select">
 
-                <option value="">
-                    All Types
-                </option>
+                        <option value="">
+                            All Types
+                        </option>
 
-                <option value="Income" selected="@(ViewBag.Filter?.TransactionType?.ToString() == "Income")">
-                    Income
-                </option>
+                        <option value="Income" selected="@(ViewBag.Filter?.TransactionType?.ToString() == "Income")">
+                            Income
+                        </option>
 
-                <option value="Expense" selected="@(ViewBag.Filter?.TransactionType?.ToString() == "Expense")">
-                    Expense
-                </option>
+                        <option value="Expense" selected="@(ViewBag.Filter?.TransactionType?.ToString() == "Expense")">
+                            Expense
+                        </option>
 
-            </select>
-        </div>
+                    </select>
+                </div>
 
-        <div class="col-md-2">
-            <label class="form-label fw-semibold">
-                Payment Mode
-            </label>
+                <div class="col-md-2">
+                    <label class="form-label fw-semibold">
+                        Payment Mode
+                    </label>
 
-            <select name="PaymentMode"
-                    class="form-select">
+                    <select name="PaymentMode"
+                            class="form-select">
 
-                <option value="">
-                    All Modes
-                </option>
-                <option value="Cash" selected="@(ViewBag.Filter?.PaymentMode?.ToString() == "Cash")">Cash</option>
-                <option value="UPI" selected="@(ViewBag.Filter?.PaymentMode?.ToString() == "UPI")">UPI</option>
-                <option value="CreditCard" selected="@(ViewBag.Filter?.PaymentMode?.ToString() == "CreditCard")">Credit Card</option>
-                <option value="DebitCard" selected="@(ViewBag.Filter?.PaymentMode?.ToString() == "DebitCard")">Debit Card</option>
-                <option value="NetBanking" selected="@(ViewBag.Filter?.PaymentMode?.ToString() == "NetBanking")">Net banking</option>
+                        <option value="">
+                            All Modes
+                        </option>
+                        <option value="Cash" selected="@(ViewBag.Filter?.PaymentMode?.ToString() == "Cash")">Cash</option>
+                        <option value="UPI" selected="@(ViewBag.Filter?.PaymentMode?.ToString() == "UPI")">UPI</option>
+                        <option value="CreditCard" selected="@(ViewBag.Filter?.PaymentMode?.ToString() == "CreditCard")">Credit Card</option>
+                        <option value="DebitCard" selected="@(ViewBag.Filter?.PaymentMode?.ToString() == "DebitCard")">Debit Card</option>
+                        <option value="NetBanking" selected="@(ViewBag.Filter?.PaymentMode?.ToString() == "NetBanking")">Net banking</option>
 
-            </select>
-        </div>
+                    </select>
+                </div>
 
-        <div class="col-md-2">
-            <label class="form-label fw-semibold">
-                Sort By
-            </label>
-            <select name="SortBy"
-                    class="form-select">
-                <option value="">
-                    Date (Oldest)
-                </option>
-                <option value="date_desc" selected="@(ViewBag.Filter?.SortBy == "date_desc")">
-                    Date (Newest)
-                </option>
-                <option value="amount_desc" selected="@(ViewBag.Filter?.SortBy == "amount_desc")">
-                    Amount (High to Low)
-                </option>
-                <option value="amount_asc" selected="@(ViewBag.Filter?.SortBy == "amount_asc")">
-                    Amount (Low to High)
-                </option>
-            </select>
-        </div>
+                <div class="col-md-2">
+                    <label class="form-label fw-semibold">
+                        Sort By
+                    </label>
+                    <select name="SortBy"
+                            class="form-select">
+                        <option value="">
+                            Date (Oldest)
+                        </option>
+                        <option value="date_desc" selected="@(ViewBag.Filter?.SortBy == "date_desc")">
+                            Date (Newest)
+                        </option>
+                        <option value="amount_desc" selected="@(ViewBag.Filter?.SortBy == "amount_desc")">
+                            Amount (High to Low)
+                        </option>
+                        <option value="amount_asc" selected="@(ViewBag.Filter?.SortBy == "amount_asc")">
+                            Amount (Low to High)
+                        </option>
+                    </select>
+                </div>
 
-    </div>
+            </div>
 
-    
 
-    <div class="mt-3 d-flex gap-2">
-        <button type="submit" class="btn btn-primary">
-            Apply Filter
-        </button>
-        <a asp-action="Index" class="btn btn-outline-secondary">
-            Clear Filters
-        </a>
-    </div>
 
-    </form>
+            <div class="mt-3 d-flex gap-2">
+                <button type="submit" class="btn btn-primary">
+                    Apply Filter
+                </button>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    Clear Filters
+                </a>
+            </div>
+
+        </form>
     </div>
 </div>
 
@@ -274,33 +274,44 @@ else
 {
     <div class="card">
 
-    <div class="card-header">
+        @* <div class="card-header">
 
-        <h3 class="card-title">
-            Transaction History
-        </h3>
+            <h3 class="card-title">
+                Transaction History
+            </h3>
 
-    </div>
+        </div> *@
 
-    <div class="table-responsive">
+        <div class="table-responsive">
 
-        <table class="table table-vcenter card-table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Category</th>
-                <th>Payment mode</th>
-                <th>Amount</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var t in Model)
-            {
-                <tr id="transaction-@t.Id">
-                    <td>@t.Date.Date.ToString("dd-MMM-yyyy")</td>
-                    <td>@t.Description</td>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="card-title">Transaction History</h3>
+                <div class="ms-auto" style="width: 260px;">
+                    <input type="text"
+                           id="transactionSearch"
+                           class="form-control"
+                           placeholder="Search description, category..." />
+                </div>
+            </div>
+
+
+            <table class="table table-vcenter card-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Payment mode</th>
+                        <th>Amount</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var t in Model)
+                    {
+                        <tr id="transaction-@t.Id">
+                            <td>@t.Date.Date.ToString("dd-MMM-yyyy")</td>
+                            <td>@t.Description</td>
                             <td>
 
                                 <span class="badge bg-azure-lt">
@@ -333,9 +344,9 @@ else
                                 }
 
                             </td>
-                            
 
-                    <td>
+
+                            <td>
                                 <div class="btn-list flex-nowrap">
 
                                     <a asp-action="Edit"
@@ -348,8 +359,8 @@ else
 
                                     <form asp-action="Delete"
                                           asp-route-id="@t.Id"
-                                    class="delete-transaction-form"
-                                    data-id="@t.Id">
+                                          class="delete-transaction-form"
+                                          data-id="@t.Id">
 
                                         <button type="submit"
                                                 class="btn btn-outline-danger btn-sm">
@@ -361,62 +372,62 @@ else
                                     </form>
 
                                 </div>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
 
     </div>
 
-            <div class="card-footer d-flex align-items-center">
+    <div class="card-footer d-flex align-items-center">
 
-                <h6 class="m-0 text-secondary">
+        <h6 class="m-0 text-secondary">
 
-                    Page @ViewBag.CurrentPage of @ViewBag.TotalPages
+            Page @ViewBag.CurrentPage of @ViewBag.TotalPages
 
-                </h6>
+        </h6>
 
-                <ul class="pagination m-0 ms-auto">
+        <ul class="pagination m-0 ms-auto">
 
 
-        @if (ViewBag.CurrentPage > 1)
-        {
-            <a asp-action="Index"
-               asp-route-PageNumber="@(ViewBag.CurrentPage - 1)"
-               asp-route-StartDate="@ViewBag.Filter.StartDate.ToString("yyyy-MM-dd")"
-               asp-route-EndDate="@ViewBag.Filter.EndDate.ToString("yyyy-MM-dd")"
-               asp-route-TransactionType="@ViewBag.Filter.TransactionType"
-               asp-route-PaymentMode="@ViewBag.Filter.PaymentMode"
-               asp-route-CategoryId="@ViewBag.Filter.CategoryId"
-               asp-route-SortBy="@ViewBag.Filter.SortBy"
+            @if (ViewBag.CurrentPage > 1)
+            {
+                <a asp-action="Index"
+                   asp-route-PageNumber="@(ViewBag.CurrentPage - 1)"
+                   asp-route-StartDate="@ViewBag.Filter.StartDate.ToString("yyyy-MM-dd")"
+                   asp-route-EndDate="@ViewBag.Filter.EndDate.ToString("yyyy-MM-dd")"
+                   asp-route-TransactionType="@ViewBag.Filter.TransactionType"
+                   asp-route-PaymentMode="@ViewBag.Filter.PaymentMode"
+                   asp-route-CategoryId="@ViewBag.Filter.CategoryId"
+                   asp-route-SortBy="@ViewBag.Filter.SortBy"
                    class="btn btn-outline-primary ms-2">
                     <i class="ti ti-arrow-narrow-left"></i>
-            </a>
-        }
+                </a>
+            }
 
-        @* <span class="align-self-center">
+            @* <span class="align-self-center">
             Page @ViewBag.CurrentPage of @ViewBag.TotalPages
         </span> *@
 
-        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
-        {
-            <a asp-action="Index"
-               asp-route-PageNumber="@(ViewBag.CurrentPage + 1)"
-               asp-route-StartDate="@ViewBag.Filter.StartDate.ToString("yyyy-MM-dd")"
-               asp-route-EndDate="@ViewBag.Filter.EndDate.ToString("yyyy-MM-dd")"
-               asp-route-TransactionType="@ViewBag.Filter.TransactionType"
-               asp-route-PaymentMode="@ViewBag.Filter.PaymentMode"
-               asp-route-CategoryId="@ViewBag.Filter.CategoryId"
-               asp-route-SortBy="@ViewBag.Filter.SortBy"
-               class="btn btn-outline-primary ms-1">
+            @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+            {
+                <a asp-action="Index"
+                   asp-route-PageNumber="@(ViewBag.CurrentPage + 1)"
+                   asp-route-StartDate="@ViewBag.Filter.StartDate.ToString("yyyy-MM-dd")"
+                   asp-route-EndDate="@ViewBag.Filter.EndDate.ToString("yyyy-MM-dd")"
+                   asp-route-TransactionType="@ViewBag.Filter.TransactionType"
+                   asp-route-PaymentMode="@ViewBag.Filter.PaymentMode"
+                   asp-route-CategoryId="@ViewBag.Filter.CategoryId"
+                   asp-route-SortBy="@ViewBag.Filter.SortBy"
+                   class="btn btn-outline-primary ms-1">
                     <i class="ti ti-arrow-narrow-right"></i>
-            </a>
-        }
-                </ul>
+                </a>
+            }
+        </ul>
 
-            </div>
+    </div>
 
 }
 

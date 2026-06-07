@@ -3,10 +3,10 @@ wwwroot\favicon.ico
 wwwroot\js\analyticsCharts.js
 wwwroot\js\budget.js
 wwwroot\js\category.js
+wwwroot\js\dashboardCharts.js
 wwwroot\js\qr.js
 wwwroot\js\recurringtransaction.js
 wwwroot\js\site.js
-wwwroot\js\transactions.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
@@ -65,4 +65,4 @@ wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
 wwwroot\lib\qrcode\qrcode.js
-wwwroot\js\dashboardCharts.js
+wwwroot\js\transactions.js

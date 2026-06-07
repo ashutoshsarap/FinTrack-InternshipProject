@@ -36,3 +36,28 @@
         });
 
     });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('transactionSearch');
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', function () {
+        const term = this.value.toLowerCase().trim();
+        const rows = document.querySelectorAll('tbody tr');
+
+        rows.forEach(function (row) {
+            // columns: Date, Description, Category, PaymentMode, Amount, Actions
+            const description = row.cells[1]?.textContent.toLowerCase() ?? '';
+            const category = row.cells[2]?.textContent.toLowerCase() ?? '';
+            const paymentMode = row.cells[3]?.textContent.toLowerCase() ?? '';
+            const amount = row.cells[4]?.textContent.toLowerCase() ?? '';
+
+            const matches = description.includes(term)
+                || category.includes(term)
+                || paymentMode.includes(term)
+                || amount.includes(term);
+
+            row.style.display = matches ? '' : 'none';
+        });
+    });
+});

@@ -3,28 +3,6 @@
 @using FinTrack.Models.ViewModels
 @model TransactionViewModel
 
-@{
-    ViewData["Title"] = "Add Transaction";
-}
-
-@if (TempData["Success"] != null)
-{
-    <div class="alert alert-success alert-dismissible" role="alert">
-        @TempData["Success"]
-        <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
-    </div>
-}
-
-@if (TempData["Error"] != null)
-{
-    <div class="alert alert-danger alert-dismissible" role="alert">
-        @TempData["Error"]
-        <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
-    </div>
-}
-
-<div class="row justify-content-center py-5">
-    <div class="col-lg-8">
 
         <form method="post">
 
@@ -175,8 +153,6 @@
 
         </form>
 
-    </div>
-</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
