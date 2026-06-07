@@ -92,48 +92,96 @@
 
         <div class="col-sm-6 col-lg-4">
 
-            <div class="card bg-green-lt">
+            @if (Model.Analytics.ExpensePercentageChange > 0)
+            {
+                <div class="card bg-red-lt">
 
-                <div class="card-body">
+                    <div class="card-body">
 
-                    <div class="subheader">
-                        Monthly Change
+                        <div class="subheader">
+                            Monthly Change
+                        </div>
+
+                        @if (Model.Analytics.ExpensePercentageChange > 0)
+                        {
+                            <div class="h1 text-danger mb-3">
+                                ↑@Math.Abs(Model.Analytics.ExpensePercentageChange)%
+                            </div>
+
+                            <div class="text-secondary">
+                                Spending increased
+                            </div>
+                        }
+                        else if (Model.Analytics.ExpensePercentageChange < 0)
+                        {
+                            <div class="h1 text-success mb-3">
+                                ↓@Math.Abs(Model.Analytics.ExpensePercentageChange)%
+                            </div>
+
+                            <div class="text-secondary">
+                                Spending decreased
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="h1 mb-3">
+                                0%
+                            </div>
+
+                            <div class="text-secondary">
+                                No change
+                            </div>
+                        }
+
                     </div>
 
-                    @if (Model.Analytics.ExpensePercentageChange > 0)
-                    {
-                        <div class="h1 text-danger mb-3">
-                            ↑@Math.Abs(Model.Analytics.ExpensePercentageChange)%
+                </div>
+            }
+            else
+            {
+                <div class="card bg-green-lt">
+
+                    <div class="card-body">
+
+                        <div class="subheader">
+                            Monthly Change
                         </div>
 
-                        <div class="text-secondary">
-                            Spending increased
-                        </div>
-                    }
-                    else if (Model.Analytics.ExpensePercentageChange < 0)
-                    {
-                        <div class="h1 text-success mb-3">
-                            ↓@Math.Abs(Model.Analytics.ExpensePercentageChange)%
-                        </div>
+                        @if (Model.Analytics.ExpensePercentageChange > 0)
+                        {
+                            <div class="h1 text-danger mb-3">
+                                ↑@Math.Abs(Model.Analytics.ExpensePercentageChange)%
+                            </div>
 
-                        <div class="text-secondary">
-                            Spending decreased
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="h1 mb-3">
-                            0%
-                        </div>
+                            <div class="text-secondary">
+                                Spending increased
+                            </div>
+                        }
+                        else if (Model.Analytics.ExpensePercentageChange < 0)
+                        {
+                            <div class="h1 text-success mb-3">
+                                ↓@Math.Abs(Model.Analytics.ExpensePercentageChange)%
+                            </div>
 
-                        <div class="text-secondary">
-                            No change
-                        </div>
-                    }
+                            <div class="text-secondary">
+                                Spending decreased
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="h1 mb-3">
+                                0%
+                            </div>
+
+                            <div class="text-secondary">
+                                No change
+                            </div>
+                        }
+
+                    </div>
 
                 </div>
-
-            </div>
+            }
 
         </div>
 

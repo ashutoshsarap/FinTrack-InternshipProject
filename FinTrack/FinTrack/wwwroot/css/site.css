@@ -13766,4 +13766,10 @@ body.sidebar-collapsed .page-wrapper {
 .table tbody tr:hover {
         background-color: rgba(0,0,0,.03);
     }
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
 /*# sourceMappingURL=bootstrap.min.css.map */

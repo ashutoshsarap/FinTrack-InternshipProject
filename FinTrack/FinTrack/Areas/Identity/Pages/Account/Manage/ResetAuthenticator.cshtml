@@ -1,24 +1,114 @@
 ﻿@page
 @model ResetAuthenticatorModel
+
 @{
-    ViewData["Title"] = "Reset authenticator key";
+    ViewData["Title"] = "Reset Authenticator Key";
     ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
 }
 
 <partial name="_StatusMessage" for="StatusMessage" />
-<h3>@ViewData["Title"]</h3>
-<div class="alert alert-warning" role="alert">
-    <p>
-        <span class="glyphicon glyphicon-warning-sign"></span>
-        <strong>If you reset your authenticator key your authenticator app will not work until you reconfigure it.</strong>
-    </p>
-    <p>
-        This process disables 2FA until you verify your authenticator app.
-        If you do not complete your authenticator app configuration you may lose access to your account.
-    </p>
+
+<div class="mb-4">
+    <h2 class="page-title mb-1">
+        <i class="ti ti-key-off me-2"></i>
+        Reset Authenticator Key
+    </h2>
+
+    <div class="text-secondary">
+        Generate a new authenticator key and reconnect your authenticator application.
+    </div>
 </div>
-<div>
-    <form id="reset-authenticator-form" method="post">
-        <button id="reset-authenticator-button" class="btn btn-danger" type="submit">Reset authenticator key</button>
-    </form>
+
+<div class="card border-warning">
+
+    <div class="card-header">
+        <h3 class="card-title text-warning">
+            <i class="ti ti-alert-triangle me-2"></i>
+            Important Information
+        </h3>
+    </div>
+
+    <div class="card-body">
+
+        <div class="alert alert-warning mb-4">
+
+            <div class="d-flex">
+
+                <div>
+                    <i class="ti ti-alert-circle fs-1 me-3"></i>
+                </div>
+
+                <div>
+
+                    <div class="fw-bold mb-2">
+                        Resetting your authenticator key will invalidate your current authenticator app configuration.
+                    </div>
+
+                    <div class="text-white mb-2">
+                        Your authenticator application will stop generating valid verification codes until it is configured again.
+                    </div>
+
+                    <div class="text-white">
+                        Two-factor authentication will be disabled until you complete the setup process and verify the new authenticator configuration.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="alert alert-danger">
+
+            <div class="d-flex">
+
+                <div>
+                    <i class="ti ti-shield-x fs-1 me-3"></i>
+                </div>
+
+                <div>
+
+                    <div class="fw-bold mb-2">
+                        Risk of account lockout
+                    </div>
+
+                    <div class="text-white">
+                        If you reset the authenticator key and do not finish configuring your authenticator app, you may lose access to your account.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card-footer">
+
+        <form id="reset-authenticator-form" method="post">
+
+            <div class="d-flex justify-content-between align-items-center">
+
+                <div class="text-secondary">
+                    This action will generate a brand new authenticator key.
+                </div>
+
+                <button id="reset-authenticator-button"
+                        type="submit"
+                        class="btn btn-danger">
+                    <i class="ti ti-refresh me-1"></i>
+                    Reset Authenticator Key
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

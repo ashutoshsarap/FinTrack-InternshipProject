@@ -1,4 +1,4 @@
-@using FinTrack.Models.Entity
+ @using FinTrack.Models.Entity
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
