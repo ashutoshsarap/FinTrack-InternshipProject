@@ -30,6 +30,7 @@ namespace FinTrack.Service
 
             var userTransactions = await _unitOfWork.Transaction.FindAllTransactionForAUser();
             List<CsvExportDto> csvExportDtosList = new List<CsvExportDto>();
+
             csvExportDtosList = userTransactions.Select(transaction => new CsvExportDto
             {
                 Amount = transaction.Amount,

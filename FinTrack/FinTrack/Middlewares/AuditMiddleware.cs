@@ -1,9 +1,11 @@
 ﻿using FinTrack.Data;
 using FinTrack.Models.Entity;
+using FinTrack.Service.IService;
+using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
-//V2
+//V3
 namespace FinTrack.Middlewares
 {
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
@@ -11,49 +13,38 @@ namespace FinTrack.Middlewares
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<AuditMiddleware> _logger;
-        private ApplicationDbContext _dbContext;
         public AuditMiddleware(RequestDelegate next, ILogger<AuditMiddleware> logger)
         {
             _next = next;
             _logger = logger;
         }
 
-        public async Task Invoke(HttpContext httpContext, ApplicationDbContext dbContext)
+        public async Task Invoke(HttpContext httpContext, IAuditService auditService)
         {
 
             await _next(httpContext);
 
-            _dbContext = dbContext;
+            var user = httpContext.User?.Identity?.Name;
+            var action = httpContext.Items["AuditMessage"]?.ToString();
 
-            if ((httpContext.Request.Method == HttpMethods.Post) || 
-                (httpContext.Request.Method==HttpMethods.Put) || 
-                (httpContext.Request.Method==HttpMethods.Delete))
+            //_logger.LogInformation("Audit Log - User : {User}, Action : {action}, Request Path: {Path}, Method: {Method}, Response Status Code: {StatusCode}, Date and Time: {DateTime}",
+            //    user,
+            //    action,
+            //    httpContext.Request.Path,
+            //    httpContext.Request.Method,
+            //    httpContext.Response.StatusCode,
+            //    DateTime.UtcNow);
+            var auditData = new AuditData
             {
-                var user = httpContext.User?.Identity?.Name;
-                var action = httpContext.Items["AuditMessage"]?.ToString();
-
-                //_logger.LogInformation("Audit Log - User : {User}, Action : {action}, Request Path: {Path}, Method: {Method}, Response Status Code: {StatusCode}, Date and Time: {DateTime}",
-                //    user,
-                //    action,
-                //    httpContext.Request.Path,
-                //    httpContext.Request.Method,
-                //    httpContext.Response.StatusCode,
-                //    DateTime.UtcNow);
-                var auditData = new AuditData
-                {
-                    UserName = user,
-                    Action = action,
-                    RequestPath = httpContext.Request.Path,
-                    Method = httpContext.Request.Method,
-                    ResponseStatusCode = httpContext.Response.StatusCode,
-                    Timestamp = DateTime.UtcNow
-                };
-
-                await _dbContext.AuditLogs.AddAsync(auditData);
-                await _dbContext.SaveChangesAsync();
-            }
-
-
+                UserName = user,
+                Action = action,
+                RequestPath = httpContext.Request.Path,
+                Method = httpContext.Request.Method,
+                ResponseStatusCode = httpContext.Response.StatusCode,
+                Timestamp = DateTime.UtcNow
+            };
+            
+            BackgroundJob.Enqueue(() => auditService.LogAuditDataAsync(auditData));
         }
 
         private static string GetAction(string method)

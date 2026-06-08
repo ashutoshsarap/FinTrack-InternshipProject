@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using FinTrack.Models.Entity;
+using FinTrack.Utilities;
 
 namespace FinTrack.Areas.Identity.Pages.Account
 {
@@ -98,7 +99,7 @@ namespace FinTrack.Areas.Identity.Pages.Account
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-
+            HttpContext.Items[AuditMessages.AuditMessage]= "Visited login page";
             ReturnUrl = returnUrl;
         }
 
@@ -116,6 +117,7 @@ namespace FinTrack.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    HttpContext.Items[AuditMessages.AuditMessage] = "User logged in";
                     return RedirectToAction("RedirectUser", "Home");
                 }
                 if (result.RequiresTwoFactor)

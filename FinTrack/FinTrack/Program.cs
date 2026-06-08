@@ -77,7 +77,7 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<ISendMonthlyReportService, SendMonthlyReportService>();
 builder.Services.AddScoped<IGeneratePdfService, GeneratePdfService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
-
+builder.Services.AddScoped<IAuditService, AuditService>();
 
 
 
