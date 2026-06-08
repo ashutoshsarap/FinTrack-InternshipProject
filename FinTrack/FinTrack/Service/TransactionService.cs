@@ -284,5 +284,11 @@ namespace FinTrack.Service
             return dashboardData;
         }
 
+        public async Task<List<TransactionResponseDto>> SearchTransactionsAsync(string userId, string term)
+        {
+            return await _unitOfWork.Transaction.SearchAsync(userId, term);
+        }
+
+
     }
 }

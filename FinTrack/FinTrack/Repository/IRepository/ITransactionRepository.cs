@@ -27,5 +27,6 @@ namespace FinTrack.Repository.IRepository
         Task<List<MonthlyExpenseTrendAnalyticsDto>> FindlyMonthlyExpenseTrend(int year);
         HighestExpenseInfo FindLargestExpense(DateTime currentMonthStart, DateTime currentMonthEnd);
         Task<MonthlyReport> FindMonthlyReportDataUserSpecific(string userId, int currentMonth, int currentYear);
+        Task<List<TransactionResponseDto>> SearchAsync(string userId, string term);
     }
 }

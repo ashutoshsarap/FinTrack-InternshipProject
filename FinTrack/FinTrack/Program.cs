@@ -125,7 +125,6 @@ var app = builder.Build();
 app.UseExceptionHandler("/Home/Error");
 
 //app.UseMiddleware<CustomLoggingMiddleware>();
-//app.UseMiddleware<AuditMiddleware>();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -151,6 +150,7 @@ app.UseHangfireDashboard(
     {
         Authorization = new[] { new HangFireAuthorizationByRole() } // Restrict access to the dashboard to users with the "Admin" role
     });
+app.UseMiddleware<AuditMiddleware>();
 
 app.MapRazorPages();
 

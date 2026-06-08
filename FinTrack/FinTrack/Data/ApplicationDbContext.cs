@@ -19,6 +19,7 @@ namespace FinTrack.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Budget> Budgets { get; set; }
         public DbSet<RecurringTransaction> RecurringTransactions { get; set; }
+        public DbSet<AuditData> AuditLogs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

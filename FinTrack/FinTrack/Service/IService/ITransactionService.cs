@@ -17,5 +17,7 @@ namespace FinTrack.Service.IService
         public Task<TransactionResponseDto> GetTransactionByFilterAsync(Expression<Func<Transaction, bool>> filter);
         public Task<DashboardViewModel> GetDashboardData();
 
+        Task<List<TransactionResponseDto>> SearchTransactionsAsync(string userId, string term);
+
     }
 }

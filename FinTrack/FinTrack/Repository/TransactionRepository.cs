@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-//V2
+//V3
 namespace FinTrack.Repository
 {
     public class TransactionRepository : Repository<Transaction>, ITransactionRepository
@@ -399,5 +399,31 @@ namespace FinTrack.Repository
 
             return monthlyReport;
         }
+
+        public async Task<List<TransactionResponseDto>> SearchAsync(string userId, string term)
+        {
+            var lower = term.ToLower();
+
+            return await _dbContext.Transactions
+                .Include(t => t.Category)
+                .Where(t => t.ApplicationUserId == userId
+                         && t.IsDeleted == false
+                         && (t.Description.ToLower().Contains(lower)
+                          || t.Category.Name.ToLower().Contains(lower)))
+                .OrderByDescending(t => t.Date)
+                .Take(20) // cap results so it doesn't return 500 rows
+                .Select(t => new TransactionResponseDto
+                {
+                    Id = t.Id,
+                    Amount = t.Amount,
+                    Date = t.Date,
+                    Description = t.Description,
+                    PaymentMode = t.PaymentMode,
+                    Type = t.Type,
+                    CategoryName = t.Category.Name
+                })
+                .ToListAsync();
+        }
+
     }
 }

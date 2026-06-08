@@ -248,6 +248,16 @@ namespace FinTrack.Controllers
             
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Search(string? term)
+        {
+            if (string.IsNullOrWhiteSpace(term))
+                return Json(new List<object>());
+
+            var userId = _currentUser.UserId;
+            var results = await _transactionService.SearchTransactionsAsync(userId, term);
+            return Json(results);
+        }
 
     }
 }
