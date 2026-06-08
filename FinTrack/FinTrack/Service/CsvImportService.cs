@@ -13,11 +13,14 @@ namespace FinTrack.Service
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICurrentUserService _currentUserService;
-
-        public CsvImportService(IUnitOfWork unitOfWork, ICurrentUserService currentUserService)
+        private readonly string _currentUserName;
+        private readonly IAuditService _auditService;
+        public CsvImportService(IUnitOfWork unitOfWork, ICurrentUserService currentUserService, IAuditService auditService)
         {
             _unitOfWork = unitOfWork;
             _currentUserService = currentUserService;
+            _currentUserName = currentUserService.UserName;
+            _auditService = auditService;
         }
         public async Task<CsvImportResult> ImportCsv(IFormFile csvFile)
         {
@@ -118,6 +121,16 @@ namespace FinTrack.Service
                 await _unitOfWork.Transaction.CreateAsync(transaction);
             }
             await _unitOfWork.Save();
+
+            AuditData auditData = new AuditData()
+            {
+                UserName = _currentUserName,
+                Action = "Import",
+                EntityActedUpon = "Transaction",
+                Timestamp = DateTime.Now
+            };
+            await _auditService.LogAuditDataAsync(auditData);
+
             return csvImportResult;
         }
     }

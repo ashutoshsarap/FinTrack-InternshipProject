@@ -4,6 +4,7 @@ using FinTrack.HangFireAuth;
 using FinTrack.Middlewares;
 using FinTrack.Models;
 using FinTrack.Models.Entity;
+using FinTrack.Models.Enums;
 using FinTrack.Repository;
 using FinTrack.Repository.AdminRepository;
 using FinTrack.Repository.AdminRepository.Interfaces;
@@ -49,6 +50,23 @@ builder.Services.AddHangfireServer();
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+//builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+//                .AddEntityFrameworkStores<ApplicationDbContext>()
+//                .AddDefaultTokenProviders()
+//                .AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole(Roles.Admin));
+    options.AddPolicy("RequireUserRole", policy => policy.RequireRole(Roles.User));
+    options.AddPolicy("RequirePremiumSubscription", policy => policy.RequireClaim("SubscriptionPlan", SubscriptionPlan.Premium.ToString()));
+    //options.AddPolicy("NonPremiumSubscription", policy => policy.RequireClaim("SubscriptionPlan", SubscriptionPlan.Free.ToString()));
+    options.AddPolicy("NonPremiumSubscription", policy =>
+                      policy.RequireAuthenticatedUser());
+});
+
+builder.Services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, CustomClaimsPrincipalFactory>();
 
 //To access the current HTTP context and retrieve user information, we need to register the IHttpContextAccessor service, which allows us to access the HttpContext in our services.
 builder.Services.AddHttpContextAccessor();
@@ -150,7 +168,13 @@ app.UseHangfireDashboard(
     {
         Authorization = new[] { new HangFireAuthorizationByRole() } // Restrict access to the dashboard to users with the "Admin" role
     });
-app.UseMiddleware<AuditMiddleware>();
+
+//app.UseMiddleware<AuditMiddleware>();
+
+//app.Use(async (context, next) =>
+//{
+//    Console.WriteLine(context.User.HasClaim("NonPremiumSubscription", bool.TrueString));
+//});
 
 app.MapRazorPages();
 

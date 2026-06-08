@@ -1,6 +1,7 @@
 ﻿using CsvHelper;
 using FinTrack.Models.DTOs.CsvDtos;
 using FinTrack.Models.DTOs.TransactionDto;
+using FinTrack.Models.Entity;
 using FinTrack.Repository.IRepository;
 using FinTrack.Service.IService;
 using System.Globalization;
@@ -13,11 +14,14 @@ namespace FinTrack.Service
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<CsvExportService> _logger;
-
-        public CsvExportService(IUnitOfWork unitOfWork, ILogger<CsvExportService> logger)
+        private readonly string _currentUserName;
+        private readonly IAuditService _auditService;
+        public CsvExportService(IUnitOfWork unitOfWork, ILogger<CsvExportService> logger, ICurrentUserService currentUserService, IAuditService auditService)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
+            _currentUserName = currentUserService.UserName;
+            _auditService = auditService;
         }
         public async Task<MemoryStream> GenerateCsv()
         {
@@ -65,6 +69,15 @@ namespace FinTrack.Service
             memoryStream.Position = 0;
             
             _logger.LogInformation("CSV generated successfully with {RecordCount} records.", csvExportDtosList.Count);
+            
+            AuditData auditData = new AuditData
+            {
+                UserName = _currentUserName,
+                Action = "Export",
+                EntityActedUpon = "Transaction",
+                Timestamp = DateTime.UtcNow
+            };
+            await _auditService.LogAuditDataAsync(auditData);
             return memoryStream;
         }
     }

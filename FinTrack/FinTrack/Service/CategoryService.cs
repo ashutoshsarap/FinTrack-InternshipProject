@@ -12,13 +12,15 @@ namespace FinTrack.Service
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<CategoryService> _logger;
-        public CategoryService(IUnitOfWork unitOfWork, ILogger<CategoryService> logger)
+        private readonly IAuditService _auditService;
+        public CategoryService(IUnitOfWork unitOfWork, ILogger<CategoryService> logger, IAuditService auditService)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
+            _auditService = auditService;
         }
 
-        public async Task CreateCategory(string userId,CategoryDto category)
+        public async Task CreateCategory(string userId,string userName,CategoryDto category)
         {
             if (category == null)
             {
@@ -37,6 +39,15 @@ namespace FinTrack.Service
             await _unitOfWork.Category.CreateAsync(categoryEntity);
             await _unitOfWork.Save();
             _logger.LogInformation("Category with cateogry ID : {Id} created successfully for user {UserId}.", categoryEntity.Id, userId);
+            AuditData auditData = new AuditData
+            {
+                UserName = userName,
+                Action = "Create",
+                EntityActedUpon = "Category",
+                EntityId = categoryEntity.Id,
+                Timestamp = DateTime.UtcNow
+            };
+            await _auditService.LogAuditDataAsync(auditData);
         }
 
         public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
@@ -45,7 +56,7 @@ namespace FinTrack.Service
             return categories;
         }
 
-        public async Task DeleteCategory(int id)
+        public async Task DeleteCategory(string userName, int id)
         {
             
             var category = await _unitOfWork.Category.FindAsync(id, null);
@@ -58,6 +69,15 @@ namespace FinTrack.Service
             await _unitOfWork.Category.Delete(category);
             await _unitOfWork.Save();
             _logger.LogInformation("Category with cateogry ID : {Id} deleted successfully.", id);
+            AuditData auditData = new AuditData
+            {
+                UserName = userName,
+                Action = "Delete",
+                EntityActedUpon = "Category",
+                EntityId = id,
+                Timestamp = DateTime.UtcNow
+            };
+            await _auditService.LogAuditDataAsync(auditData);
         }
     }
 

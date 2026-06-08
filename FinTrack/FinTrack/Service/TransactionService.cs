@@ -20,13 +20,15 @@ namespace FinTrack.Service
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<TransactionService> _logger;
-        public TransactionService(IUnitOfWork unitOfWork, ILogger<TransactionService> logger)
+        private readonly IAuditService _auditService;
+        public TransactionService(IUnitOfWork unitOfWork, ILogger<TransactionService> logger, IAuditService auditService)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
+            _auditService = auditService;
         }
 
-        public async Task CreateTransactionAsync(string userId,TransactionCreateDto transactionCreateDto)
+        public async Task CreateTransactionAsync(string userId, string userName,TransactionCreateDto transactionCreateDto)
         {
             if (transactionCreateDto == null)
             {
@@ -65,9 +67,19 @@ namespace FinTrack.Service
             }
             
             await _unitOfWork.Save();
+
+            AuditData auditData = new AuditData
+            {
+                UserName = userName,
+                Action = "Create",
+                EntityActedUpon = "Transaction",
+                EntityId = transaction.Id,
+                Timestamp = DateTime.UtcNow
+            };
+            await _auditService.LogAuditDataAsync(auditData);
         }
 
-        public async Task DeleteTransaction(int id, string userId)
+        public async Task DeleteTransaction(int id,string userName, string userId)
         {
             var transaction = await _unitOfWork.Transaction.FindAsync(id, null);
             if (transaction == null)
@@ -77,6 +89,15 @@ namespace FinTrack.Service
             _unitOfWork.Transaction.Delete(transaction);
             await _unitOfWork.Save();
             _logger.LogInformation("Transaction with ID {Id} deleted successfully for user {UserId}", id, userId);
+            AuditData auditData = new AuditData
+            {
+                UserName = userName,
+                Action = "Delete",
+                EntityActedUpon = "Transaction",
+                EntityId = transaction.Id,
+                Timestamp = DateTime.UtcNow
+            };
+            await _auditService.LogAuditDataAsync(auditData);
         }
 
         public async Task<List<TransactionResponseDto>> GetAllTransactionsAsync()
@@ -184,7 +205,7 @@ namespace FinTrack.Service
             };
         }
 
-        public async Task UpdateTransaction(int id, string userId,TransactionUpdateDto transactionUpdateDto)
+        public async Task UpdateTransaction(int id, string userName, string userId,TransactionUpdateDto transactionUpdateDto)
         {
 
             if (transactionUpdateDto.Amount <= 0)
@@ -234,6 +255,15 @@ namespace FinTrack.Service
 
             await _unitOfWork.Save();
             _logger.LogInformation("Transaction with ID {Id} updated successfully for user {UserId}", id, userId);
+            AuditData auditData = new AuditData
+            {
+                UserName = userName,
+                Action = "Update",
+                EntityActedUpon = "Transaction",
+                EntityId = transaction.Id,
+                Timestamp = DateTime.UtcNow
+            };
+            await _auditService.LogAuditDataAsync(auditData);
         }
 
         public async Task<DashboardViewModel> GetDashboardData()

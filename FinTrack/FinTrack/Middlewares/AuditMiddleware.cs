@@ -38,9 +38,6 @@ namespace FinTrack.Middlewares
             {
                 UserName = user,
                 Action = action,
-                RequestPath = httpContext.Request.Path,
-                Method = httpContext.Request.Method,
-                ResponseStatusCode = httpContext.Response.StatusCode,
                 Timestamp = DateTime.UtcNow
             };
             

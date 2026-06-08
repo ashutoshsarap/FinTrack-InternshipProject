@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using FinTrack.Models.Entity;
 using FinTrack.Utilities;
+using System.Security.Claims;
 
 namespace FinTrack.Areas.Identity.Pages.Account
 {
@@ -108,6 +109,8 @@ namespace FinTrack.Areas.Identity.Pages.Account
             returnUrl ??= Url.Content("~/");
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+            Claim claim = new Claim("SubscriptionPlan", "Premium");
 
             if (ModelState.IsValid)
             {

@@ -82,6 +82,7 @@ namespace FinTrack.Controllers
         {
             
             var userId = _currentUser.UserId;
+            var userName = _currentUser.UserName;
             var categories = await _categoryService.GetAllCategoriesAsync();
 
 
@@ -98,7 +99,7 @@ namespace FinTrack.Controllers
                         Description = model.Description,
                         CategoryId = model.CategoryId
                     };
-                    await _transactionService.CreateTransactionAsync(userId,transactionCreateDto);
+                    await _transactionService.CreateTransactionAsync(userId,userName,transactionCreateDto);
                     TempData["Success"] = $"Transaction added successfully";
                     HttpContext.Items[AuditMessages.AuditMessage] = AuditMessages.CreateTransaction; //a key/value collection that can be used to share data within the scope of this request.
                     return RedirectToAction(nameof(Index), "Dashboard");
@@ -134,9 +135,10 @@ namespace FinTrack.Controllers
         {
 
             var userId = _currentUser.UserId;
+            var userName = _currentUser.UserName;
             try
             {
-                await _transactionService.DeleteTransaction(id, userId);
+                await _transactionService.DeleteTransaction(id,userName, userId);
                 HttpContext.Items[AuditMessages.AuditMessage] = AuditMessages.DeletedTransaction; //a key/value collection that can be used to share data within the scope of this request.
                 return Json(new { success = true, message = "Delete successful" });
             }
@@ -181,7 +183,9 @@ namespace FinTrack.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(TransactionViewModel model)
         {
-            var userId = _currentUser.UserId;
+            var userId = _currentUser.UserId; 
+            var userName = _currentUser.UserName;
+
             var categories = await _categoryService.GetAllCategoriesAsync();
             
             if (!ModelState.IsValid)
@@ -190,7 +194,6 @@ namespace FinTrack.Controllers
                 model.Categories = new SelectList(categories.ToList(), "Id", "Name");
                 return View(model);
             }
-
 
             try
             {
@@ -213,7 +216,7 @@ namespace FinTrack.Controllers
                     UpdatedAt = DateTime.Now
                 };
                 //await _transactionService.UpdateTransactionAsync(model.Id, transactionUpdateDto, null);
-                await _transactionService.UpdateTransaction(model.Id, userId, transactionUpdateDto);
+                await _transactionService.UpdateTransaction(model.Id,userName, userId, transactionUpdateDto);
                 HttpContext.Items[AuditMessages.AuditMessage] = AuditMessages.UpdateTransaction; //a key/value collection that can be used to share data within the scope of this request.
                 return RedirectToAction(nameof(Index));
 

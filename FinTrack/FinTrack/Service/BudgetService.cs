@@ -11,12 +11,16 @@ namespace FinTrack.Service
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly string _currentUserId;
+        private readonly string _currentUserName;
         private readonly ILogger<BudgetService> _logger;
-        public BudgetService(IUnitOfWork unitOfWork, ICurrentUserService currentUserService, ILogger<BudgetService> logger)
+        private readonly IAuditService _auditService;
+        public BudgetService(IUnitOfWork unitOfWork, ICurrentUserService currentUserService, ILogger<BudgetService> logger, IAuditService auditService)
         {
             _unitOfWork = unitOfWork;
             _currentUserId = currentUserService.UserId;
+            _currentUserName = currentUserService.UserName;
             _logger = logger;
+            _auditService = auditService;
         }
 
         public async Task CreateBudgetAsync(BudgetCreateDto budgetCreateDto)
@@ -57,7 +61,16 @@ namespace FinTrack.Service
                 await _unitOfWork.Budget.CreateBudgetAsync(budget);
             }
             await _unitOfWork.Save();
-            _logger.LogInformation("Budget with budget id : {Id} created successfully for user {UserId} with category {CategoryId} and amount {Amount}.", budget.Id,_currentUserId, budget.CategoryId, budget.MonthlyLimitAmount);
+            _logger.LogInformation("Budget with budget id : {Id} created successfully for user {UserId} with category {CategoryId} and amount {Amount}.", budget.Id, _currentUserId, budget.CategoryId, budget.MonthlyLimitAmount);
+            AuditData auditData = new AuditData
+            {
+                UserName = _currentUserName,
+                Action = "Create",
+                EntityActedUpon = "Budget",
+                EntityId = budget.Id,
+                Timestamp = DateTime.UtcNow
+            };
+            await _auditService.LogAuditDataAsync(auditData);
         }
 
         public async Task DeleteBudget(int budgetId)
@@ -68,6 +81,15 @@ namespace FinTrack.Service
                 _unitOfWork.Budget.DeleteBudgetAsync(budgetToDelete);
                 await _unitOfWork.Save();
                 _logger.LogInformation("Budget with budget id : {Id} deleted successfully for user {UserId}.", budgetId, _currentUserId);
+                AuditData auditData = new AuditData
+                {
+                    UserName = _currentUserName,
+                    Action = "Delete",
+                    EntityActedUpon = "Budget",
+                    EntityId = budgetId,
+                    Timestamp = DateTime.UtcNow
+                };
+                await _auditService.LogAuditDataAsync(auditData);
             }
             else
             {
@@ -116,6 +138,15 @@ namespace FinTrack.Service
             {
                 await _unitOfWork.Save();
                 _logger.LogInformation("Budget with budget id : {Id} updated successfully for user {UserId} with category {CategoryId} and amount {Amount}.", budgetToUpdate.Id, _currentUserId, budgetToUpdate.CategoryId, budgetToUpdate.MonthlyLimitAmount);
+                AuditData auditData = new AuditData
+                {
+                    UserName = _currentUserName,
+                    Action = "Update",
+                    EntityActedUpon = "Budget",
+                    EntityId = budgetUpdateDto.Id,
+                    Timestamp = DateTime.UtcNow
+                };
+                await _auditService.LogAuditDataAsync(auditData);
             }
         }
 

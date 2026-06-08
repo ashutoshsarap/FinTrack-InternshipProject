@@ -13,12 +13,16 @@ namespace FinTrack.Service
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly string _currentUserId;
+        private readonly string _currentUserName;
         private readonly ILogger<RecurringTransactionService> _logger;
-        public RecurringTransactionService(IUnitOfWork unitOfWork, ICurrentUserService currentUserService, ILogger<RecurringTransactionService> logger)
+        private readonly IAuditService _auditService;
+        public RecurringTransactionService(IUnitOfWork unitOfWork, ICurrentUserService currentUserService, ILogger<RecurringTransactionService> logger, IAuditService auditService)
         {
             _unitOfWork = unitOfWork;
             _currentUserId = currentUserService.UserId;
+            _currentUserName = currentUserService.UserName;
             _logger = logger;
+            _auditService = auditService;
         }
 
         public async Task CreateRecurringTransactionAsync(RecurringTransactionCreateDto recurringTransactionCreateDto)
@@ -58,6 +62,16 @@ namespace FinTrack.Service
             await _unitOfWork.Save();
             _logger.LogInformation("Recurring transaction with ID : {Id} created successfully for user {UserId}.", recurringTransaction.Id, _currentUserId);
 
+            AuditData auditData = new AuditData
+            {
+                UserName = _currentUserName,
+                Action = "Create",
+                EntityActedUpon = "RecurringTransaction",
+                EntityId = recurringTransaction.Id,
+                Timestamp = DateTime.UtcNow
+            };
+            await _auditService.LogAuditDataAsync(auditData);
+
             string cronExpression = CalculateCronExpression(recurringTransaction);
 
             RecurringJob.AddOrUpdate<IRecurringTransactionJobService>(
@@ -86,6 +100,15 @@ namespace FinTrack.Service
             RecurringJob.RemoveIfExists(transactionToBeDeleted.HangFireId);
             await _unitOfWork.Save();
             _logger.LogInformation("Recurring transaction with ID : {Id} deleted successfully for user {UserId}.", id, _currentUserId);
+            AuditData auditData = new AuditData
+            {
+                UserName = _currentUserName,
+                Action = "Delete",
+                EntityActedUpon = "RecurringTransaction",
+                EntityId = id,
+                Timestamp = DateTime.UtcNow
+            };
+            await _auditService.LogAuditDataAsync(auditData);
         }
 
         public async Task<IEnumerable<RecurringTransactionResponseDto>> GetAllRecurringTransactionsAsync()
@@ -171,6 +194,17 @@ namespace FinTrack.Service
 
             await _unitOfWork.Save();
             _logger.LogInformation("Recurring transaction with ID : {Id} updated successfully for user {UserId}.", recurringTransactionToUpdate.Id, _currentUserId);
+
+            AuditData auditData = new AuditData
+            {
+                UserName = _currentUserName,
+                Action = "Update",
+                EntityActedUpon = "RecurringTransaction",
+                EntityId = recurringTransactionToUpdate.Id,
+                Timestamp = DateTime.UtcNow
+            };
+            await _auditService.LogAuditDataAsync(auditData);
+
             RecurringJob.AddOrUpdate<IRecurringTransactionJobService>(
                 recurringTransactionToUpdate.HangFireId,
                 x => x.ProcessTransaction(recurringTransactionToUpdate.Id),

@@ -36,11 +36,14 @@ namespace FinTrack.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CategoryDto category)
         {
+            string userId = _currentUserService.UserId;
+            string userName = _currentUserService.UserName; 
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    await _categoryService.CreateCategory(_currentUserService.UserId, category);
+                    await _categoryService.CreateCategory(userId, userName, category);
                     HttpContext.Items[AuditMessages.AuditMessage] = AuditMessages.CreatedCategory;
                     return RedirectToAction(nameof(Index));
                 }
@@ -55,9 +58,10 @@ namespace FinTrack.Controllers
         [ActionName("Delete")]
         public async Task<IActionResult> Delete(int id)
         {
+            string userName = _currentUserService.UserName;
             try
             {
-                await _categoryService.DeleteCategory(id);
+                await _categoryService.DeleteCategory(userName,id);
                 HttpContext.Items[AuditMessages.AuditMessage] = AuditMessages.DelteCategory;
                 TempData["Success"] = "Category deleted successfully";
                 return Json(new { success = true, message = "Category deleted successfuly" });

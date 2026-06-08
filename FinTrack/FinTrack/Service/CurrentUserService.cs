@@ -18,5 +18,13 @@ namespace FinTrack.Service
                 return _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             }
         }
+
+        public string UserName
+        {
+            get
+            {
+                return _httpContextAccessor.HttpContext?.User?.Identity?.Name;
+            }
+        }
     }
 }
