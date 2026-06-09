@@ -16,7 +16,8 @@ namespace FinTrack.Controllers
             _csvExportService = csvExportService;
             _csvImportService = csvImportService;
         }
-        
+
+        [Authorize(Policy = "PremiumOnly")]
         public async Task<IActionResult> DownloadCsv()
         {
             var csvStream = await _csvExportService.GenerateCsv();

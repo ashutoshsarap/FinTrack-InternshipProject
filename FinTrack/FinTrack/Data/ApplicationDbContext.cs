@@ -20,6 +20,7 @@ namespace FinTrack.Data
         public DbSet<Budget> Budgets { get; set; }
         public DbSet<RecurringTransaction> RecurringTransactions { get; set; }
         public DbSet<AuditData> AuditLogs { get; set; }
+        public DbSet<SubscriptionInfo> SubscriptionInfo { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -32,6 +33,7 @@ namespace FinTrack.Data
                         .WithMany() // An ApplicationUser can have many Transactions
                         .HasForeignKey(t => t.ApplicationUserId) // Tells EF Core that the foreign key is ApplicationUserId
                         .OnDelete(DeleteBehavior.NoAction); // Prevents cascading delete when an ApplicationUser is deleted
+
 
             //Category and Transaction relationship configuration
             modelBuilder.Entity<Transaction>() 

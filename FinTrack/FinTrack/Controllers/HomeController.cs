@@ -35,5 +35,17 @@ namespace FinTrack.Controllers
         {
             return View();
         }
+
+        public IActionResult MyClaims()
+        {
+            var claims = HttpContext.User.Claims;
+
+            foreach(var claim in claims)
+            {
+                Console.WriteLine($"========================= {claim} =========================");
+            }
+
+            return Json(claims);
+        }
     }
 }

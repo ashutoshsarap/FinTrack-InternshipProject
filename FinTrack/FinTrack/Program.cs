@@ -56,17 +56,17 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 //                .AddDefaultTokenProviders()
 //                .AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>();
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole(Roles.Admin));
-    options.AddPolicy("RequireUserRole", policy => policy.RequireRole(Roles.User));
-    options.AddPolicy("RequirePremiumSubscription", policy => policy.RequireClaim("SubscriptionPlan", SubscriptionPlan.Premium.ToString()));
-    //options.AddPolicy("NonPremiumSubscription", policy => policy.RequireClaim("SubscriptionPlan", SubscriptionPlan.Free.ToString()));
-    options.AddPolicy("NonPremiumSubscription", policy =>
-                      policy.RequireAuthenticatedUser());
-});
+//builder.Services.AddAuthorization(options =>
+//{
+//    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole(Roles.Admin));
+//    options.AddPolicy("RequireUserRole", policy => policy.RequireRole(Roles.User));
+//    options.AddPolicy("RequirePremiumSubscription", policy => policy.RequireClaim("SubscriptionPlan", SubscriptionPlan.Premium.ToString()));
+//    //options.AddPolicy("NonPremiumSubscription", policy => policy.RequireClaim("SubscriptionPlan", SubscriptionPlan.Free.ToString()));
+//    options.AddPolicy("NonPremiumSubscription", policy =>
+//                      policy.RequireAuthenticatedUser());
+//});
 
-builder.Services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, CustomClaimsPrincipalFactory>();
+//builder.Services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, CustomClaimsPrincipalFactory>();
 
 //To access the current HTTP context and retrieve user information, we need to register the IHttpContextAccessor service, which allows us to access the HttpContext in our services.
 builder.Services.AddHttpContextAccessor();
@@ -96,11 +96,18 @@ builder.Services.AddScoped<ISendMonthlyReportService, SendMonthlyReportService>(
 builder.Services.AddScoped<IGeneratePdfService, GeneratePdfService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IAuditService, AuditService>();
+builder.Services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, CustomClaimsPrincipalFactory>();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("PremiumOnly", policy =>
+        policy.RequireClaim("SubscriptionPlan", SubscriptionPlan.Premium.ToString()));
+});
 
 
 
 var app = builder.Build();
-
+    
 
 //One time seeding script to assign existing users a role of user
 //using (var scope = app.Services.CreateScope())

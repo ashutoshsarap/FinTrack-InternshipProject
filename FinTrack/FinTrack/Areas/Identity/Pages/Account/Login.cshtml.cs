@@ -23,12 +23,14 @@ namespace FinTrack.Areas.Identity.Pages.Account
     public class LoginModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _userManager = userManager;
         }
 
         /// <summary>
@@ -110,8 +112,6 @@ namespace FinTrack.Areas.Identity.Pages.Account
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
-            Claim claim = new Claim("SubscriptionPlan", "Premium");
-
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
@@ -121,6 +121,11 @@ namespace FinTrack.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User logged in.");
                     HttpContext.Items[AuditMessages.AuditMessage] = "User logged in";
+
+                    //var user = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
+
+                    //await _userManager.AddClaimAsync(user, new Claim("SubscriptionPlan", user.SubscriptionPlan.ToString()));  
+
                     return RedirectToAction("RedirectUser", "Home");
                 }
                 if (result.RequiresTwoFactor)

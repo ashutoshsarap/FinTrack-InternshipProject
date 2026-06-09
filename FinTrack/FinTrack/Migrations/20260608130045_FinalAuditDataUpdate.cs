@@ -10,17 +10,7 @@ namespace FinTrack.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Method",
-                table: "AuditLogs");
-
-            migrationBuilder.DropColumn(
-                name: "RequestPath",
-                table: "AuditLogs");
-
-            migrationBuilder.DropColumn(
-                name: "ResponseStatusCode",
-                table: "AuditLogs");
+            
         }
 
         /// <inheritdoc />

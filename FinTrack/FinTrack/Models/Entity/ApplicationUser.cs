@@ -1,5 +1,6 @@
 ﻿using FinTrack.Models.Enums;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FinTrack.Models.Entity
 {

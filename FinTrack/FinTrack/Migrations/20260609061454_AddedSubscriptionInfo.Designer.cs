@@ -4,6 +4,7 @@ using FinTrack.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinTrack.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260609061454_AddedSubscriptionInfo")]
+    partial class AddedSubscriptionInfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,7 +73,7 @@ namespace FinTrack.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SubscriptionPlan")
+                    b.Property<int?>("SubscriptionInfoId")
                         .HasColumnType("int");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -89,6 +92,8 @@ namespace FinTrack.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("SubscriptionInfoId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -313,9 +318,6 @@ namespace FinTrack.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
@@ -329,8 +331,6 @@ namespace FinTrack.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("SubscriptionInfo");
                 });
@@ -524,6 +524,15 @@ namespace FinTrack.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("FinTrack.Models.Entity.ApplicationUser", b =>
+                {
+                    b.HasOne("FinTrack.Models.Entity.SubscriptionInfo", "SubscriptionInfo")
+                        .WithMany()
+                        .HasForeignKey("SubscriptionInfoId");
+
+                    b.Navigation("SubscriptionInfo");
+                });
+
             modelBuilder.Entity("FinTrack.Models.Entity.Budget", b =>
                 {
                     b.HasOne("FinTrack.Models.Entity.ApplicationUser", "ApplicationUser")
@@ -570,15 +579,6 @@ namespace FinTrack.Migrations
                     b.Navigation("ApplicationUser");
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("FinTrack.Models.Entity.SubscriptionInfo", b =>
-                {
-                    b.HasOne("FinTrack.Models.Entity.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId");
-
-                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("FinTrack.Models.Entity.Transaction", b =>
