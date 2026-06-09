@@ -6805,3 +6805,483 @@ VALUES (@p0, @p1, @p2, @p3, @p4);
 2026-06-09 14:15:55.430 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.CsvController.DownloadCsv (FinTrack)'
 2026-06-09 14:15:55.433 +05:30 [INF] HTTP GET /Csv/DownloadCsv responded 200 in 982.3032 ms
 2026-06-09 14:15:55.440 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Csv/DownloadCsv - 200 8839 text/csv 1007.4165ms
+2026-06-09 16:32:56.634 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-06-09 16:32:58.237 +05:30 [INF] Hangfire SQL objects installed.
+2026-06-09 16:32:58.414 +05:30 [INF] User profile is available. Using 'C:\Users\Coditas-Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-09 16:32:59.514 +05:30 [INF] Now listening on: https://localhost:7028
+2026-06-09 16:32:59.517 +05:30 [INF] Now listening on: http://localhost:5175
+2026-06-09 16:32:59.713 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-PG81ABB\SQLEXPRESS@MoneyUpDB'
+2026-06-09 16:32:59.779 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-09 16:32:59.780 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-09 16:32:59.870 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-09 16:32:59.873 +05:30 [INF] Hosting environment: Development
+2026-06-09 16:32:59.875 +05:30 [INF] Content root path: C:\Users\Coditas-Admin\source\InternshipProject\FinTrack\FinTrack
+2026-06-09 16:32:59.920 +05:30 [INF] Server desktop-pg81abb:20612:863adfba successfully announced in 50.0443 ms
+2026-06-09 16:32:59.934 +05:30 [INF] Server desktop-pg81abb:20612:863adfba is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-09 16:32:59.970 +05:30 [INF] 2 servers were removed due to timeout
+2026-06-09 16:33:00.231 +05:30 [INF] Server desktop-pg81abb:20612:863adfba all the dispatchers started
+2026-06-09 16:33:04.380 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/hangfire/recurring - null null
+2026-06-09 16:33:04.380 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/ - null null
+2026-06-09 16:33:06.354 +05:30 [WRN] No store type was specified for the decimal property 'MonthlyLimitAmount' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-09 16:33:06.359 +05:30 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'RecurringTransaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-09 16:33:06.361 +05:30 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'SubscriptionInfo'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-09 16:33:06.364 +05:30 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Transaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-09 16:33:07.198 +05:30 [INF] Executed DbCommand (29ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[SubscriptionPlan], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-06-09 16:33:07.198 +05:30 [INF] Executed DbCommand (29ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[SubscriptionPlan], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-06-09 16:33:07.462 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2026-06-09 16:33:07.462 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2026-06-09 16:33:07.533 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-06-09 16:33:07.533 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-06-09 16:33:07.564 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-06-09 16:33:07.564 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-06-09 16:33:07.601 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2026-06-09 16:33:07.601 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2026-06-09 16:33:07.628 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-09 16:33:07.652 +05:30 [INF] HTTP GET /hangfire/recurring responded 403 in 2849.3274 ms
+2026-06-09 16:33:07.664 +05:30 [INF] Route matched with {action = "RedirectUser", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RedirectUser() on controller FinTrack.Controllers.HomeController (FinTrack).
+2026-06-09 16:33:07.691 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/hangfire/recurring - 403 null null 3331.0326ms
+2026-06-09 16:33:07.761 +05:30 [INF] Executing RedirectResult, redirecting to /Dashboard/Index.
+2026-06-09 16:33:07.777 +05:30 [INF] Executed action FinTrack.Controllers.HomeController.RedirectUser (FinTrack) in 95.3246ms
+2026-06-09 16:33:07.780 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-09 16:33:07.783 +05:30 [INF] HTTP GET / responded 302 in 2982.7812 ms
+2026-06-09 16:33:07.793 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/ - 302 null null 3435.6356ms
+2026-06-09 16:33:07.806 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Dashboard/Index - null null
+2026-06-09 16:33:07.858 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-09 16:33:07.871 +05:30 [INF] Route matched with {action = "Index", controller = "Dashboard", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller FinTrack.Controllers.DashboardController (FinTrack).
+2026-06-09 16:33:08.084 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 16:33:08.097 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 16:33:08.105 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 16:33:08.113 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 16:33:08.185 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__p_3='?' (DbType = Int32), @___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[ApplicationUserId], [t0].[CategoryId], [t0].[CreatedAt], [t0].[Date], [t0].[DeletedAt], [t0].[Description], [t0].[IsDeleted], [t0].[PaymentMode], [t0].[Type], [t0].[UpdatedAt], [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM (
+    SELECT TOP(@__p_3) [t].[Id], [t].[Amount], [t].[ApplicationUserId], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[DeletedAt], [t].[Description], [t].[IsDeleted], [t].[PaymentMode], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+    ORDER BY [t].[Date] DESC
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC
+2026-06-09 16:33:08.407 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Name] AS [CategoryName], COALESCE(SUM([t].[Amount]), 0.0) AS [TotalAmount]
+FROM [Transactions] AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+GROUP BY [c].[Name]
+2026-06-09 16:33:08.485 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__currentMonthStart_3='?' (DbType = DateTime2), @__currentMonthEnd_4='?' (DbType = DateTime2), @__currentMonth_1='?' (DbType = Int32), @__currentYear_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id] AS [BudgetId], [c].[Name] AS [CategoryName], [b].[MonthlyLimitAmount], (
+    SELECT COALESCE(SUM([t].[Amount]), 0.0)
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[CategoryId] = [b].[CategoryId] AND [t].[Date] >= @__currentMonthStart_3 AND [t].[Date] <= @__currentMonthEnd_4) AS [TotalAmountSpent]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[ApplicationUserId] = @___currentUserId_0 AND [b].[Month] = @__currentMonth_1 AND [b].[Year] = @__currentYear_2
+2026-06-09 16:33:08.506 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-09 16:33:08.876 +05:30 [INF] Executed ViewResult - view Index executed in 377.045ms.
+2026-06-09 16:33:08.884 +05:30 [INF] Executed action FinTrack.Controllers.DashboardController.Index (FinTrack) in 1006.2322ms
+2026-06-09 16:33:08.887 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-09 16:33:08.892 +05:30 [INF] HTTP GET /Dashboard/Index responded 200 in 1067.5127 ms
+2026-06-09 16:33:08.901 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Dashboard/Index - 200 null text/html; charset=utf-8 1096.1422ms
+2026-06-09 16:33:10.912 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-09 16:33:10.936 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-09 16:33:10.962 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 59.7303ms
+2026-06-09 16:33:11.798 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 862.4017ms
+2026-06-09 16:33:11.836 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7028/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2026-06-09 16:33:11.916 +05:30 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\Coditas-Admin\source\InternshipProject\FinTrack\FinTrack\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2026-06-09 16:33:11.920 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7028/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 83.9781ms
+2026-06-09 16:33:17.049 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Transaction/Index - null null
+2026-06-09 16:33:17.080 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.TransactionController.Index (FinTrack)'
+2026-06-09 16:33:17.115 +05:30 [INF] Route matched with {action = "Index", controller = "Transaction", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(FinTrack.Models.DTOs.TransactionDto.TransactionFilterDto) on controller FinTrack.Controllers.TransactionController (FinTrack).
+2026-06-09 16:33:17.249 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__filter_StartDate_Value_0='?' (DbType = DateTime2), @__filter_EndDate_Value_1='?' (DbType = DateTime2), @___currentUserId_2='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[Date] >= @__filter_StartDate_Value_0 AND [t].[Date] <= @__filter_EndDate_Value_1 AND [t].[ApplicationUserId] = @___currentUserId_2 AND [t].[IsDeleted] = CAST(0 AS bit)
+2026-06-09 16:33:17.286 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__filter_StartDate_Value_0='?' (DbType = DateTime2), @__filter_EndDate_Value_1='?' (DbType = DateTime2), @___currentUserId_2='?' (Size = 450), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[ApplicationUserId], [t0].[CategoryId], [t0].[CreatedAt], [t0].[Date], [t0].[DeletedAt], [t0].[Description], [t0].[IsDeleted], [t0].[PaymentMode], [t0].[Type], [t0].[UpdatedAt], [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[ApplicationUserId], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[DeletedAt], [t].[Description], [t].[IsDeleted], [t].[PaymentMode], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[Date] >= @__filter_StartDate_Value_0 AND [t].[Date] <= @__filter_EndDate_Value_1 AND [t].[ApplicationUserId] = @___currentUserId_2 AND [t].[IsDeleted] = CAST(0 AS bit)
+    ORDER BY [t].[Date]
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date]
+2026-06-09 16:33:17.409 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@___currentUserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[ApplicationUserId] = @___currentUserId_0 OR [c].[IsSystemDefined] = CAST(1 AS bit)
+2026-06-09 16:33:17.447 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-09 16:33:18.031 +05:30 [INF] Executed ViewResult - view Index executed in 586.5245ms.
+2026-06-09 16:33:18.145 +05:30 [INF] Executed action FinTrack.Controllers.TransactionController.Index (FinTrack) in 1025.5735ms
+2026-06-09 16:33:18.359 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/js/transactions.js - null null
+2026-06-09 16:33:18.359 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-09 16:33:18.360 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-09 16:33:18.395 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.TransactionController.Index (FinTrack)'
+2026-06-09 16:33:18.402 +05:30 [INF] The file /js/transactions.js was not modified
+2026-06-09 16:33:18.422 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 62.4009ms
+2026-06-09 16:33:18.424 +05:30 [INF] HTTP GET /Transaction/Index responded 200 in 1349.9700 ms
+2026-06-09 16:33:18.426 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/js/transactions.js - 304 null text/javascript 66.9235ms
+2026-06-09 16:33:18.453 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Transaction/Index - 200 null text/html; charset=utf-8 1403.9752ms
+2026-06-09 16:33:18.524 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 163.9322ms
+2026-06-09 16:33:20.047 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Dashboard/Index - null null
+2026-06-09 16:33:20.066 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-09 16:33:20.069 +05:30 [INF] Route matched with {action = "Index", controller = "Dashboard", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller FinTrack.Controllers.DashboardController (FinTrack).
+2026-06-09 16:33:20.082 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 16:33:20.088 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 16:33:20.096 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 16:33:20.101 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 16:33:20.111 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__p_3='?' (DbType = Int32), @___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[ApplicationUserId], [t0].[CategoryId], [t0].[CreatedAt], [t0].[Date], [t0].[DeletedAt], [t0].[Description], [t0].[IsDeleted], [t0].[PaymentMode], [t0].[Type], [t0].[UpdatedAt], [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM (
+    SELECT TOP(@__p_3) [t].[Id], [t].[Amount], [t].[ApplicationUserId], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[DeletedAt], [t].[Description], [t].[IsDeleted], [t].[PaymentMode], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+    ORDER BY [t].[Date] DESC
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC
+2026-06-09 16:33:20.124 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Name] AS [CategoryName], COALESCE(SUM([t].[Amount]), 0.0) AS [TotalAmount]
+FROM [Transactions] AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+GROUP BY [c].[Name]
+2026-06-09 16:33:20.136 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__currentMonthStart_3='?' (DbType = DateTime2), @__currentMonthEnd_4='?' (DbType = DateTime2), @__currentMonth_1='?' (DbType = Int32), @__currentYear_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id] AS [BudgetId], [c].[Name] AS [CategoryName], [b].[MonthlyLimitAmount], (
+    SELECT COALESCE(SUM([t].[Amount]), 0.0)
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[CategoryId] = [b].[CategoryId] AND [t].[Date] >= @__currentMonthStart_3 AND [t].[Date] <= @__currentMonthEnd_4) AS [TotalAmountSpent]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[ApplicationUserId] = @___currentUserId_0 AND [b].[Month] = @__currentMonth_1 AND [b].[Year] = @__currentYear_2
+2026-06-09 16:33:20.149 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-09 16:33:20.160 +05:30 [INF] Executed ViewResult - view Index executed in 11.2531ms.
+2026-06-09 16:33:20.163 +05:30 [INF] Executed action FinTrack.Controllers.DashboardController.Index (FinTrack) in 88.2968ms
+2026-06-09 16:33:20.166 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-09 16:33:20.228 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-09 16:33:20.229 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-09 16:33:20.235 +05:30 [INF] HTTP GET /Dashboard/Index responded 200 in 170.5234 ms
+2026-06-09 16:33:20.244 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 16.1569ms
+2026-06-09 16:33:20.278 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Dashboard/Index - 200 null text/html; charset=utf-8 231.2678ms
+2026-06-09 16:33:20.636 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 406.738ms
+2026-06-09 16:33:27.348 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Dashboard/Index - null null
+2026-06-09 16:33:27.369 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-09 16:33:27.374 +05:30 [INF] Route matched with {action = "Index", controller = "Dashboard", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller FinTrack.Controllers.DashboardController (FinTrack).
+2026-06-09 16:33:27.382 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 16:33:27.392 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 16:33:27.399 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 16:33:27.407 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 16:33:27.416 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__p_3='?' (DbType = Int32), @___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[ApplicationUserId], [t0].[CategoryId], [t0].[CreatedAt], [t0].[Date], [t0].[DeletedAt], [t0].[Description], [t0].[IsDeleted], [t0].[PaymentMode], [t0].[Type], [t0].[UpdatedAt], [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM (
+    SELECT TOP(@__p_3) [t].[Id], [t].[Amount], [t].[ApplicationUserId], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[DeletedAt], [t].[Description], [t].[IsDeleted], [t].[PaymentMode], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+    ORDER BY [t].[Date] DESC
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC
+2026-06-09 16:33:27.433 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Name] AS [CategoryName], COALESCE(SUM([t].[Amount]), 0.0) AS [TotalAmount]
+FROM [Transactions] AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+GROUP BY [c].[Name]
+2026-06-09 16:33:27.444 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__currentMonthStart_3='?' (DbType = DateTime2), @__currentMonthEnd_4='?' (DbType = DateTime2), @__currentMonth_1='?' (DbType = Int32), @__currentYear_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id] AS [BudgetId], [c].[Name] AS [CategoryName], [b].[MonthlyLimitAmount], (
+    SELECT COALESCE(SUM([t].[Amount]), 0.0)
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[CategoryId] = [b].[CategoryId] AND [t].[Date] >= @__currentMonthStart_3 AND [t].[Date] <= @__currentMonthEnd_4) AS [TotalAmountSpent]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[ApplicationUserId] = @___currentUserId_0 AND [b].[Month] = @__currentMonth_1 AND [b].[Year] = @__currentYear_2
+2026-06-09 16:33:27.451 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-09 16:33:27.463 +05:30 [INF] Executed ViewResult - view Index executed in 12.1019ms.
+2026-06-09 16:33:27.467 +05:30 [INF] Executed action FinTrack.Controllers.DashboardController.Index (FinTrack) in 88.3763ms
+2026-06-09 16:33:27.526 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-09 16:33:27.526 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-09 16:33:27.530 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-09 16:33:27.546 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 19.7912ms
+2026-06-09 16:33:27.573 +05:30 [INF] HTTP GET /Dashboard/Index responded 200 in 204.5546 ms
+2026-06-09 16:33:27.730 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Dashboard/Index - 200 null text/html; charset=utf-8 382.3514ms
+2026-06-09 16:33:27.713 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 186.7829ms
+2026-06-09 16:55:31.906 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Transaction/Index - null null
+2026-06-09 16:55:32.066 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.TransactionController.Index (FinTrack)'
+2026-06-09 16:55:32.072 +05:30 [INF] Route matched with {action = "Index", controller = "Transaction", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(FinTrack.Models.DTOs.TransactionDto.TransactionFilterDto) on controller FinTrack.Controllers.TransactionController (FinTrack).
+2026-06-09 16:55:32.260 +05:30 [INF] Executed DbCommand (158ms) [Parameters=[@__filter_StartDate_Value_0='?' (DbType = DateTime2), @__filter_EndDate_Value_1='?' (DbType = DateTime2), @___currentUserId_2='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Transactions] AS [t]
+WHERE [t].[Date] >= @__filter_StartDate_Value_0 AND [t].[Date] <= @__filter_EndDate_Value_1 AND [t].[ApplicationUserId] = @___currentUserId_2 AND [t].[IsDeleted] = CAST(0 AS bit)
+2026-06-09 16:55:32.337 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[@__filter_StartDate_Value_0='?' (DbType = DateTime2), @__filter_EndDate_Value_1='?' (DbType = DateTime2), @___currentUserId_2='?' (Size = 450), @__p_3='?' (DbType = Int32), @__p_4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[ApplicationUserId], [t0].[CategoryId], [t0].[CreatedAt], [t0].[Date], [t0].[DeletedAt], [t0].[Description], [t0].[IsDeleted], [t0].[PaymentMode], [t0].[Type], [t0].[UpdatedAt], [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM (
+    SELECT [t].[Id], [t].[Amount], [t].[ApplicationUserId], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[DeletedAt], [t].[Description], [t].[IsDeleted], [t].[PaymentMode], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[Date] >= @__filter_StartDate_Value_0 AND [t].[Date] <= @__filter_EndDate_Value_1 AND [t].[ApplicationUserId] = @___currentUserId_2 AND [t].[IsDeleted] = CAST(0 AS bit)
+    ORDER BY [t].[Date]
+    OFFSET @__p_3 ROWS FETCH NEXT @__p_4 ROWS ONLY
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date]
+2026-06-09 16:55:32.368 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@___currentUserId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[ApplicationUserId] = @___currentUserId_0 OR [c].[IsSystemDefined] = CAST(1 AS bit)
+2026-06-09 16:55:32.377 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-09 16:55:32.905 +05:30 [INF] Executed ViewResult - view Index executed in 530.2535ms.
+2026-06-09 16:55:33.026 +05:30 [INF] Executed action FinTrack.Controllers.TransactionController.Index (FinTrack) in 939.1097ms
+2026-06-09 16:55:33.655 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-09 16:55:33.671 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-09 16:55:33.709 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.TransactionController.Index (FinTrack)'
+2026-06-09 16:55:33.770 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 99.1886ms
+2026-06-09 16:55:33.774 +05:30 [INF] HTTP GET /Transaction/Index responded 200 in 1709.4659 ms
+2026-06-09 16:55:33.798 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Transaction/Index - 200 null text/html; charset=utf-8 1892.5016ms
+2026-06-09 16:55:34.020 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 364.9146ms
+2026-06-09 17:39:46.286 +05:30 [INF] Start installing Hangfire SQL objects...
+2026-06-09 17:39:47.936 +05:30 [INF] Hangfire SQL objects installed.
+2026-06-09 17:39:48.204 +05:30 [INF] User profile is available. Using 'C:\Users\Coditas-Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-09 17:39:50.012 +05:30 [INF] Now listening on: https://localhost:7028
+2026-06-09 17:39:50.016 +05:30 [INF] Now listening on: http://localhost:5175
+2026-06-09 17:39:50.223 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-PG81ABB\SQLEXPRESS@MoneyUpDB'
+2026-06-09 17:39:50.226 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-09 17:39:50.228 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-09 17:39:50.281 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-09 17:39:50.285 +05:30 [INF] Hosting environment: Development
+2026-06-09 17:39:50.287 +05:30 [INF] Content root path: C:\Users\Coditas-Admin\source\InternshipProject\FinTrack\FinTrack
+2026-06-09 17:39:50.322 +05:30 [INF] Server desktop-pg81abb:6784:3406ff72 successfully announced in 41.3266 ms
+2026-06-09 17:39:50.339 +05:30 [INF] Server desktop-pg81abb:6784:3406ff72 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-09 17:39:50.377 +05:30 [INF] 1 servers were removed due to timeout
+2026-06-09 17:39:50.872 +05:30 [INF] Server desktop-pg81abb:6784:3406ff72 all the dispatchers started
+2026-06-09 17:39:55.808 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/ - null null
+2026-06-09 17:39:58.747 +05:30 [WRN] No store type was specified for the decimal property 'MonthlyLimitAmount' on entity type 'Budget'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-09 17:39:58.752 +05:30 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'RecurringTransaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-09 17:39:58.756 +05:30 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'SubscriptionInfo'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-09 17:39:58.760 +05:30 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Transaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-06-09 17:40:00.233 +05:30 [INF] Executed DbCommand (57ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[SubscriptionPlan], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2026-06-09 17:40:00.628 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2026-06-09 17:40:00.725 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-06-09 17:40:00.766 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-06-09 17:40:00.826 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2026-06-09 17:40:00.855 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-09 17:40:00.896 +05:30 [INF] Route matched with {action = "RedirectUser", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RedirectUser() on controller FinTrack.Controllers.HomeController (FinTrack).
+2026-06-09 17:40:00.966 +05:30 [INF] Executing RedirectResult, redirecting to /Dashboard/Index.
+2026-06-09 17:40:00.980 +05:30 [INF] Executed action FinTrack.Controllers.HomeController.RedirectUser (FinTrack) in 70.6068ms
+2026-06-09 17:40:00.985 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.HomeController.RedirectUser (FinTrack)'
+2026-06-09 17:40:00.995 +05:30 [INF] HTTP GET / responded 302 in 4549.1123 ms
+2026-06-09 17:40:01.042 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/Dashboard/Index - null null
+2026-06-09 17:40:01.046 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/ - 302 null null 5267.7759ms
+2026-06-09 17:40:01.088 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-09 17:40:01.108 +05:30 [INF] Route matched with {action = "Index", controller = "Dashboard", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller FinTrack.Controllers.DashboardController (FinTrack).
+2026-06-09 17:40:01.350 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 17:40:01.371 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 17:40:01.381 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 17:40:01.392 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__type_1='?' (DbType = Int32), @__month_2='?' (DbType = Int32), @__year_3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM([t].[Amount]), 0.0)
+FROM [Transactions] AS [t]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = @__type_1 AND DATEPART(month, [t].[Date]) = @__month_2 AND DATEPART(year, [t].[Date]) = @__year_3
+2026-06-09 17:40:01.525 +05:30 [INF] Executed DbCommand (31ms) [Parameters=[@__p_3='?' (DbType = Int32), @___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t0].[Id], [t0].[Amount], [t0].[ApplicationUserId], [t0].[CategoryId], [t0].[CreatedAt], [t0].[Date], [t0].[DeletedAt], [t0].[Description], [t0].[IsDeleted], [t0].[PaymentMode], [t0].[Type], [t0].[UpdatedAt], [c].[Id], [c].[ApplicationUserId], [c].[IsSystemDefined], [c].[Name]
+FROM (
+    SELECT TOP(@__p_3) [t].[Id], [t].[Amount], [t].[ApplicationUserId], [t].[CategoryId], [t].[CreatedAt], [t].[Date], [t].[DeletedAt], [t].[Description], [t].[IsDeleted], [t].[PaymentMode], [t].[Type], [t].[UpdatedAt]
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+    ORDER BY [t].[Date] DESC
+) AS [t0]
+INNER JOIN [Categories] AS [c] ON [t0].[CategoryId] = [c].[Id]
+ORDER BY [t0].[Date] DESC
+2026-06-09 17:40:01.773 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__startDate_1='?' (DbType = DateTime2), @__endDate_2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Name] AS [CategoryName], COALESCE(SUM([t].[Amount]), 0.0) AS [TotalAmount]
+FROM [Transactions] AS [t]
+INNER JOIN [Categories] AS [c] ON [t].[CategoryId] = [c].[Id]
+WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[Date] >= @__startDate_1 AND [t].[Date] <= @__endDate_2
+GROUP BY [c].[Name]
+2026-06-09 17:40:01.843 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@___currentUserId_0='?' (Size = 450), @__currentMonthStart_3='?' (DbType = DateTime2), @__currentMonthEnd_4='?' (DbType = DateTime2), @__currentMonth_1='?' (DbType = Int32), @__currentYear_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id] AS [BudgetId], [c].[Name] AS [CategoryName], [b].[MonthlyLimitAmount], (
+    SELECT COALESCE(SUM([t].[Amount]), 0.0)
+    FROM [Transactions] AS [t]
+    WHERE [t].[ApplicationUserId] = @___currentUserId_0 AND [t].[IsDeleted] = CAST(0 AS bit) AND [t].[Type] = 1 AND [t].[CategoryId] = [b].[CategoryId] AND [t].[Date] >= @__currentMonthStart_3 AND [t].[Date] <= @__currentMonthEnd_4) AS [TotalAmountSpent]
+FROM [Budgets] AS [b]
+INNER JOIN [Categories] AS [c] ON [b].[CategoryId] = [c].[Id]
+WHERE [b].[ApplicationUserId] = @___currentUserId_0 AND [b].[Month] = @__currentMonth_1 AND [b].[Year] = @__currentYear_2
+2026-06-09 17:40:01.875 +05:30 [INF] Executing ViewResult, running view Index.
+2026-06-09 17:40:02.834 +05:30 [INF] Executed ViewResult - view Index executed in 968.9308ms.
+2026-06-09 17:40:03.814 +05:30 [INF] Executed action FinTrack.Controllers.DashboardController.Index (FinTrack) in 2700.0392ms
+2026-06-09 17:40:03.824 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.DashboardController.Index (FinTrack)'
+2026-06-09 17:40:03.829 +05:30 [INF] HTTP GET /Dashboard/Index responded 200 in 2755.6647 ms
+2026-06-09 17:40:03.845 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/Dashboard/Index - 200 null text/html; charset=utf-8 2803.2582ms
+2026-06-09 17:40:05.410 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-09 17:40:05.448 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/_vs/browserLink - null null
+2026-06-09 17:40:05.488 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_framework/aspnetcore-browser-refresh.js - 200 16501 application/javascript; charset=utf-8 78.1751ms
+2026-06-09 17:40:05.498 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7028/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2026-06-09 17:40:05.613 +05:30 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\Coditas-Admin\source\InternshipProject\FinTrack\FinTrack\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2026-06-09 17:40:05.617 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7028/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 120.1027ms
+2026-06-09 17:40:05.658 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/_vs/browserLink - 200 null text/javascript; charset=UTF-8 209.2666ms
+2026-06-09 17:40:49.719 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7028/UpdateUserSubscription/UpgradeUserSubscription - null null
+2026-06-09 17:40:49.803 +05:30 [INF] Executing endpoint 'FinTrack.Controllers.UpdateUserSubscriptionController.UpgradeUserSubscription (FinTrack)'
+2026-06-09 17:40:49.832 +05:30 [INF] Route matched with {action = "UpgradeUserSubscription", controller = "UpdateUserSubscription", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task UpgradeUserSubscription() on controller FinTrack.Controllers.UpdateUserSubscriptionController (FinTrack).
+2026-06-09 17:40:49.845 +05:30 [INF] Executed action FinTrack.Controllers.UpdateUserSubscriptionController.UpgradeUserSubscription (FinTrack) in 6.1402ms
+2026-06-09 17:40:49.849 +05:30 [INF] Executed endpoint 'FinTrack.Controllers.UpdateUserSubscriptionController.UpgradeUserSubscription (FinTrack)'
+2026-06-09 17:40:49.854 +05:30 [ERR] HTTP GET /UpdateUserSubscription/UpgradeUserSubscription responded 500 in 109.4876 ms
+System.InvalidOperationException: Unable to resolve service for type 'FinTrack.Service.IService.IUpdateUserSubscriptionPlan' while attempting to activate 'FinTrack.Controllers.UpdateUserSubscriptionController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method382(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-06-09 17:40:49.936 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'FinTrack.Service.IService.IUpdateUserSubscriptionPlan' while attempting to activate 'FinTrack.Controllers.UpdateUserSubscriptionController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method382(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-06-09 17:40:49.969 +05:30 [ERR] An unhandled exception occurred.
+Path : /Home/Error
+Method : GET
+System.InvalidOperationException: Unable to resolve service for type 'FinTrack.Service.IService.IUpdateUserSubscriptionPlan' while attempting to activate 'FinTrack.Controllers.UpdateUserSubscriptionController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method382(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-06-09 17:40:50.004 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7028/UpdateUserSubscription/UpgradeUserSubscription - 500 null application/json; charset=utf-8 285.3803ms

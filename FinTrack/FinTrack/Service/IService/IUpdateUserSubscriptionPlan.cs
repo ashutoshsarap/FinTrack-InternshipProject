@@ -1,8 +1,10 @@
-﻿namespace FinTrack.Service.IService
+﻿using FinTrack.Models.Entity;
+
+namespace FinTrack.Service.IService
 {
     public interface IUpdateUserSubscriptionPlan
     {
-        public void UpgradeSubscriptionPlan(string userId);
-        public void DowngradeSubscriptionPlan(string userId);
+        public Task UpgradeSubscriptionPlan(ApplicationUser applicationUser);
+        public Task DowngradeSubscriptionPlan(ApplicationUser applicationUser);
     }
 }

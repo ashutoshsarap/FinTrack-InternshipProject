@@ -1,4 +1,4 @@
-﻿using FinTrack.Data
+﻿using FinTrack.Data;
 using FinTrack.Models.Entity;
 using FinTrack.Models.Enums;
 using Microsoft.AspNetCore.Identity;

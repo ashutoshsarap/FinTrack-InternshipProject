@@ -1,17 +1,38 @@
-﻿using FinTrack.Service.IService;
+﻿using FinTrack.Models.Entity;
+using FinTrack.Models.Enums;
+using FinTrack.Service.IService;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 
 namespace FinTrack.Service
 {
     public class UpdateUserSubscriptionService : IUpdateUserSubscriptionPlan
     {
-        public void DowngradeSubscriptionPlan(string userId)
+
+        private UserManager<ApplicationUser> _userManager;
+
+        public UpdateUserSubscriptionService(UserManager<ApplicationUser> userManager)
         {
-            throw new NotImplementedException();
+            _userManager = userManager;
         }
 
-        public void UpgradeSubscriptionPlan(string userId)
+        public async Task DowngradeSubscriptionPlan(ApplicationUser applicationUser)
         {
-            throw new NotImplementedException();
+            if (applicationUser != null)
+            {
+                applicationUser.SubscriptionPlan = SubscriptionPlan.Free;
+                await _userManager.UpdateAsync(applicationUser);
+            }
+        }
+
+        public async Task UpgradeSubscriptionPlan(ApplicationUser applicationUser)
+        {
+            if (applicationUser != null)
+            {
+                applicationUser.SubscriptionPlan = SubscriptionPlan.Premium;
+                await _userManager.UpdateAsync(applicationUser);
+            }
+
         }
     }
 }
